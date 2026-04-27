@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Χτίζω Πρόταση</title>
+  <style>
+    :root {
+      --ink: #182230;
+      --muted: #5d6b7a;
+      --page: #f6f8fc;
+      --panel: #ffffff;
+      --line: #dbe3ef;
+      --shadow: 0 18px 48px rgba(24, 34, 48, 0.14);
+      --subject: #ef476f;
+      --verb: #f59e0b;
+      --object: #06a77d;
+      --place: #118ab2;
+      --violet: #7c3aed;
+      --good: #0f9f6e;
+      --bad: #d92d20;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--page);
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(180deg, rgba(17, 138, 178, 0.09), rgba(255, 255, 255, 0) 320px),
+        var(--page);
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .app {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .topbar {
+      display: grid;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 3px solid #ffffff;
+      border-radius: 18px;
+      background: var(--violet);
+      color: #ffffff;
+      box-shadow: var(--shadow);
+      font-size: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.35;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      min-width: 80px;
+      min-height: 80px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 18px;
+      color: #ffffff;
+      background: var(--ink);
+      box-shadow: 0 10px 28px rgba(24, 34, 48, 0.18);
+      cursor: pointer;
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+      transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 6px 20px rgba(24, 34, 48, 0.18);
+    }
+
+    .btn.new {
+      background: var(--violet);
+    }
+
+    .btn.listen {
+      background: var(--place);
+    }
+
+    .btn.clear {
+      background: #475467;
+    }
+
+    .board {
+      display: grid;
+      gap: 16px;
+    }
+
+    .slots {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
+    .slot-card {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.08);
+    }
+
+    .slot-head {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .slot-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .slot-title strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+    }
+
+    .slot-number {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 950;
+    }
+
+    .slot-role {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .slot-drop {
+      display: grid;
+      min-height: 168px;
+      place-items: center;
+      border: 3px dashed var(--line);
+      border-radius: 16px;
+      background: #f9fbff;
+      color: var(--muted);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .slot-drop.ready {
+      background: #ffffff;
+      border-color: var(--violet);
+      transform: translateY(-2px);
+    }
+
+    .slot-drop.wrong {
+      border-color: var(--bad);
+      background: #fff4f2;
+    }
+
+    .slot-drop.filled {
+      border-style: solid;
+      background: #ffffff;
+    }
+
+    .slot-empty {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      padding: 16px;
+      font-size: 1.03rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .slot-empty-icon {
+      font-size: 2.15rem;
+    }
+
+    .slot-item {
+      display: grid;
+      width: 100%;
+      min-height: 148px;
+      place-items: center;
+      gap: 6px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .emoji {
+      font-size: clamp(4rem, 14vw, 5.9rem);
+      line-height: 1;
+    }
+
+    .word {
+      overflow-wrap: anywhere;
+      font-size: clamp(1.25rem, 4.4vw, 1.7rem);
+      font-weight: 900;
+      line-height: 1.08;
+      text-align: center;
+    }
+
+    .slot-action {
+      min-height: 80px;
+      border: 0;
+      border-radius: 16px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1.02rem;
+      font-weight: 900;
+      transition: transform 160ms ease, filter 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .slot-action:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .tray,
+    .sentence-panel {
+      padding: 14px;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.08);
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: clamp(1.15rem, 3.2vw, 1.45rem);
+      font-weight: 950;
+      line-height: 1.15;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      min-height: 150px;
+    }
+
+    .word-card {
+      display: grid;
+      min-width: 80px;
+      min-height: 148px;
+      place-items: center;
+      gap: 6px;
+      padding: 12px;
+      border: 3px solid transparent;
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 0 10px 24px rgba(24, 34, 48, 0.13);
+      cursor: grab;
+      touch-action: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .word-card:active {
+      cursor: grabbing;
+    }
+
+    .word-card:hover,
+    .word-card.selected {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(24, 34, 48, 0.18);
+    }
+
+    .word-card.selected {
+      border-color: var(--violet);
+    }
+
+    .word-card.drag-source {
+      opacity: 0.24;
+    }
+
+    .drag-clone {
+      position: fixed;
+      z-index: 1000;
+      width: 176px;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(1.03);
+      box-shadow: 0 22px 48px rgba(24, 34, 48, 0.24);
+    }
+
+    .empty-tray {
+      display: grid;
+      min-height: 148px;
+      place-items: center;
+      color: var(--good);
+      font-size: 1.25rem;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .sentence-panel {
+      display: grid;
+      gap: 12px;
+      margin-bottom: max(18px, env(safe-area-inset-bottom));
+    }
+
+    .sentence-text {
+      margin: 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: #182230;
+      color: #ffffff;
+      font-size: clamp(1.9rem, 7.4vw, 3.1rem);
+      font-weight: 950;
+      line-height: 1.14;
+      overflow-wrap: anywhere;
+      text-align: center;
+    }
+
+    .built-text {
+      min-height: 48px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+      font-weight: 850;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .feedback {
+      min-height: 34px;
+      margin: 0;
+      color: var(--violet);
+      font-size: 1.05rem;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .feedback.good {
+      color: var(--good);
+    }
+
+    .feedback.bad {
+      color: var(--bad);
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .legend-chip {
+      min-height: 40px;
+      border-radius: 999px;
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      padding: 6px 8px;
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-align: center;
+      line-height: 1.05;
+    }
+
+    @media (min-width: 560px) {
+      .app {
+        padding: 22px;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr auto;
+      }
+
+      .toolbar {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+      }
+
+      .slots {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 920px) {
+      .slots {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .slot-drop {
+        min-height: 188px;
+      }
+
+      .word-card {
+        min-height: 168px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="app" class="app" aria-live="polite"></main>
+
+  <script>
+    const categories = [
+      { key: "subject", label: "ΠΟΙΟΣ", role: "Υποκείμενο", color: "var(--subject)", icon: "👤" },
+      { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡" },
+      { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯" },
+      { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍" }
+    ];
+
+    const places = [
+      { id: "home", text: "στο σπίτι", emoji: "🏠" },
+      { id: "park", text: "στο πάρκο", emoji: "🌳" },
+      { id: "school", text: "στο σχολείο", emoji: "🏫" },
+      { id: "beach", text: "στην παραλία", emoji: "🏖️" },
+      { id: "garden", text: "στον κήπο", emoji: "🌷" },
+      { id: "kitchen", text: "στην κουζίνα", emoji: "🍳" },
+      { id: "bathroom", text: "στο μπάνιο", emoji: "🛁" },
+      { id: "car", text: "στο αυτοκίνητο", emoji: "🚗" },
+      { id: "table", text: "στο τραπέζι", emoji: "🍽️" },
+      { id: "bed", text: "στο κρεβάτι", emoji: "🛌" },
+      { id: "floor", text: "στο πάτωμα", emoji: "🟫" },
+      { id: "playground", text: "στην παιδική χαρά", emoji: "🛝" },
+      { id: "sea", text: "στη θάλασσα", emoji: "🌊" },
+      { id: "forest", text: "στο δάσος", emoji: "🌲" },
+      { id: "shop", text: "στο μαγαζί", emoji: "🛒" },
+      { id: "hospital", text: "στο νοσοκομείο", emoji: "🏥" },
+      { id: "zoo", text: "στον ζωολογικό κήπο", emoji: "🦒" },
+      { id: "pharmacy", text: "στο φαρμακείο", emoji: "💊" },
+      { id: "restaurant", text: "στο εστιατόριο", emoji: "🍴" },
+      { id: "stadium", text: "στο γήπεδο", emoji: "🏟️" },
+      { id: "library", text: "στη βιβλιοθήκη", emoji: "📚" },
+      { id: "clinic", text: "στο ιατρείο", emoji: "🩺" },
+      { id: "livingRoom", text: "στο σαλόνι", emoji: "🛋️" },
+      { id: "bedroom", text: "στο υπνοδωμάτιο", emoji: "🛏️" },
+      { id: "classroom", text: "στην τάξη", emoji: "🧑‍🏫" },
+      { id: "bus", text: "στο λεωφορείο", emoji: "🚌" },
+      { id: "station", text: "στον σταθμό", emoji: "🚉" },
+      { id: "bakery", text: "στον φούρνο", emoji: "🥖" },
+      { id: "supermarket", text: "στο σούπερ μάρκετ", emoji: "🛒" },
+      { id: "cinema", text: "στο σινεμά", emoji: "🎬" },
+      { id: "theater", text: "στο θέατρο", emoji: "🎭" },
+      { id: "pool", text: "στην πισίνα", emoji: "🏊" },
+      { id: "mountain", text: "στο βουνό", emoji: "⛰️" },
+      { id: "lake", text: "στη λίμνη", emoji: "🏞️" },
+      { id: "farm", text: "στη φάρμα", emoji: "🚜" },
+      { id: "dentist", text: "στο οδοντιατρείο", emoji: "🦷" },
+      { id: "office", text: "στο γραφείο", emoji: "🖥️" },
+      { id: "yard", text: "στην αυλή", emoji: "🏡" },
+      { id: "postOffice", text: "στο ταχυδρομείο", emoji: "📮" },
+      { id: "musicRoom", text: "στη μουσική αίθουσα", emoji: "🎵" }
+    ];
+
+    const allPlaceIds = places.map((place) => place.id);
+    const humanPlaces = allPlaceIds;
+    const petPlaces = ["home", "park", "garden", "floor", "bed", "playground", "beach", "forest", "livingRoom", "bedroom", "yard", "farm"];
+    const smallAnimalPlaces = ["home", "park", "garden", "floor", "forest", "zoo", "yard", "farm"];
+    const wildPlaces = ["forest", "zoo", "park", "mountain"];
+    const farmPlaces = ["garden", "park", "forest", "zoo", "farm", "yard"];
+    const insectPlaces = ["park", "garden", "forest", "farm", "yard"];
+
+    const subjects = [
+      { id: "boy", text: "Το αγόρι", emoji: "👦", groups: ["human", "child"], places: humanPlaces },
+      { id: "girl", text: "Το κορίτσι", emoji: "👧", groups: ["human", "child"], places: humanPlaces },
+      { id: "mom", text: "Η μαμά", emoji: "👩", groups: ["human", "adult"], places: humanPlaces },
+      { id: "dad", text: "Ο μπαμπάς", emoji: "👨", groups: ["human", "adult"], places: humanPlaces },
+      { id: "grandma", text: "Η γιαγιά", emoji: "👵", groups: ["human", "adult"], places: humanPlaces },
+      { id: "grandpa", text: "Ο παππούς", emoji: "👴", groups: ["human", "adult"], places: humanPlaces },
+      { id: "dog", text: "Ο σκύλος", emoji: "🐕", groups: ["animal", "pet"], places: petPlaces },
+      { id: "cat", text: "Η γάτα", emoji: "🐈", groups: ["animal", "pet"], places: [...petPlaces, "table"] },
+      { id: "mouse", text: "Το ποντίκι", emoji: "🐭", groups: ["animal", "small"], places: smallAnimalPlaces },
+      { id: "bird", text: "Το πουλί", emoji: "🐦", groups: ["animal", "small"], places: ["park", "garden", "forest", "zoo", "beach"] },
+      { id: "fish", text: "Το ψάρι", emoji: "🐟", groups: ["animal", "fish"], places: ["sea", "lake", "pool"] },
+      { id: "rabbit", text: "Το κουνέλι", emoji: "🐰", groups: ["animal", "small"], places: smallAnimalPlaces },
+      { id: "bear", text: "Η αρκούδα", emoji: "🐻", groups: ["animal", "wild"], places: wildPlaces },
+      { id: "lion", text: "Το λιοντάρι", emoji: "🦁", groups: ["animal", "wild"], places: ["zoo", "forest"] },
+      { id: "elephant", text: "Ο ελέφαντας", emoji: "🐘", groups: ["animal", "wild", "trunk"], places: ["zoo", "forest", "park"] },
+      { id: "monkey", text: "Ο πίθηκος", emoji: "🐵", groups: ["animal", "wild", "hands"], places: wildPlaces },
+      { id: "turtle", text: "Η χελώνα", emoji: "🐢", groups: ["animal", "small"], places: ["garden", "park", "forest", "zoo", "beach"] },
+      { id: "cow", text: "Η αγελάδα", emoji: "🐄", groups: ["animal", "farm"], places: farmPlaces },
+      { id: "sheep", text: "Το πρόβατο", emoji: "🐑", groups: ["animal", "farm"], places: farmPlaces },
+      { id: "horse", text: "Το άλογο", emoji: "🐴", groups: ["animal", "farm"], places: [...farmPlaces, "stadium"] },
+      { id: "teacherM", text: "Ο δάσκαλος", emoji: "👨‍🏫", groups: ["human", "adult"], places: humanPlaces },
+      { id: "teacherF", text: "Η δασκάλα", emoji: "👩‍🏫", groups: ["human", "adult"], places: humanPlaces },
+      { id: "doctor", text: "Ο γιατρός", emoji: "👨‍⚕️", groups: ["human", "adult"], places: humanPlaces },
+      { id: "nurse", text: "Η νοσοκόμα", emoji: "👩‍⚕️", groups: ["human", "adult"], places: humanPlaces },
+      { id: "cookM", text: "Ο μάγειρας", emoji: "👨‍🍳", groups: ["human", "adult"], places: humanPlaces },
+      { id: "cookF", text: "Η μαγείρισσα", emoji: "👩‍🍳", groups: ["human", "adult"], places: humanPlaces },
+      { id: "police", text: "Ο αστυνομικός", emoji: "👮", groups: ["human", "adult"], places: humanPlaces },
+      { id: "firefighter", text: "Ο πυροσβέστης", emoji: "👨‍🚒", groups: ["human", "adult"], places: humanPlaces },
+      { id: "gardener", text: "Ο κηπουρός", emoji: "🧑‍🌾", groups: ["human", "adult"], places: humanPlaces },
+      { id: "singer", text: "Η τραγουδίστρια", emoji: "👩‍🎤", groups: ["human", "adult"], places: humanPlaces },
+      { id: "fox", text: "Η αλεπού", emoji: "🦊", groups: ["animal", "wild"], places: wildPlaces },
+      { id: "wolf", text: "Ο λύκος", emoji: "🐺", groups: ["animal", "wild"], places: wildPlaces },
+      { id: "duck", text: "Η πάπια", emoji: "🦆", groups: ["animal", "farm", "waterBird"], places: ["park", "garden", "zoo", "farm", "yard", "lake"] },
+      { id: "hen", text: "Η κότα", emoji: "🐔", groups: ["animal", "farm"], places: farmPlaces },
+      { id: "goat", text: "Το κατσίκι", emoji: "🐐", groups: ["animal", "farm"], places: farmPlaces },
+      { id: "pig", text: "Το γουρούνι", emoji: "🐖", groups: ["animal", "farm"], places: farmPlaces },
+      { id: "deer", text: "Το ελάφι", emoji: "🦌", groups: ["animal", "wild"], places: ["forest", "zoo", "park", "mountain"] },
+      { id: "frog", text: "Ο βάτραχος", emoji: "🐸", groups: ["animal", "small", "waterAnimal"], places: ["garden", "park", "forest", "zoo", "lake"] },
+      { id: "bee", text: "Η μέλισσα", emoji: "🐝", groups: ["animal", "insect"], places: insectPlaces },
+      { id: "butterfly", text: "Η πεταλούδα", emoji: "🦋", groups: ["animal", "insect"], places: insectPlaces }
+    ];
+
+    const objects = [
+      { id: "apple", text: "το μήλο", emoji: "🍎", tags: ["food", "cuttable", "washable", "holdable"] },
+      { id: "banana", text: "την μπανάνα", emoji: "🍌", tags: ["food", "cuttable", "washable", "holdable"] },
+      { id: "bread", text: "το ψωμί", emoji: "🍞", tags: ["food", "cuttable", "holdable"] },
+      { id: "milk", text: "το γάλα", emoji: "🥛", tags: ["drink", "holdable"] },
+      { id: "water", text: "το νερό", emoji: "💧", tags: ["drink"] },
+      { id: "ball", text: "την μπάλα", emoji: "⚽", tags: ["toy", "throwable", "pushable", "washable", "holdable"] },
+      { id: "carToy", text: "το αυτοκίνητο", emoji: "🚗", tags: ["toy", "pushable", "washable", "fixable", "holdable"] },
+      { id: "doll", text: "την κούκλα", emoji: "🪆", tags: ["toy", "washable", "holdable", "pretendFood", "hug"] },
+      { id: "book", text: "το βιβλίο", emoji: "📚", tags: ["school", "openable", "holdable"] },
+      { id: "pencil", text: "το μολύβι", emoji: "✏️", tags: ["school", "holdable"] },
+      { id: "chair", text: "την καρέκλα", emoji: "🪑", tags: ["furniture", "pushable", "pullable", "washable", "fixable"] },
+      { id: "flower", text: "το λουλούδι", emoji: "🌸", tags: ["nature", "draw", "cuttable", "holdable"] },
+      { id: "tree", text: "το δέντρο", emoji: "🌳", tags: ["nature", "draw"] },
+      { id: "hat", text: "το καπέλο", emoji: "🎩", tags: ["clothing", "throwable", "holdable"] },
+      { id: "shoe", text: "το παπούτσι", emoji: "👟", tags: ["clothing", "throwable", "washable", "fixable", "holdable"] },
+      { id: "bag", text: "την τσάντα", emoji: "👜", tags: ["clothing", "pullable", "openable", "washable", "fixable", "holdable"] },
+      { id: "key", text: "το κλειδί", emoji: "🔑", tags: ["tool", "washable", "holdable"] },
+      { id: "gift", text: "το δώρο", emoji: "🎁", tags: ["gift", "openable", "holdable", "hug"] },
+      { id: "cake", text: "την τούρτα", emoji: "🎂", tags: ["food", "cuttable", "makeable"] },
+      { id: "star", text: "τον αστέρα", emoji: "⭐", tags: ["draw", "far"] },
+      { id: "glass", text: "το ποτήρι", emoji: "🥤", tags: ["kitchen", "washable", "holdable", "fillable"] },
+      { id: "plate", text: "το πιάτο", emoji: "🍽️", tags: ["kitchen", "washable", "holdable"] },
+      { id: "spoon", text: "το κουτάλι", emoji: "🥄", tags: ["kitchen", "washable", "holdable"] },
+      { id: "fork", text: "το πιρούνι", emoji: "🍴", tags: ["kitchen", "washable", "holdable"] },
+      { id: "toothbrush", text: "την οδοντόβουρτσα", emoji: "🪥", tags: ["bathroom", "washable", "holdable"] },
+      { id: "soap", text: "το σαπούνι", emoji: "🧼", tags: ["bathroom", "holdable"] },
+      { id: "umbrella", text: "την ομπρέλα", emoji: "☂️", tags: ["clothing", "openable", "holdable"] },
+      { id: "puzzle", text: "το παζλ", emoji: "🧩", tags: ["toy", "makeable", "holdable"] },
+      { id: "toy", text: "το παιχνίδι", emoji: "🧸", tags: ["toy", "washable", "holdable", "hug"] },
+      { id: "drum", text: "το τύμπανο", emoji: "🥁", tags: ["music", "holdable"] },
+      { id: "guitar", text: "την κιθάρα", emoji: "🎸", tags: ["music", "holdable"] },
+      { id: "phone", text: "το τηλέφωνο", emoji: "📱", tags: ["tool", "fixable", "holdable"] },
+      { id: "computer", text: "τον υπολογιστή", emoji: "💻", tags: ["tool", "fixable"] },
+      { id: "bike", text: "το ποδήλατο", emoji: "🚲", tags: ["vehicle", "pushable", "fixable"] },
+      { id: "box", text: "το κουτί", emoji: "📦", tags: ["openable", "fillable", "holdable"] },
+      { id: "carrot", text: "το καρότο", emoji: "🥕", tags: ["food", "cuttable", "washable", "holdable"] },
+      { id: "iceCream", text: "το παγωτό", emoji: "🍦", tags: ["food", "holdable"] },
+      { id: "pizza", text: "την πίτσα", emoji: "🍕", tags: ["food", "cuttable", "makeable", "holdable"] },
+      { id: "letter", text: "το γράμμα", emoji: "✉️", tags: ["school", "openable", "holdable"] },
+      { id: "name", text: "το όνομα", emoji: "🔤", tags: ["word"] }
+    ];
+
+    const verbs = [
+      { id: "eat", text: "τρώει", emoji: "😋", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "cake", "carrot", "iceCream", "pizza"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "sea", "forest", "zoo", "restaurant", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "bakery", "farm", "yard"] },
+      { id: "drink", text: "πίνει", emoji: "🥤", active: true, subjectGroups: ["human", "animal"], objects: ["milk", "water"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "forest", "zoo", "restaurant", "stadium", "livingRoom", "bedroom", "classroom", "bus", "pool", "lake", "farm", "yard"] },
+      { id: "read", text: "διαβάζει", emoji: "📖", active: true, subjectGroups: ["human"], objects: ["book", "letter"], places: ["home", "school", "park", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office"] },
+      { id: "draw", text: "ζωγραφίζει", emoji: "🎨", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "carToy", "ball"], places: ["home", "school", "garden", "table", "park"] },
+      { id: "hold", text: "κρατάει", emoji: "🤲", active: true, subjectGroups: ["human", "pet", "hands"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "forest", "shop", "zoo", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "bakery", "supermarket", "cinema", "theater", "pool", "mountain", "lake", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"] },
+      { id: "push", text: "σπρώχνει", emoji: "👐", active: true, subjectGroups: ["human", "pet", "hands", "wild", "farm"], objects: ["ball", "carToy", "chair", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"] },
+      { id: "pull", text: "τραβάει", emoji: "🪢", active: true, subjectGroups: ["human", "pet", "hands", "farm"], objects: ["chair", "bag", "carToy", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"] },
+      { id: "throw", text: "πετάει", emoji: "🎯", active: true, subjectGroups: ["human"], objects: ["ball", "hat", "shoe", "toy"], places: ["park", "school", "beach", "garden", "playground", "stadium", "yard"] },
+      { id: "give", text: "δίνει", emoji: "🎁", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: humanPlaces },
+      { id: "take", text: "παίρνει", emoji: "🫳", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "bakery", "supermarket", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"] },
+      { id: "see", text: "βλέπει", emoji: "👀", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"], places: allPlaceIds },
+      { id: "touch", text: "αγγίζει", emoji: "👆", active: true, subjectGroups: ["human", "hands", "trunk"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: allPlaceIds },
+      { id: "wash", text: "πλένει", emoji: "🧼", active: true, subjectGroups: ["human"], objects: ["apple", "ball", "carToy", "doll", "chair", "shoe", "bag", "glass", "plate", "spoon", "fork", "toothbrush", "toy", "bike", "box", "carrot"], places: ["home", "garden", "kitchen", "bathroom", "table", "floor", "yard"] },
+      { id: "feed", text: "ταΐζει", emoji: "🍴", active: true, subjectGroups: ["human"], objects: ["doll", "toy"], places: ["home", "school", "kitchen", "table", "bed", "playground", "livingRoom", "bedroom", "classroom"] },
+      { id: "cut", text: "κόβει", emoji: "✂️", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "flower", "cake", "carrot", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "restaurant", "classroom"] },
+      { id: "open", text: "ανοίγει", emoji: "🔓", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "carToy", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"] },
+      { id: "make", text: "φτιάχνει", emoji: "🔨", active: true, subjectGroups: ["human"], objects: ["carToy", "doll", "chair", "hat", "shoe", "bag", "gift", "cake", "puzzle", "toy", "phone", "computer", "bike", "box", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"] },
+      { id: "hug", text: "αγκαλιάζει", emoji: "🫂", active: true, subjectGroups: ["human"], objects: ["doll", "ball", "gift", "bag", "toy"], places: ["home", "school", "park", "bed", "playground", "livingRoom", "bedroom", "classroom"] },
+      { id: "shout", text: "φωνάζει", emoji: "📢", active: true, subjectGroups: ["human"], objects: ["name"], places: humanPlaces },
+      { id: "search", text: "ψάχνει", emoji: "🔍", active: true, subjectGroups: ["human", "pet", "insect"], objects: ["ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"] },
+      { id: "write", text: "γράφει", emoji: "✍️", active: true, subjectGroups: ["human"], objects: ["letter", "name"], places: ["home", "school", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"] },
+      { id: "plant", text: "φυτεύει", emoji: "🌱", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["garden", "yard", "farm", "park"] },
+      { id: "water", text: "ποτίζει", emoji: "🚿", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["home", "garden", "yard", "farm", "park"] },
+      { id: "collect", text: "μαζεύει", emoji: "🧺", active: true, subjectGroups: ["human"], objects: ["apple", "flower", "ball", "toy", "puzzle", "carrot", "box"], places: ["home", "park", "school", "beach", "garden", "floor", "playground", "forest", "farm", "yard"] },
+      { id: "wear", text: "φοράει", emoji: "🧢", active: true, subjectGroups: ["human"], objects: ["hat", "shoe", "bag"], places: humanPlaces },
+      { id: "buy", text: "αγοράζει", emoji: "🛒", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"] },
+      { id: "sell", text: "πουλάει", emoji: "🧾", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"] },
+      { id: "cook", text: "μαγειρεύει", emoji: "👨‍🍳", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "carrot", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"] },
+      { id: "bake", text: "ψήνει", emoji: "♨️", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"] },
+      { id: "play", text: "παίζει", emoji: "🎶", active: true, subjectGroups: ["human"], objects: ["drum", "guitar"], places: ["home", "school", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"] },
+      { id: "clean", text: "καθαρίζει", emoji: "🧽", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "garden", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "classroom", "office", "yard"] },
+      { id: "repair", text: "επισκευάζει", emoji: "🪛", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"] },
+      { id: "carry", text: "κουβαλάει", emoji: "💪", active: true, subjectGroups: ["human"], objects: ["bag", "box", "gift", "ball", "toy", "book", "puzzle"], places: humanPlaces },
+      { id: "hide", text: "κρύβει", emoji: "🙈", active: true, subjectGroups: ["human"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "school", "garden", "bed", "floor", "playground", "livingRoom", "bedroom", "classroom", "yard"] },
+      { id: "find", text: "βρίσκει", emoji: "✅", active: true, subjectGroups: ["human", "pet"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"] },
+      { id: "use", text: "χρησιμοποιεί", emoji: "🛠️", active: true, subjectGroups: ["human"], objects: ["pencil", "key", "toothbrush", "soap", "umbrella", "phone", "computer", "bike", "spoon", "fork", "glass"], places: humanPlaces },
+      { id: "close", text: "κλείνει", emoji: "🔒", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"] },
+      { id: "fill", text: "γεμίζει", emoji: "🫗", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"] },
+      { id: "empty", text: "αδειάζει", emoji: "🪣", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"] },
+      { id: "photograph", text: "φωτογραφίζει", emoji: "📷", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "ball", "carToy", "doll", "book", "chair", "cake", "umbrella", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "pizza"], places: allPlaceIds }
+    ];
+
+    const visiblePlaces = {
+      apple: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "shop", "restaurant", "classroom", "bus", "bakery", "supermarket", "farm", "yard"],
+      banana: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "shop", "restaurant", "classroom", "bus", "supermarket", "yard"],
+      bread: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "shop", "restaurant", "classroom", "bus", "bakery", "supermarket", "farm", "yard"],
+      milk: ["home", "school", "kitchen", "car", "table", "shop", "restaurant", "classroom", "bus", "supermarket"],
+      water: ["home", "park", "school", "beach", "garden", "kitchen", "bathroom", "car", "table", "sea", "restaurant", "stadium", "classroom", "bus", "pool", "lake", "farm", "yard"],
+      ball: ["home", "park", "school", "beach", "garden", "floor", "playground", "shop", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      carToy: ["home", "school", "table", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
+      doll: ["home", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom"],
+      book: ["home", "school", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom", "office"],
+      pencil: ["home", "school", "table", "floor", "shop", "library", "classroom", "office"],
+      chair: ["home", "school", "table", "floor", "hospital", "restaurant", "library", "clinic", "livingRoom", "bedroom", "classroom", "theater", "dentist", "office"],
+      flower: ["home", "park", "school", "beach", "garden", "table", "forest", "shop", "hospital", "restaurant", "zoo", "livingRoom", "classroom", "mountain", "farm", "yard"],
+      tree: ["park", "school", "beach", "garden", "playground", "forest", "zoo", "mountain", "lake", "farm", "yard"],
+      hat: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "stadium", "restaurant", "livingRoom", "bedroom", "classroom", "bus", "station", "theater", "yard"],
+      shoe: ["home", "park", "school", "beach", "garden", "car", "floor", "playground", "shop", "stadium", "livingRoom", "bedroom", "classroom", "bus", "station", "yard"],
+      bag: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "supermarket", "cinema", "theater", "dentist", "office", "postOffice"],
+      key: ["home", "school", "car", "table", "bed", "floor", "shop", "pharmacy", "livingRoom", "bedroom", "office"],
+      gift: ["home", "school", "table", "bed", "floor", "shop", "hospital", "restaurant", "livingRoom", "bedroom", "classroom", "supermarket", "postOffice"],
+      cake: ["home", "school", "kitchen", "table", "shop", "restaurant", "livingRoom", "classroom", "bakery", "supermarket"],
+      star: ["park", "beach", "garden", "playground", "sea", "forest", "zoo", "stadium", "mountain", "lake", "farm", "yard"],
+      glass: ["home", "school", "kitchen", "bathroom", "table", "restaurant", "livingRoom", "classroom", "bus", "supermarket", "office"],
+      plate: ["home", "school", "kitchen", "table", "restaurant", "livingRoom", "classroom", "supermarket"],
+      spoon: ["home", "school", "kitchen", "table", "restaurant", "classroom", "supermarket"],
+      fork: ["home", "school", "kitchen", "table", "restaurant", "classroom", "supermarket"],
+      toothbrush: ["home", "bathroom", "table", "clinic", "dentist", "supermarket"],
+      soap: ["home", "kitchen", "bathroom", "table", "clinic", "dentist", "supermarket"],
+      umbrella: ["home", "park", "school", "beach", "garden", "car", "floor", "shop", "stadium", "classroom", "bus", "station", "supermarket", "yard"],
+      puzzle: ["home", "school", "table", "bed", "floor", "playground", "shop", "library", "livingRoom", "bedroom", "classroom"],
+      toy: ["home", "park", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
+      drum: ["home", "school", "table", "floor", "livingRoom", "bedroom", "classroom", "theater", "musicRoom"],
+      guitar: ["home", "school", "livingRoom", "bedroom", "classroom", "theater", "musicRoom"],
+      phone: ["home", "park", "school", "car", "table", "bed", "floor", "shop", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "supermarket", "cinema", "hospital", "office", "postOffice"],
+      computer: ["home", "school", "table", "library", "livingRoom", "classroom", "office"],
+      bike: ["home", "park", "school", "beach", "garden", "floor", "playground", "shop", "stadium", "yard", "farm"],
+      box: ["home", "school", "car", "table", "bed", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "office", "postOffice"],
+      carrot: ["home", "park", "school", "garden", "kitchen", "table", "restaurant", "classroom", "supermarket", "farm", "yard"],
+      iceCream: ["home", "park", "school", "beach", "garden", "car", "table", "playground", "shop", "restaurant", "supermarket", "cinema", "yard"],
+      pizza: ["home", "school", "kitchen", "table", "shop", "restaurant", "livingRoom", "classroom", "bakery", "supermarket"],
+      letter: ["home", "school", "table", "bed", "floor", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"],
+      name: ["home", "school", "table", "library", "classroom", "office", "postOffice"]
+    };
+
+    const touchPlaces = {
+      apple: ["home", "school", "garden", "kitchen", "table", "shop", "restaurant", "classroom", "supermarket", "farm", "yard"],
+      banana: ["home", "school", "garden", "kitchen", "table", "shop", "restaurant", "classroom", "supermarket", "yard"],
+      bread: ["home", "school", "kitchen", "table", "shop", "restaurant", "classroom", "bakery", "supermarket"],
+      ball: ["home", "park", "school", "beach", "garden", "floor", "playground", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      carToy: ["home", "school", "table", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom"],
+      doll: ["home", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom"],
+      book: ["home", "school", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom", "office"],
+      pencil: ["home", "school", "table", "floor", "shop", "library", "classroom", "office"],
+      chair: ["home", "school", "table", "floor", "hospital", "restaurant", "library", "clinic", "livingRoom", "bedroom", "classroom", "theater", "dentist", "office"],
+      flower: ["home", "park", "school", "garden", "table", "forest", "shop", "hospital", "classroom", "farm", "yard"],
+      tree: ["park", "school", "garden", "playground", "forest", "zoo", "mountain", "lake", "farm", "yard"],
+      hat: ["home", "park", "school", "beach", "garden", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
+      shoe: ["home", "park", "school", "beach", "garden", "floor", "playground", "shop", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      bag: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "office"],
+      key: ["home", "school", "car", "table", "bed", "floor", "livingRoom", "bedroom", "office"],
+      gift: ["home", "school", "table", "bed", "floor", "shop", "hospital", "livingRoom", "bedroom", "classroom", "postOffice"],
+      cake: ["home", "school", "kitchen", "table", "shop", "restaurant", "livingRoom", "classroom", "bakery"],
+      glass: ["home", "school", "kitchen", "bathroom", "table", "restaurant", "livingRoom", "classroom", "supermarket", "office"],
+      plate: ["home", "school", "kitchen", "table", "restaurant", "classroom", "supermarket"],
+      spoon: ["home", "school", "kitchen", "table", "restaurant", "classroom", "supermarket"],
+      fork: ["home", "school", "kitchen", "table", "restaurant", "classroom", "supermarket"],
+      toothbrush: ["home", "bathroom", "table", "clinic", "dentist", "supermarket"],
+      soap: ["home", "kitchen", "bathroom", "table", "clinic", "dentist", "supermarket"],
+      umbrella: ["home", "park", "school", "beach", "garden", "car", "floor", "shop", "stadium", "classroom", "bus", "station", "supermarket", "yard"],
+      puzzle: ["home", "school", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom"],
+      toy: ["home", "park", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
+      drum: ["home", "school", "table", "floor", "livingRoom", "bedroom", "classroom", "theater", "musicRoom"],
+      guitar: ["home", "school", "livingRoom", "bedroom", "classroom", "theater", "musicRoom"],
+      phone: ["home", "school", "car", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "office"],
+      computer: ["home", "school", "table", "library", "livingRoom", "classroom", "office"],
+      bike: ["home", "park", "school", "beach", "garden", "floor", "playground", "shop", "stadium", "yard", "farm"],
+      box: ["home", "school", "car", "table", "bed", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "office", "postOffice"],
+      carrot: ["home", "park", "school", "garden", "kitchen", "table", "restaurant", "classroom", "supermarket", "farm", "yard"],
+      iceCream: ["home", "park", "school", "beach", "garden", "car", "table", "playground", "shop", "restaurant", "supermarket", "yard"],
+      pizza: ["home", "school", "kitchen", "table", "shop", "restaurant", "livingRoom", "classroom", "bakery", "supermarket"],
+      letter: ["home", "school", "table", "bed", "floor", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"]
+    };
+
+    const searchPlaces = {
+      ball: ["home", "park", "school", "beach", "garden", "floor", "playground", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      carToy: ["home", "school", "table", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom"],
+      doll: ["home", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom"],
+      book: ["home", "school", "table", "bed", "floor", "library", "livingRoom", "bedroom", "classroom", "office"],
+      pencil: ["home", "school", "table", "floor", "library", "classroom", "office"],
+      flower: ["park", "school", "garden", "forest", "farm", "yard"],
+      hat: ["home", "park", "school", "beach", "garden", "car", "floor", "playground", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      shoe: ["home", "park", "school", "beach", "garden", "car", "floor", "playground", "stadium", "livingRoom", "bedroom", "classroom", "yard"],
+      bag: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "restaurant", "stadium", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "office"],
+      key: ["home", "school", "car", "table", "bed", "floor", "shop", "pharmacy", "livingRoom", "bedroom", "office"],
+      gift: ["home", "school", "table", "bed", "floor", "shop", "livingRoom", "bedroom", "classroom", "postOffice"],
+      puzzle: ["home", "school", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom"],
+      toy: ["home", "park", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
+      phone: ["home", "school", "car", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "office"],
+      box: ["home", "school", "car", "table", "bed", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "office", "postOffice"],
+      letter: ["home", "school", "table", "bed", "floor", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"]
+    };
+
+    const buySellPlaces = {
+      apple: ["shop", "restaurant", "supermarket"],
+      banana: ["shop", "restaurant", "supermarket"],
+      bread: ["shop", "restaurant", "bakery", "supermarket"],
+      milk: ["shop", "supermarket"],
+      water: ["shop", "restaurant", "supermarket"],
+      book: ["shop", "supermarket", "postOffice"],
+      pencil: ["shop", "supermarket", "postOffice"],
+      flower: ["shop", "supermarket"],
+      hat: ["shop", "supermarket"],
+      shoe: ["shop", "supermarket"],
+      bag: ["shop", "supermarket"],
+      gift: ["shop", "supermarket", "postOffice"],
+      cake: ["shop", "restaurant", "bakery", "supermarket"],
+      glass: ["shop", "supermarket"],
+      plate: ["shop", "supermarket"],
+      spoon: ["shop", "supermarket"],
+      fork: ["shop", "supermarket"],
+      toothbrush: ["pharmacy", "supermarket"],
+      soap: ["pharmacy", "supermarket"],
+      umbrella: ["shop", "supermarket"],
+      puzzle: ["shop", "supermarket"],
+      toy: ["shop", "supermarket"],
+      phone: ["shop", "supermarket"],
+      computer: ["shop", "supermarket"],
+      bike: ["shop", "supermarket"],
+      box: ["shop", "supermarket", "postOffice"],
+      carrot: ["shop", "restaurant", "supermarket"],
+      iceCream: ["shop", "restaurant", "supermarket"],
+      pizza: ["shop", "restaurant", "bakery", "supermarket"],
+      letter: ["postOffice", "shop"]
+    };
+
+    const usePlaces = {
+      pencil: ["home", "school", "table", "library", "classroom", "office"],
+      key: ["home", "school", "car", "livingRoom", "bedroom", "office"],
+      toothbrush: ["home", "bathroom", "dentist"],
+      soap: ["home", "kitchen", "bathroom", "clinic", "dentist"],
+      umbrella: ["park", "school", "beach", "garden", "car", "stadium", "bus", "station", "yard"],
+      phone: ["home", "park", "school", "car", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "bus", "station", "office"],
+      computer: ["home", "school", "table", "library", "classroom", "office"],
+      bike: ["park", "school", "playground", "stadium", "yard"],
+      spoon: ["home", "school", "kitchen", "table", "restaurant", "classroom"],
+      fork: ["home", "school", "kitchen", "table", "restaurant", "classroom"],
+      glass: ["home", "school", "kitchen", "table", "restaurant", "classroom"]
+    };
+
+    const semanticPlaceLimits = {
+      buy: buySellPlaces,
+      sell: buySellPlaces,
+      see: visiblePlaces,
+      touch: touchPlaces,
+      search: searchPlaces,
+      find: searchPlaces,
+      use: usePlaces,
+      photograph: visiblePlaces
+    };
+
+    const categoryOrder = categories.map((category) => category.key);
+    const requiredAlternativeKeys = ["subject", "verb", "place"];
+    const app = document.querySelector("#app");
+    const state = {
+      target: null,
+      cards: [],
+      slots: emptySlots(),
+      selectedCardId: null,
+      feedback: "",
+      feedbackType: "",
+      wrongSlot: null
+    };
+
+    let dragState = null;
+    let cachedVoices = [];
+    const sentencePoolBySubject = new Map();
+
+    function emptySlots() {
+      return { subject: null, verb: null, object: null, place: null };
+    }
+
+    function hasGroup(item, allowedGroups) {
+      return allowedGroups.some((group) => item.groups.includes(group));
+    }
+
+    function itemById(list, id) {
+      return list.find((item) => item.id === id);
+    }
+
+    function sentenceWith(sentence, key, value) {
+      return { ...sentence, [key]: value };
+    }
+
+    function isMeaningful(sentence) {
+      const { subject, verb, object, place } = sentence;
+      if (!subject || !verb || !object || !place || !verb.active) return false;
+      if (!hasGroup(subject, verb.subjectGroups)) return false;
+      if (!verb.objects.includes(object.id)) return false;
+      if (!verb.places.includes(place.id)) return false;
+      if (!subject.places.includes(place.id)) return false;
+
+      if (subject.id === "fish") {
+        if (!["sea", "lake", "pool"].includes(place.id)) return false;
+        if (verb.id === "eat") return object.id === "bread";
+        if (verb.id === "see") return ["bread", "water"].includes(object.id);
+        if (verb.id === "drink") return object.id === "water";
+        return false;
+      }
+
+      if (subject.groups.includes("insect")) {
+        if (!insectPlaces.includes(place.id)) return false;
+        if (verb.id === "search") return object.id === "flower";
+        if (verb.id === "see") return ["flower", "tree"].includes(object.id);
+        return false;
+      }
+
+      if (verb.id === "drink") {
+        if (subject.groups.includes("human")) return true;
+        if (["dog", "cat"].includes(subject.id)) return ["water", "milk"].includes(object.id);
+        return object.id === "water";
+      }
+
+      if (verb.id === "eat" && subject.groups.includes("animal")) {
+        if (subject.groups.includes("wild")) return ["apple", "bread"].includes(object.id);
+        if (subject.groups.includes("farm")) return ["apple", "bread", "carrot"].includes(object.id);
+        return ["apple", "banana", "bread"].includes(object.id);
+      }
+
+      if (verb.id === "touch" && object.id === "tree" && ["dog", "cat", "mouse", "rabbit"].includes(subject.id)) {
+        return ["park", "garden", "forest"].includes(place.id);
+      }
+
+      if (verb.id === "see" && subject.groups.includes("wild") && ["apple", "bread"].includes(object.id) && subject.places.includes(place.id)) {
+        return true;
+      }
+
+      const placeLimits = semanticPlaceLimits[verb.id];
+      if (placeLimits) {
+        const allowedPlacesForObject = placeLimits[object.id];
+        if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
+      }
+
+      if (verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
+        return false;
+      }
+
+      if (verb.id === "see" && subject.groups.includes("animal") && object.id === "star") {
+        return ["park", "garden", "forest", "zoo", "beach", "mountain", "lake", "farm", "yard"].includes(place.id);
+      }
+
+      return true;
+    }
+
+    function candidatesFor(key, sentence) {
+      const lists = { subject: subjects, verb: verbs.filter((verb) => verb.active), object: objects, place: places };
+      return lists[key].filter((candidate) => {
+        if (candidate.id === sentence[key].id) return false;
+        return isMeaningful(sentenceWith(sentence, key, candidate));
+      });
+    }
+
+    function randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    }
+
+    function shuffle(items) {
+      const next = [...items];
+      for (let index = next.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
+      }
+      return next;
+    }
+
+    function makeSentenceText(sentence) {
+      if (!sentence) return "";
+      return `${sentence.subject.text} ${sentence.verb.text} ${sentence.object.text} ${sentence.place.text}.`;
+    }
+
+    function makeBuiltSentenceText() {
+      const pieces = categoryOrder.map((key) => {
+        const cardId = state.slots[key];
+        const card = state.cards.find((item) => item.cardId === cardId);
+        return card ? card.item.text : "___";
+      });
+      const isComplete = pieces.every((piece) => piece !== "___");
+      return `${pieces.join(" ")}${isComplete ? "." : ""}`;
+    }
+
+    function refreshVoices() {
+      if (!("speechSynthesis" in window)) return [];
+      cachedVoices = window.speechSynthesis.getVoices();
+      return cachedVoices;
+    }
+
+    function voiceScore(voice) {
+      const name = voice.name.toLowerCase();
+      const lang = voice.lang.toLowerCase();
+      if (!lang.startsWith("el")) return -1000;
+
+      let score = lang === "el-gr" ? 40 : 25;
+      if (name.includes("google")) score += 22;
+      if (name.includes("microsoft")) score += 22;
+      if (name.includes("apple")) score += 18;
+      if (name.includes("natural") || name.includes("neural") || name.includes("premium") || name.includes("enhanced")) score += 18;
+      if (name.includes("melina") || name.includes("athina") || name.includes("nikos")) score += 12;
+      if (!voice.localService) score += 4;
+      return score;
+    }
+
+    function bestGreekVoice() {
+      const voices = refreshVoices();
+      return voices
+        .filter((voice) => voiceScore(voice) > 0)
+        .sort((a, b) => voiceScore(b) - voiceScore(a))[0] || null;
+    }
+
+    function getSentencesForSubject(subject) {
+      if (sentencePoolBySubject.has(subject.id)) return sentencePoolBySubject.get(subject.id);
+
+      const activeVerbs = verbs.filter((verb) => verb.active);
+      const options = [];
+      for (const verb of activeVerbs) {
+        for (const object of objects) {
+          for (const place of places) {
+            const sentence = { subject, verb, object, place };
+            if (!isMeaningful(sentence)) continue;
+            if (requiredAlternativeKeys.every((key) => candidatesFor(key, sentence).length > 0)) {
+              options.push(sentence);
+            }
+          }
+        }
+      }
+
+      sentencePoolBySubject.set(subject.id, options);
+      return options;
+    }
+
+    function buildSentence() {
+      for (const subject of shuffle(subjects)) {
+        const options = getSentencesForSubject(subject);
+        if (options.length) {
+          return randomItem(options);
+        }
+      }
+
+      return {
+        subject: itemById(subjects, "boy"),
+        verb: itemById(verbs, "eat"),
+        object: itemById(objects, "apple"),
+        place: itemById(places, "home")
+      };
+    }
+
+    function createCards(sentence) {
+      return shuffle(categoryOrder.map((key) => ({
+        cardId: `${key}-${Math.random().toString(36).slice(2)}`,
+        category: key,
+        item: sentence[key],
+        placed: false
+      })));
+    }
+
+    function newSentence() {
+      state.target = buildSentence();
+      state.cards = createCards(state.target);
+      state.slots = emptySlots();
+      state.selectedCardId = null;
+      state.feedback = "Σύρε ή πάτησε μία κάρτα και βάλε τη στο σωστό πλαίσιο.";
+      state.feedbackType = "";
+      state.wrongSlot = null;
+      render();
+    }
+
+    function clearSlots() {
+      state.cards = state.cards.map((card) => ({ ...card, placed: false }));
+      state.slots = emptySlots();
+      state.selectedCardId = null;
+      state.feedback = "Τα πλαίσια άδειασαν.";
+      state.feedbackType = "";
+      state.wrongSlot = null;
+      render();
+    }
+
+    function changePart(key) {
+      const alternatives = candidatesFor(key, state.target);
+      if (!alternatives.length) {
+        state.feedback = "Δεν υπάρχει άλλη λογική επιλογή με τα ίδια στοιχεία.";
+        state.feedbackType = "bad";
+        render();
+        return;
+      }
+
+      const nextItem = randomItem(alternatives);
+      state.target = sentenceWith(state.target, key, nextItem);
+      state.cards = state.cards.map((card) => card.category === key ? { ...card, item: nextItem } : card);
+      state.feedback = `Άλλαξε το ${categories.find((category) => category.key === key).label}.`;
+      state.feedbackType = "";
+      state.wrongSlot = null;
+      render();
+    }
+
+    function placeCard(cardId, slotKey) {
+      const card = state.cards.find((item) => item.cardId === cardId);
+      if (!card) return;
+
+      if (card.category !== slotKey) {
+        state.feedback = `Δοκίμασε στο πλαίσιο «${categories.find((category) => category.key === card.category).label}».`;
+        state.feedbackType = "bad";
+        state.wrongSlot = slotKey;
+        render();
+        window.setTimeout(() => {
+          if (state.wrongSlot === slotKey) {
+            state.wrongSlot = null;
+            render();
+          }
+        }, 450);
+        return;
+      }
+
+      const existingCardId = state.slots[slotKey];
+      state.cards = state.cards.map((item) => {
+        if (item.cardId === cardId) return { ...item, placed: true };
+        if (item.cardId === existingCardId) return { ...item, placed: false };
+        return item;
+      });
+      state.slots[slotKey] = cardId;
+      state.selectedCardId = null;
+      state.wrongSlot = null;
+
+      if (categoryOrder.every((key) => state.slots[key])) {
+        state.feedback = "Μπράβο! Η πρόταση είναι έτοιμη.";
+        state.feedbackType = "good";
+      } else {
+        state.feedback = "Ωραία, συνέχισε.";
+        state.feedbackType = "";
+      }
+      render();
+    }
+
+    function removeFromSlot(slotKey) {
+      const cardId = state.slots[slotKey];
+      if (!cardId) return;
+      state.cards = state.cards.map((card) => card.cardId === cardId ? { ...card, placed: false } : card);
+      state.slots[slotKey] = null;
+      state.feedback = "Η κάρτα γύρισε κάτω.";
+      state.feedbackType = "";
+      render();
+    }
+
+    function toggleSelected(cardId) {
+      state.selectedCardId = state.selectedCardId === cardId ? null : cardId;
+      state.feedback = state.selectedCardId ? "Πάτησε τώρα το σωστό πλαίσιο." : "Η επιλογή ακυρώθηκε.";
+      state.feedbackType = "";
+      state.wrongSlot = null;
+      render();
+    }
+
+    function speakSentence() {
+      const text = makeSentenceText(state.target);
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        state.feedback = "Η συσκευή δεν υποστηρίζει εκφώνηση.";
+        state.feedbackType = "bad";
+        render();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "el-GR";
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      const greekVoice = bestGreekVoice();
+      if (greekVoice) utterance.voice = greekVoice;
+      window.speechSynthesis.speak(utterance);
+      window.speechSynthesis.resume();
+      state.feedback = greekVoice ? "Άκουσε την πρόταση με ελληνική φωνή." : "Άκουσε την πρόταση.";
+      state.feedbackType = "";
+      render();
+    }
+
+    function cardHtml(card) {
+      const category = categories.find((item) => item.key === card.category);
+      const selectedClass = card.cardId === state.selectedCardId ? " selected" : "";
+      return `
+        <button class="word-card${selectedClass}" type="button" data-card-id="${card.cardId}" aria-label="${category.label}: ${card.item.text}">
+          <span class="emoji" aria-hidden="true">${card.item.emoji}</span>
+          <span class="word">${card.item.text}</span>
+        </button>
+      `;
+    }
+
+    function slotHtml(category, index) {
+      const cardId = state.slots[category.key];
+      const card = state.cards.find((item) => item.cardId === cardId);
+      const filledClass = card ? " filled" : "";
+      const readyClass = state.selectedCardId ? " ready" : "";
+      const wrongClass = state.wrongSlot === category.key ? " wrong" : "";
+      const content = card ? `
+        <button class="slot-item" type="button" data-remove-slot="${category.key}" aria-label="Αφαίρεση: ${card.item.text}">
+          <span class="emoji" aria-hidden="true">${card.item.emoji}</span>
+          <span class="word">${card.item.text}</span>
+        </button>
+      ` : `
+        <div class="slot-empty">
+          <span class="slot-empty-icon" aria-hidden="true">${category.icon}</span>
+          <span>Βάλε εδώ την κάρτα</span>
+        </div>
+      `;
+
+      return `
+        <article class="slot-card">
+          <div class="slot-head">
+            <div class="slot-title">
+              <strong><span class="slot-number" style="background:${category.color}">${index + 1}</span>${category.label}</strong>
+            </div>
+            <div class="slot-role">${category.role}</div>
+          </div>
+          <div class="slot-drop${filledClass}${readyClass}${wrongClass}" data-slot="${category.key}">
+            ${content}
+          </div>
+          <button class="slot-action" type="button" data-change="${category.key}" style="background:${category.color}">
+            🎲 Άλλο
+          </button>
+        </article>
+      `;
+    }
+
+    function render() {
+      const trayCards = state.cards.filter((card) => !card.placed);
+      const trayHtml = trayCards.length
+        ? trayCards.map(cardHtml).join("")
+        : `<div class="empty-tray">Όλες οι κάρτες μπήκαν στα πλαίσια.</div>`;
+      const builtSentence = makeBuiltSentenceText();
+      const feedbackClass = state.feedbackType ? ` ${state.feedbackType}` : "";
+
+      app.innerHTML = `
+        <header class="topbar">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">🧩</div>
+            <div>
+              <h1>Χτίζω πρόταση</h1>
+              <p class="subtitle">ΠΟΙΟΣ · ΤΙ ΚΑΝΕΙ · ΤΙ · ΠΟΥ</p>
+            </div>
+          </div>
+          <div class="toolbar">
+            <button class="btn new" type="button" data-new>🔄 Νέα πρόταση</button>
+            <button class="btn listen" type="button" data-listen>🔊 Άκουσε</button>
+          </div>
+        </header>
+
+        <section class="board" aria-label="Άσκηση πρότασης">
+          <div class="legend" aria-hidden="true">
+            ${categories.map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
+          </div>
+
+          <div class="slots">
+            ${categories.map(slotHtml).join("")}
+          </div>
+
+          <section class="tray" aria-label="Κάρτες επιλογής">
+            <h2 class="section-title">Κάρτες</h2>
+            <div class="card-grid">
+              ${trayHtml}
+            </div>
+          </section>
+
+          <section class="sentence-panel" aria-label="Πλήρης πρόταση">
+            <h2 class="section-title">Πλήρης πρόταση</h2>
+            <p class="sentence-text">${makeSentenceText(state.target)}</p>
+            <p class="built-text">${builtSentence}</p>
+            <p class="feedback${feedbackClass}">${state.feedback}</p>
+            <button class="btn clear" type="button" data-clear>↩️ Άδειασε τα πλαίσια</button>
+          </section>
+        </section>
+      `;
+
+      bindEvents();
+    }
+
+    function bindEvents() {
+      document.querySelector("[data-new]").addEventListener("click", newSentence);
+      document.querySelector("[data-listen]").addEventListener("click", speakSentence);
+      document.querySelector("[data-clear]").addEventListener("click", clearSlots);
+
+      document.querySelectorAll("[data-change]").forEach((button) => {
+        button.addEventListener("click", () => changePart(button.dataset.change));
+      });
+
+      document.querySelectorAll("[data-remove-slot]").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          removeFromSlot(button.dataset.removeSlot);
+        });
+      });
+
+      document.querySelectorAll("[data-slot]").forEach((slot) => {
+        slot.addEventListener("click", () => {
+          if (state.selectedCardId) placeCard(state.selectedCardId, slot.dataset.slot);
+        });
+      });
+
+      document.querySelectorAll("[data-card-id]").forEach((card) => {
+        card.addEventListener("pointerdown", startPointerDrag);
+      });
+    }
+
+    function startPointerDrag(event) {
+      if (event.button !== undefined && event.button !== 0) return;
+      const card = event.currentTarget;
+      const cardId = card.dataset.cardId;
+      dragState = {
+        card,
+        cardId,
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        clone: null,
+        moved: false
+      };
+      card.setPointerCapture(event.pointerId);
+      card.addEventListener("pointermove", movePointerDrag);
+      card.addEventListener("pointerup", endPointerDrag);
+      card.addEventListener("pointercancel", cancelPointerDrag);
+    }
+
+    function movePointerDrag(event) {
+      if (!dragState) return;
+      const distance = Math.hypot(event.clientX - dragState.startX, event.clientY - dragState.startY);
+      if (!dragState.moved && distance > 8) {
+        dragState.moved = true;
+        dragState.clone = dragState.card.cloneNode(true);
+        dragState.clone.classList.add("drag-clone");
+        dragState.card.classList.add("drag-source");
+        document.body.appendChild(dragState.clone);
+      }
+
+      if (dragState.clone) {
+        dragState.clone.style.left = `${event.clientX}px`;
+        dragState.clone.style.top = `${event.clientY}px`;
+      }
+    }
+
+    function endPointerDrag(event) {
+      if (!dragState) return;
+      const { card, cardId, pointerId, moved } = dragState;
+      cleanupPointerDrag();
+
+      if (!moved) {
+        toggleSelected(cardId);
+        return;
+      }
+
+      const target = document.elementFromPoint(event.clientX, event.clientY);
+      const slot = target ? target.closest("[data-slot]") : null;
+      if (slot) {
+        placeCard(cardId, slot.dataset.slot);
+      } else {
+        state.feedback = "Άφησε την κάρτα μέσα σε ένα πλαίσιο.";
+        state.feedbackType = "";
+        state.selectedCardId = null;
+        render();
+      }
+
+      try {
+        card.releasePointerCapture(pointerId);
+      } catch (error) {
+        // Some browsers release capture automatically after pointerup.
+      }
+    }
+
+    function cancelPointerDrag() {
+      cleanupPointerDrag();
+      render();
+    }
+
+    function cleanupPointerDrag() {
+      if (!dragState) return;
+      dragState.card.classList.remove("drag-source");
+      dragState.card.removeEventListener("pointermove", movePointerDrag);
+      dragState.card.removeEventListener("pointerup", endPointerDrag);
+      dragState.card.removeEventListener("pointercancel", cancelPointerDrag);
+      if (dragState.clone) dragState.clone.remove();
+      dragState = null;
+    }
+
+    if ("speechSynthesis" in window) {
+      refreshVoices();
+      window.speechSynthesis.onvoiceschanged = refreshVoices;
+    }
+
+    newSentence();
+  </script>
+</body>
+</html>
