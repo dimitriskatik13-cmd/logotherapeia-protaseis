@@ -226,6 +226,12 @@
       transform: translateY(-2px);
     }
 
+    .slot-drop.hovered {
+      background: #ecfdf7;
+      border-color: var(--good);
+      transform: translateY(-3px) scale(1.01);
+    }
+
     .slot-drop.wrong {
       border-color: var(--bad);
       background: #fff4f2;
@@ -356,10 +362,17 @@
     .drag-clone {
       position: fixed;
       z-index: 1000;
-      width: 176px;
+      width: min(176px, 44vw);
       pointer-events: none;
       transform: translate(-50%, -50%) scale(1.03);
       box-shadow: 0 22px 48px rgba(24, 34, 48, 0.24);
+    }
+
+    body.dragging-touch {
+      overflow: hidden;
+      overscroll-behavior: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .empty-tray {
@@ -1278,49 +1291,111 @@
       });
 
       document.querySelectorAll("[data-card-id]").forEach((card) => {
-        card.addEventListener("pointerdown", startPointerDrag);
+        if (window.PointerEvent) {
+          card.addEventListener("pointerdown", startPointerDrag);
+        } else {
+          card.addEventListener("touchstart", startTouchDrag, { passive: false });
+        }
       });
+    }
+
+    function beginDrag(card, pointerId, clientX, clientY, inputType) {
+      const cardId = card.dataset.cardId;
+      state.selectedCardId = null;
+      dragState = {
+        card,
+        cardId,
+        pointerId,
+        inputType,
+        startX: clientX,
+        startY: clientY,
+        clone: null,
+        moved: false,
+        activeSlot: null
+      };
     }
 
     function startPointerDrag(event) {
       if (event.button !== undefined && event.button !== 0) return;
       const card = event.currentTarget;
-      const cardId = card.dataset.cardId;
-      dragState = {
-        card,
-        cardId,
-        pointerId: event.pointerId,
-        startX: event.clientX,
-        startY: event.clientY,
-        clone: null,
-        moved: false
-      };
-      card.setPointerCapture(event.pointerId);
-      card.addEventListener("pointermove", movePointerDrag);
-      card.addEventListener("pointerup", endPointerDrag);
-      card.addEventListener("pointercancel", cancelPointerDrag);
+      event.preventDefault();
+      beginDrag(card, event.pointerId, event.clientX, event.clientY, "pointer");
+      try {
+        card.setPointerCapture(event.pointerId);
+      } catch (error) {
+        // Some Safari versions do not expose capture for all pointer types.
+      }
+      document.addEventListener("pointermove", movePointerDrag, { passive: false });
+      document.addEventListener("pointerup", endPointerDrag, { passive: false });
+      document.addEventListener("pointercancel", cancelPointerDrag, { passive: false });
+    }
+
+    function startTouchDrag(event) {
+      if (event.touches.length !== 1) return;
+      event.preventDefault();
+      const touch = event.touches[0];
+      beginDrag(event.currentTarget, touch.identifier, touch.clientX, touch.clientY, "touch");
+      document.addEventListener("touchmove", moveTouchDrag, { passive: false });
+      document.addEventListener("touchend", endTouchDrag, { passive: false });
+      document.addEventListener("touchcancel", cancelPointerDrag, { passive: false });
     }
 
     function movePointerDrag(event) {
       if (!dragState) return;
-      const distance = Math.hypot(event.clientX - dragState.startX, event.clientY - dragState.startY);
+      if (dragState.inputType !== "pointer" || event.pointerId !== dragState.pointerId) return;
+      event.preventDefault();
+      updateDragPosition(event.clientX, event.clientY);
+    }
+
+    function moveTouchDrag(event) {
+      if (!dragState || dragState.inputType !== "touch") return;
+      const touch = Array.from(event.touches).find((item) => item.identifier === dragState.pointerId);
+      if (!touch) return;
+      event.preventDefault();
+      updateDragPosition(touch.clientX, touch.clientY);
+    }
+
+    function updateDragPosition(clientX, clientY) {
+      if (!dragState) return;
+      const distance = Math.hypot(clientX - dragState.startX, clientY - dragState.startY);
       if (!dragState.moved && distance > 8) {
         dragState.moved = true;
         dragState.clone = dragState.card.cloneNode(true);
         dragState.clone.classList.add("drag-clone");
         dragState.card.classList.add("drag-source");
+        document.body.classList.add("dragging-touch");
         document.body.appendChild(dragState.clone);
       }
 
       if (dragState.clone) {
-        dragState.clone.style.left = `${event.clientX}px`;
-        dragState.clone.style.top = `${event.clientY}px`;
+        dragState.clone.style.left = `${clientX}px`;
+        dragState.clone.style.top = `${clientY}px`;
+        setHoveredSlot(slotAtPoint(clientX, clientY));
       }
     }
 
     function endPointerDrag(event) {
       if (!dragState) return;
-      const { card, cardId, pointerId, moved } = dragState;
+      if (dragState.inputType !== "pointer" || event.pointerId !== dragState.pointerId) return;
+      event.preventDefault();
+      finishDrag(event.clientX, event.clientY);
+    }
+
+    function endTouchDrag(event) {
+      if (!dragState || dragState.inputType !== "touch") return;
+      const touch = Array.from(event.changedTouches).find((item) => item.identifier === dragState.pointerId);
+      if (!touch) {
+        cancelPointerDrag();
+        return;
+      }
+      event.preventDefault();
+      finishDrag(touch.clientX, touch.clientY);
+    }
+
+    function finishDrag(clientX, clientY) {
+      if (!dragState) return;
+      const { cardId, moved } = dragState;
+      const slot = moved ? slotAtPoint(clientX, clientY) : null;
       cleanupPointerDrag();
 
       if (!moved) {
@@ -1328,8 +1403,6 @@
         return;
       }
 
-      const target = document.elementFromPoint(event.clientX, event.clientY);
-      const slot = target ? target.closest("[data-slot]") : null;
       if (slot) {
         placeCard(cardId, slot.dataset.slot);
       } else {
@@ -1339,11 +1412,18 @@
         render();
       }
 
-      try {
-        card.releasePointerCapture(pointerId);
-      } catch (error) {
-        // Some browsers release capture automatically after pointerup.
-      }
+    }
+
+    function slotAtPoint(clientX, clientY) {
+      const target = document.elementFromPoint(clientX, clientY);
+      return target ? target.closest("[data-slot]") : null;
+    }
+
+    function setHoveredSlot(slot) {
+      if (!dragState || dragState.activeSlot === slot) return;
+      if (dragState.activeSlot) dragState.activeSlot.classList.remove("hovered");
+      dragState.activeSlot = slot;
+      if (dragState.activeSlot) dragState.activeSlot.classList.add("hovered");
     }
 
     function cancelPointerDrag() {
@@ -1353,11 +1433,24 @@
 
     function cleanupPointerDrag() {
       if (!dragState) return;
+      if (dragState.activeSlot) dragState.activeSlot.classList.remove("hovered");
       dragState.card.classList.remove("drag-source");
-      dragState.card.removeEventListener("pointermove", movePointerDrag);
-      dragState.card.removeEventListener("pointerup", endPointerDrag);
-      dragState.card.removeEventListener("pointercancel", cancelPointerDrag);
+      if (dragState.inputType === "pointer") {
+        document.removeEventListener("pointermove", movePointerDrag);
+        document.removeEventListener("pointerup", endPointerDrag);
+        document.removeEventListener("pointercancel", cancelPointerDrag);
+        try {
+          dragState.card.releasePointerCapture(dragState.pointerId);
+        } catch (error) {
+          // Some browsers release capture automatically after pointerup.
+        }
+      } else {
+        document.removeEventListener("touchmove", moveTouchDrag);
+        document.removeEventListener("touchend", endTouchDrag);
+        document.removeEventListener("touchcancel", cancelPointerDrag);
+      }
       if (dragState.clone) dragState.clone.remove();
+      document.body.classList.remove("dragging-touch");
       dragState = null;
     }
 
