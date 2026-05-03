@@ -17,6 +17,7 @@
       --verb: #f59e0b;
       --object: #06a77d;
       --place: #118ab2;
+      --reason: #7c3aed;
       --violet: #7c3aed;
       --good: #0f9f6e;
       --bad: #d92d20;
@@ -63,6 +64,41 @@
       gap: 12px;
       align-items: center;
       min-width: 0;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      background: #ffffff;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      margin-right: 8px;
+      flex: 0 0 auto;
+    }
+
+    .mode-btn {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 1.2rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mode-btn.active {
+      background: var(--violet);
+      color: #ffffff;
+    }
+
+    .mode-btn:hover:not(.active) {
+      background: rgba(124, 58, 237, 0.1);
     }
 
     .brand-mark {
@@ -502,10 +538,11 @@
 
   <script>
     const categories = [
-      { key: "subject", label: "ΠΟΙΟΣ", role: "Υποκείμενο", color: "var(--subject)", icon: "👤" },
-      { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡" },
-      { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯" },
-      { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍" }
+      { key: "subject", label: "ΠΟΙΟΣ", role: "Υποκείμενο", color: "var(--subject)", icon: "👤", modes: [3, 4, 5] },
+      { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡", modes: [3, 4, 5] },
+      { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯", modes: [4, 5] },
+      { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍", modes: [3, 4, 5] },
+      { key: "reason", label: "ΓΙΑΤΙ", role: "Αιτία", color: "var(--reason)", icon: "💭", modes: [5] }
     ];
 
     const places = [
@@ -645,47 +682,70 @@
       { id: "name", text: "το όνομα", emoji: "🔤", tags: ["word"] }
     ];
 
+    const reasons = [
+      { id: "hungry", text: "γιατί πεινάει", emoji: "🤤" },
+      { id: "thirsty", text: "γιατί διψάει", emoji: "💧" },
+      { id: "happy", text: "γιατί χαίρεται", emoji: "😊" },
+      { id: "tired", text: "γιατί κουράστηκε", emoji: "😴" },
+      { id: "cold", text: "γιατί κρυώνει", emoji: "🥶" },
+      { id: "hot", text: "γιατί ζεσταίνεται", emoji: "🥵" },
+      { id: "bored", text: "γιατί βαριέται", emoji: "🥱" },
+      { id: "rainy", text: "γιατί βρέχει", emoji: "🌧️" },
+      { id: "dirty", text: "γιατί βρώμισε", emoji: "🧽" },
+      { id: "birthday", text: "γιατί έχει γενέθλια", emoji: "🎂" },
+      { id: "love", text: "γιατί δείχνει αγάπη", emoji: "❤️" },
+      { id: "lostSth", text: "γιατί έχασε κάτι", emoji: "❓" },
+      { id: "wantsLearn", text: "γιατί θέλει να μάθει", emoji: "📚" },
+      { id: "playing", text: "γιατί παίζει", emoji: "🎲" },
+      { id: "scared", text: "γιατί φοβάται", emoji: "😨" },
+      { id: "broken", text: "γιατί χάλασε", emoji: "🔧" },
+      { id: "newGift", text: "γιατί είναι δώρο", emoji: "🎁" },
+      { id: "sick", text: "γιατί αρρώστησε", emoji: "🤒" },
+      { id: "guests", text: "γιατί έχει επισκέπτες", emoji: "👥" },
+      { id: "called", text: "γιατί κάποιος φώναξε", emoji: "📣" }
+    ];
+
     const verbs = [
-      { id: "eat", text: "τρώει", emoji: "😋", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "cake", "carrot", "iceCream", "pizza"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "sea", "forest", "zoo", "restaurant", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "bakery", "farm", "yard"] },
-      { id: "drink", text: "πίνει", emoji: "🥤", active: true, subjectGroups: ["human", "animal"], objects: ["milk", "water"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "forest", "zoo", "restaurant", "stadium", "livingRoom", "bedroom", "classroom", "bus", "pool", "lake", "farm", "yard"] },
-      { id: "read", text: "διαβάζει", emoji: "📖", active: true, subjectGroups: ["human"], objects: ["book", "letter"], places: ["home", "school", "park", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office"] },
-      { id: "draw", text: "ζωγραφίζει", emoji: "🎨", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "carToy", "ball"], places: ["home", "school", "garden", "table", "park"] },
-      { id: "hold", text: "κρατάει", emoji: "🤲", active: true, subjectGroups: ["human", "pet", "hands"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "forest", "shop", "zoo", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "bakery", "supermarket", "cinema", "theater", "pool", "mountain", "lake", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"] },
-      { id: "push", text: "σπρώχνει", emoji: "👐", active: true, subjectGroups: ["human", "pet", "hands", "wild", "farm"], objects: ["ball", "carToy", "chair", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"] },
-      { id: "pull", text: "τραβάει", emoji: "🪢", active: true, subjectGroups: ["human", "pet", "hands", "farm"], objects: ["chair", "bag", "carToy", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"] },
-      { id: "throw", text: "πετάει", emoji: "🎯", active: true, subjectGroups: ["human"], objects: ["ball", "hat", "shoe", "toy"], places: ["park", "school", "beach", "garden", "playground", "stadium", "yard"] },
-      { id: "give", text: "δίνει", emoji: "🎁", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: humanPlaces },
-      { id: "take", text: "παίρνει", emoji: "🫳", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "bakery", "supermarket", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"] },
-      { id: "see", text: "βλέπει", emoji: "👀", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"], places: allPlaceIds },
-      { id: "touch", text: "αγγίζει", emoji: "👆", active: true, subjectGroups: ["human", "hands", "trunk"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: allPlaceIds },
-      { id: "wash", text: "πλένει", emoji: "🧼", active: true, subjectGroups: ["human"], objects: ["apple", "ball", "carToy", "doll", "chair", "shoe", "bag", "glass", "plate", "spoon", "fork", "toothbrush", "toy", "bike", "box", "carrot"], places: ["home", "garden", "kitchen", "bathroom", "table", "floor", "yard"] },
-      { id: "feed", text: "ταΐζει", emoji: "🍴", active: true, subjectGroups: ["human"], objects: ["doll", "toy"], places: ["home", "school", "kitchen", "table", "bed", "playground", "livingRoom", "bedroom", "classroom"] },
-      { id: "cut", text: "κόβει", emoji: "✂️", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "flower", "cake", "carrot", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "restaurant", "classroom"] },
-      { id: "open", text: "ανοίγει", emoji: "🔓", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "carToy", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"] },
-      { id: "make", text: "φτιάχνει", emoji: "🔨", active: true, subjectGroups: ["human"], objects: ["carToy", "doll", "chair", "hat", "shoe", "bag", "gift", "cake", "puzzle", "toy", "phone", "computer", "bike", "box", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"] },
-      { id: "hug", text: "αγκαλιάζει", emoji: "🫂", active: true, subjectGroups: ["human"], objects: ["doll", "ball", "gift", "bag", "toy"], places: ["home", "school", "park", "bed", "playground", "livingRoom", "bedroom", "classroom"] },
-      { id: "shout", text: "φωνάζει", emoji: "📢", active: true, subjectGroups: ["human"], objects: ["name"], places: humanPlaces },
-      { id: "search", text: "ψάχνει", emoji: "🔍", active: true, subjectGroups: ["human", "pet", "insect"], objects: ["ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"] },
-      { id: "write", text: "γράφει", emoji: "✍️", active: true, subjectGroups: ["human"], objects: ["letter", "name"], places: ["home", "school", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"] },
-      { id: "plant", text: "φυτεύει", emoji: "🌱", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["garden", "yard", "farm", "park"] },
-      { id: "water", text: "ποτίζει", emoji: "🚿", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["home", "garden", "yard", "farm", "park"] },
-      { id: "collect", text: "μαζεύει", emoji: "🧺", active: true, subjectGroups: ["human"], objects: ["apple", "flower", "ball", "toy", "puzzle", "carrot", "box"], places: ["home", "park", "school", "beach", "garden", "floor", "playground", "forest", "farm", "yard"] },
-      { id: "wear", text: "φοράει", emoji: "🧢", active: true, subjectGroups: ["human"], objects: ["hat", "shoe", "bag"], places: humanPlaces },
-      { id: "buy", text: "αγοράζει", emoji: "🛒", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"] },
-      { id: "sell", text: "πουλάει", emoji: "🧾", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"] },
-      { id: "cook", text: "μαγειρεύει", emoji: "👨‍🍳", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "carrot", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"] },
-      { id: "bake", text: "ψήνει", emoji: "♨️", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"] },
-      { id: "play", text: "παίζει", emoji: "🎶", active: true, subjectGroups: ["human"], objects: ["drum", "guitar"], places: ["home", "school", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"] },
-      { id: "clean", text: "καθαρίζει", emoji: "🧽", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "garden", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "classroom", "office", "yard"] },
-      { id: "repair", text: "επισκευάζει", emoji: "🪛", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"] },
-      { id: "carry", text: "κουβαλάει", emoji: "💪", active: true, subjectGroups: ["human"], objects: ["bag", "box", "gift", "ball", "toy", "book", "puzzle"], places: humanPlaces },
-      { id: "hide", text: "κρύβει", emoji: "🙈", active: true, subjectGroups: ["human"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "school", "garden", "bed", "floor", "playground", "livingRoom", "bedroom", "classroom", "yard"] },
-      { id: "find", text: "βρίσκει", emoji: "✅", active: true, subjectGroups: ["human", "pet"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"] },
-      { id: "use", text: "χρησιμοποιεί", emoji: "🛠️", active: true, subjectGroups: ["human"], objects: ["pencil", "key", "toothbrush", "soap", "umbrella", "phone", "computer", "bike", "spoon", "fork", "glass"], places: humanPlaces },
-      { id: "close", text: "κλείνει", emoji: "🔒", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"] },
-      { id: "fill", text: "γεμίζει", emoji: "🫗", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"] },
-      { id: "empty", text: "αδειάζει", emoji: "🪣", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"] },
-      { id: "photograph", text: "φωτογραφίζει", emoji: "📷", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "ball", "carToy", "doll", "book", "chair", "cake", "umbrella", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "pizza"], places: allPlaceIds }
+      { id: "eat", text: "τρώει", emoji: "😋", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "cake", "carrot", "iceCream", "pizza"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "sea", "forest", "zoo", "restaurant", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "bakery", "farm", "yard"], reasons: ["hungry", "happy", "birthday", "guests"] },
+      { id: "drink", text: "πίνει", emoji: "🥤", active: true, subjectGroups: ["human", "animal"], objects: ["milk", "water"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "floor", "forest", "zoo", "restaurant", "stadium", "livingRoom", "bedroom", "classroom", "bus", "pool", "lake", "farm", "yard"], reasons: ["thirsty", "hot", "happy"] },
+      { id: "read", text: "διαβάζει", emoji: "📖", active: true, subjectGroups: ["human"], objects: ["book", "letter"], places: ["home", "school", "park", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office"], reasons: ["wantsLearn", "happy", "bored"] },
+      { id: "draw", text: "ζωγραφίζει", emoji: "🎨", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "carToy", "ball"], places: ["home", "school", "garden", "table", "park"], reasons: ["happy", "bored", "wantsLearn"] },
+      { id: "hold", text: "κρατάει", emoji: "🤲", active: true, subjectGroups: ["human", "pet", "hands"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "forest", "shop", "zoo", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "bakery", "supermarket", "cinema", "theater", "pool", "mountain", "lake", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"], reasons: ["happy", "love", "newGift", "playing"] },
+      { id: "push", text: "σπρώχνει", emoji: "👐", active: true, subjectGroups: ["human", "pet", "hands", "wild", "farm"], objects: ["ball", "carToy", "chair", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"], reasons: ["playing", "happy"] },
+      { id: "pull", text: "τραβάει", emoji: "🪢", active: true, subjectGroups: ["human", "pet", "hands", "farm"], objects: ["chair", "bag", "carToy", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"], reasons: ["playing", "happy"] },
+      { id: "throw", text: "πετάει", emoji: "🎯", active: true, subjectGroups: ["human"], objects: ["ball", "hat", "shoe", "toy"], places: ["park", "school", "beach", "garden", "playground", "stadium", "yard"], reasons: ["playing", "happy", "bored"] },
+      { id: "give", text: "δίνει", emoji: "🎁", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: humanPlaces, reasons: ["birthday", "love", "happy", "newGift"] },
+      { id: "take", text: "παίρνει", emoji: "🫳", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "bakery", "supermarket", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"], reasons: ["happy", "wantsLearn", "newGift"] },
+      { id: "see", text: "βλέπει", emoji: "👀", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"], places: allPlaceIds, reasons: ["happy", "scared", "bored"] },
+      { id: "touch", text: "αγγίζει", emoji: "👆", active: true, subjectGroups: ["human", "hands", "trunk"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: allPlaceIds, reasons: ["happy", "playing", "wantsLearn"] },
+      { id: "wash", text: "πλένει", emoji: "🧼", active: true, subjectGroups: ["human"], objects: ["apple", "ball", "carToy", "doll", "chair", "shoe", "bag", "glass", "plate", "spoon", "fork", "toothbrush", "toy", "bike", "box", "carrot"], places: ["home", "garden", "kitchen", "bathroom", "table", "floor", "yard"], reasons: ["dirty"] },
+      { id: "feed", text: "ταΐζει", emoji: "🍴", active: true, subjectGroups: ["human"], objects: ["doll", "toy"], places: ["home", "school", "kitchen", "table", "bed", "playground", "livingRoom", "bedroom", "classroom"], reasons: ["love", "playing", "happy"] },
+      { id: "cut", text: "κόβει", emoji: "✂️", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "flower", "cake", "carrot", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "restaurant", "classroom"], reasons: ["birthday", "guests", "hungry"] },
+      { id: "open", text: "ανοίγει", emoji: "🔓", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "carToy", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"], reasons: ["happy", "newGift", "wantsLearn", "guests"] },
+      { id: "make", text: "φτιάχνει", emoji: "🔨", active: true, subjectGroups: ["human"], objects: ["carToy", "doll", "chair", "hat", "shoe", "bag", "gift", "cake", "puzzle", "toy", "phone", "computer", "bike", "box", "pizza"], places: ["home", "school", "garden", "kitchen", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"], reasons: ["happy", "guests", "birthday", "wantsLearn"] },
+      { id: "hug", text: "αγκαλιάζει", emoji: "🫂", active: true, subjectGroups: ["human"], objects: ["doll", "ball", "gift", "bag", "toy"], places: ["home", "school", "park", "bed", "playground", "livingRoom", "bedroom", "classroom"], reasons: ["love", "happy", "scared"] },
+      { id: "shout", text: "φωνάζει", emoji: "📢", active: true, subjectGroups: ["human"], objects: ["name"], places: humanPlaces, reasons: ["scared", "called", "happy"] },
+      { id: "search", text: "ψάχνει", emoji: "🔍", active: true, subjectGroups: ["human", "pet", "insect"], objects: ["ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"], reasons: ["lostSth"] },
+      { id: "write", text: "γράφει", emoji: "✍️", active: true, subjectGroups: ["human"], objects: ["letter", "name"], places: ["home", "school", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "office", "postOffice"], reasons: ["wantsLearn", "happy", "love"] },
+      { id: "plant", text: "φυτεύει", emoji: "🌱", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["garden", "yard", "farm", "park"], reasons: ["happy", "wantsLearn"] },
+      { id: "water", text: "ποτίζει", emoji: "🚿", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "carrot"], places: ["home", "garden", "yard", "farm", "park"], reasons: ["happy"] },
+      { id: "collect", text: "μαζεύει", emoji: "🧺", active: true, subjectGroups: ["human"], objects: ["apple", "flower", "ball", "toy", "puzzle", "carrot", "box"], places: ["home", "park", "school", "beach", "garden", "floor", "playground", "forest", "farm", "yard"], reasons: ["happy", "playing", "guests"] },
+      { id: "wear", text: "φοράει", emoji: "🧢", active: true, subjectGroups: ["human"], objects: ["hat", "shoe", "bag"], places: humanPlaces, reasons: ["cold", "rainy", "happy", "birthday"] },
+      { id: "buy", text: "αγοράζει", emoji: "🛒", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"], reasons: ["happy", "birthday", "guests", "newGift"] },
+      { id: "sell", text: "πουλάει", emoji: "🧾", active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "book", "pencil", "flower", "hat", "shoe", "bag", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["shop", "pharmacy", "restaurant", "bakery", "supermarket", "postOffice"], reasons: ["happy", "guests"] },
+      { id: "cook", text: "μαγειρεύει", emoji: "👨‍🍳", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "carrot", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"], reasons: ["hungry", "birthday", "guests", "happy"] },
+      { id: "bake", text: "ψήνει", emoji: "♨️", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"], reasons: ["hungry", "birthday", "guests", "happy"] },
+      { id: "play", text: "παίζει", emoji: "🎶", active: true, subjectGroups: ["human"], objects: ["drum", "guitar"], places: ["home", "school", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"], reasons: ["happy", "bored", "birthday", "guests"] },
+      { id: "clean", text: "καθαρίζει", emoji: "🧽", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "garden", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "classroom", "office", "yard"], reasons: ["dirty", "guests", "happy"] },
+      { id: "repair", text: "επισκευάζει", emoji: "🪛", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"], reasons: ["broken", "happy"] },
+      { id: "carry", text: "κουβαλάει", emoji: "💪", active: true, subjectGroups: ["human"], objects: ["bag", "box", "gift", "ball", "toy", "book", "puzzle"], places: humanPlaces, reasons: ["happy", "newGift", "guests"] },
+      { id: "hide", text: "κρύβει", emoji: "🙈", active: true, subjectGroups: ["human"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "school", "garden", "bed", "floor", "playground", "livingRoom", "bedroom", "classroom", "yard"], reasons: ["playing", "scared", "happy"] },
+      { id: "find", text: "βρίσκει", emoji: "✅", active: true, subjectGroups: ["human", "pet"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "farm", "office", "yard"], reasons: ["lostSth", "happy"] },
+      { id: "use", text: "χρησιμοποιεί", emoji: "🛠️", active: true, subjectGroups: ["human"], objects: ["pencil", "key", "toothbrush", "soap", "umbrella", "phone", "computer", "bike", "spoon", "fork", "glass"], places: humanPlaces, reasons: ["wantsLearn", "happy", "rainy", "dirty"] },
+      { id: "close", text: "κλείνει", emoji: "🔒", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"], reasons: ["happy", "cold", "rainy"] },
+      { id: "fill", text: "γεμίζει", emoji: "🫗", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"], reasons: ["thirsty", "guests", "happy"] },
+      { id: "empty", text: "αδειάζει", emoji: "🪣", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"], reasons: ["dirty", "guests", "happy"] },
+      { id: "photograph", text: "φωτογραφίζει", emoji: "📷", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "ball", "carToy", "doll", "book", "chair", "cake", "umbrella", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "pizza"], places: allPlaceIds, reasons: ["happy", "birthday", "guests", "wantsLearn"] }
     ];
 
     const visiblePlaces = {
@@ -847,25 +907,44 @@
       photograph: visiblePlaces
     };
 
-    const categoryOrder = categories.map((category) => category.key);
-    const requiredAlternativeKeys = ["subject", "verb", "place"];
+    function activeCategories() {
+      return categories.filter((category) => category.modes.includes(state.mode));
+    }
+
+    function activeKeys() {
+      return activeCategories().map((category) => category.key);
+    }
+
+    function categoryOrder() {
+      return activeKeys();
+    }
+
+    function requiredAlternativeKeys() {
+      return activeKeys();
+    }
+
+    const mode3VerbIds = ["eat", "drink", "read", "draw", "shout", "search", "write", "cook", "bake", "play", "clean", "photograph"];
     const app = document.querySelector("#app");
     const state = {
+      mode: 4,
       target: null,
       cards: [],
-      slots: emptySlots(),
+      slots: {},
       selectedCardId: null,
       feedback: "",
       feedbackType: "",
       wrongSlot: null
     };
+    state.slots = emptySlots();
 
     let dragState = null;
     let cachedVoices = [];
     const sentencePoolBySubject = new Map();
 
     function emptySlots() {
-      return { subject: null, verb: null, object: null, place: null };
+      const slots = {};
+      activeKeys().forEach((key) => { slots[key] = null; });
+      return slots;
     }
 
     function hasGroup(item, allowedGroups) {
@@ -881,69 +960,97 @@
     }
 
     function isMeaningful(sentence) {
-      const { subject, verb, object, place } = sentence;
-      if (!subject || !verb || !object || !place || !verb.active) return false;
+      const { subject, verb, object, place, reason } = sentence;
+      if (!subject || !verb || !place) return false;
+      if (!verb.active) return false;
       if (!hasGroup(subject, verb.subjectGroups)) return false;
-      if (!verb.objects.includes(object.id)) return false;
       if (!verb.places.includes(place.id)) return false;
       if (!subject.places.includes(place.id)) return false;
 
+      const requiresObject = state.mode >= 4;
+      const requiresReason = state.mode === 5;
+
+      if (!requiresObject && !mode3VerbIds.includes(verb.id)) return false;
+
+      if (requiresObject) {
+        if (!object) return false;
+        if (!verb.objects.includes(object.id)) return false;
+      }
+
+      if (requiresReason) {
+        if (!reason) return false;
+        if (!verb.reasons || !verb.reasons.includes(reason.id)) return false;
+      }
+
       if (subject.id === "fish") {
         if (!["sea", "lake", "pool"].includes(place.id)) return false;
-        if (verb.id === "eat") return object.id === "bread";
-        if (verb.id === "see") return ["bread", "water"].includes(object.id);
-        if (verb.id === "drink") return object.id === "water";
-        return false;
+        if (!["eat", "drink", "see"].includes(verb.id)) return false;
+        if (requiresObject) {
+          if (verb.id === "eat") return object.id === "bread";
+          if (verb.id === "see") return ["bread", "water"].includes(object.id);
+          if (verb.id === "drink") return object.id === "water";
+          return false;
+        }
+        return true;
       }
 
       if (subject.groups.includes("insect")) {
         if (!insectPlaces.includes(place.id)) return false;
-        if (verb.id === "search") return object.id === "flower";
-        if (verb.id === "see") return ["flower", "tree"].includes(object.id);
-        return false;
+        if (!["search", "see"].includes(verb.id)) return false;
+        if (requiresObject) {
+          if (verb.id === "search") return object.id === "flower";
+          if (verb.id === "see") return ["flower", "tree"].includes(object.id);
+          return false;
+        }
+        return true;
       }
 
       if (verb.id === "drink") {
         if (subject.groups.includes("human")) return true;
+        if (!requiresObject) return true;
         if (["dog", "cat"].includes(subject.id)) return ["water", "milk"].includes(object.id);
         return object.id === "water";
       }
 
       if (verb.id === "eat" && subject.groups.includes("animal")) {
+        if (!requiresObject) return true;
         if (subject.groups.includes("wild")) return ["apple", "bread"].includes(object.id);
         if (subject.groups.includes("farm")) return ["apple", "bread", "carrot"].includes(object.id);
         return ["apple", "banana", "bread"].includes(object.id);
       }
 
-      if (verb.id === "touch" && object.id === "tree" && ["dog", "cat", "mouse", "rabbit"].includes(subject.id)) {
-        return ["park", "garden", "forest"].includes(place.id);
-      }
+      if (requiresObject) {
+        if (verb.id === "touch" && object.id === "tree" && ["dog", "cat", "mouse", "rabbit"].includes(subject.id)) {
+          return ["park", "garden", "forest"].includes(place.id);
+        }
 
-      if (verb.id === "see" && subject.groups.includes("wild") && ["apple", "bread"].includes(object.id) && subject.places.includes(place.id)) {
-        return true;
-      }
+        if (verb.id === "see" && subject.groups.includes("wild") && ["apple", "bread"].includes(object.id) && subject.places.includes(place.id)) {
+          return true;
+        }
 
-      const placeLimits = semanticPlaceLimits[verb.id];
-      if (placeLimits) {
-        const allowedPlacesForObject = placeLimits[object.id];
-        if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
-      }
+        const placeLimits = semanticPlaceLimits[verb.id];
+        if (placeLimits) {
+          const allowedPlacesForObject = placeLimits[object.id];
+          if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
+        }
 
-      if (verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
-        return false;
-      }
+        if (verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
+          return false;
+        }
 
-      if (verb.id === "see" && subject.groups.includes("animal") && object.id === "star") {
-        return ["park", "garden", "forest", "zoo", "beach", "mountain", "lake", "farm", "yard"].includes(place.id);
+        if (verb.id === "see" && subject.groups.includes("animal") && object.id === "star") {
+          return ["park", "garden", "forest", "zoo", "beach", "mountain", "lake", "farm", "yard"].includes(place.id);
+        }
       }
 
       return true;
     }
 
     function candidatesFor(key, sentence) {
-      const lists = { subject: subjects, verb: verbs.filter((verb) => verb.active), object: objects, place: places };
+      const lists = { subject: subjects, verb: verbs.filter((verb) => verb.active), object: objects, place: places, reason: reasons };
+      if (!lists[key]) return [];
       return lists[key].filter((candidate) => {
-        if (candidate.id === sentence[key].id) return false;
+        if (sentence[key] && candidate.id === sentence[key].id) return false;
         return isMeaningful(sentenceWith(sentence, key, candidate));
       });
     }
@@ -963,11 +1070,12 @@
 
     function makeSentenceText(sentence) {
       if (!sentence) return "";
-      return `${sentence.subject.text} ${sentence.verb.text} ${sentence.object.text} ${sentence.place.text}.`;
+      const parts = activeKeys().map((key) => sentence[key]?.text).filter(Boolean);
+      return `${parts.join(" ")}.`;
     }
 
     function makeBuiltSentenceText() {
-      const pieces = categoryOrder.map((key) => {
+      const pieces = activeKeys().map((key) => {
         const cardId = state.slots[key];
         const card = state.cards.find((item) => item.cardId === cardId);
         return card ? card.item.text : "___";
@@ -1005,23 +1113,34 @@
     }
 
     function getSentencesForSubject(subject) {
-      if (sentencePoolBySubject.has(subject.id)) return sentencePoolBySubject.get(subject.id);
+      const cacheKey = `${state.mode}:${subject.id}`;
+      if (sentencePoolBySubject.has(cacheKey)) return sentencePoolBySubject.get(cacheKey);
 
       const activeVerbs = verbs.filter((verb) => verb.active);
       const options = [];
       for (const verb of activeVerbs) {
-        for (const object of objects) {
-          for (const place of places) {
-            const sentence = { subject, verb, object, place };
-            if (!isMeaningful(sentence)) continue;
-            if (requiredAlternativeKeys.every((key) => candidatesFor(key, sentence).length > 0)) {
-              options.push(sentence);
+        if (!hasGroup(subject, verb.subjectGroups)) continue;
+        const objectsToTry = state.mode >= 4 ? verb.objects.map((id) => itemById(objects, id)).filter(Boolean) : [null];
+        const placesToTry = verb.places
+          .map((id) => itemById(places, id))
+          .filter((place) => place && subject.places.includes(place.id));
+        const reasonsToTry = state.mode === 5 ? (verb.reasons || ["happy"]).map((id) => itemById(reasons, id)).filter(Boolean) : [null];
+        for (const object of objectsToTry) {
+          for (const place of placesToTry) {
+            for (const reason of reasonsToTry) {
+              const sentence = { subject, verb, place };
+              if (object) sentence.object = object;
+              if (reason) sentence.reason = reason;
+              if (!isMeaningful(sentence)) continue;
+              if (requiredAlternativeKeys().every((key) => candidatesFor(key, sentence).length > 0)) {
+                options.push(sentence);
+              }
             }
           }
         }
       }
 
-      sentencePoolBySubject.set(subject.id, options);
+      sentencePoolBySubject.set(cacheKey, options);
       return options;
     }
 
@@ -1033,16 +1152,18 @@
         }
       }
 
-      return {
+      const fallback = {
         subject: itemById(subjects, "boy"),
         verb: itemById(verbs, "eat"),
-        object: itemById(objects, "apple"),
         place: itemById(places, "home")
       };
+      if (state.mode >= 4) fallback.object = itemById(objects, "apple");
+      if (state.mode === 5) fallback.reason = itemById(reasons, "hungry");
+      return fallback;
     }
 
     function createCards(sentence) {
-      return shuffle(categoryOrder.map((key) => ({
+      return shuffle(activeKeys().map((key) => ({
         cardId: `${key}-${Math.random().toString(36).slice(2)}`,
         category: key,
         item: sentence[key],
@@ -1059,6 +1180,13 @@
       state.feedbackType = "";
       state.wrongSlot = null;
       render();
+    }
+
+    function changeMode(newMode) {
+      if (![3, 4, 5].includes(newMode)) return;
+      if (newMode === state.mode) return;
+      state.mode = newMode;
+      newSentence();
     }
 
     function clearSlots() {
@@ -1117,7 +1245,7 @@
       state.selectedCardId = null;
       state.wrongSlot = null;
 
-      if (categoryOrder.every((key) => state.slots[key])) {
+      if (activeKeys().every((key) => state.slots[key])) {
         state.feedback = "Μπράβο! Η πρόταση είναι έτοιμη.";
         state.feedbackType = "good";
       } else {
@@ -1227,10 +1355,15 @@
       app.innerHTML = `
         <header class="topbar">
           <div class="brand">
+            <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
+              ${[3, 4, 5].map((mode) => `
+                <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
+              `).join("")}
+            </div>
             <div class="brand-mark" aria-hidden="true">🧩</div>
             <div>
               <h1>Χτίζω πρόταση</h1>
-              <p class="subtitle">ΠΟΙΟΣ · ΤΙ ΚΑΝΕΙ · ΤΙ · ΠΟΥ</p>
+              <p class="subtitle">${activeCategories().map((category) => category.label).join(" · ")}</p>
             </div>
           </div>
           <div class="toolbar">
@@ -1241,11 +1374,11 @@
 
         <section class="board" aria-label="Άσκηση πρότασης">
           <div class="legend" aria-hidden="true">
-            ${categories.map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
+            ${activeCategories().map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
           </div>
 
           <div class="slots">
-            ${categories.map(slotHtml).join("")}
+            ${activeCategories().map(slotHtml).join("")}
           </div>
 
           <section class="tray" aria-label="Κάρτες επιλογής">
@@ -1272,6 +1405,10 @@
       document.querySelector("[data-new]").addEventListener("click", newSentence);
       document.querySelector("[data-listen]").addEventListener("click", speakSentence);
       document.querySelector("[data-clear]").addEventListener("click", clearSlots);
+
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => changeMode(Number(button.dataset.mode)));
+      });
 
       document.querySelectorAll("[data-change]").forEach((button) => {
         button.addEventListener("click", () => changePart(button.dataset.change));
