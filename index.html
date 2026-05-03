@@ -1190,7 +1190,81 @@
       return state.mode === 5 ? ["reason"] : ["subject", "verb", "place"];
     }
 
-    const mode3VerbIds = ["eat", "drink", "read", "draw", "shout", "search", "write", "cook", "bake", "play", "clean", "photograph"];
+    const mode3HumanSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "doctor", "nurse", "cookM", "cookF", "police", "firefighter", "gardener", "singer"];
+    const mode3AnimalSubjectIds = ["dog", "cat", "mouse", "bird", "fish", "rabbit", "bear", "lion", "elephant", "monkey", "turtle", "cow", "sheep", "horse", "fox", "wolf", "duck", "hen", "goat", "pig", "deer", "frog"];
+    const mode3PlantCareSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "gardener"];
+    const mode3KitchenSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "cookM", "cookF"];
+    const mode3CleanSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "cookM", "cookF", "gardener"];
+    const mode3Rules = {
+      eat: {
+        subjects: [...mode3HumanSubjectIds, ...mode3AnimalSubjectIds],
+        places: ["home", "kitchen", "table", "restaurant", "school", "classroom", "park", "playground", "garden", "yard", "beach", "farm", "zoo", "forest", "sea", "lake"]
+      },
+      drink: {
+        subjects: [...mode3HumanSubjectIds, ...mode3AnimalSubjectIds.filter((id) => id !== "fish")],
+        places: ["home", "kitchen", "table", "restaurant", "school", "classroom", "park", "playground", "garden", "yard", "beach", "farm", "zoo", "forest", "mountain", "pool"]
+      },
+      read: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "library", "bed", "livingRoom", "bedroom", "table", "office", "park", "garden", "beach"]
+      },
+      draw: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "table", "floor", "livingRoom", "bedroom", "park", "garden", "yard", "beach", "playground", "library", "zoo"]
+      },
+      shout: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "park", "playground", "yard", "garden", "beach", "sea", "pool", "forest", "mountain", "stadium", "farm", "zoo"]
+      },
+      search: {
+        subjects: [...mode3HumanSubjectIds, "dog", "cat", "bee", "butterfly"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "forest", "farm", "zoo", "beach", "livingRoom", "bedroom", "kitchen", "bathroom", "shop", "supermarket"]
+      },
+      write: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "library", "table", "livingRoom", "bedroom", "office", "postOffice"]
+      },
+      plant: {
+        subjects: mode3PlantCareSubjectIds,
+        places: ["garden", "yard", "farm", "park", "school", "classroom", "home"]
+      },
+      water: {
+        subjects: mode3PlantCareSubjectIds,
+        places: ["garden", "yard", "farm", "park", "school", "classroom", "home"]
+      },
+      collect: {
+        subjects: ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "gardener", "cookM", "cookF"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "kitchen", "table", "floor", "garden", "yard", "park", "playground", "beach", "forest", "farm"]
+      },
+      buy: {
+        subjects: mode3HumanSubjectIds,
+        places: ["shop", "supermarket", "bakery", "pharmacy"]
+      },
+      sell: {
+        subjects: ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "cookM", "cookF", "gardener"],
+        places: ["shop", "supermarket", "bakery", "pharmacy", "farm"]
+      },
+      cook: {
+        subjects: mode3KitchenSubjectIds,
+        places: ["kitchen", "home", "restaurant", "school", "classroom"]
+      },
+      bake: {
+        subjects: mode3KitchenSubjectIds,
+        places: ["kitchen", "home", "restaurant", "bakery", "school", "classroom"]
+      },
+      play: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "sea", "pool", "livingRoom", "bedroom", "floor", "stadium", "musicRoom", "theater"]
+      },
+      clean: {
+        subjects: mode3CleanSubjectIds,
+        places: ["home", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "school", "classroom", "restaurant", "shop", "office"]
+      },
+      photograph: {
+        subjects: mode3HumanSubjectIds,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "sea", "zoo", "forest", "mountain", "lake", "stadium", "theater", "cinema", "restaurant"]
+      }
+    };
     const app = document.querySelector("#app");
     const state = {
       mode: 4,
@@ -1221,6 +1295,12 @@
 
     function itemById(list, id) {
       return list.find((item) => item.id === id);
+    }
+
+    function isMode3Meaningful(subject, verb, place) {
+      const rule = mode3Rules[verb.id];
+      if (!rule) return false;
+      return rule.subjects.includes(subject.id) && rule.places.includes(place.id);
     }
 
     function sentenceWith(sentence, key, value) {
@@ -1267,13 +1347,17 @@
       if (!subject || !verb || !place) return false;
       if (!verb.active) return false;
       if (!hasGroup(subject, verb.subjectGroups)) return false;
-      if (!verb.places.includes(place.id)) return false;
-      if (!subject.places.includes(place.id)) return false;
 
       const requiresObject = state.mode >= 4;
       const requiresReason = state.mode === 5;
 
-      if (!requiresObject && !mode3VerbIds.includes(verb.id)) return false;
+      if (!requiresObject) {
+        if (!subject.places.includes(place.id)) return false;
+        return isMode3Meaningful(subject, verb, place);
+      }
+
+      if (!verb.places.includes(place.id)) return false;
+      if (!subject.places.includes(place.id)) return false;
 
       if (requiresObject) {
         if (!object) return false;
