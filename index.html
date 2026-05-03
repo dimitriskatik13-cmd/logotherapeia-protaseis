@@ -998,6 +998,7 @@
       bag: ["home", "park", "school", "beach", "garden", "car", "table", "bed", "floor", "playground", "shop", "restaurant", "stadium", "library", "livingRoom", "bedroom", "classroom", "bus", "supermarket", "office"],
       key: ["home", "school", "car", "table", "bed", "floor", "shop", "pharmacy", "livingRoom", "bedroom", "office"],
       gift: ["home", "school", "table", "bed", "floor", "shop", "livingRoom", "bedroom", "classroom", "postOffice"],
+      umbrella: ["home", "park", "school", "beach", "garden", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
       puzzle: ["home", "school", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom"],
       toy: ["home", "park", "school", "table", "bed", "floor", "playground", "shop", "livingRoom", "bedroom", "classroom", "yard"],
       phone: ["home", "school", "car", "table", "bed", "floor", "shop", "library", "livingRoom", "bedroom", "classroom", "bus", "office"],
@@ -1011,12 +1012,16 @@
       bread: ["shop", "restaurant", "bakery", "supermarket"],
       milk: ["shop", "supermarket"],
       water: ["shop", "restaurant", "supermarket"],
+      ball: ["shop", "supermarket"],
+      carToy: ["shop", "supermarket"],
+      doll: ["shop", "supermarket"],
       book: ["shop", "supermarket", "postOffice"],
       pencil: ["shop", "supermarket", "postOffice"],
       flower: ["shop", "supermarket"],
       hat: ["shop", "supermarket"],
       shoe: ["shop", "supermarket"],
       bag: ["shop", "supermarket"],
+      key: ["shop", "supermarket"],
       gift: ["shop", "supermarket", "postOffice"],
       cake: ["shop", "restaurant", "bakery", "supermarket"],
       glass: ["shop", "supermarket"],
@@ -1028,6 +1033,8 @@
       umbrella: ["shop", "supermarket"],
       puzzle: ["shop", "supermarket"],
       toy: ["shop", "supermarket"],
+      drum: ["shop", "supermarket"],
+      guitar: ["shop", "supermarket"],
       phone: ["shop", "supermarket"],
       computer: ["shop", "supermarket"],
       bike: ["shop", "supermarket"],
@@ -1044,6 +1051,9 @@
       toothbrush: ["home", "bathroom", "dentist"],
       soap: ["home", "kitchen", "bathroom", "clinic", "dentist"],
       umbrella: ["park", "school", "beach", "garden", "car", "stadium", "bus", "station", "yard"],
+      plate: ["home", "school", "kitchen", "table", "restaurant", "classroom"],
+      drum: ["home", "school", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"],
+      guitar: ["home", "school", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"],
       phone: ["home", "park", "school", "car", "table", "bed", "library", "livingRoom", "bedroom", "classroom", "bus", "station", "office"],
       computer: ["home", "school", "table", "library", "classroom", "office"],
       bike: ["park", "school", "playground", "stadium", "yard"],
@@ -1190,11 +1200,40 @@
       return state.mode === 5 ? ["reason"] : ["subject", "verb", "place"];
     }
 
-    const mode3HumanSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "doctor", "nurse", "cookM", "cookF", "police", "firefighter", "gardener", "singer"];
-    const mode3AnimalSubjectIds = ["dog", "cat", "mouse", "bird", "fish", "rabbit", "bear", "lion", "elephant", "monkey", "turtle", "cow", "sheep", "horse", "fox", "wolf", "duck", "hen", "goat", "pig", "deer", "frog"];
-    const mode3PlantCareSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "gardener"];
-    const mode3KitchenSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "cookM", "cookF"];
-    const mode3CleanSubjectIds = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "cookM", "cookF", "gardener"];
+    const HUMANS = ["boy", "girl", "mom", "dad", "grandma", "grandpa", "teacherM", "teacherF", "doctor", "nurse", "cookM", "cookF", "police", "firefighter", "gardener", "singer"];
+    const CHILDREN = ["boy", "girl"];
+    const FAMILY_ADULTS = ["mom", "dad", "grandma", "grandpa"];
+    const SCHOOL_ADULTS = ["teacherM", "teacherF"];
+    const CARE_ADULTS = ["doctor", "nurse"];
+    const FOOD_ADULTS = ["cookM", "cookF"];
+    const PETS = ["dog", "cat"];
+    const COMMON_ANIMALS = ["dog", "cat", "mouse", "bird", "rabbit", "bear", "lion", "elephant", "monkey", "turtle", "cow", "sheep", "horse", "fox", "wolf", "duck", "hen", "goat", "pig", "deer", "frog"];
+    const HAND_OR_TRUNK_ANIMALS = ["monkey", "elephant"];
+    const FARM_ANIMALS = ["cow", "sheep", "horse", "duck", "hen", "goat", "pig"];
+    const WILD_ANIMALS = ["bear", "lion", "elephant", "monkey", "fox", "wolf", "deer"];
+    const INSECTS = ["bee", "butterfly"];
+    const HOME_PLACES = ["home", "kitchen", "table", "livingRoom", "bedroom", "floor", "yard"];
+    const SCHOOL_PLACES = ["school", "classroom", "library", "musicRoom"];
+    const PLAY_PLACES = ["home", "school", "classroom", "park", "playground", "garden", "yard", "livingRoom", "bedroom", "floor", "beach"];
+    const FOOD_PLACES = ["home", "kitchen", "table", "restaurant", "school", "classroom", "park", "yard", "garden", "beach", "farm"];
+    const CARE_PLACES = ["home", "hospital", "clinic", "dentist", "pharmacy", "school", "classroom"];
+    const OUTDOOR_PLACES = ["park", "playground", "garden", "yard", "beach", "forest", "mountain", "farm", "zoo", "lake"];
+    const SHOP_PLACES = ["shop", "supermarket", "bakery", "pharmacy"];
+    const QUIET_WORK_PLACES = ["home", "school", "classroom", "library", "table", "office", "livingRoom", "bedroom"];
+    const FOOD_OBJECTS = ["apple", "banana", "bread", "cake", "carrot", "iceCream", "pizza"];
+    const SEE_OBJECTS = ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"];
+    const HOLD_TAKE_OBJECTS = ["apple", "banana", "bread", "milk", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"];
+    const GIVE_OBJECTS = ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"];
+    const SEARCH_OBJECTS = ["ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "key", "gift", "umbrella", "puzzle", "toy", "phone", "box", "letter"];
+    const SHOP_OBJECTS = ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"];
+    const SELL_OBJECTS = SHOP_OBJECTS.filter((id) => id !== "key");
+    const PLANT_CARE_SUBJECTS = [...CHILDREN, ...FAMILY_ADULTS, ...SCHOOL_ADULTS, "gardener"];
+    const KITCHEN_SUBJECTS = [...CHILDREN, ...FAMILY_ADULTS, ...SCHOOL_ADULTS, ...FOOD_ADULTS];
+    const mode3HumanSubjectIds = HUMANS;
+    const mode3AnimalSubjectIds = [...COMMON_ANIMALS, "fish"];
+    const mode3PlantCareSubjectIds = PLANT_CARE_SUBJECTS;
+    const mode3KitchenSubjectIds = KITCHEN_SUBJECTS;
+    const mode3CleanSubjectIds = [...CHILDREN, ...FAMILY_ADULTS, ...SCHOOL_ADULTS, ...FOOD_ADULTS, "gardener"];
     const mode3Rules = {
       eat: {
         subjects: [...mode3HumanSubjectIds, ...mode3AnimalSubjectIds],
@@ -1265,6 +1304,209 @@
         places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "sea", "zoo", "forest", "mountain", "lake", "stadium", "theater", "cinema", "restaurant"]
       }
     };
+
+    const mode4Rules = {
+      eat: {
+        subjects: [...HUMANS, ...COMMON_ANIMALS],
+        objects: FOOD_OBJECTS,
+        places: ["home", "kitchen", "table", "restaurant", "school", "classroom", "park", "playground", "garden", "yard", "beach", "farm", "zoo", "forest"]
+      },
+      drink: {
+        subjects: [...HUMANS, ...COMMON_ANIMALS],
+        objects: ["water", "milk"],
+        places: ["home", "kitchen", "table", "restaurant", "school", "classroom", "park", "playground", "garden", "yard", "beach", "farm", "zoo", "forest", "mountain", "pool"]
+      },
+      read: {
+        subjects: HUMANS,
+        objects: ["book", "letter", "name"],
+        places: ["home", "school", "classroom", "library", "table", "bed", "livingRoom", "bedroom", "office", "park", "garden", "beach"]
+      },
+      draw: {
+        subjects: HUMANS,
+        objects: ["flower", "tree", "star", "ball", "carToy", "doll", "toy", "bike"],
+        places: ["home", "school", "classroom", "table", "floor", "livingRoom", "bedroom", "park", "garden", "yard", "beach", "playground", "library", "zoo"]
+      },
+      hold: {
+        subjects: [...HUMANS, ...PETS, ...HAND_OR_TRUNK_ANIMALS],
+        objects: HOLD_TAKE_OBJECTS,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "kitchen", "table", "livingRoom", "bedroom", "shop", "supermarket", "zoo"]
+      },
+      push: {
+        subjects: [...HUMANS, ...PETS, ...HAND_OR_TRUNK_ANIMALS, "horse", "cow", "goat", "pig", "bear"],
+        objects: ["ball", "carToy", "chair", "bike", "box"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "floor", "farm", "zoo"]
+      },
+      pull: {
+        subjects: [...HUMANS, ...PETS, ...HAND_OR_TRUNK_ANIMALS, "horse", "cow", "goat"],
+        objects: ["chair", "bag", "bike", "box", "toy", "carToy"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "floor", "farm", "zoo"]
+      },
+      throw: {
+        subjects: HUMANS,
+        objects: ["ball", "hat", "shoe", "toy"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "stadium", "floor"]
+      },
+      give: {
+        subjects: HUMANS,
+        objects: GIVE_OBJECTS,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "kitchen", "table", "livingRoom", "bedroom", "restaurant", "shop", "supermarket", "bakery", "pharmacy", "hospital", "clinic"]
+      },
+      take: {
+        subjects: HUMANS,
+        objects: HOLD_TAKE_OBJECTS,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "kitchen", "table", "livingRoom", "bedroom", "shop", "supermarket", "bakery", "pharmacy", "restaurant", "office"]
+      },
+      see: {
+        subjects: [...HUMANS, ...COMMON_ANIMALS],
+        objects: SEE_OBJECTS,
+        places: allPlaceIds
+      },
+      touch: {
+        subjects: [...HUMANS, ...PETS, ...HAND_OR_TRUNK_ANIMALS],
+        objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "zoo", "farm", "kitchen", "table", "livingRoom", "bedroom", "floor", "shop", "supermarket"]
+      },
+      wash: {
+        subjects: HUMANS,
+        objects: ["apple", "banana", "ball", "carToy", "doll", "chair", "shoe", "bag", "key", "glass", "plate", "spoon", "fork", "toothbrush", "toy", "carrot"],
+        places: ["home", "kitchen", "bathroom", "table", "garden", "yard", "school", "classroom", "restaurant"]
+      },
+      feed: {
+        subjects: HUMANS,
+        objects: ["doll", "toy"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "garden", "yard", "farm", "zoo"]
+      },
+      cut: {
+        subjects: HUMANS,
+        objects: ["apple", "banana", "bread", "cake", "carrot", "pizza", "flower"],
+        places: ["home", "kitchen", "table", "restaurant", "school", "classroom", "garden", "yard"]
+      },
+      open: {
+        subjects: HUMANS,
+        objects: ["book", "bag", "gift", "umbrella", "box", "letter"],
+        places: ["home", "school", "classroom", "library", "table", "livingRoom", "bedroom", "shop", "supermarket", "postOffice", "park", "yard"]
+      },
+      make: {
+        subjects: HUMANS,
+        objects: ["cake", "pizza", "puzzle", "toy", "gift"],
+        places: ["home", "school", "classroom", "kitchen", "table", "livingRoom", "restaurant", "bakery", "garden", "yard"]
+      },
+      hug: {
+        subjects: HUMANS,
+        objects: ["doll", "toy", "gift"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "park", "playground", "garden", "yard", "hospital", "clinic"]
+      },
+      shout: {
+        subjects: HUMANS,
+        objects: ["name"],
+        places: ["home", "school", "classroom", "park", "playground", "yard", "garden", "beach", "forest", "mountain", "stadium"]
+      },
+      search: {
+        subjects: [...HUMANS, ...PETS],
+        objects: SEARCH_OBJECTS,
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "livingRoom", "bedroom", "kitchen", "bathroom", "floor", "shop", "supermarket", "forest"]
+      },
+      write: {
+        subjects: HUMANS,
+        objects: ["letter", "name"],
+        places: ["home", "school", "classroom", "library", "table", "livingRoom", "bedroom", "office", "postOffice"]
+      },
+      plant: {
+        subjects: PLANT_CARE_SUBJECTS,
+        objects: ["flower", "tree"],
+        places: ["garden", "yard", "farm", "park", "school", "classroom", "home"]
+      },
+      water: {
+        subjects: PLANT_CARE_SUBJECTS,
+        objects: ["flower", "tree"],
+        places: ["garden", "yard", "farm", "park", "school", "classroom", "home"]
+      },
+      collect: {
+        subjects: HUMANS,
+        objects: ["ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "key", "gift", "plate", "spoon", "fork", "umbrella", "puzzle", "toy", "phone", "box", "letter", "flower", "carrot"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "kitchen", "table", "floor", "garden", "yard", "park", "playground", "beach", "forest", "farm"]
+      },
+      wear: {
+        subjects: HUMANS,
+        objects: ["hat", "shoe", "bag"],
+        places: ["home", "school", "classroom", "bedroom", "livingRoom", "park", "playground", "yard", "garden", "beach", "shop", "supermarket"]
+      },
+      buy: {
+        subjects: HUMANS,
+        objects: SHOP_OBJECTS,
+        places: SHOP_PLACES
+      },
+      sell: {
+        subjects: [...CHILDREN, ...FAMILY_ADULTS, ...SCHOOL_ADULTS, ...FOOD_ADULTS, "gardener"],
+        objects: SELL_OBJECTS,
+        places: ["shop", "supermarket", "bakery", "pharmacy", "farm"]
+      },
+      cook: {
+        subjects: KITCHEN_SUBJECTS,
+        objects: ["carrot", "pizza", "cake"],
+        places: ["home", "kitchen", "restaurant", "school", "classroom", "table"]
+      },
+      bake: {
+        subjects: KITCHEN_SUBJECTS,
+        objects: ["bread", "cake", "pizza", "carrot"],
+        places: ["home", "kitchen", "restaurant", "bakery", "school", "classroom"]
+      },
+      play: {
+        subjects: HUMANS,
+        objects: ["drum", "guitar", "toy", "puzzle"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "livingRoom", "bedroom", "floor", "beach", "musicRoom", "stadium"]
+      },
+      clean: {
+        subjects: HUMANS,
+        objects: ["ball", "carToy", "doll", "chair", "shoe", "bag", "key", "glass", "plate", "spoon", "fork", "toothbrush", "toy", "phone", "computer", "bike", "box"],
+        places: ["home", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "school", "classroom", "restaurant", "shop", "office", "yard", "garden"]
+      },
+      repair: {
+        subjects: [...CHILDREN, ...FAMILY_ADULTS, ...SCHOOL_ADULTS, ...FOOD_ADULTS, "police", "firefighter", "gardener"],
+        objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "yard", "garden", "shop", "office"]
+      },
+      carry: {
+        subjects: [...HUMANS, ...HAND_OR_TRUNK_ANIMALS],
+        objects: ["bag", "box", "gift", "book", "ball", "toy", "doll", "puzzle", "drum", "guitar", "chair", "plate", "glass", "umbrella", "shoe"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "farm", "zoo", "shop", "supermarket", "station", "bus"]
+      },
+      hide: {
+        subjects: HUMANS,
+        objects: SEARCH_OBJECTS,
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "floor", "park", "playground", "garden", "yard"]
+      },
+      find: {
+        subjects: [...HUMANS, ...PETS],
+        objects: [...SEARCH_OBJECTS, "flower", "hat"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "floor", "park", "playground", "garden", "yard", "beach", "forest", "shop", "supermarket"]
+      },
+      use: {
+        subjects: HUMANS,
+        objects: ["pencil", "key", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "drum", "guitar", "phone", "computer", "bike"],
+        places: ["home", "school", "classroom", "library", "bathroom", "kitchen", "table", "office", "park", "yard", "musicRoom", "bus", "station"]
+      },
+      close: {
+        subjects: HUMANS,
+        objects: ["book", "bag", "umbrella", "box"],
+        places: ["home", "school", "classroom", "library", "table", "livingRoom", "bedroom", "park", "yard", "shop", "supermarket"]
+      },
+      fill: {
+        subjects: HUMANS,
+        objects: ["glass", "box", "bag", "plate"],
+        places: ["home", "kitchen", "table", "school", "classroom", "restaurant", "shop", "supermarket", "yard", "garden"]
+      },
+      empty: {
+        subjects: HUMANS,
+        objects: ["glass", "box", "bag", "plate"],
+        places: ["home", "kitchen", "table", "school", "classroom", "restaurant", "shop", "supermarket", "yard", "garden", "bathroom"]
+      },
+      photograph: {
+        subjects: HUMANS,
+        objects: ["flower", "tree", "star", "ball", "carToy", "doll", "gift", "cake", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "letter"],
+        places: ["home", "school", "classroom", "park", "playground", "garden", "yard", "beach", "sea", "zoo", "forest", "mountain", "lake", "stadium", "theater", "cinema", "restaurant", "shop"]
+      }
+    };
     const app = document.querySelector("#app");
     const state = {
       mode: 4,
@@ -1301,6 +1543,38 @@
       const rule = mode3Rules[verb.id];
       if (!rule) return false;
       return rule.subjects.includes(subject.id) && rule.places.includes(place.id);
+    }
+
+    function mode4RuleFor(verb) {
+      return mode4Rules[verb.id] || null;
+    }
+
+    function idsToItems(list, ids) {
+      return ids.map((id) => itemById(list, id)).filter(Boolean);
+    }
+
+    function isSubjectAllowedForVerb(subject, verb) {
+      const rule = mode4RuleFor(verb);
+      if (state.mode >= 4 && rule) return rule.subjects.includes(subject.id);
+      return hasGroup(subject, verb.subjectGroups);
+    }
+
+    function objectIdsForVerb(verb) {
+      const rule = mode4RuleFor(verb);
+      return state.mode >= 4 && rule ? rule.objects : verb.objects;
+    }
+
+    function placeIdsForVerb(verb) {
+      const rule = mode4RuleFor(verb);
+      return state.mode >= 4 && rule ? rule.places : verb.places;
+    }
+
+    function isMode4Meaningful(subject, verb, object, place) {
+      const rule = mode4RuleFor(verb);
+      if (!rule) {
+        return hasGroup(subject, verb.subjectGroups) && verb.objects.includes(object.id) && verb.places.includes(place.id);
+      }
+      return rule.subjects.includes(subject.id) && rule.objects.includes(object.id) && rule.places.includes(place.id);
     }
 
     function sentenceWith(sentence, key, value) {
@@ -1346,28 +1620,26 @@
       const { subject, verb, object, place, reason } = sentence;
       if (!subject || !verb || !place) return false;
       if (!verb.active) return false;
-      if (!hasGroup(subject, verb.subjectGroups)) return false;
 
       const requiresObject = state.mode >= 4;
       const requiresReason = state.mode === 5;
 
       if (!requiresObject) {
+        if (!hasGroup(subject, verb.subjectGroups)) return false;
         if (!subject.places.includes(place.id)) return false;
         return isMode3Meaningful(subject, verb, place);
       }
 
-      if (!verb.places.includes(place.id)) return false;
+      if (!object) return false;
       if (!subject.places.includes(place.id)) return false;
-
-      if (requiresObject) {
-        if (!object) return false;
-        if (!verb.objects.includes(object.id)) return false;
-      }
+      if (!isMode4Meaningful(subject, verb, object, place)) return false;
 
       if (requiresReason) {
         if (!reason) return false;
         if (!allowedReasonIdsFor(sentence).includes(reason.id)) return false;
       }
+
+      const hasMode4Rule = Boolean(mode4RuleFor(verb));
 
       if (subject.id === "fish") {
         if (!["sea", "lake", "pool"].includes(place.id)) return false;
@@ -1392,14 +1664,14 @@
         return true;
       }
 
-      if (verb.id === "drink") {
+      if (!hasMode4Rule && verb.id === "drink") {
         if (subject.groups.includes("human")) return true;
         if (!requiresObject) return true;
         if (["dog", "cat"].includes(subject.id)) return ["water", "milk"].includes(object.id);
         return object.id === "water";
       }
 
-      if (verb.id === "eat" && subject.groups.includes("animal")) {
+      if (!hasMode4Rule && verb.id === "eat" && subject.groups.includes("animal")) {
         if (!requiresObject) return true;
         if (subject.groups.includes("wild")) return ["apple", "bread"].includes(object.id);
         if (subject.groups.includes("farm")) return ["apple", "bread", "carrot"].includes(object.id);
@@ -1421,7 +1693,7 @@
           if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
         }
 
-        if (verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
+        if (!hasMode4Rule && verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
           return false;
         }
 
@@ -1509,10 +1781,9 @@
       const activeVerbs = verbs.filter((verb) => verb.active);
       const options = [];
       for (const verb of activeVerbs) {
-        if (!hasGroup(subject, verb.subjectGroups)) continue;
-        const objectsToTry = state.mode >= 4 ? verb.objects.map((id) => itemById(objects, id)).filter(Boolean) : [null];
-        const placesToTry = verb.places
-          .map((id) => itemById(places, id))
+        if (!isSubjectAllowedForVerb(subject, verb)) continue;
+        const objectsToTry = state.mode >= 4 ? idsToItems(objects, objectIdsForVerb(verb)) : [null];
+        const placesToTry = idsToItems(places, placeIdsForVerb(verb))
           .filter((place) => place && subject.places.includes(place.id));
         for (const object of objectsToTry) {
           for (const place of placesToTry) {
