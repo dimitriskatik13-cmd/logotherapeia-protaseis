@@ -1062,11 +1062,36 @@
       glass: ["home", "school", "kitchen", "table", "restaurant", "classroom"]
     };
 
+    const collectPlaces = {
+      toy: ["home", "livingRoom", "bedroom", "floor", "school", "classroom", "garden", "yard", "farm", "park", "playground", "beach"],
+      ball: ["home", "livingRoom", "bedroom", "floor", "school", "classroom", "garden", "yard", "farm", "park", "playground", "beach"],
+      carToy: ["home", "livingRoom", "bedroom", "floor", "park", "playground"],
+      doll: ["home", "livingRoom", "bedroom", "floor", "park", "playground"],
+      book: ["home", "livingRoom", "bedroom", "floor", "school", "classroom"],
+      pencil: ["home", "livingRoom", "bedroom", "floor", "school", "classroom"],
+      shoe: ["home", "livingRoom", "bedroom", "floor", "beach"],
+      bag: ["home", "livingRoom", "bedroom", "floor", "school", "classroom"],
+      key: ["home", "livingRoom", "bedroom", "floor"],
+      gift: ["home", "livingRoom", "bedroom", "floor"],
+      puzzle: ["home", "livingRoom", "bedroom", "floor", "school", "classroom", "park", "playground"],
+      phone: ["home", "livingRoom", "bedroom", "floor"],
+      box: ["home", "livingRoom", "bedroom", "floor", "school", "classroom", "kitchen", "table", "restaurant", "garden", "yard", "farm"],
+      letter: ["home", "livingRoom", "bedroom", "floor", "school", "classroom"],
+      plate: ["kitchen", "table", "restaurant"],
+      glass: ["kitchen", "table", "restaurant"],
+      spoon: ["kitchen", "table", "restaurant"],
+      fork: ["kitchen", "table", "restaurant"],
+      flower: ["garden", "yard", "farm"],
+      carrot: ["garden", "yard", "farm"],
+      umbrella: ["beach"]
+    };
+
     const semanticPlaceLimits = {
       buy: buySellPlaces,
       sell: buySellPlaces,
       see: visiblePlaces,
       touch: touchPlaces,
+      collect: collectPlaces,
       search: searchPlaces,
       find: searchPlaces,
       use: usePlaces,
@@ -1084,11 +1109,11 @@
       throw: ["playing", "practice", "wantsWin", "fun", "bored"],
       give: ["love", "helpsSomeone", "guests"],
       take: ["need", "readyToGo", "goingOut", "shoppingList", "happy"],
-      see: ["carefulLook", "wantsLearn", "prettyThing", "wantsShow", "wantsRemember"],
+      see: ["carefulLook", "prettyThing"],
       touch: ["wantsLearn", "carefulLook", "playing", "happy", "needsHelp"],
       wash: ["dirty", "needsClean", "fellDown", "bathTime"],
       feed: ["animalHungry", "care", "love", "pretendPlay", "playing"],
-      cut: ["mealTime", "hungry", "guests", "tableReady"],
+      cut: ["mealTime", "hungry", "guests"],
       open: ["locked", "wantsLearn", "guests", "needsHelp"],
       make: ["happy", "wantsLearn", "guests"],
       hug: ["love", "happy", "scared", "care"],
@@ -1097,7 +1122,7 @@
       write: ["wantsLearn", "practice", "schoolWork", "sendMail", "love"],
       plant: ["plantCare", "natureCare", "sunny", "wantsLearn"],
       water: ["plantCare", "needsWater", "sunny", "hot", "natureCare"],
-      collect: ["fun", "playing", "guests", "needsHelp"],
+      collect: ["playing", "needsHelp"],
       wear: ["cold", "rainy", "readyToGo", "goingOut"],
       buy: ["shoppingList", "guests", "need"],
       sell: ["workTime", "shoppingList", "guests", "helpsSomeone"],
@@ -1153,6 +1178,8 @@
       { verbs: ["give"], objects: ["toothbrush", "soap"], reasons: ["care"] },
       { verbs: ["give"], objects: ["key", "umbrella", "pencil"], reasons: ["need"] },
       { verbs: ["give"], objectTags: ["food"], reasons: ["hungry"] },
+      { verbs: ["give"], objects: ["gift", "toy", "doll", "book", "flower"], reasons: ["wantsShow"] },
+      { verbs: ["give", "take"], objects: ["plate", "glass", "spoon", "fork"], reasons: ["tableReady"] },
       { verbs: ["take"], objects: ["book", "pencil", "bag"], reasons: ["schoolWork"] },
       { verbs: ["take"], objects: ["umbrella"], reasons: ["rainProtection"] },
       { verbs: ["take"], objects: ["hat"], reasons: ["sunProtection"] },
@@ -1163,6 +1190,7 @@
       { verbs: ["see"], objectTags: ["fixable"], reasons: ["broken", "needsRepair"] },
       { verbs: ["see"], objects: ["gift", "cake"], reasons: ["birthday", "happy"] },
       { verbs: ["see"], objectTags: ["toy", "nature", "gift"], reasons: ["happy"] },
+      { verbs: ["see"], objects: ["book", "letter", "name", "tree", "flower", "star"], places: ["school", "classroom", "library"], reasons: ["wantsLearn"] },
       { verbs: ["touch"], objects: ["flower", "tree", "gift"], reasons: ["prettyThing"] },
       { verbs: ["touch"], objectTags: ["fixable"], reasons: ["broken", "needsRepair"] },
       { verbs: ["wash"], objects: ["apple", "banana", "carrot", "plate", "fork", "spoon"], reasons: ["mealTime"] },
@@ -1193,11 +1221,10 @@
       { verbs: ["plant"], places: ["garden", "yard", "farm"], reasons: ["happy"] },
       { verbs: ["water"], places: ["school", "classroom"], reasons: ["schoolWork"] },
       { verbs: ["water"], places: ["farm"], reasons: ["farmWork"] },
-      { verbs: ["collect"], objects: ["flower", "carrot"], reasons: ["plantCare", "natureCare"] },
+      { verbs: ["collect"], objects: ["flower", "carrot"], reasons: ["plantCare"] },
       { verbs: ["collect"], places: ["farm"], reasons: ["farmWork"] },
-      { verbs: ["collect"], objects: ["plate", "spoon", "fork"], reasons: ["tableReady"] },
+      { verbs: ["collect"], objects: ["plate", "glass", "spoon", "fork"], reasons: ["tableReady", "guests"] },
       { verbs: ["collect"], places: ["home", "school", "classroom", "livingRoom", "bedroom", "floor"], reasons: ["needsClean"] },
-      { verbs: ["collect"], objects: ["gift", "toy"], reasons: ["birthday"] },
       { verbs: ["wear"], objects: ["hat"], reasons: ["sunProtection"] },
       { verbs: ["wear"], objects: ["bag"], reasons: ["schoolWork"] },
       { verbs: ["wear"], objects: ["shoe", "hat", "bag"], reasons: ["walk"] },
@@ -1217,7 +1244,7 @@
       { verbs: ["sell"], reasons: ["need"] },
       { verbs: ["sell"], objects: ["flower"], reasons: ["plantCare"] },
       { verbs: ["cook", "bake"], objects: ["cake", "pizza"], reasons: ["birthday", "party"] },
-      { verbs: ["cook"], reasons: ["tableReady", "helpsSomeone"] },
+      { verbs: ["cook"], reasons: ["helpsSomeone"] },
       { verbs: ["bake"], reasons: ["helpsSomeone"] },
       { verbs: ["cook", "bake"], places: ["school", "classroom"], reasons: ["wantsLearn"] },
       { verbs: ["play"], objects: ["toy", "puzzle"], reasons: ["wantsWin", "schoolWork"] },
@@ -1266,6 +1293,20 @@
       { verbs: ["photograph"], objectTags: ["fixable"], reasons: ["broken", "needsRepair"] }
     ];
 
+    const ANIMAL_BLOCKED_REASONS = ["wantsShow", "wantsRemember", "wantsLearn", "schoolWork", "practice", "likesBooks", "sendMail", "phoneCall", "workTime", "shoppingList", "giftWrap", "tableReady", "teethCare", "appointment"];
+    const ANIMAL_BASIC_REASONS = ["hungry", "thirsty", "hot", "cold", "scared", "playing", "happy", "needsWater"];
+    const SEE_LEARNING_OBJECTS = ["book", "letter", "name", "tree", "flower", "star"];
+    const SEE_LEARNING_PLACES = ["school", "classroom", "library"];
+    const WANTS_SHOW_VERBS = ["draw", "photograph", "give", "hold"];
+    const WANTS_REMEMBER_VERBS = ["photograph", "write", "draw"];
+    const FUN_VERBS = ["play", "throw", "push", "pull", "hide", "draw"];
+    const COLLECT_PLAY_OBJECTS = ["ball", "toy", "puzzle", "doll", "carToy"];
+    const COLLECT_PLANT_OBJECTS = ["flower", "carrot"];
+    const COLLECT_TABLE_OBJECTS = ["plate", "glass", "spoon", "fork"];
+    const COLLECT_CLEAN_OBJECTS = ["toy", "ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "plate", "glass", "spoon", "fork", "box"];
+    const COLLECT_FARM_OBJECTS = ["carrot", "flower", "box"];
+    const TABLE_READY_OBJECTS = ["plate", "glass", "spoon", "fork"];
+
     function activeCategories() {
       return categories.filter((category) => category.modes.includes(state.mode));
     }
@@ -1305,7 +1346,7 @@
     const FOOD_OBJECTS = ["apple", "banana", "bread", "cake", "carrot", "iceCream", "pizza"];
     const SEE_OBJECTS = ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"];
     const HOLD_TAKE_OBJECTS = ["apple", "banana", "bread", "milk", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"];
-    const GIVE_OBJECTS = ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"];
+    const GIVE_OBJECTS = ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"];
     const SEARCH_OBJECTS = ["ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "key", "gift", "umbrella", "puzzle", "toy", "phone", "box", "letter"];
     const SHOP_OBJECTS = ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"];
     const SELL_OBJECTS = SHOP_OBJECTS.filter((id) => id !== "key");
@@ -1505,8 +1546,8 @@
       },
       collect: {
         subjects: HUMANS,
-        objects: ["ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "key", "gift", "plate", "spoon", "fork", "umbrella", "puzzle", "toy", "phone", "box", "letter", "flower", "carrot"],
-        places: ["home", "school", "classroom", "livingRoom", "bedroom", "kitchen", "table", "floor", "garden", "yard", "park", "playground", "beach", "forest", "farm"]
+        objects: ["ball", "carToy", "doll", "book", "pencil", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "umbrella", "puzzle", "toy", "phone", "box", "letter", "flower", "carrot"],
+        places: ["home", "school", "classroom", "livingRoom", "bedroom", "kitchen", "table", "floor", "garden", "yard", "park", "playground", "beach", "farm", "restaurant"]
       },
       wear: {
         subjects: HUMANS,
@@ -1681,6 +1722,77 @@
       return true;
     }
 
+    function isAnimalSubject(subject) {
+      return Boolean(subject?.groups?.includes("animal"));
+    }
+
+    function isHumanSubject(subject) {
+      return Boolean(subject?.groups?.includes("human"));
+    }
+
+    function isAllowedSeeReason(subject, object, place, reasonId) {
+      if (isAnimalSubject(subject)) return false;
+      if (["wantsShow", "wantsRemember"].includes(reasonId)) return false;
+      if (["carefulLook", "prettyThing"].includes(reasonId)) return true;
+      if (reasonId === "wantsLearn") {
+        return isHumanSubject(subject) && SEE_LEARNING_PLACES.includes(place.id) && SEE_LEARNING_OBJECTS.includes(object.id);
+      }
+      return false;
+    }
+
+    function isAllowedCollectReason(object, place, reasonId) {
+      if (reasonId === "fun") return false;
+      if (reasonId === "playing") return COLLECT_PLAY_OBJECTS.includes(object.id);
+      if (reasonId === "plantCare") return COLLECT_PLANT_OBJECTS.includes(object.id);
+      if (reasonId === "guests") return COLLECT_TABLE_OBJECTS.includes(object.id);
+      if (reasonId === "needsClean") return COLLECT_CLEAN_OBJECTS.includes(object.id);
+      if (reasonId === "farmWork") return place.id === "farm" && COLLECT_FARM_OBJECTS.includes(object.id);
+      return reasonId === "needsHelp";
+    }
+
+    function isAllowedTableReadyReason(verb, object, reasonId) {
+      if (reasonId !== "tableReady") return true;
+      if (["give", "take", "collect"].includes(verb.id)) return TABLE_READY_OBJECTS.includes(object.id);
+      if (verb.id === "fill") return ["glass", "plate"].includes(object.id);
+      return false;
+    }
+
+    function isReasonAllowedForContext(sentence, reasonId) {
+      const { subject, verb, object, place } = sentence;
+      if (!subject || !verb || !object || !place) return false;
+
+      if (isAnimalSubject(subject)) {
+        if (ANIMAL_BLOCKED_REASONS.includes(reasonId)) return false;
+        if (!ANIMAL_BASIC_REASONS.includes(reasonId)) return false;
+      }
+
+      if (verb.id === "see") return isAllowedSeeReason(subject, object, place, reasonId);
+
+      if (reasonId === "wantsShow") {
+        return isHumanSubject(subject) && WANTS_SHOW_VERBS.includes(verb.id);
+      }
+
+      if (reasonId === "wantsRemember") {
+        if (!isHumanSubject(subject)) return false;
+        if (WANTS_REMEMBER_VERBS.includes(verb.id)) return true;
+        return verb.id === "read" && ["book", "letter"].includes(object.id);
+      }
+
+      if (verb.id === "cut") {
+        return ["mealTime", "hungry", "guests", "birthday", "cookingNeed"].includes(reasonId);
+      }
+
+      if (verb.id === "collect") {
+        return isAllowedCollectReason(object, place, reasonId);
+      }
+
+      if (reasonId === "fun") {
+        return FUN_VERBS.includes(verb.id);
+      }
+
+      return isAllowedTableReadyReason(verb, object, reasonId);
+    }
+
     function allowedReasonIdsFor(sentence) {
       const { verb } = sentence;
       if (!verb) return [];
@@ -1690,12 +1802,78 @@
           rule.reasons.forEach((reasonId) => allowed.add(reasonId));
         }
       });
-      return [...allowed].filter((reasonId) => reasonIdSet.has(reasonId));
+      return [...allowed].filter((reasonId) => reasonIdSet.has(reasonId) && isReasonAllowedForContext(sentence, reasonId));
     }
 
     function allowedReasonsFor(sentence) {
       const allowedIds = new Set(allowedReasonIdsFor(sentence));
       return reasons.filter((reason) => allowedIds.has(reason.id));
+    }
+
+    function passesMode4SemanticDetails(subject, verb, object, place) {
+      const hasMode4Rule = Boolean(mode4RuleFor(verb));
+
+      if (subject.id === "fish") {
+        if (!["sea", "lake", "pool"].includes(place.id)) return false;
+        if (!["eat", "drink", "see"].includes(verb.id)) return false;
+        if (verb.id === "eat") return object.id === "bread";
+        if (verb.id === "see") return ["bread", "water"].includes(object.id);
+        if (verb.id === "drink") return object.id === "water";
+        return false;
+      }
+
+      if (subject.groups.includes("insect")) {
+        if (!insectPlaces.includes(place.id)) return false;
+        if (!["search", "see"].includes(verb.id)) return false;
+        if (verb.id === "search") return object.id === "flower";
+        if (verb.id === "see") return ["flower", "tree"].includes(object.id);
+        return false;
+      }
+
+      if (!hasMode4Rule && verb.id === "drink") {
+        if (subject.groups.includes("human")) return true;
+        if (["dog", "cat"].includes(subject.id)) return ["water", "milk"].includes(object.id);
+        return object.id === "water";
+      }
+
+      if (!hasMode4Rule && verb.id === "eat" && subject.groups.includes("animal")) {
+        if (subject.groups.includes("wild")) return ["apple", "bread"].includes(object.id);
+        if (subject.groups.includes("farm")) return ["apple", "bread", "carrot"].includes(object.id);
+        return ["apple", "banana", "bread"].includes(object.id);
+      }
+
+      if (verb.id === "touch" && object.id === "tree" && ["dog", "cat", "mouse", "rabbit"].includes(subject.id)) {
+        return ["park", "garden", "forest"].includes(place.id);
+      }
+
+      if (verb.id === "see" && subject.groups.includes("wild") && ["apple", "bread"].includes(object.id) && subject.places.includes(place.id)) {
+        return true;
+      }
+
+      const placeLimits = semanticPlaceLimits[verb.id];
+      if (placeLimits) {
+        const allowedPlacesForObject = placeLimits[object.id];
+        if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
+      }
+
+      if (!hasMode4Rule && verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
+        return false;
+      }
+
+      if (verb.id === "see" && subject.groups.includes("animal") && object.id === "star") {
+        return ["park", "garden", "forest", "zoo", "beach", "mountain", "lake", "farm", "yard"].includes(place.id);
+      }
+
+      return true;
+    }
+
+    function isAllowedMode5(sentence) {
+      const { subject, verb, object, place, reason } = sentence;
+      if (!subject || !verb || !object || !place || !reason) return false;
+      if (!subject.places.includes(place.id)) return false;
+      if (!isMode4Meaningful(subject, verb, object, place)) return false;
+      if (!passesMode4SemanticDetails(subject, verb, object, place)) return false;
+      return allowedReasonIdsFor({ subject, verb, object, place }).includes(reason.id);
     }
 
     function isMeaningful(sentence) {
@@ -1715,73 +1893,10 @@
       if (!object) return false;
       if (!subject.places.includes(place.id)) return false;
       if (!isMode4Meaningful(subject, verb, object, place)) return false;
+      if (!passesMode4SemanticDetails(subject, verb, object, place)) return false;
 
       if (requiresReason) {
-        if (!reason) return false;
-        if (!allowedReasonIdsFor(sentence).includes(reason.id)) return false;
-      }
-
-      const hasMode4Rule = Boolean(mode4RuleFor(verb));
-
-      if (subject.id === "fish") {
-        if (!["sea", "lake", "pool"].includes(place.id)) return false;
-        if (!["eat", "drink", "see"].includes(verb.id)) return false;
-        if (requiresObject) {
-          if (verb.id === "eat") return object.id === "bread";
-          if (verb.id === "see") return ["bread", "water"].includes(object.id);
-          if (verb.id === "drink") return object.id === "water";
-          return false;
-        }
-        return true;
-      }
-
-      if (subject.groups.includes("insect")) {
-        if (!insectPlaces.includes(place.id)) return false;
-        if (!["search", "see"].includes(verb.id)) return false;
-        if (requiresObject) {
-          if (verb.id === "search") return object.id === "flower";
-          if (verb.id === "see") return ["flower", "tree"].includes(object.id);
-          return false;
-        }
-        return true;
-      }
-
-      if (!hasMode4Rule && verb.id === "drink") {
-        if (subject.groups.includes("human")) return true;
-        if (!requiresObject) return true;
-        if (["dog", "cat"].includes(subject.id)) return ["water", "milk"].includes(object.id);
-        return object.id === "water";
-      }
-
-      if (!hasMode4Rule && verb.id === "eat" && subject.groups.includes("animal")) {
-        if (!requiresObject) return true;
-        if (subject.groups.includes("wild")) return ["apple", "bread"].includes(object.id);
-        if (subject.groups.includes("farm")) return ["apple", "bread", "carrot"].includes(object.id);
-        return ["apple", "banana", "bread"].includes(object.id);
-      }
-
-      if (requiresObject) {
-        if (verb.id === "touch" && object.id === "tree" && ["dog", "cat", "mouse", "rabbit"].includes(subject.id)) {
-          return ["park", "garden", "forest"].includes(place.id);
-        }
-
-        if (verb.id === "see" && subject.groups.includes("wild") && ["apple", "bread"].includes(object.id) && subject.places.includes(place.id)) {
-          return true;
-        }
-
-        const placeLimits = semanticPlaceLimits[verb.id];
-        if (placeLimits) {
-          const allowedPlacesForObject = placeLimits[object.id];
-          if (!allowedPlacesForObject || !allowedPlacesForObject.includes(place.id)) return false;
-        }
-
-        if (!hasMode4Rule && verb.id === "find" && subject.groups.includes("animal") && !["ball", "toy"].includes(object.id)) {
-          return false;
-        }
-
-        if (verb.id === "see" && subject.groups.includes("animal") && object.id === "star") {
-          return ["park", "garden", "forest", "zoo", "beach", "mountain", "lake", "farm", "yard"].includes(place.id);
-        }
+        return isAllowedMode5(sentence);
       }
 
       return true;
