@@ -190,6 +190,10 @@
       grid-template-columns: 1fr;
     }
 
+    .slots.mode-5 {
+      gap: 10px;
+    }
+
     .slot-card {
       display: grid;
       gap: 10px;
@@ -302,6 +306,14 @@
       border-radius: 14px;
       background: #ffffff;
       color: var(--ink);
+    }
+
+    .slot-item .emoji {
+      font-size: clamp(3rem, 10vw, 4.4rem);
+    }
+
+    .slot-item .word {
+      font-size: clamp(1.05rem, 3.5vw, 1.35rem);
     }
 
     .emoji {
@@ -474,6 +486,10 @@
       gap: 6px;
     }
 
+    .legend.mode-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
     .legend-chip {
       min-height: 40px;
       border-radius: 999px;
@@ -514,12 +530,99 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
+      .slots.mode-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
       .slot-drop {
         min-height: 188px;
       }
 
       .word-card {
         min-height: 168px;
+      }
+    }
+
+    @media (min-width: 760px) {
+      .slots.mode-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .slots.mode-5 .slot-card {
+        gap: 7px;
+        padding: 8px;
+      }
+
+      .slots.mode-5 .slot-title strong {
+        gap: 6px;
+        font-size: 0.92rem;
+      }
+
+      .slots.mode-5 .slot-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.86rem;
+      }
+
+      .slots.mode-5 .slot-role {
+        font-size: 0.82rem;
+      }
+
+      .slots.mode-5 .slot-drop {
+        min-height: 112px;
+        border-width: 2px;
+        border-radius: 13px;
+      }
+
+      .slots.mode-5 .slot-empty {
+        gap: 5px;
+        padding: 10px 6px;
+        font-size: 0.82rem;
+      }
+
+      .slots.mode-5 .slot-empty-icon {
+        font-size: 1.65rem;
+      }
+
+      .slots.mode-5 .slot-item {
+        min-height: 102px;
+        gap: 4px;
+        padding: 8px 6px;
+      }
+
+      .slots.mode-5 .slot-item .emoji {
+        font-size: clamp(2.6rem, 5vw, 3.4rem);
+      }
+
+      .slots.mode-5 .slot-item .word {
+        font-size: clamp(0.9rem, 1.75vw, 1.08rem);
+        line-height: 1.04;
+      }
+
+      .slots.mode-5 .slot-action {
+        min-height: 56px;
+        border-radius: 13px;
+        font-size: 0.86rem;
+      }
+
+      .card-grid.mode-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .card-grid.mode-5 .word-card {
+        min-height: 124px;
+        padding: 9px 6px;
+      }
+
+      .card-grid.mode-5 .word-card .emoji {
+        font-size: clamp(3rem, 5.6vw, 4rem);
+      }
+
+      .card-grid.mode-5 .word-card .word {
+        font-size: clamp(0.98rem, 2vw, 1.18rem);
+        line-height: 1.05;
       }
     }
 
@@ -1576,17 +1679,17 @@
         </header>
 
         <section class="board" aria-label="Άσκηση πρότασης">
-          <div class="legend" aria-hidden="true">
+          <div class="legend mode-${state.mode}" aria-hidden="true">
             ${activeCategories().map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
           </div>
 
-          <div class="slots">
+          <div class="slots mode-${state.mode}">
             ${activeCategories().map(slotHtml).join("")}
           </div>
 
           <section class="tray" aria-label="Κάρτες επιλογής">
             <h2 class="section-title">Κάρτες</h2>
-            <div class="card-grid">
+            <div class="card-grid mode-${state.mode}">
               ${trayHtml}
             </div>
           </section>
