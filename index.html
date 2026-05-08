@@ -321,6 +321,19 @@
       line-height: 1;
     }
 
+    .emoji.custom-image {
+      display: block;
+      width: clamp(4rem, 14vw, 5.9rem);
+      height: clamp(4rem, 14vw, 5.9rem);
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .slot-item .emoji.custom-image {
+      width: clamp(3rem, 10vw, 4.4rem);
+      height: clamp(3rem, 10vw, 4.4rem);
+    }
+
     .word {
       overflow-wrap: anywhere;
       font-size: clamp(1.25rem, 4.4vw, 1.7rem);
@@ -595,6 +608,11 @@
         font-size: clamp(2.6rem, 5vw, 3.4rem);
       }
 
+      .slots.mode-5 .slot-item .emoji.custom-image {
+        width: clamp(2.6rem, 5vw, 3.4rem);
+        height: clamp(2.6rem, 5vw, 3.4rem);
+      }
+
       .slots.mode-5 .slot-item .word {
         font-size: clamp(0.9rem, 1.75vw, 1.08rem);
         line-height: 1.04;
@@ -618,6 +636,11 @@
 
       .card-grid.mode-5 .word-card .emoji {
         font-size: clamp(3rem, 5.6vw, 4rem);
+      }
+
+      .card-grid.mode-5 .word-card .emoji.custom-image {
+        width: clamp(3rem, 5.6vw, 4rem);
+        height: clamp(3rem, 5.6vw, 4rem);
       }
 
       .card-grid.mode-5 .word-card .word {
@@ -648,9 +671,41 @@
       { key: "reason", label: "ΓΙΑΤΙ", role: "Αιτία", color: "var(--reason)", icon: "💭", modes: [5] }
     ];
 
+    const imageAssets = {
+      park: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+          <rect width="160" height="160" rx="30" fill="#eaf7ff"/>
+          <circle cx="125" cy="31" r="16" fill="#ffd166"/>
+          <path d="M0 96 C24 83 44 90 64 82 C86 73 106 78 128 69 C142 63 153 67 160 72 V160 H0 Z" fill="#95d5b2"/>
+          <path d="M61 160 C66 130 78 108 95 91 C102 84 111 84 118 91 C98 112 89 135 86 160 Z" fill="#f5d49c"/>
+          <path d="M78 160 C81 136 90 116 105 96" fill="none" stroke="#d9a65f" stroke-width="4" stroke-linecap="round"/>
+          <g>
+            <rect x="26" y="71" width="9" height="39" rx="4" fill="#8d5a2b"/>
+            <circle cx="30" cy="55" r="20" fill="#2d9c63"/>
+            <circle cx="48" cy="67" r="15" fill="#40b86a"/>
+            <circle cx="15" cy="69" r="14" fill="#37a86b"/>
+          </g>
+          <g>
+            <rect x="122" y="70" width="8" height="40" rx="4" fill="#8d5a2b"/>
+            <circle cx="126" cy="55" r="19" fill="#2f9e44"/>
+            <circle cx="141" cy="68" r="14" fill="#51b96b"/>
+            <circle cx="111" cy="69" r="14" fill="#37a86b"/>
+          </g>
+          <g>
+            <rect x="43" y="102" width="54" height="9" rx="4" fill="#7b4f2a"/>
+            <rect x="48" y="114" width="44" height="8" rx="4" fill="#9a6a3a"/>
+            <rect x="49" y="111" width="6" height="22" rx="3" fill="#5f3b20"/>
+            <rect x="86" y="111" width="6" height="22" rx="3" fill="#5f3b20"/>
+          </g>
+          <path d="M13 123 C25 116 35 116 47 123" fill="none" stroke="#2f7d32" stroke-width="5" stroke-linecap="round"/>
+          <path d="M111 121 C123 114 136 115 148 122" fill="none" stroke="#2f7d32" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      `)}`
+    };
+
     const places = [
       { id: "home", text: "στο σπίτι", emoji: "🏠" },
-      { id: "park", text: "στο πάρκο", emoji: "🌳" },
+      { id: "park", text: "στο πάρκο", emoji: "🌳", image: imageAssets.park },
       { id: "school", text: "στο σχολείο", emoji: "🏫" },
       { id: "beach", text: "στην παραλία", emoji: "🏖️" },
       { id: "garden", text: "στον κήπο", emoji: "🌷" },
@@ -2155,12 +2210,19 @@
       render();
     }
 
+    function visualHtml(item) {
+      if (item.image) {
+        return `<img class="emoji custom-image" src="${item.image}" alt="" aria-hidden="true" draggable="false">`;
+      }
+      return `<span class="emoji" aria-hidden="true">${item.emoji}</span>`;
+    }
+
     function cardHtml(card) {
       const category = categories.find((item) => item.key === card.category);
       const selectedClass = card.cardId === state.selectedCardId ? " selected" : "";
       return `
         <button class="word-card${selectedClass}" type="button" data-card-id="${card.cardId}" aria-label="${category.label}: ${card.item.text}">
-          <span class="emoji" aria-hidden="true">${card.item.emoji}</span>
+          ${visualHtml(card.item)}
           <span class="word">${card.item.text}</span>
         </button>
       `;
@@ -2174,7 +2236,7 @@
       const wrongClass = state.wrongSlot === category.key ? " wrong" : "";
       const content = card ? `
         <button class="slot-item" type="button" data-remove-slot="${category.key}" aria-label="Αφαίρεση: ${card.item.text}">
-          <span class="emoji" aria-hidden="true">${card.item.emoji}</span>
+          ${visualHtml(card.item)}
           <span class="word">${card.item.text}</span>
         </button>
       ` : `
