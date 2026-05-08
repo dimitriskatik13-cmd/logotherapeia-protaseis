@@ -770,6 +770,40 @@
           <path d="M51 33 H109" stroke="#7c2d12" stroke-width="10" stroke-linecap="round"/>
           <path d="M61 31 H99" stroke="#fed7aa" stroke-width="5" stroke-linecap="round"/>
         </svg>
+      `)}`,
+      thirsty: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+          <rect width="160" height="160" rx="30" fill="#ecfeff"/>
+          <circle cx="72" cy="63" r="26" fill="#ffd7b5"/>
+          <path d="M50 51 C56 35 85 35 94 51 C83 47 65 47 50 51 Z" fill="#7c3aed"/>
+          <circle cx="63" cy="62" r="3" fill="#334155"/>
+          <circle cx="80" cy="62" r="3" fill="#334155"/>
+          <path d="M62 76 C68 72 75 72 81 76" fill="none" stroke="#334155" stroke-width="4" stroke-linecap="round"/>
+          <path d="M40 108 C48 88 95 88 104 108 L98 132 H47 Z" fill="#38bdf8"/>
+          <path d="M105 36 C105 36 126 60 126 76 C126 91 116 101 105 101 C94 101 84 91 84 76 C84 60 105 36 105 36 Z" fill="#0ea5e9"/>
+          <path d="M100 57 C96 65 94 72 95 80" fill="none" stroke="#bae6fd" stroke-width="6" stroke-linecap="round"/>
+          <rect x="109" y="96" width="25" height="45" rx="10" fill="#67e8f9"/>
+          <rect x="113" y="88" width="17" height="12" rx="5" fill="#0891b2"/>
+          <path d="M114 113 H130" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      `)}`,
+      likesBooks: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+          <rect width="160" height="160" rx="30" fill="#f5f3ff"/>
+          <circle cx="80" cy="54" r="23" fill="#ffd7b5"/>
+          <path d="M57 50 C61 35 74 30 88 34 C98 37 104 44 104 54 C91 48 73 48 57 50 Z" fill="#f59e0b"/>
+          <circle cx="72" cy="55" r="3" fill="#334155"/>
+          <circle cx="88" cy="55" r="3" fill="#334155"/>
+          <path d="M72 67 C77 72 84 72 89 67" fill="none" stroke="#334155" stroke-width="4" stroke-linecap="round"/>
+          <path d="M45 104 C52 83 108 83 115 104 L108 136 H52 Z" fill="#8b5cf6"/>
+          <path d="M37 82 C48 76 62 77 77 87 V126 C61 114 48 111 37 115 Z" fill="#ffffff"/>
+          <path d="M83 87 C98 77 112 76 123 82 V115 C112 111 99 114 83 126 Z" fill="#ffffff"/>
+          <path d="M77 87 V126" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"/>
+          <path d="M83 87 V126" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"/>
+          <path d="M48 94 H68" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round"/>
+          <path d="M92 94 H112" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round"/>
+          <path d="M109 37 C114 27 129 31 129 44 C129 56 113 64 109 68 C105 64 89 56 89 44 C89 31 104 27 109 37 Z" fill="#ef476f"/>
+        </svg>
       `)}`
     };
 
@@ -912,7 +946,7 @@
 
     const reasons = [
       { id: "hungry", text: "γιατί πεινάει", emoji: "🤤" },
-      { id: "thirsty", text: "γιατί διψάει", emoji: "💧" },
+      { id: "thirsty", text: "γιατί διψάει", emoji: "💧", image: imageAssets.thirsty },
       { id: "happy", text: "γιατί χαίρεται", emoji: "😊" },
       { id: "tired", text: "γιατί κουράστηκε", emoji: "😴" },
       { id: "cold", text: "γιατί κρυώνει", emoji: "🥶" },
@@ -940,7 +974,7 @@
       { id: "wantsCool", text: "γιατί θέλει δροσιά", emoji: "🧊" },
       { id: "schoolWork", text: "γιατί έχει μάθημα", emoji: "🎒" },
       { id: "practice", text: "γιατί κάνει εξάσκηση", emoji: "📝" },
-      { id: "likesBooks", text: "γιατί αγαπά τα βιβλία", emoji: "📖" },
+      { id: "likesBooks", text: "γιατί του αρέσουν τα βιβλία", emoji: "📖", image: imageAssets.likesBooks },
       { id: "wantsRemember", text: "γιατί θέλει να θυμάται", emoji: "🧠" },
       { id: "carefulLook", text: "γιατί κοιτάζει προσεκτικά", emoji: "🔎" },
       { id: "prettyThing", text: "γιατί βλέπει κάτι όμορφο", emoji: "✨" },
