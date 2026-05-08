@@ -108,36 +108,37 @@
 8. 🪆 **την κούκλα** `doll` | tags: toy, washable, holdable, pretendFood, hug
 9. 📚 **το βιβλίο** `book` | tags: school, openable, holdable
 10. ✏️ **το μολύβι** `pencil` | tags: school, holdable
-11. 🪑 **την καρέκλα** `chair` | tags: furniture, pushable, pullable, washable, fixable
-12. 🌸 **το λουλούδι** `flower` | tags: nature, draw, cuttable, holdable
-13. 🌳 **το δέντρο** `tree` | tags: nature, draw
-14. 🎩 **το καπέλο** `hat` | tags: clothing, throwable, holdable
-15. 👟 **το παπούτσι** `shoe` | tags: clothing, throwable, washable, fixable, holdable
-16. 👜 **την τσάντα** `bag` | tags: clothing, pullable, openable, washable, fixable, holdable
-17. 🔑 **το κλειδί** `key` | tags: tool, washable, holdable
-18. 🎁 **το δώρο** `gift` | tags: gift, openable, holdable, hug
-19. 🎂 **την τούρτα** `cake` | tags: food, cuttable, makeable
-20. ⭐ **τον αστέρα** `star` | tags: draw, far
-21. 🥤 **το ποτήρι** `glass` | tags: kitchen, washable, holdable, fillable
-22. 🍽️ **το πιάτο** `plate` | tags: kitchen, washable, holdable
-23. 🥄 **το κουτάλι** `spoon` | tags: kitchen, washable, holdable
-24. 🍴 **το πιρούνι** `fork` | tags: kitchen, washable, holdable
-25. 🪥 **την οδοντόβουρτσα** `toothbrush` | tags: bathroom, washable, holdable
-26. 🧼 **το σαπούνι** `soap` | tags: bathroom, holdable
-27. ☂️ **την ομπρέλα** `umbrella` | tags: clothing, openable, holdable
-28. 🧩 **το παζλ** `puzzle` | tags: toy, makeable, holdable
-29. 🧸 **το παιχνίδι** `toy` | tags: toy, washable, holdable, hug
-30. 🥁 **το τύμπανο** `drum` | tags: music, holdable
-31. 🎸 **την κιθάρα** `guitar` | tags: music, holdable
-32. 📱 **το τηλέφωνο** `phone` | tags: tool, fixable, holdable
-33. 💻 **τον υπολογιστή** `computer` | tags: tool, fixable
-34. 🚲 **το ποδήλατο** `bike` | tags: vehicle, pushable, fixable
-35. 📦 **το κουτί** `box` | tags: openable, fillable, holdable
-36. 🥕 **το καρότο** `carrot` | tags: food, cuttable, washable, holdable
-37. 🍦 **το παγωτό** `iceCream` | tags: food, holdable
-38. 🍕 **την πίτσα** `pizza` | tags: food, cuttable, makeable, holdable
-39. ✉️ **το γράμμα** `letter` | tags: school, openable, holdable
-40. 🔤 **το όνομα** `name` | tags: word
+11. 📄 **τα χαρτιά** `papers` | tags: school, holdable
+12. 🪑 **την καρέκλα** `chair` | tags: furniture, pushable, pullable, washable, fixable
+13. 🌸 **το λουλούδι** `flower` | tags: nature, draw, cuttable, holdable
+14. 🌳 **το δέντρο** `tree` | tags: nature, draw
+15. 🎩 **το καπέλο** `hat` | tags: clothing, throwable, holdable
+16. 👟 **το παπούτσι** `shoe` | tags: clothing, throwable, washable, fixable, holdable
+17. 👜 **την τσάντα** `bag` | tags: clothing, pullable, openable, washable, fixable, holdable
+18. 🔑 **το κλειδί** `key` | tags: tool, washable, holdable
+19. 🎁 **το δώρο** `gift` | tags: gift, openable, holdable, hug
+20. 🎂 **την τούρτα** `cake` | tags: food, cuttable, makeable
+21. ⭐ **τον αστέρα** `star` | tags: draw, far
+22. 🥤 **το ποτήρι** `glass` | tags: kitchen, washable, holdable, fillable
+23. 🍽️ **το πιάτο** `plate` | tags: kitchen, washable, holdable
+24. 🥄 **το κουτάλι** `spoon` | tags: kitchen, washable, holdable
+25. 🍴 **το πιρούνι** `fork` | tags: kitchen, washable, holdable
+26. 🪥 **την οδοντόβουρτσα** `toothbrush` | tags: bathroom, washable, holdable
+27. 🧼 **το σαπούνι** `soap` | tags: bathroom, holdable
+28. ☂️ **την ομπρέλα** `umbrella` | tags: clothing, openable, holdable
+29. 🧩 **το παζλ** `puzzle` | tags: toy, makeable, holdable
+30. 🧸 **το παιχνίδι** `toy` | tags: toy, washable, holdable, hug
+31. 🥁 **το τύμπανο** `drum` | tags: music, holdable
+32. 🎸 **την κιθάρα** `guitar` | tags: music, holdable
+33. 📱 **το τηλέφωνο** `phone` | tags: tool, fixable, holdable
+34. 💻 **τον υπολογιστή** `computer` | tags: tool, fixable
+35. 🚲 **το ποδήλατο** `bike` | tags: vehicle, pushable, fixable
+36. 📦 **το κουτί** `box` | tags: openable, fillable, holdable
+37. 🥕 **το καρότο** `carrot` | tags: food, cuttable, washable, holdable
+38. 🍦 **το παγωτό** `iceCream` | tags: food, holdable
+39. 🍕 **την πίτσα** `pizza` | tags: food, cuttable, makeable, holdable
+40. ✉️ **το γράμμα** `letter` | tags: school, openable, holdable
+41. 🔤 **το όνομα** `name` | tags: word
 
 ## ΠΟΥ - Τοπικοί Προσδιορισμοί
 
@@ -205,58 +206,63 @@
 19. 👥 **γιατί έχει επισκέπτες** `guests`
 20. 📣 **γιατί κάποιος φώναξε** `called`
 21. 🍽️ **γιατί είναι ώρα για φαγητό** `mealTime`
-22. 🥨 **γιατί θέλει σνακ** `snackTime`
+22. 🥨 **γιατί θέλει να φάει σνακ** `snackTime`
 23. 😋 **γιατί είναι νόστιμο** `tasty`
 24. 👅 **γιατί θέλει να δοκιμάσει** `wantsTry`
-25. 🏃 **γιατί έτρεξε πολύ** `afterRun`
+25. 🏃 **γιατί δίψασε μετά το τρέξιμο** `afterRun`
 26. 🚰 **γιατί χρειάζεται νερό** `needsWater`
 27. 🧊 **γιατί θέλει δροσιά** `wantsCool`
 28. 🎒 **γιατί έχει μάθημα** `schoolWork`
 29. 📝 **γιατί κάνει εξάσκηση** `practice`
 30. 📖 **γιατί αγαπά τα βιβλία** `likesBooks`
-31. 🧠 **γιατί θέλει να θυμάται** `wantsRemember`
+31. 🧠 **γιατί θέλει να το θυμάται** `wantsRemember`
 32. 🔎 **γιατί κοιτάζει προσεκτικά** `carefulLook`
 33. ✨ **γιατί βλέπει κάτι όμορφο** `prettyThing`
 34. 👉 **γιατί θέλει να δείξει κάτι** `wantsShow`
-35. 🤝 **γιατί χρειάζεται βοήθεια** `needsHelp`
-36. 🙌 **γιατί βοηθάει** `helpsSomeone`
-37. ⏰ **γιατί ετοιμάζεται** `readyToGo`
-38. 🚪 **γιατί βγαίνει έξω** `goingOut`
-39. 🫧 **γιατί θέλει καθαριότητα** `needsClean`
-40. ⬇️ **γιατί έπεσε κάτω** `fellDown`
-41. 🛡️ **γιατί θέλει ασφάλεια** `safety`
-42. 🪛 **γιατί χρειάζεται επισκευή** `needsRepair`
-43. ⚙️ **γιατί πρέπει να δουλέψει ξανά** `worksAgain`
-44. 🔐 **γιατί κάτι είναι κλειστό** `locked`
-45. 🔒 **γιατί πρέπει να μείνει ασφαλές** `closeSafe`
-46. 🫙 **γιατί είναι άδειο** `emptyInside`
-47. 🪣 **γιατί γέμισε πολύ** `tooFull`
-48. 🌿 **γιατί φροντίζει τα φυτά** `plantCare`
-49. ☀️ **γιατί έχει ήλιο** `sunny`
-50. 🎵 **γιατί έχει μουσική** `musicTime`
-51. 🎉 **γιατί έχει γιορτή** `party`
-52. 🧑‍🤝‍🧑 **γιατί είναι μαζί με άλλους** `together`
-53. 🐾 **γιατί το ζωάκι πεινάει** `animalHungry`
-54. 🎭 **γιατί κάνει παιχνίδι ρόλων** `pretendPlay`
-55. 🏅 **γιατί θέλει να κερδίσει** `wantsWin`
-56. 🎈 **γιατί θέλει διασκέδαση** `fun`
-57. 🩹 **γιατί χρειάζεται φροντίδα** `care`
-58. 📅 **γιατί έχει ραντεβού** `appointment`
-59. 🧾 **γιατί έχει λίστα** `shoppingList`
-60. 📬 **γιατί θέλει να στείλει γράμμα** `sendMail`
-61. 🎀 **γιατί ετοιμάζει έκπληξη** `giftWrap`
-62. 🚶 **γιατί πάει βόλτα** `walk`
-63. ☔ **γιατί χρειάζεται προστασία από τη βροχή** `rainProtection`
-64. 🧢 **γιατί χρειάζεται προστασία από τον ήλιο** `sunProtection`
-65. 😁 **γιατί φροντίζει τα δόντια** `teethCare`
-66. 🍽️ **γιατί στρώνει το τραπέζι** `tableReady`
-67. ☎️ **γιατί θέλει να μιλήσει** `phoneCall`
-68. 💼 **γιατί έχει δουλειά** `workTime`
-69. 🛁 **γιατί είναι ώρα για μπάνιο** `bathTime`
-70. 🚜 **γιατί βοηθά στη φάρμα** `farmWork`
-71. 🌱 **γιατί αγαπά τη φύση** `natureCare`
-72. 🍳 **γιατί χρειάζεται στην κουζίνα** `cookingNeed`
-73. ✅ **γιατί υπάρχει ανάγκη** `need`
+35. 👉 **γιατί θέλει να το δείξει στη μαμά του** `showMomBoy`
+36. 👉 **γιατί θέλει να το δείξει στη μαμά της** `showMomGirl`
+37. 📝 **γιατί τους έβαλε άσκηση η δασκάλα** `teacherExercise`
+38. 🤝 **γιατί χρειάζεται βοήθεια** `needsHelp`
+39. 🙌 **γιατί βοηθάει** `helpsSomeone`
+40. ⏰ **γιατί ετοιμάζεται** `readyToGo`
+41. 🚪 **γιατί βγαίνει έξω** `goingOut`
+42. 🫧 **γιατί θέλει καθαριότητα** `needsClean`
+43. ⬇️ **γιατί έπεσε κάτω** `fellDown`
+44. 🛡️ **γιατί θέλει ασφάλεια** `safety`
+45. 🪛 **γιατί χρειάζεται επισκευή** `needsRepair`
+46. ⚙️ **γιατί πρέπει να δουλέψει ξανά** `worksAgain`
+47. 🔐 **γιατί κάτι είναι κλειστό** `locked`
+48. 🔒 **γιατί πρέπει να μείνει ασφαλές** `closeSafe`
+49. 🫙 **γιατί είναι άδειο** `emptyInside`
+50. 🪣 **γιατί γέμισε πολύ** `tooFull`
+51. 🌿 **γιατί φροντίζει τα φυτά** `plantCare`
+52. ☀️ **γιατί έχει ήλιο** `sunny`
+53. 🎵 **γιατί έχει μουσική** `musicTime`
+54. 🎉 **γιατί έχει γιορτή** `party`
+55. 🧑‍🤝‍🧑 **γιατί είναι μαζί με άλλους** `together`
+56. 🐾 **γιατί το ζωάκι πεινάει** `animalHungry`
+57. 🎭 **γιατί κάνει παιχνίδι ρόλων** `pretendPlay`
+58. 🏅 **γιατί θέλει να κερδίσει** `wantsWin`
+59. 🎈 **γιατί θέλει διασκέδαση** `fun`
+60. 🩹 **γιατί χρειάζεται φροντίδα** `care`
+61. 📅 **γιατί έχει ραντεβού** `appointment`
+62. 🧾 **γιατί έχει λίστα** `shoppingList`
+63. 📬 **γιατί θέλει να στείλει γράμμα** `sendMail`
+64. 📬 **γιατί θέλει να το στείλει στη γιαγιά** `sendGrandma`
+65. 📖 **γιατί θέλει να το διαβάσει** `wantsRead`
+66. 🎀 **γιατί ετοιμάζει έκπληξη** `giftWrap`
+67. 🚶 **γιατί πάει βόλτα** `walk`
+68. ☔ **γιατί χρειάζεται προστασία από τη βροχή** `rainProtection`
+69. 🧢 **γιατί χρειάζεται προστασία από τον ήλιο** `sunProtection`
+70. 😁 **γιατί φροντίζει τα δόντια** `teethCare`
+71. 🍽️ **γιατί στρώνει το τραπέζι** `tableReady`
+72. ☎️ **γιατί θέλει να μιλήσει** `phoneCall`
+73. 💼 **γιατί έχει δουλειά** `workTime`
+74. 🛁 **γιατί είναι ώρα για μπάνιο** `bathTime`
+75. 🚜 **γιατί βοηθά στη φάρμα** `farmWork`
+76. 🌱 **γιατί αγαπά τη φύση** `natureCare`
+77. 🍳 **γιατί χρειάζεται στην κουζίνα** `cookingNeed`
+78. ✅ **γιατί υπάρχει ανάγκη** `need`
 
 ## Πώς Να Μου Γράψεις Τους Επιθυμητούς Συνδυασμούς
 
