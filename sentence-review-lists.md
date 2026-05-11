@@ -84,9 +84,9 @@
 27. 🧾 **πουλάει** `sell` | υποκείμενα: human | βασικές αιτίες: workTime, shoppingList, guests, helpsSomeone
 28. 👨‍🍳 **μαγειρεύει** `cook` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed, party
 29. ♨️ **ψήνει** `bake` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed, party
-30. 🎶 **παίζει** `play` | υποκείμενα: human | βασικές αιτίες: musicTime, practice, fun, happy, bored, party
+30. 🎲 **παίζει** `play` | υποκείμενα: human | βασικές αιτίες: musicTime, practice, fun, happy, bored, party
 31. 🧽 **καθαρίζει** `clean` | υποκείμενα: human | βασικές αιτίες: dirty, needsClean, guests, fellDown
-32. 🪛 **επισκευάζει** `repair` | υποκείμενα: human | βασικές αιτίες: broken, needsRepair, worksAgain, helpsSomeone
+32. 🛠️ **φτιάχνει** `repair` | υποκείμενα: human | βασικές αιτίες: broken, needsRepair, worksAgain, helpsSomeone
 33. 💪 **κουβαλάει** `carry` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, helpsSomeone
 34. 🙈 **κρύβει** `hide` | υποκείμενα: human | βασικές αιτίες: playing, scared, fun, wantsWin
 35. ✅ **βρίσκει** `find` | υποκείμενα: human, pet | βασικές αιτίες: lostSth, happy, needsHelp, carefulLook
@@ -118,7 +118,7 @@
 18. 🔑 **το κλειδί** `key` | tags: tool, washable, holdable
 19. 🎁 **το δώρο** `gift` | tags: gift, openable, holdable, hug
 20. 🎂 **την τούρτα** `cake` | tags: food, cuttable, makeable
-21. ⭐ **τον αστέρα** `star` | tags: draw, far
+21. ⭐ **το αστέρι** `star` | tags: draw, far
 22. 🥤 **το ποτήρι** `glass` | tags: kitchen, washable, holdable, fillable
 23. 🍽️ **το πιάτο** `plate` | tags: kitchen, washable, holdable
 24. 🥄 **το κουτάλι** `spoon` | tags: kitchen, washable, holdable
@@ -181,7 +181,7 @@
 37. 🖥️ **στο γραφείο** `office`
 38. 🏡 **στην αυλή** `yard`
 39. 📮 **στο ταχυδρομείο** `postOffice`
-40. 🎵 **στη μουσική αίθουσα** `musicRoom`
+40. 🎹 **στην αίθουσα μουσικής** `musicRoom`
 
 ## ΓΙΑΤΙ - Αιτίες
 
@@ -229,7 +229,7 @@
 42. 🫧 **γιατί θέλει καθαριότητα** `needsClean`
 43. ⬇️ **γιατί έπεσε κάτω** `fellDown`
 44. 🛡️ **γιατί θέλει ασφάλεια** `safety`
-45. 🪛 **γιατί χρειάζεται επισκευή** `needsRepair`
+45. 🪛 **γιατί χάλασε** `needsRepair`
 46. ⚙️ **γιατί πρέπει να δουλέψει ξανά** `worksAgain`
 47. 🔐 **γιατί κάτι είναι κλειστό** `locked`
 48. 🔒 **γιατί πρέπει να μείνει ασφαλές** `closeSafe`
@@ -237,7 +237,7 @@
 50. 🪣 **γιατί γέμισε πολύ** `tooFull`
 51. 🌿 **γιατί φροντίζει τα φυτά** `plantCare`
 52. ☀️ **γιατί έχει ήλιο** `sunny`
-53. 🎵 **γιατί έχει μουσική** `musicTime`
+53. 🎵 **γιατί του αρέσει η μουσική** `musicTime`
 54. 🎉 **γιατί έχει γιορτή** `party`
 55. 🧑‍🤝‍🧑 **γιατί είναι μαζί με άλλους** `together`
 56. 🐾 **γιατί το ζωάκι πεινάει** `animalHungry`
