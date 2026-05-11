@@ -64,12 +64,12 @@
 7. 🪢 **τραβάει** `pull` | υποκείμενα: human, pet, hands, farm | βασικές αιτίες: playing, practice, needsHelp, helpsSomeone, fun
 8. 🎯 **πετάει** `throw` | υποκείμενα: human | βασικές αιτίες: playing, practice, wantsWin, fun, bored
 9. 🎁 **δίνει** `give` | υποκείμενα: human | βασικές αιτίες: love, helpsSomeone, newGift, birthday, giftWrap, guests
-10. 🫳 **παίρνει** `take` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, shoppingList, happy
+10. 🤲 **παίρνει** `take` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, shoppingList, happy
 11. 👀 **βλέπει** `see` | υποκείμενα: human, animal | βασικές αιτίες: carefulLook
 12. 👆 **αγγίζει** `touch` | υποκείμενα: human, hands, trunk | βασικές αιτίες: wantsLearn, carefulLook, playing, happy, needsHelp
 13. 🧼 **πλένει** `wash` | υποκείμενα: human | βασικές αιτίες: dirty, needsClean, fellDown, bathTime
 14. 🍴 **ταΐζει** `feed` | υποκείμενα: human | βασικές αιτίες: animalHungry, care, love, pretendPlay, playing
-15. ✂️ **κόβει** `cut` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, tableReady
+15. ✂️ **κόβει** `cut` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed
 16. 🔓 **ανοίγει** `open` | υποκείμενα: human | βασικές αιτίες: locked, wantsLearn, newGift, guests, needsHelp
 17. 🔨 **φτιάχνει** `make` | υποκείμενα: human | βασικές αιτίες: happy, wantsLearn, birthday, guests, giftWrap, needsRepair
 18. 🫂 **αγκαλιάζει** `hug` | υποκείμενα: human | βασικές αιτίες: love, happy, scared, care
@@ -78,7 +78,7 @@
 21. ✍️ **γράφει** `write` | υποκείμενα: human | βασικές αιτίες: wantsLearn, practice, schoolWork, sendMail, love
 22. 🌱 **φυτεύει** `plant` | υποκείμενα: human | βασικές αιτίες: plantCare, natureCare, sunny, wantsLearn
 23. 🚿 **ποτίζει** `water` | υποκείμενα: human | βασικές αιτίες: plantCare, needsWater, sunny, hot, natureCare
-24. 🧺 **μαζεύει** `collect` | υποκείμενα: human | βασικές αιτίες: fun, playing, plantCare, guests, needsHelp
+24. 🧺 **μαζεύει** `collect` | υποκείμενα: human | βασικές αιτίες: playing, plantCare, guests, needsHelp
 25. 🧢 **φοράει** `wear` | υποκείμενα: human | βασικές αιτίες: cold, rainy, readyToGo, goingOut
 26. 🛒 **αγοράζει** `buy` | υποκείμενα: human | βασικές αιτίες: shoppingList, birthday, guests, newGift, need
 27. 🧾 **πουλάει** `sell` | υποκείμενα: human | βασικές αιτίες: workTime, shoppingList, guests, helpsSomeone
@@ -194,13 +194,13 @@
 7. 🥱 **γιατί βαριέται** `bored`
 8. 🌧️ **γιατί βρέχει** `rainy`
 9. 🧽 **γιατί βρώμισε** `dirty`
-10. 🎂 **γιατί έχει γενέθλια** `birthday`
-11. ❤️ **γιατί δείχνει αγάπη** `love`
+10. 🎈 **γιατί έχει γενέθλια** `birthday`
+11. ❤️ **γιατί το αγαπάει** `love`
 12. ❓ **γιατί έχασε κάτι** `lostSth`
 13. 📚 **γιατί θέλει να μάθει** `wantsLearn`
 14. 🎲 **γιατί παίζει** `playing`
 15. 😨 **γιατί φοβάται** `scared`
-16. 🔧 **γιατί κάτι χάλασε** `broken`
+16. 🔧 **γιατί χάλασε** `broken`
 17. 🎁 **γιατί υπάρχει δώρο** `newGift`
 18. 🤒 **γιατί αρρώστησε** `sick`
 19. 👥 **γιατί έχει επισκέπτες** `guests`
@@ -214,7 +214,7 @@
 27. 🧊 **γιατί θέλει δροσιά** `wantsCool`
 28. 🎒 **γιατί έχει μάθημα** `schoolWork`
 29. 📝 **γιατί κάνει εξάσκηση** `practice`
-30. 📖 **γιατί αγαπά τα βιβλία** `likesBooks`
+30. 📖 **γιατί του αρέσουν τα βιβλία** `likesBooks`
 31. 🧠 **γιατί θέλει να το θυμάται** `wantsRemember`
 32. 🔎 **γιατί κοιτάζει προσεκτικά** `carefulLook`
 33. ✨ **γιατί βλέπει κάτι όμορφο** `prettyThing`
@@ -243,7 +243,7 @@
 56. 🐾 **γιατί το ζωάκι πεινάει** `animalHungry`
 57. 🎭 **γιατί κάνει παιχνίδι ρόλων** `pretendPlay`
 58. 🏅 **γιατί θέλει να κερδίσει** `wantsWin`
-59. 🎈 **γιατί θέλει διασκέδαση** `fun`
+59. 😄 **γιατί θέλει να διασκεδάσει** `fun`
 60. 🩹 **γιατί χρειάζεται φροντίδα** `care`
 61. 📅 **γιατί έχει ραντεβού** `appointment`
 62. 🧾 **γιατί έχει λίστα** `shoppingList`
@@ -252,7 +252,7 @@
 65. 📖 **γιατί θέλει να το διαβάσει** `wantsRead`
 66. 🎀 **γιατί ετοιμάζει έκπληξη** `giftWrap`
 67. 🚶 **γιατί πάει βόλτα** `walk`
-68. ☔ **γιατί χρειάζεται προστασία από τη βροχή** `rainProtection`
+68. ☔ **γιατί βρέχει** `rainProtection`
 69. 🧢 **γιατί χρειάζεται προστασία από τον ήλιο** `sunProtection`
 70. 😁 **γιατί φροντίζει τα δόντια** `teethCare`
 71. 🍽️ **γιατί στρώνει το τραπέζι** `tableReady`
