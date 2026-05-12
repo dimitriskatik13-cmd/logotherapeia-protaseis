@@ -1153,6 +1153,7 @@
       eat: "assets/card-images/eat.png",
       drink: "assets/card-images/drink.png",
       push: "assets/card-images/push.png",
+      throw: "assets/card-images/throw.png",
       play: "assets/card-images/play.png",
       learn: "assets/card-images/learn.png",
       open: "assets/card-images/open.png",
@@ -1165,7 +1166,9 @@
       likesBooks: "assets/card-images/likes-books.png",
       kitchen: "assets/card-images/kitchen.png",
       give: "assets/card-images/give.png",
+      dirty: "assets/card-images/dirty.png",
       wash: "assets/card-images/wash.png",
+      clean: "assets/card-images/clean.png",
       cook: "assets/card-images/cook.png",
       repair: "assets/card-images/repair.png",
       needsRepair: "assets/card-images/broken.png"
@@ -1318,7 +1321,7 @@
       { id: "hot", text: "γιατί ζεσταίνεται", emoji: "🥵" },
       { id: "bored", text: "γιατί βαριέται", emoji: "🥱" },
       { id: "rainy", text: "γιατί βρέχει", emoji: "🌧️" },
-      { id: "dirty", text: "γιατί βρώμισε", emoji: "🧽" },
+      { id: "dirty", text: "γιατί βρώμισε", emoji: "👟", image: imageAssets.dirty },
       { id: "birthday", text: "γιατί έχει γενέθλια", emoji: "🎈", image: imageAssets.birthday },
       { id: "love", text: "γιατί το αγαπάει", emoji: "❤️" },
       { id: "lostSth", text: "γιατί έχασε κάτι", emoji: "❓" },
@@ -1351,7 +1354,6 @@
       { id: "helpsSomeone", text: "γιατί βοηθάει", emoji: "🙌" },
       { id: "readyToGo", text: "γιατί ετοιμάζεται", emoji: "⏰" },
       { id: "goingOut", text: "γιατί βγαίνει έξω", emoji: "🚪" },
-      { id: "needsClean", text: "γιατί θέλει καθαριότητα", emoji: "🫧" },
       { id: "fellDown", text: "γιατί έπεσε κάτω", emoji: "⬇️" },
       { id: "safety", text: "γιατί θέλει ασφάλεια", emoji: "🛡️" },
       { id: "needsRepair", text: "γιατί χάλασε", emoji: "⚠️", image: imageAssets.needsRepair },
@@ -1398,7 +1400,7 @@
       { id: "hold", text: "κρατάει", emoji: "🤲", active: true, subjectGroups: ["human", "pet", "hands"], objects: ["apple", "banana", "bread", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "shoe", "bag", "key", "gift", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "beach", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "forest", "shop", "zoo", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "station", "bakery", "supermarket", "cinema", "theater", "pool", "mountain", "lake", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"], reasons: ["happy", "love", "newGift", "playing"] },
       { id: "push", text: "σπρώχνει", emoji: "➡️", image: imageAssets.push, active: true, subjectGroups: ["human", "pet", "hands", "wild", "farm"], objects: ["ball", "carToy", "chair", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"], reasons: ["playing", "happy"] },
       { id: "pull", text: "τραβάει", emoji: "🪢", active: true, subjectGroups: ["human", "pet", "hands", "farm"], objects: ["chair", "bag", "carToy", "bike", "box"], places: ["home", "park", "school", "garden", "floor", "playground", "forest", "zoo", "stadium", "yard", "farm"], reasons: ["playing", "happy"] },
-      { id: "throw", text: "πετάει", emoji: "🎯", active: true, subjectGroups: ["human"], objects: ["ball", "hat", "shoe", "toy"], places: ["park", "school", "beach", "garden", "playground", "stadium", "yard"], reasons: ["playing", "happy", "bored"] },
+      { id: "throw", text: "πετάει", emoji: "⚽", image: imageAssets.throw, active: true, subjectGroups: ["human"], objects: ["ball", "hat", "shoe", "toy"], places: ["park", "school", "beach", "garden", "playground", "stadium", "yard"], reasons: ["playing", "happy", "bored"] },
       { id: "give", text: "δίνει", emoji: "🤲", image: imageAssets.give, active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "flower", "hat", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "box", "carrot", "iceCream", "pizza", "letter"], places: humanPlaces, reasons: ["birthday", "love", "happy", "newGift"] },
       { id: "take", text: "παίρνει", emoji: "🤲", image: imageAssets.take, active: true, subjectGroups: ["human"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "hat", "shoe", "bag", "key", "gift", "cake", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter"], places: ["home", "park", "school", "garden", "kitchen", "car", "table", "bed", "floor", "playground", "shop", "pharmacy", "restaurant", "stadium", "library", "clinic", "livingRoom", "bedroom", "classroom", "bus", "bakery", "supermarket", "farm", "dentist", "office", "yard", "postOffice", "musicRoom"], reasons: ["happy", "wantsLearn", "newGift"] },
       { id: "see", text: "βλέπει", emoji: "👀", active: true, subjectGroups: ["human", "animal"], objects: ["apple", "banana", "bread", "milk", "water", "ball", "carToy", "doll", "book", "pencil", "chair", "flower", "tree", "hat", "shoe", "bag", "key", "gift", "cake", "star", "glass", "plate", "spoon", "fork", "toothbrush", "soap", "umbrella", "puzzle", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "carrot", "iceCream", "pizza", "letter", "name"], places: allPlaceIds, reasons: ["happy", "scared", "bored"] },
@@ -1421,7 +1423,7 @@
       { id: "cook", text: "μαγειρεύει", emoji: "👨‍🍳", image: imageAssets.cook, active: true, subjectGroups: ["human"], objects: ["bread", "cake", "carrot", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"], reasons: ["hungry", "birthday", "guests", "happy"] },
       { id: "bake", text: "ψήνει", emoji: "♨️", active: true, subjectGroups: ["human"], objects: ["bread", "cake", "pizza"], places: ["home", "kitchen", "restaurant", "bakery"], reasons: ["hungry", "birthday", "guests", "happy"] },
       { id: "play", text: "παίζει", emoji: "🧸", image: imageAssets.play, active: true, subjectGroups: ["human"], objects: ["toy", "puzzle", "drum", "guitar"], places: ["home", "school", "park", "playground", "garden", "yard", "livingRoom", "bedroom", "classroom", "musicRoom", "theater"], reasons: ["musicTime", "practice", "fun", "happy", "bored", "playing"] },
-      { id: "clean", text: "καθαρίζει", emoji: "🧽", active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "garden", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "classroom", "office", "yard"], reasons: ["dirty", "guests", "happy"] },
+      { id: "clean", text: "καθαρίζει", emoji: "🧽", image: imageAssets.clean, active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "garden", "kitchen", "bathroom", "table", "floor", "livingRoom", "bedroom", "classroom", "office", "yard"], reasons: ["dirty", "guests", "happy"] },
       { id: "repair", text: "φτιάχνει", emoji: "🛠️", image: imageAssets.repair, active: true, subjectGroups: ["human"], objects: ["carToy", "chair", "shoe", "bag", "phone", "computer", "bike", "box"], places: ["home", "school", "table", "floor", "shop", "livingRoom", "classroom", "office", "yard"], reasons: ["broken", "needsRepair", "happy"] },
       { id: "carry", text: "κουβαλάει", emoji: "💪", active: true, subjectGroups: ["human"], objects: ["bag", "box", "gift", "ball", "toy", "book", "puzzle"], places: humanPlaces, reasons: ["happy", "newGift", "guests"] },
       { id: "hide", text: "κρύβει", emoji: "🙈", active: true, subjectGroups: ["human"], objects: ["ball", "carToy", "doll", "book", "pencil", "hat", "shoe", "bag", "key", "gift", "puzzle", "toy", "phone", "box", "letter"], places: ["home", "school", "garden", "bed", "floor", "playground", "livingRoom", "bedroom", "classroom", "yard"], reasons: ["playing", "scared", "happy"] },
@@ -1497,7 +1499,7 @@
       { id: "m5-061", subject: "boy", verb: "wash", object: "apple", place: "kitchen", reason: "mealTime" },
       { id: "m5-062", subject: "girl", verb: "wash", object: "carrot", place: "kitchen", reason: "mealTime" },
       { id: "m5-063", subject: "mom", verb: "wash", object: "plate", place: "kitchen", reason: "guests" },
-      { id: "m5-064", subject: "dad", verb: "wash", object: "glass", place: "kitchen", reason: "needsClean" },
+      { id: "m5-064", subject: "dad", verb: "wash", object: "glass", place: "kitchen", reason: "dirty" },
       { id: "m5-065", subject: "boy", verb: "give", object: "gift", place: "home", reason: "birthday" },
       { id: "m5-066", subject: "girl", verb: "give", object: "pencil", place: "classroom", reason: "helpsSomeone" },
       { id: "m5-067", subject: "teacherF", verb: "give", object: "pencil", place: "classroom", reason: "helpsSomeone" },
@@ -1523,8 +1525,8 @@
       { id: "m5-087", subject: "boy", verb: "find", object: "key", place: "home", reason: "lostSth" },
       { id: "m5-088", subject: "dog", verb: "find", object: "ball", place: "yard", reason: "playing" },
       { id: "m5-089", subject: "mom", verb: "clean", object: "chair", place: "home", reason: "dirty" },
-      { id: "m5-090", subject: "dad", verb: "clean", object: "bike", place: "yard", reason: "needsClean" },
-      { id: "m5-091", subject: "teacherF", verb: "clean", object: "chair", place: "classroom", reason: "needsClean" },
+      { id: "m5-090", subject: "dad", verb: "clean", object: "bike", place: "yard", reason: "dirty" },
+      { id: "m5-091", subject: "teacherF", verb: "clean", object: "chair", place: "classroom", reason: "dirty" },
       { id: "m5-092", subject: "boy", verb: "clean", object: "toy", place: "home", reason: "dirty" },
       { id: "m5-093", subject: "dad", verb: "repair", object: "bike", place: "yard", reason: "broken" },
       { id: "m5-094", subject: "mom", verb: "repair", object: "phone", place: "home", reason: "needsRepair" },
@@ -1743,7 +1745,7 @@
       take: ["need", "readyToGo", "goingOut", "shoppingList", "happy"],
       see: ["carefulLook", "prettyThing"],
       touch: ["wantsLearn", "carefulLook", "playing", "happy", "needsHelp"],
-      wash: ["dirty", "needsClean", "fellDown", "bathTime"],
+      wash: ["dirty", "fellDown", "bathTime"],
       feed: ["animalHungry", "care", "love", "pretendPlay", "playing"],
       cut: ["mealTime", "hungry", "guests"],
       open: ["locked", "wantsLearn", "guests", "needsHelp"],
@@ -1761,7 +1763,7 @@
       cook: ["mealTime", "hungry", "guests", "cookingNeed"],
       bake: ["mealTime", "hungry", "guests", "cookingNeed"],
       play: ["musicTime", "practice", "fun", "happy", "bored", "party"],
-      clean: ["dirty", "needsClean", "guests", "fellDown"],
+      clean: ["dirty", "guests", "fellDown"],
       repair: ["broken", "needsRepair", "worksAgain", "helpsSomeone"],
       carry: ["need", "readyToGo", "goingOut", "helpsSomeone"],
       hide: ["playing", "scared", "fun", "wantsWin"],
@@ -1769,7 +1771,7 @@
       use: ["wantsLearn", "practice", "needsHelp", "workTime"],
       close: ["closeSafe", "rainy", "cold", "readyToGo"],
       fill: ["emptyInside"],
-      empty: ["tooFull", "dirty", "needsClean"],
+      empty: ["tooFull", "dirty"],
       photograph: ["wantsRemember", "wantsShow", "prettyThing", "guests", "happy"]
     };
 
@@ -1856,7 +1858,6 @@
       { verbs: ["collect"], objects: ["flower", "carrot"], reasons: ["plantCare"] },
       { verbs: ["collect"], places: ["farm"], reasons: ["farmWork"] },
       { verbs: ["collect"], objects: ["plate", "glass", "spoon", "fork"], reasons: ["tableReady", "guests"] },
-      { verbs: ["collect"], places: ["home", "school", "classroom", "livingRoom", "bedroom", "floor"], reasons: ["needsClean"] },
       { verbs: ["wear"], objects: ["hat"], reasons: ["sunProtection"] },
       { verbs: ["wear"], objects: ["bag"], reasons: ["schoolWork"] },
       { verbs: ["wear"], objects: ["shoe", "hat", "bag"], reasons: ["walk"] },
@@ -2429,7 +2430,6 @@
       if (reasonId === "playing") return COLLECT_PLAY_OBJECTS.includes(object.id);
       if (reasonId === "plantCare") return COLLECT_PLANT_OBJECTS.includes(object.id);
       if (reasonId === "guests") return COLLECT_TABLE_OBJECTS.includes(object.id);
-      if (reasonId === "needsClean") return COLLECT_CLEAN_OBJECTS.includes(object.id);
       if (reasonId === "farmWork") return place.id === "farm" && COLLECT_FARM_OBJECTS.includes(object.id);
       return reasonId === "needsHelp";
     }
