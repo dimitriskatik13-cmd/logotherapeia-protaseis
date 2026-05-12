@@ -55,23 +55,23 @@
 
 ## ΤΙ ΚΑΝΕΙ - Ρήματα
 
-1. 😋 **τρώει** `eat` | υποκείμενα: human, animal | βασικές αιτίες: hungry, mealTime, snackTime, tasty, wantsTry
+1. 🍽️ **τρώει** `eat` | υποκείμενα: human, animal | βασικές αιτίες: hungry, mealTime, snackTime, tasty, wantsTry
 2. 🥤 **πίνει** `drink` | υποκείμενα: human, animal | βασικές αιτίες: thirsty, needsWater, wantsCool, hot, afterRun
 3. 📖 **διαβάζει** `read` | υποκείμενα: human | βασικές αιτίες: wantsLearn, schoolWork, practice, likesBooks, bored
 4. 🎨 **ζωγραφίζει** `draw` | υποκείμενα: human | βασικές αιτίες: happy, bored, wantsShow, wantsRemember, prettyThing, practice
 5. 🤲 **κρατάει** `hold` | υποκείμενα: human, pet, hands | βασικές αιτίες: need, readyToGo, helpsSomeone, newGift, playing, happy
-6. 👐 **σπρώχνει** `push` | υποκείμενα: human, pet, hands, wild, farm | βασικές αιτίες: playing, practice, needsHelp, helpsSomeone, fun
+6. ➡️ **σπρώχνει** `push` | υποκείμενα: human, pet, hands, wild, farm | βασικές αιτίες: playing, practice, needsHelp, helpsSomeone, fun
 7. 🪢 **τραβάει** `pull` | υποκείμενα: human, pet, hands, farm | βασικές αιτίες: playing, practice, needsHelp, helpsSomeone, fun
 8. 🎯 **πετάει** `throw` | υποκείμενα: human | βασικές αιτίες: playing, practice, wantsWin, fun, bored
-9. 🎁 **δίνει** `give` | υποκείμενα: human | βασικές αιτίες: love, helpsSomeone, newGift, birthday, giftWrap, guests
+9. 🤲 **δίνει** `give` | υποκείμενα: human | βασικές αιτίες: love, helpsSomeone, newGift, birthday, giftWrap, guests
 10. 🤲 **παίρνει** `take` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, shoppingList, happy
 11. 👀 **βλέπει** `see` | υποκείμενα: human, animal | βασικές αιτίες: carefulLook
 12. 👆 **αγγίζει** `touch` | υποκείμενα: human, hands, trunk | βασικές αιτίες: wantsLearn, carefulLook, playing, happy, needsHelp
-13. 🧼 **πλένει** `wash` | υποκείμενα: human | βασικές αιτίες: dirty, needsClean, fellDown, bathTime
+13. 🚰 **πλένει** `wash` | υποκείμενα: human | βασικές αιτίες: dirty, needsClean, fellDown, bathTime
 14. 🍴 **ταΐζει** `feed` | υποκείμενα: human | βασικές αιτίες: animalHungry, care, love, pretendPlay, playing
 15. ✂️ **κόβει** `cut` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed
-16. 🔓 **ανοίγει** `open` | υποκείμενα: human | βασικές αιτίες: locked, wantsLearn, newGift, guests, needsHelp
-17. 🔨 **φτιάχνει** `make` | υποκείμενα: human | βασικές αιτίες: happy, wantsLearn, birthday, guests, giftWrap, needsRepair
+16. 📦 **ανοίγει** `open` | υποκείμενα: human | βασικές αιτίες: locked, wantsLearn, newGift, guests, needsHelp
+17. 🛠️ **φτιάχνει** `make` | υποκείμενα: human | βασικές αιτίες: happy, wantsLearn, birthday, guests, giftWrap, needsRepair
 18. 🫂 **αγκαλιάζει** `hug` | υποκείμενα: human | βασικές αιτίες: love, happy, scared, care
 19. 📢 **φωνάζει** `shout` | υποκείμενα: human | βασικές αιτίες: called, scared, needsHelp, happy
 20. 🔍 **ψάχνει** `search` | υποκείμενα: human, pet, insect | βασικές αιτίες: lostSth, carefulLook, needsHelp
@@ -84,7 +84,7 @@
 27. 🧾 **πουλάει** `sell` | υποκείμενα: human | βασικές αιτίες: workTime, shoppingList, guests, helpsSomeone
 28. 👨‍🍳 **μαγειρεύει** `cook` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed, party
 29. ♨️ **ψήνει** `bake` | υποκείμενα: human | βασικές αιτίες: mealTime, hungry, guests, birthday, cookingNeed, party
-30. 🎲 **παίζει** `play` | υποκείμενα: human | βασικές αιτίες: musicTime, practice, fun, happy, bored, party
+30. 🧸 **παίζει** `play` | υποκείμενα: human | βασικές αιτίες: musicTime, practice, fun, happy, bored, party
 31. 🧽 **καθαρίζει** `clean` | υποκείμενα: human | βασικές αιτίες: dirty, needsClean, guests, fellDown
 32. 🛠️ **φτιάχνει** `repair` | υποκείμενα: human | βασικές αιτίες: broken, needsRepair, worksAgain, helpsSomeone
 33. 💪 **κουβαλάει** `carry` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, helpsSomeone
@@ -197,10 +197,10 @@
 10. 🎈 **γιατί έχει γενέθλια** `birthday`
 11. ❤️ **γιατί το αγαπάει** `love`
 12. ❓ **γιατί έχασε κάτι** `lostSth`
-13. 📚 **γιατί θέλει να μάθει** `wantsLearn`
-14. 🎲 **γιατί παίζει** `playing`
+13. 💡 **γιατί θέλει να μάθει** `wantsLearn`
+14. 🧸 **γιατί παίζει** `playing`
 15. 😨 **γιατί φοβάται** `scared`
-16. 🔧 **γιατί χάλασε** `broken`
+16. ⚠️ **γιατί χάλασε** `broken`
 17. 🎁 **γιατί υπάρχει δώρο** `newGift`
 18. 🤒 **γιατί αρρώστησε** `sick`
 19. 👥 **γιατί έχει επισκέπτες** `guests`
@@ -229,7 +229,7 @@
 42. 🫧 **γιατί θέλει καθαριότητα** `needsClean`
 43. ⬇️ **γιατί έπεσε κάτω** `fellDown`
 44. 🛡️ **γιατί θέλει ασφάλεια** `safety`
-45. 🪛 **γιατί χάλασε** `needsRepair`
+45. ⚠️ **γιατί χάλασε** `needsRepair`
 46. ⚙️ **γιατί πρέπει να δουλέψει ξανά** `worksAgain`
 47. 🔐 **γιατί κάτι είναι κλειστό** `locked`
 48. 🔒 **γιατί πρέπει να μείνει ασφαλές** `closeSafe`
