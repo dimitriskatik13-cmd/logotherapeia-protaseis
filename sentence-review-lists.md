@@ -127,7 +127,7 @@
 27. 🧼 **το σαπούνι** `soap` | tags: bathroom, holdable
 28. ☂️ **την ομπρέλα** `umbrella` | tags: clothing, openable, holdable
 29. 🧩 **το παζλ** `puzzle` | tags: toy, makeable, holdable
-30. 🧸 **το παιχνίδι** `toy` | tags: toy, washable, holdable, hug
+30. 🧩 **το παιχνίδι** `toy` | tags: toy, washable, holdable, hug
 31. 🥁 **το τύμπανο** `drum` | tags: music, holdable
 32. 🎸 **την κιθάρα** `guitar` | tags: music, holdable
 33. 📱 **το τηλέφωνο** `phone` | tags: tool, fixable, holdable
@@ -198,7 +198,7 @@
 11. ❤️ **γιατί το αγαπάει** `love`
 12. ❓ **γιατί έχασε κάτι** `lostSth`
 13. 💡 **γιατί θέλει να μάθει** `wantsLearn`
-14. 🧸 **γιατί παίζει** `playing`
+14. 🎲 **γιατί παίζει** `playing`
 15. 😨 **γιατί φοβάται** `scared`
 16. ⚠️ **γιατί χάλασε** `broken`
 17. 🎁 **γιατί υπάρχει δώρο** `newGift`
