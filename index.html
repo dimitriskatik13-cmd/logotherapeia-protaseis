@@ -3234,7 +3234,6 @@
       if (!isSentenceComplete() || state.celebrating) return;
       state.celebrating = true;
       spawnCelebration();
-      speakText("Μπράβο!", { rate: 0.95 });
       state.feedback = "🎉 Σωστό! Πάμε στην επόμενη πρόταση.";
       state.feedbackType = "good";
       render();
