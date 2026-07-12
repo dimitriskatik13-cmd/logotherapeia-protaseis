@@ -44,12 +44,12 @@ vm.createContext(context);
 vm.runInContext(`${inlineScript}\n${exportScript}`, context, { filename: "index.html" });
 
 const audit = context.__sentenceAudit;
-const expectedCounts = { 3: 88, 4: 157, 5: 164 };
+const expectedCounts = { 2: 50, 3: 150, 4: 157, 5: 164 };
 const femaleSubjects = new Set(["girl", "mom", "grandma", "teacherF", "nurse", "cookF", "singer"]);
 const forbiddenMode5Reasons = new Set(["dirty", "needsRepair", "newGift", "need", "helpsSomeone", "teacherExercise"]);
 const errors = [];
 
-for (const mode of [3, 4, 5]) {
+for (const mode of [2, 3, 4, 5]) {
   audit.state.mode = mode;
   const sentences = audit.sentencesForMode(mode);
   if (sentences.length !== expectedCounts[mode]) {
@@ -95,7 +95,7 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exitCode = 1;
 } else {
-  console.log("Sentence banks valid: Mode 3 = 88, Mode 4 = 157, Mode 5 = 164.");
+  console.log("Sentence banks valid: Mode 2 = 50, Mode 3 = 150, Mode 4 = 157, Mode 5 = 164.");
 }
 
 if (process.argv.includes("--write-review") && !errors.length) {

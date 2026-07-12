@@ -589,6 +589,14 @@
       gap: 6px;
     }
 
+    .legend.mode-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .legend.mode-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .legend.mode-5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
@@ -622,11 +630,27 @@
       .card-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
+
+      .card-grid.mode-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-grid.mode-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (min-width: 920px) {
       .slots {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .slots.mode-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .slots.mode-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .slots.mode-5 {
@@ -763,10 +787,10 @@
 
   <script>
     const categories = [
-      { key: "subject", label: "ΠΟΙΟΣ", role: "Υποκείμενο", color: "var(--subject)", icon: "👤", modes: [3, 4, 5] },
-      { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡", modes: [3, 4, 5] },
-      { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯", modes: [4, 5] },
-      { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍", modes: [3, 4, 5] },
+      { key: "subject", label: "ΠΟΙΟΣ", role: "Υποκείμενο", color: "var(--subject)", icon: "👤", modes: [2, 3, 4, 5] },
+      { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡", modes: [2, 3, 4, 5] },
+      { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯", modes: [3, 4, 5] },
+      { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍", modes: [4, 5] },
       { key: "reason", label: "ΓΙΑΤΙ", role: "Αιτία", color: "var(--reason)", icon: "💭", modes: [5] }
     ];
 
@@ -1490,7 +1514,17 @@
       { id: "close", text: "κλείνει", emoji: "🔒", active: true, subjectGroups: ["human"], objects: ["book", "bag", "gift", "umbrella", "box", "letter"], places: ["home", "school", "car", "table", "floor", "shop", "livingRoom", "bedroom", "classroom", "bus", "office", "postOffice"], reasons: ["happy", "cold", "rainy"] },
       { id: "fill", text: "γεμίζει", emoji: "🫗", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"], reasons: ["thirsty", "guests", "happy"] },
       { id: "empty", text: "αδειάζει", emoji: "🪣", active: true, subjectGroups: ["human"], objects: ["glass", "bag", "box"], places: ["home", "school", "kitchen", "bathroom", "table", "floor", "supermarket", "yard"], reasons: ["dirty", "guests", "happy"] },
-      { id: "photograph", text: "φωτογραφίζει", emoji: "📷", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "ball", "carToy", "doll", "book", "chair", "cake", "umbrella", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "pizza"], places: allPlaceIds, reasons: ["happy", "birthday", "guests", "wantsLearn"] }
+      { id: "photograph", text: "φωτογραφίζει", emoji: "📷", active: true, subjectGroups: ["human"], objects: ["flower", "tree", "star", "ball", "carToy", "doll", "book", "chair", "cake", "umbrella", "toy", "drum", "guitar", "phone", "computer", "bike", "box", "pizza"], places: allPlaceIds, reasons: ["happy", "birthday", "guests", "wantsLearn"] },
+      { id: "sleep", text: "κοιμάται", emoji: "😴", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "run", text: "τρέχει", emoji: "🏃", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "laugh", text: "γελάει", emoji: "😄", active: true, subjectGroups: ["human"], objects: [], places: [], reasons: [] },
+      { id: "dance", text: "χορεύει", emoji: "💃", active: true, subjectGroups: ["human"], objects: [], places: [], reasons: [] },
+      { id: "jump", text: "πηδάει", emoji: "🤸", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "sing", text: "τραγουδάει", emoji: "🎤", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "cry", text: "κλαίει", emoji: "😢", active: true, subjectGroups: ["human"], objects: [], places: [], reasons: [] },
+      { id: "walk", text: "περπατάει", emoji: "🚶", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "swim", text: "κολυμπάει", emoji: "🏊", active: true, subjectGroups: ["human", "animal"], objects: [], places: [], reasons: [] },
+      { id: "fly", text: "πετάει", emoji: "🕊️", active: true, subjectGroups: ["animal"], objects: [], places: [], reasons: [] }
     ];
 
     const mode5SentenceBank = [
@@ -1660,96 +1694,67 @@
       { id: "m5-164", subject: "girl", verb: "read", object: "book", place: "library", reason: "likesBooksF" }
     ];
 
-    const mode3SentenceBank = [
-      { id: "m3-001", subject: "boy", verb: "eat", place: "home" },
-      { id: "m3-002", subject: "girl", verb: "eat", place: "school" },
-      { id: "m3-003", subject: "mom", verb: "eat", place: "kitchen" },
-      { id: "m3-004", subject: "dad", verb: "eat", place: "restaurant" },
-      { id: "m3-005", subject: "grandma", verb: "eat", place: "table" },
-      { id: "m3-006", subject: "grandpa", verb: "eat", place: "home" },
-      { id: "m3-007", subject: "dog", verb: "eat", place: "yard" },
-      { id: "m3-008", subject: "cat", verb: "eat", place: "home" },
-      { id: "m3-009", subject: "rabbit", verb: "eat", place: "garden" },
-      { id: "m3-010", subject: "monkey", verb: "eat", place: "zoo" },
-      { id: "m3-011", subject: "cow", verb: "eat", place: "farm" },
-      { id: "m3-012", subject: "horse", verb: "eat", place: "farm" },
-      { id: "m3-013", subject: "boy", verb: "drink", place: "home" },
-      { id: "m3-014", subject: "boy", verb: "drink", place: "park" },
-      { id: "m3-015", subject: "girl", verb: "drink", place: "school" },
-      { id: "m3-016", subject: "mom", verb: "drink", place: "kitchen" },
-      { id: "m3-017", subject: "dad", verb: "drink", place: "yard" },
-      { id: "m3-018", subject: "grandma", verb: "drink", place: "table" },
-      { id: "m3-019", subject: "dog", verb: "drink", place: "yard" },
-      { id: "m3-020", subject: "cat", verb: "drink", place: "home" },
-      { id: "m3-021", subject: "horse", verb: "drink", place: "farm" },
-      { id: "m3-022", subject: "boy", verb: "read", place: "home" },
-      { id: "m3-023", subject: "boy", verb: "read", place: "school" },
-      { id: "m3-024", subject: "girl", verb: "read", place: "classroom" },
-      { id: "m3-025", subject: "mom", verb: "read", place: "livingRoom" },
-      { id: "m3-026", subject: "dad", verb: "read", place: "office" },
-      { id: "m3-027", subject: "grandma", verb: "read", place: "bed" },
-      { id: "m3-028", subject: "grandpa", verb: "read", place: "library" },
-      { id: "m3-029", subject: "teacherF", verb: "read", place: "classroom" },
-      { id: "m3-030", subject: "boy", verb: "draw", place: "home" },
-      { id: "m3-031", subject: "boy", verb: "draw", place: "school" },
-      { id: "m3-032", subject: "girl", verb: "draw", place: "classroom" },
-      { id: "m3-033", subject: "girl", verb: "draw", place: "garden" },
-      { id: "m3-034", subject: "mom", verb: "draw", place: "table" },
-      { id: "m3-035", subject: "grandma", verb: "draw", place: "garden" },
-      { id: "m3-036", subject: "teacherF", verb: "draw", place: "classroom" },
-      { id: "m3-037", subject: "boy", verb: "shout", place: "playground" },
-      { id: "m3-038", subject: "girl", verb: "shout", place: "park" },
-      { id: "m3-039", subject: "police", verb: "shout", place: "stadium" },
-      { id: "m3-040", subject: "firefighter", verb: "shout", place: "yard" },
-      { id: "m3-041", subject: "boy", verb: "search", place: "home" },
-      { id: "m3-042", subject: "boy", verb: "search", place: "school" },
-      { id: "m3-043", subject: "girl", verb: "search", place: "home" },
-      { id: "m3-044", subject: "mom", verb: "search", place: "kitchen" },
-      { id: "m3-045", subject: "dad", verb: "search", place: "yard" },
-      { id: "m3-046", subject: "dog", verb: "search", place: "garden" },
-      { id: "m3-047", subject: "cat", verb: "search", place: "home" },
-      { id: "m3-048", subject: "boy", verb: "write", place: "home" },
-      { id: "m3-049", subject: "boy", verb: "write", place: "school" },
-      { id: "m3-050", subject: "girl", verb: "write", place: "classroom" },
-      { id: "m3-051", subject: "mom", verb: "write", place: "table" },
-      { id: "m3-052", subject: "dad", verb: "write", place: "office" },
-      { id: "m3-053", subject: "teacherM", verb: "write", place: "classroom" },
-      { id: "m3-054", subject: "teacherF", verb: "write", place: "classroom" },
-      { id: "m3-055", subject: "boy", verb: "plant", place: "garden" },
-      { id: "m3-056", subject: "girl", verb: "plant", place: "school" },
-      { id: "m3-057", subject: "mom", verb: "plant", place: "yard" },
-      { id: "m3-058", subject: "gardener", verb: "plant", place: "garden" },
-      { id: "m3-059", subject: "boy", verb: "water", place: "garden" },
-      { id: "m3-060", subject: "girl", verb: "water", place: "school" },
-      { id: "m3-061", subject: "grandpa", verb: "water", place: "yard" },
-      { id: "m3-062", subject: "gardener", verb: "water", place: "garden" },
-      { id: "m3-063", subject: "boy", verb: "collect", place: "home" },
-      { id: "m3-064", subject: "girl", verb: "collect", place: "classroom" },
-      { id: "m3-065", subject: "mom", verb: "collect", place: "livingRoom" },
-      { id: "m3-066", subject: "gardener", verb: "collect", place: "farm" },
-      { id: "m3-067", subject: "mom", verb: "cook", place: "kitchen" },
-      { id: "m3-068", subject: "dad", verb: "cook", place: "home" },
-      { id: "m3-069", subject: "grandma", verb: "cook", place: "kitchen" },
-      { id: "m3-070", subject: "cookM", verb: "cook", place: "restaurant" },
-      { id: "m3-071", subject: "cookF", verb: "cook", place: "kitchen" },
-      { id: "m3-072", subject: "mom", verb: "bake", place: "kitchen" },
-      { id: "m3-073", subject: "dad", verb: "bake", place: "kitchen" },
-      { id: "m3-074", subject: "grandma", verb: "bake", place: "kitchen" },
-      { id: "m3-075", subject: "cookF", verb: "bake", place: "bakery" },
-      { id: "m3-076", subject: "boy", verb: "play", place: "home" },
-      { id: "m3-077", subject: "boy", verb: "play", place: "park" },
-      { id: "m3-078", subject: "girl", verb: "play", place: "playground" },
-      { id: "m3-079", subject: "girl", verb: "play", place: "school" },
-      { id: "m3-080", subject: "dad", verb: "play", place: "livingRoom" },
-      { id: "m3-081", subject: "teacherM", verb: "play", place: "musicRoom" },
-      { id: "m3-082", subject: "dog", verb: "play", place: "yard" },
-      { id: "m3-083", subject: "cat", verb: "play", place: "home" },
-      { id: "m3-084", subject: "mom", verb: "clean", place: "home" },
-      { id: "m3-085", subject: "dad", verb: "clean", place: "yard" },
-      { id: "m3-086", subject: "grandma", verb: "clean", place: "kitchen" },
-      { id: "m3-087", subject: "teacherF", verb: "clean", place: "classroom" },
-      { id: "m3-088", subject: "cookM", verb: "clean", place: "restaurant" }
+    const mode2SentenceBank = [
+      { id: "m2-001", subject: "boy", verb: "sleep" },
+      { id: "m2-002", subject: "girl", verb: "run" },
+      { id: "m2-003", subject: "mom", verb: "dance" },
+      { id: "m2-004", subject: "dad", verb: "laugh" },
+      { id: "m2-005", subject: "grandma", verb: "sing" },
+      { id: "m2-006", subject: "grandpa", verb: "walk" },
+      { id: "m2-007", subject: "boy", verb: "cry" },
+      { id: "m2-008", subject: "girl", verb: "laugh" },
+      { id: "m2-009", subject: "boy", verb: "run" },
+      { id: "m2-010", subject: "girl", verb: "dance" },
+      { id: "m2-011", subject: "boy", verb: "jump" },
+      { id: "m2-012", subject: "girl", verb: "sing" },
+      { id: "m2-013", subject: "boy", verb: "swim" },
+      { id: "m2-014", subject: "girl", verb: "swim" },
+      { id: "m2-015", subject: "dog", verb: "run" },
+      { id: "m2-016", subject: "cat", verb: "sleep" },
+      { id: "m2-017", subject: "dog", verb: "sleep" },
+      { id: "m2-018", subject: "bird", verb: "sing" },
+      { id: "m2-019", subject: "bird", verb: "fly" },
+      { id: "m2-020", subject: "butterfly", verb: "fly" },
+      { id: "m2-021", subject: "bee", verb: "fly" },
+      { id: "m2-022", subject: "fish", verb: "swim" },
+      { id: "m2-023", subject: "duck", verb: "swim" },
+      { id: "m2-024", subject: "frog", verb: "jump" },
+      { id: "m2-025", subject: "rabbit", verb: "jump" },
+      { id: "m2-026", subject: "horse", verb: "run" },
+      { id: "m2-027", subject: "lion", verb: "sleep" },
+      { id: "m2-028", subject: "bear", verb: "walk" },
+      { id: "m2-029", subject: "deer", verb: "run" },
+      { id: "m2-030", subject: "monkey", verb: "jump" },
+      { id: "m2-031", subject: "boy", verb: "eat" },
+      { id: "m2-032", subject: "girl", verb: "eat" },
+      { id: "m2-033", subject: "dog", verb: "drink" },
+      { id: "m2-034", subject: "cat", verb: "drink" },
+      { id: "m2-035", subject: "boy", verb: "play" },
+      { id: "m2-036", subject: "girl", verb: "draw" },
+      { id: "m2-037", subject: "boy", verb: "read" },
+      { id: "m2-038", subject: "teacherF", verb: "read" },
+      { id: "m2-039", subject: "teacherM", verb: "write" },
+      { id: "m2-040", subject: "mom", verb: "cook" },
+      { id: "m2-041", subject: "cookM", verb: "cook" },
+      { id: "m2-042", subject: "cookF", verb: "bake" },
+      { id: "m2-043", subject: "singer", verb: "sing" },
+      { id: "m2-044", subject: "dog", verb: "play" },
+      { id: "m2-045", subject: "cat", verb: "play" },
+      { id: "m2-046", subject: "grandma", verb: "laugh" },
+      { id: "m2-047", subject: "grandpa", verb: "read" },
+      { id: "m2-048", subject: "police", verb: "run" },
+      { id: "m2-049", subject: "firefighter", verb: "run" },
+      { id: "m2-050", subject: "girl", verb: "jump" }
     ];
+
+    const mode3SentenceBank = [];
+    const mode3BankSignatures = new Set();
+    mode5SentenceBank.forEach(({ id, subject, verb, object }) => {
+      const signature = `${subject}|${verb}|${object}`;
+      if (mode3BankSignatures.has(signature)) return;
+      mode3BankSignatures.add(signature);
+      mode3SentenceBank.push({ id: id.replace("m5-", "m3-"), subject, verb, object });
+    });
 
     const mode4SentenceBank = [];
     const mode4BankSignatures = new Set();
@@ -2502,12 +2507,14 @@
     let cachedVoices = [];
     const reasonIdSet = new Set(reasons.map((reason) => reason.id));
     const sentenceBanks = {
+      2: mode2SentenceBank,
       3: mode3SentenceBank,
       4: mode4SentenceBank,
       5: mode5SentenceBank
     };
     const sentenceKeysByMode = {
-      3: ["subject", "verb", "place"],
+      2: ["subject", "verb"],
+      3: ["subject", "verb", "object"],
       4: ["subject", "verb", "object", "place"],
       5: ["subject", "verb", "object", "place", "reason"]
     };
@@ -2906,10 +2913,10 @@
 
       const fallback = {
         subject: itemById(subjects, "boy"),
-        verb: itemById(verbs, "eat"),
-        place: itemById(places, "home")
+        verb: itemById(verbs, "eat")
       };
-      if (state.mode >= 4) fallback.object = itemById(objects, "apple");
+      if (state.mode >= 3) fallback.object = itemById(objects, "apple");
+      if (state.mode >= 4) fallback.place = itemById(places, "home");
       if (state.mode === 5) fallback.reason = itemById(reasons, "hungry");
       return fallback;
     }
@@ -2935,7 +2942,7 @@
     }
 
     function changeMode(newMode) {
-      if (![3, 4, 5].includes(newMode)) return;
+      if (![2, 3, 4, 5].includes(newMode)) return;
       if (newMode === state.mode) return;
       state.mode = newMode;
       newSentence();
@@ -3117,7 +3124,7 @@
         <header class="topbar">
           <div class="brand">
             <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
-              ${[3, 4, 5].map((mode) => `
+              ${[2, 3, 4, 5].map((mode) => `
                 <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
               `).join("")}
             </div>
