@@ -266,6 +266,90 @@
     }
     .btn.clear:hover { border-color: var(--grey); }
 
+    .btn.listen-partial {
+      background: #FFFFFF;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+      box-shadow: none;
+    }
+    .btn.listen-partial:hover { filter: brightness(0.98); }
+
+    .sentence-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .btn.correct {
+      position: relative;
+      overflow: hidden;
+      background: var(--green);
+      box-shadow: 0 6px 18px rgba(141, 198, 63, 0.35);
+      touch-action: none;
+    }
+
+    .btn.correct.locked {
+      background: #C9CBCD;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .btn.correct .hold-fill {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.35);
+      transform: scaleX(0);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
+    .btn.correct.holding .hold-fill {
+      transform: scaleX(1);
+      transition: transform 1s linear;
+    }
+
+    .btn.correct .correct-label {
+      position: relative;
+    }
+
+    .celebration {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 60;
+    }
+
+    .confetti {
+      position: absolute;
+      top: -24px;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      animation: confetti-fall linear forwards;
+    }
+
+    .confetti.star {
+      width: auto;
+      height: auto;
+      background: none !important;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-30px) translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(105vh) translateX(calc(var(--drift, 0) * 140px)) rotate(560deg);
+        opacity: 0.85;
+      }
+    }
+
     .board {
       display: grid;
       gap: 16px;
@@ -1172,44 +1256,44 @@
     };
 
     Object.assign(imageAssets, {
-      birthday: "assets/card-images/birthday.png",
-      plant: "assets/card-images/plant.png",
-      take: "assets/card-images/take.png",
-      eat: "assets/card-images/eat.png",
-      drink: "assets/card-images/drink.png",
-      push: "assets/card-images/push.png",
-      throw: "assets/card-images/throw.png",
-      play: "assets/card-images/play.png",
-      learn: "assets/card-images/learn.png",
-      open: "assets/card-images/open.png",
-      park: "assets/card-images/park.png",
-      table: "assets/card-images/table.png",
-      library: "assets/card-images/library.png",
-      feed: "assets/card-images/feed.png",
-      fork: "assets/card-images/fork.png",
-      restaurant: "assets/card-images/restaurant.png",
-      thirsty: "assets/card-images/thirsty.png",
-      likesBooks: "assets/card-images/likes-books.png",
-      kitchen: "assets/card-images/kitchen.png",
-      toy: "assets/card-images/toy.png",
-      playingReason: "assets/card-images/playing-reason.png",
-      give: "assets/card-images/give.png",
-      dirty: "assets/card-images/dirty.png",
-      wash: "assets/card-images/wash.png",
-      clean: "assets/card-images/clean.png",
-      cook: "assets/card-images/cook.png",
-      repair: "assets/card-images/repair.png",
-      needsRepair: "assets/card-images/broken.png",
-      search: "assets/card-images/search.png",
-      find: "assets/card-images/find.png",
-      water: "assets/card-images/water.png",
-      wear: "assets/card-images/wear.png",
-      carry: "assets/card-images/carry.png",
-      home: "assets/card-images/home.png",
-      classroom: "assets/card-images/classroom.png",
-      yard: "assets/card-images/yard.png",
-      cannotFind: "assets/card-images/cannot-find.png",
-      schoolWork: "assets/card-images/school-work.png"
+      birthday: "assets/card-images/birthday.webp",
+      plant: "assets/card-images/plant.webp",
+      take: "assets/card-images/take.webp",
+      eat: "assets/card-images/eat.webp",
+      drink: "assets/card-images/drink.webp",
+      push: "assets/card-images/push.webp",
+      throw: "assets/card-images/throw.webp",
+      play: "assets/card-images/play.webp",
+      learn: "assets/card-images/learn.webp",
+      open: "assets/card-images/open.webp",
+      park: "assets/card-images/park.webp",
+      table: "assets/card-images/table.webp",
+      library: "assets/card-images/library.webp",
+      feed: "assets/card-images/feed.webp",
+      fork: "assets/card-images/fork.webp",
+      restaurant: "assets/card-images/restaurant.webp",
+      thirsty: "assets/card-images/thirsty.webp",
+      likesBooks: "assets/card-images/likes-books.webp",
+      kitchen: "assets/card-images/kitchen.webp",
+      toy: "assets/card-images/toy.webp",
+      playingReason: "assets/card-images/playing-reason.webp",
+      give: "assets/card-images/give.webp",
+      dirty: "assets/card-images/dirty.webp",
+      wash: "assets/card-images/wash.webp",
+      clean: "assets/card-images/clean.webp",
+      cook: "assets/card-images/cook.webp",
+      repair: "assets/card-images/repair.webp",
+      needsRepair: "assets/card-images/broken.webp",
+      search: "assets/card-images/search.webp",
+      find: "assets/card-images/find.webp",
+      water: "assets/card-images/water.webp",
+      wear: "assets/card-images/wear.webp",
+      carry: "assets/card-images/carry.webp",
+      home: "assets/card-images/home.webp",
+      classroom: "assets/card-images/classroom.webp",
+      yard: "assets/card-images/yard.webp",
+      cannotFind: "assets/card-images/cannot-find.webp",
+      schoolWork: "assets/card-images/school-work.webp"
     });
 
     const places = [
@@ -2499,7 +2583,8 @@
       selectedCardId: null,
       feedback: "",
       feedbackType: "",
-      wrongSlot: null
+      wrongSlot: null,
+      celebrating: false
     };
     state.slots = emptySlots();
 
@@ -3006,8 +3091,10 @@
       state.selectedCardId = null;
       state.wrongSlot = null;
 
-      if (activeKeys().every((key) => state.slots[key])) {
-        state.feedback = "Μπράβο! Η πρόταση είναι έτοιμη.";
+      speakText(card.item.text, { rate: 0.95 });
+
+      if (isSentenceComplete()) {
+        state.feedback = "Μπράβο! Η πρόταση είναι έτοιμη — κράτησε πατημένο το «Σωστό!».";
         state.feedbackType = "good";
       } else {
         state.feedback = "Ωραία, συνέχισε.";
@@ -3034,28 +3121,127 @@
       render();
     }
 
-    function speakSentence() {
-      const text = makeSentenceText(state.target);
-      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-        state.feedback = "Η συσκευή δεν υποστηρίζει εκφώνηση.";
-        state.feedbackType = "bad";
-        render();
-        return;
-      }
-
+    function speakText(text, { rate = 0.9 } = {}) {
+      if (!text) return false;
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return false;
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "el-GR";
-      utterance.rate = 0.9;
+      utterance.rate = rate;
       utterance.pitch = 1;
       utterance.volume = 1;
       const greekVoice = bestGreekVoice();
       if (greekVoice) utterance.voice = greekVoice;
       window.speechSynthesis.speak(utterance);
       window.speechSynthesis.resume();
-      state.feedback = greekVoice ? "Άκουσε την πρόταση με ελληνική φωνή." : "Άκουσε την πρόταση.";
+      return true;
+    }
+
+    function speakSentence() {
+      const spoke = speakText(makeSentenceText(state.target));
+      if (!spoke) {
+        state.feedback = "Η συσκευή δεν υποστηρίζει εκφώνηση.";
+        state.feedbackType = "bad";
+        render();
+        return;
+      }
+      state.feedback = "Άκουσε την πρόταση.";
       state.feedbackType = "";
       render();
+    }
+
+    function placedPieces() {
+      return activeKeys()
+        .map((key) => {
+          const card = state.cards.find((item) => item.cardId === state.slots[key]);
+          return card ? card.item.text : null;
+        })
+        .filter(Boolean);
+    }
+
+    function isSentenceComplete() {
+      return activeKeys().every((key) => state.slots[key]);
+    }
+
+    function speakBuiltSoFar() {
+      const pieces = placedPieces();
+      if (!pieces.length) {
+        state.feedback = "Δεν έχει τοποθετηθεί καμία κάρτα ακόμα.";
+        state.feedbackType = "bad";
+        render();
+        return;
+      }
+      const text = pieces.join(" ") + (isSentenceComplete() ? "." : "");
+      const spoke = speakText(text);
+      state.feedback = spoke ? "Άκουσε την πρόταση ως εδώ." : "Η συσκευή δεν υποστηρίζει εκφώνηση.";
+      state.feedbackType = spoke ? "" : "bad";
+      render();
+    }
+
+    let correctHoldTimer = null;
+
+    function cancelCorrectHold() {
+      if (correctHoldTimer) {
+        window.clearTimeout(correctHoldTimer);
+        correctHoldTimer = null;
+      }
+      const button = document.querySelector("[data-correct]");
+      if (button) button.classList.remove("holding");
+    }
+
+    function startCorrectHold() {
+      if (state.celebrating) return;
+      if (!isSentenceComplete()) {
+        state.feedback = "Πρώτα συμπλήρωσε όλη την πρόταση.";
+        state.feedbackType = "bad";
+        render();
+        return;
+      }
+      const button = document.querySelector("[data-correct]");
+      if (button) button.classList.add("holding");
+      correctHoldTimer = window.setTimeout(() => {
+        correctHoldTimer = null;
+        celebrateCorrect();
+      }, 1000);
+    }
+
+    function spawnCelebration() {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const overlay = document.createElement("div");
+      overlay.className = "celebration";
+      const confettiColors = ["#8DC63F", "#ED1C24", "#00AEEF", "#F7941D", "#FFD166"];
+      for (let index = 0; index < 70; index += 1) {
+        const piece = document.createElement("span");
+        const isStar = index % 5 === 0;
+        piece.className = isStar ? "confetti star" : "confetti";
+        if (isStar) {
+          piece.textContent = "⭐";
+        } else {
+          piece.style.background = confettiColors[index % confettiColors.length];
+        }
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.animationDelay = `${(Math.random() * 0.4).toFixed(2)}s`;
+        piece.style.animationDuration = `${(1.6 + Math.random() * 1.2).toFixed(2)}s`;
+        piece.style.setProperty("--drift", (Math.random() * 2 - 1).toFixed(2));
+        overlay.appendChild(piece);
+      }
+      document.body.appendChild(overlay);
+      window.setTimeout(() => overlay.remove(), 3200);
+    }
+
+    function celebrateCorrect() {
+      cancelCorrectHold();
+      if (!isSentenceComplete() || state.celebrating) return;
+      state.celebrating = true;
+      spawnCelebration();
+      speakText("Μπράβο!", { rate: 0.95 });
+      state.feedback = "🎉 Σωστό! Πάμε στην επόμενη πρόταση.";
+      state.feedbackType = "good";
+      render();
+      window.setTimeout(() => {
+        state.celebrating = false;
+        newSentence();
+      }, 1400);
     }
 
     function visualHtml(item) {
@@ -3140,7 +3326,8 @@
           <div class="toolbar">
             <button class="btn new" type="button" data-new>🔄 Νέα πρόταση</button>
             <button class="btn listen" type="button" data-listen>🔊 Άκουσε</button>
-            <img src="synoida-logo.png" alt="ΣΥΝΟΙΔΑ" class="brand-mark" />
+            <button class="btn listen-partial" type="button" data-listen-partial>🗣️ Ως εδώ</button>
+            <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="brand-mark" />
           </div>
         </header>
 
@@ -3165,7 +3352,13 @@
             <p class="sentence-text">${makeSentenceText(state.target)}</p>
             <p class="built-text">${builtSentence}</p>
             <p class="feedback${feedbackClass}">${state.feedback}</p>
-            <button class="btn clear" type="button" data-clear>↩️ Άδειασε τα πλαίσια</button>
+            <div class="sentence-actions">
+              <button class="btn clear" type="button" data-clear>↩️ Άδειασε τα πλαίσια</button>
+              <button class="btn correct${isSentenceComplete() ? "" : " locked"}" type="button" data-correct aria-disabled="${!isSentenceComplete()}">
+                <span class="hold-fill" aria-hidden="true"></span>
+                <span class="correct-label">✅ Σωστό!</span>
+              </button>
+            </div>
           </section>
         </section>
       `;
@@ -3176,7 +3369,23 @@
     function bindEvents() {
       document.querySelector("[data-new]").addEventListener("click", newSentence);
       document.querySelector("[data-listen]").addEventListener("click", speakSentence);
+      document.querySelector("[data-listen-partial]").addEventListener("click", speakBuiltSoFar);
       document.querySelector("[data-clear]").addEventListener("click", clearSlots);
+
+      const correctButton = document.querySelector("[data-correct]");
+      if (window.PointerEvent) {
+        correctButton.addEventListener("pointerdown", startCorrectHold);
+        correctButton.addEventListener("pointerup", cancelCorrectHold);
+        correctButton.addEventListener("pointerleave", cancelCorrectHold);
+        correctButton.addEventListener("pointercancel", cancelCorrectHold);
+      } else {
+        correctButton.addEventListener("mousedown", startCorrectHold);
+        correctButton.addEventListener("mouseup", cancelCorrectHold);
+        correctButton.addEventListener("mouseleave", cancelCorrectHold);
+        correctButton.addEventListener("touchstart", startCorrectHold, { passive: true });
+        correctButton.addEventListener("touchend", cancelCorrectHold);
+        correctButton.addEventListener("touchcancel", cancelCorrectHold);
+      }
 
       document.querySelectorAll("[data-mode]").forEach((button) => {
         button.addEventListener("click", () => changeMode(Number(button.dataset.mode)));

@@ -97,41 +97,41 @@
 
 | ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
 |---|---|---|---:|---|---|---|
-| `eat` | τρώει | 🍽️ | 18/19/20 | Ειδική εικόνα | Έτοιμη | `assets/card-images/eat.png` |
-| `drink` | πίνει | 🥤 | 12/13/14 | Ειδική εικόνα | Έτοιμη | `assets/card-images/drink.png` |
+| `eat` | τρώει | 🍽️ | 18/19/20 | Ειδική εικόνα | Έτοιμη | `assets/card-images/eat.webp` |
+| `drink` | πίνει | 🥤 | 12/13/14 | Ειδική εικόνα | Έτοιμη | `assets/card-images/drink.webp` |
 | `read` | διαβάζει | 📖 | 8/11/12 | Emoji | Π1 | - |
 | `draw` | ζωγραφίζει | 🎨 | 6/6/6 | Emoji | Π1 | - |
 | `hold` | κρατάει | 🤲 | 2/2/2 | Emoji | Π1 | - |
-| `push` | σπρώχνει | ➡️ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/push.png` |
+| `push` | σπρώχνει | ➡️ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/push.webp` |
 | `pull` | τραβάει | 🪢 | 2/2/2 | Emoji | Π1 | - |
-| `throw` | πετάει | ⚽ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/throw.png` |
-| `give` | δίνει | 🤲 | 6/6/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/give.png` |
-| `take` | παίρνει | 🤲 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/take.png` |
+| `throw` | πετάει | ⚽ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/throw.webp` |
+| `give` | δίνει | 🤲 | 6/6/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/give.webp` |
+| `take` | παίρνει | 🤲 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/take.webp` |
 | `see` | βλέπει | 👀 | 0/0/0 | Emoji | Αργότερα | - |
 | `touch` | αγγίζει | 👆 | 0/0/0 | Emoji | Αργότερα | - |
-| `wash` | πλένει | 🚰 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wash.png` |
-| `feed` | ταΐζει | 🍴 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/feed.png` |
+| `wash` | πλένει | 🚰 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wash.webp` |
+| `feed` | ταΐζει | 🍴 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/feed.webp` |
 | `cut` | κόβει | ✂️ | 4/5/6 | Emoji | Π1 | - |
-| `open` | ανοίγει | 📦 | 7/7/8 | Ειδική εικόνα | Έτοιμη | `assets/card-images/open.png` |
-| `make` | φτιάχνει | 🛠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.png` |
+| `open` | ανοίγει | 📦 | 7/7/8 | Ειδική εικόνα | Έτοιμη | `assets/card-images/open.webp` |
+| `make` | φτιάχνει | 🛠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.webp` |
 | `hug` | αγκαλιάζει | 🫂 | 3/3/3 | Emoji | Π1 | - |
 | `shout` | φωνάζει | 📢 | 0/0/0 | Emoji | Αργότερα | - |
-| `search` | ψάχνει | 🔍 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/search.png` |
+| `search` | ψάχνει | 🔍 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/search.webp` |
 | `write` | γράφει | ✍️ | 7/7/7 | Emoji | Π1 | - |
-| `plant` | φυτεύει | 🌱 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/plant.png` |
-| `water` | ποτίζει | 🚿 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/water.png` |
+| `plant` | φυτεύει | 🌱 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/plant.webp` |
+| `water` | ποτίζει | 🚿 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/water.webp` |
 | `collect` | μαζεύει | 🧺 | 1/1/1 | Emoji | Π1 | - |
-| `wear` | φοράει | 🧢 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wear.png` |
+| `wear` | φοράει | 🧢 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wear.webp` |
 | `buy` | αγοράζει | 🛒 | 2/2/2 | Emoji | Π1 | - |
 | `sell` | πουλάει | 🧾 | 0/0/0 | Emoji | Αργότερα | - |
-| `cook` | μαγειρεύει | 👨‍🍳 | 3/3/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cook.png` |
+| `cook` | μαγειρεύει | 👨‍🍳 | 3/3/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cook.webp` |
 | `bake` | ψήνει | ♨️ | 3/3/3 | Emoji | Π1 | - |
-| `play` | παίζει | 🧸 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/play.png` |
-| `clean` | καθαρίζει | 🧽 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/clean.png` |
-| `repair` | φτιάχνει | 🛠️ | 5/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.png` |
-| `carry` | κουβαλάει | 💪 | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/carry.png` |
+| `play` | παίζει | 🧸 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/play.webp` |
+| `clean` | καθαρίζει | 🧽 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/clean.webp` |
+| `repair` | φτιάχνει | 🛠️ | 5/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.webp` |
+| `carry` | κουβαλάει | 💪 | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/carry.webp` |
 | `hide` | κρύβει | 🙈 | 1/1/1 | Emoji | Π1 | - |
-| `find` | βρίσκει | ✅ | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/find.png` |
+| `find` | βρίσκει | ✅ | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/find.webp` |
 | `use` | χρησιμοποιεί | 🛠️ | 8/8/8 | Emoji | Π1 | - |
 | `close` | κλείνει | 🔒 | 3/3/3 | Emoji | Π1 | - |
 | `fill` | γεμίζει | 🫗 | 1/1/1 | Emoji | Π1 | - |
@@ -176,12 +176,12 @@
 | `glass` | το ποτήρι | 🥤 | 2/2/2 | Emoji | Π2 | - |
 | `plate` | το πιάτο | 🍽️ | 1/1/1 | Emoji | Π2 | - |
 | `spoon` | το κουτάλι | 🥄 | 0/0/0 | Emoji | Αργότερα | - |
-| `fork` | το πιρούνι | 🍴 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/fork.png` |
+| `fork` | το πιρούνι | 🍴 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/fork.webp` |
 | `toothbrush` | την οδοντόβουρτσα | 🪥 | 2/2/2 | Emoji | Π2 | - |
 | `soap` | το σαπούνι | 🧼 | 0/0/0 | Emoji | Αργότερα | - |
 | `umbrella` | την ομπρέλα | ☂️ | 8/8/8 | Emoji | Π2 | - |
 | `puzzle` | το παζλ | 🧩 | 0/0/0 | Emoji | Αργότερα | - |
-| `toy` | το παιχνίδι | 🧩 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/toy.png` |
+| `toy` | το παιχνίδι | 🧩 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/toy.webp` |
 | `drum` | το τύμπανο | 🥁 | 1/1/1 | Emoji | Π2 | - |
 | `guitar` | την κιθάρα | 🎸 | 1/1/1 | Emoji | Π2 | - |
 | `phone` | το τηλέφωνο | 📱 | 5/5/5 | Emoji | Π2 | - |
@@ -213,15 +213,15 @@
 
 | ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
 |---|---|---|---:|---|---|---|
-| `home` | στο σπίτι | 🏠 | 0/47/49 | Ειδική εικόνα | Έτοιμη | `assets/card-images/home.png` |
-| `park` | στο πάρκο | 🌳 | 0/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/park.png` |
+| `home` | στο σπίτι | 🏠 | 0/47/49 | Ειδική εικόνα | Έτοιμη | `assets/card-images/home.webp` |
+| `park` | στο πάρκο | 🌳 | 0/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/park.webp` |
 | `school` | στο σχολείο | 🏫 | 0/11/12 | Emoji | Π1 | - |
 | `beach` | στην παραλία | 🏖️ | 0/3/3 | Emoji | Π1 | - |
 | `garden` | στον κήπο | 🌷 | 0/11/11 | Emoji | Π1 | - |
-| `kitchen` | στην κουζίνα | 🍳 | 0/15/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/kitchen.png` |
+| `kitchen` | στην κουζίνα | 🍳 | 0/15/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/kitchen.webp` |
 | `bathroom` | στο μπάνιο | 🛁 | 0/2/2 | Emoji | Π1 | - |
 | `car` | στο αυτοκίνητο | 🚗 | 0/0/0 | Emoji | Αργότερα | - |
-| `table` | στο τραπέζι | 🍽️ | 0/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/table.png` |
+| `table` | στο τραπέζι | 🍽️ | 0/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/table.webp` |
 | `bed` | στο κρεβάτι | 🛌 | 0/2/2 | Emoji | Π1 | - |
 | `floor` | στο πάτωμα | 🟫 | 0/2/2 | Emoji | Π1 | - |
 | `playground` | στην παιδική χαρά | 🛝 | 0/3/3 | Emoji | Π1 | - |
@@ -231,13 +231,13 @@
 | `hospital` | στο νοσοκομείο | 🏥 | 0/0/0 | Emoji | Αργότερα | - |
 | `zoo` | στον ζωολογικό κήπο | 🦒 | 0/1/1 | Emoji | Π1 | - |
 | `pharmacy` | στο φαρμακείο | 💊 | 0/0/0 | Emoji | Αργότερα | - |
-| `restaurant` | στο εστιατόριο | 🍴 | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/restaurant.png` |
+| `restaurant` | στο εστιατόριο | 🍴 | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/restaurant.webp` |
 | `stadium` | στο γήπεδο | 🏟️ | 0/0/0 | Emoji | Αργότερα | - |
-| `library` | στη βιβλιοθήκη | 🏛️ | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/library.png` |
+| `library` | στη βιβλιοθήκη | 🏛️ | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/library.webp` |
 | `clinic` | στο ιατρείο | 🩺 | 0/1/1 | Emoji | Π1 | - |
 | `livingRoom` | στο σαλόνι | 🛋️ | 0/0/0 | Emoji | Αργότερα | - |
 | `bedroom` | στο υπνοδωμάτιο | 🛏️ | 0/0/0 | Emoji | Αργότερα | - |
-| `classroom` | στην τάξη | 🧑‍🏫 | 0/18/18 | Ειδική εικόνα | Έτοιμη | `assets/card-images/classroom.png` |
+| `classroom` | στην τάξη | 🧑‍🏫 | 0/18/18 | Ειδική εικόνα | Έτοιμη | `assets/card-images/classroom.webp` |
 | `bus` | στο λεωφορείο | 🚌 | 0/0/0 | Emoji | Αργότερα | - |
 | `station` | στον σταθμό | 🚉 | 0/0/0 | Emoji | Αργότερα | - |
 | `bakery` | στον φούρνο | 🥖 | 0/2/2 | Emoji | Π1 | - |
@@ -250,7 +250,7 @@
 | `farm` | στη φάρμα | 🚜 | 0/8/8 | Emoji | Π1 | - |
 | `dentist` | στο οδοντιατρείο | 🦷 | 0/0/0 | Emoji | Αργότερα | - |
 | `office` | στο γραφείο | 🖥️ | 0/4/4 | Emoji | Π1 | - |
-| `yard` | στην αυλή | 🏡 | 0/11/12 | Ειδική εικόνα | Έτοιμη | `assets/card-images/yard.png` |
+| `yard` | στην αυλή | 🏡 | 0/11/12 | Ειδική εικόνα | Έτοιμη | `assets/card-images/yard.webp` |
 | `postOffice` | στο ταχυδρομείο | 📮 | 0/0/0 | Emoji | Αργότερα | - |
 | `musicRoom` | στην αίθουσα μουσικής | 🎹 | 0/2/2 | Emoji | Π1 | - |
 
@@ -259,21 +259,21 @@
 | ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
 |---|---|---|---:|---|---|---|
 | `hungry` | γιατί πεινάει | 🤤 | 0/0/15 | Emoji | Π1 | - |
-| `thirsty` | γιατί διψάει | 💧 | 0/0/11 | Ειδική εικόνα | Έτοιμη | `assets/card-images/thirsty.png` |
+| `thirsty` | γιατί διψάει | 💧 | 0/0/11 | Ειδική εικόνα | Έτοιμη | `assets/card-images/thirsty.webp` |
 | `happy` | γιατί χαίρεται | 😊 | 0/0/1 | Emoji | Π1 | - |
 | `tired` | γιατί κουράστηκε | 😴 | 0/0/0 | Emoji | Αργότερα | - |
 | `cold` | γιατί κρυώνει | 🥶 | 0/0/0 | Emoji | Αργότερα | - |
 | `hot` | γιατί ζεσταίνεται | 🥵 | 0/0/0 | Emoji | Αργότερα | - |
 | `bored` | γιατί βαριέται | 🥱 | 0/0/0 | Emoji | Αργότερα | - |
 | `rainy` | γιατί βρέχει | 🌧️ | 0/0/0 | Emoji | Αργότερα | - |
-| `dirty` | γιατί βρώμισε | 👟 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/dirty.png` |
-| `birthday` | γιατί έχει γενέθλια | 🎈 | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/birthday.png` |
+| `dirty` | γιατί βρώμισε | 👟 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/dirty.webp` |
+| `birthday` | γιατί έχει γενέθλια | 🎈 | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/birthday.webp` |
 | `love` | γιατί το αγαπάει | ❤️ | 0/0/0 | Emoji | Αργότερα | - |
 | `lostSth` | γιατί έχασε κάτι | ❓ | 0/0/0 | Emoji | Αργότερα | - |
-| `wantsLearn` | γιατί θέλει να μάθει | 💡 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/learn.png` |
-| `playing` | γιατί παίζει | 🎲 | 0/0/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/playing-reason.png` |
+| `wantsLearn` | γιατί θέλει να μάθει | 💡 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/learn.webp` |
+| `playing` | γιατί παίζει | 🎲 | 0/0/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/playing-reason.webp` |
 | `scared` | γιατί φοβάται | 😨 | 0/0/1 | Emoji | Π1 | - |
-| `broken` | γιατί χάλασε | ⚠️ | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.png` |
+| `broken` | γιατί χάλασε | ⚠️ | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.webp` |
 | `newGift` | γιατί υπάρχει δώρο | 🎁 | 0/0/0 | Emoji | Αργότερα | - |
 | `sick` | γιατί αρρώστησε | 🤒 | 0/0/0 | Emoji | Αργότερα | - |
 | `guests` | γιατί έχει επισκέπτες | 👥 | 0/0/3 | Emoji | Π1 | - |
@@ -285,9 +285,9 @@
 | `afterRun` | γιατί δίψασε μετά το τρέξιμο | 🏃 | 0/0/2 | Emoji | Π1 | - |
 | `needsWater` | γιατί χρειάζεται νερό | 🚰 | 0/0/0 | Emoji | Αργότερα | - |
 | `wantsCool` | γιατί θέλει δροσιά | 🧊 | 0/0/0 | Emoji | Αργότερα | - |
-| `schoolWork` | γιατί έχει μάθημα | 🎒 | 0/0/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/school-work.png` |
+| `schoolWork` | γιατί έχει μάθημα | 🎒 | 0/0/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/school-work.webp` |
 | `practice` | γιατί κάνει εξάσκηση | 📝 | 0/0/3 | Emoji | Π1 | - |
-| `likesBooks` | γιατί του αρέσουν τα βιβλία | 📖 | 0/0/1 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.png` |
+| `likesBooks` | γιατί του αρέσουν τα βιβλία | 📖 | 0/0/1 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.webp` |
 | `wantsRemember` | γιατί θέλει να το θυμάται | 🧠 | 0/0/2 | Emoji | Π1 | - |
 | `carefulLook` | γιατί κοιτάζει προσεκτικά | 🔎 | 0/0/0 | Emoji | Αργότερα | - |
 | `prettyThing` | γιατί βλέπει κάτι όμορφο | ✨ | 0/0/1 | Emoji | Π1 | - |
@@ -301,7 +301,7 @@
 | `goingOut` | γιατί βγαίνει έξω | 🚪 | 0/0/0 | Emoji | Αργότερα | - |
 | `fellDown` | γιατί έπεσε κάτω | ⬇️ | 0/0/0 | Emoji | Αργότερα | - |
 | `safety` | γιατί θέλει ασφάλεια | 🛡️ | 0/0/0 | Emoji | Αργότερα | - |
-| `needsRepair` | γιατί χάλασε | ⚠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.png` |
+| `needsRepair` | γιατί χάλασε | ⚠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.webp` |
 | `worksAgain` | γιατί πρέπει να δουλέψει ξανά | ⚙️ | 0/0/0 | Emoji | Αργότερα | - |
 | `locked` | γιατί κάτι είναι κλειστό | 🔐 | 0/0/0 | Emoji | Αργότερα | - |
 | `closeSafe` | γιατί πρέπει να μείνει ασφαλές | 🔒 | 0/0/0 | Emoji | Αργότερα | - |
@@ -336,7 +336,7 @@
 | `cookingNeed` | γιατί χρειάζεται στην κουζίνα | 🍳 | 0/0/0 | Emoji | Αργότερα | - |
 | `need` | γιατί υπάρχει ανάγκη | ✅ | 0/0/0 | Emoji | Αργότερα | - |
 | `hotWeather` | γιατί κάνει ζέστη | ☀️ | 0/0/1 | Emoji | Π1 | - |
-| `likesBooksF` | γιατί της αρέσουν τα βιβλία | 📖 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.png` |
+| `likesBooksF` | γιατί της αρέσουν τα βιβλία | 📖 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.webp` |
 | `teacherExerciseGirl` | γιατί της έβαλε άσκηση η δασκάλα | 📝 | 0/0/1 | Emoji | Π1 | - |
 | `prepareFood` | γιατί ετοιμάζει το φαγητό | 🍽️ | 0/0/3 | Emoji | Π1 | - |
 | `customers` | γιατί περιμένει πελάτες | 👥 | 0/0/1 | Emoji | Π1 | - |
@@ -355,7 +355,7 @@
 | `learnRules` | γιατί θέλει να μάθει τους κανόνες | 🎲 | 0/0/1 | Emoji | Π1 | - |
 | `moveIt` | γιατί θέλει να το μετακινήσει | ↔️ | 0/0/2 | Emoji | Π1 | - |
 | `hadLostIt` | γιατί το είχε χάσει | 🔑 | 0/0/3 | Emoji | Π1 | - |
-| `cannotFindIt` | γιατί δεν το βρίσκει | 🔍 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cannot-find.png` |
+| `cannotFindIt` | γιατί δεν το βρίσκει | 🔍 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cannot-find.webp` |
 | `plantNeedsWater` | γιατί το φυτό χρειάζεται νερό | 🌱 | 0/0/3 | Emoji | Π1 | - |
 | `lessonFinished` | γιατί τελείωσε το μάθημα | 🏫 | 0/0/1 | Emoji | Π1 | - |
 | `ranOutF` | γιατί της τελείωσε | 🛒 | 0/0/2 | Emoji | Π1 | - |
@@ -367,6 +367,6 @@
 
 ## Κοινές Ειδικές Εικόνες
 
-- `assets/card-images/repair.png`: ΤΙ ΚΑΝΕΙ `make` (φτιάχνει) · ΤΙ ΚΑΝΕΙ `repair` (φτιάχνει)
-- `assets/card-images/broken.png`: ΓΙΑΤΙ `broken` (γιατί χάλασε) · ΓΙΑΤΙ `needsRepair` (γιατί χάλασε)
-- `assets/card-images/likes-books.png`: ΓΙΑΤΙ `likesBooks` (γιατί του αρέσουν τα βιβλία) · ΓΙΑΤΙ `likesBooksF` (γιατί της αρέσουν τα βιβλία)
+- `assets/card-images/repair.webp`: ΤΙ ΚΑΝΕΙ `make` (φτιάχνει) · ΤΙ ΚΑΝΕΙ `repair` (φτιάχνει)
+- `assets/card-images/broken.webp`: ΓΙΑΤΙ `broken` (γιατί χάλασε) · ΓΙΑΤΙ `needsRepair` (γιατί χάλασε)
+- `assets/card-images/likes-books.webp`: ΓΙΑΤΙ `likesBooks` (γιατί του αρέσουν τα βιβλία) · ΓΙΑΤΙ `likesBooksF` (γιατί της αρέσουν τα βιβλία)
