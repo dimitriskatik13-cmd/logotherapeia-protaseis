@@ -3091,8 +3091,6 @@
       state.selectedCardId = null;
       state.wrongSlot = null;
 
-      speakText(card.item.text, { rate: 0.95 });
-
       if (isSentenceComplete()) {
         state.feedback = "Μπράβο! Η πρόταση είναι έτοιμη — κράτησε πατημένο το «Σωστό!».";
         state.feedbackType = "good";
