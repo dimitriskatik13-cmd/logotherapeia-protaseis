@@ -121,7 +121,7 @@
 
     .doc-logo {
       display: block;
-      height: 56px;
+      height: 92px;
       width: auto;
       flex: 0 0 auto;
     }
@@ -180,6 +180,49 @@
     .controls-bar .toolbar {
       flex: 1 1 auto;
       justify-content: flex-end;
+    }
+
+    .btn.settings {
+      background: #FFFFFF;
+      color: var(--grey);
+      border: 2px solid var(--line);
+      box-shadow: none;
+      flex: 0 0 auto;
+    }
+    .btn.settings:hover,
+    .btn.settings.open {
+      border-color: var(--grey);
+    }
+
+    .settings-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 12px 0 4px;
+      display: grid;
+      gap: 10px;
+      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.06);
+    }
+
+    .settings-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .settings-label {
+      font-weight: 700;
+      color: var(--grey);
+    }
+
+    .settings-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
     }
 
     /* ==== Ενότητες τύπου εντύπου: σκούρα μπάρα + σώμα-κάρτα ==== */
@@ -455,12 +498,14 @@
       display: grid;
       gap: 6px;
       min-width: 0;
+      justify-items: center;
+      text-align: center;
     }
 
     .slot-title {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 8px;
       font-weight: 900;
       line-height: 1.1;
@@ -733,37 +778,6 @@
 
     .feedback.bad {
       color: var(--red);
-    }
-
-    .legend {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-    }
-
-    .legend.mode-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .legend.mode-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .legend.mode-5 {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .legend-chip {
-      min-height: 40px;
-      border-radius: 999px;
-      color: #ffffff;
-      display: grid;
-      place-items: center;
-      padding: 6px 8px;
-      font-size: 0.78rem;
-      font-weight: 950;
-      text-align: center;
-      line-height: 1.05;
     }
 
     @media (min-width: 560px) {
@@ -2648,7 +2662,8 @@
       feedback: "",
       feedbackType: "",
       wrongSlot: null,
-      celebrating: false
+      celebrating: false,
+      settingsOpen: false
     };
     state.slots = emptySlots();
 
@@ -3379,15 +3394,11 @@
 
         <div class="doc-title">
           <h1>Χτίζω πρόταση</h1>
-          <p class="doc-desc">Δραστηριότητα δομής πρότασης · ${activeCategories().map((category) => category.label).join(" + ")}</p>
+          <p class="doc-desc">Δραστηριότητα δομής πρότασης · Επίπεδο ${state.mode}</p>
         </div>
 
         <div class="controls-bar">
-          <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
-            ${[2, 3, 4, 5].map((mode) => `
-              <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
-            `).join("")}
-          </div>
+          <button class="btn settings${state.settingsOpen ? ' open' : ''}" type="button" data-settings aria-expanded="${state.settingsOpen}">⚙️ Ρυθμίσεις</button>
           <div class="toolbar">
             <button class="btn new" type="button" data-new>🔄 Νέα πρόταση</button>
             <button class="btn listen" type="button" data-listen>🔊 Άκουσε</button>
@@ -3395,13 +3406,24 @@
           </div>
         </div>
 
+        ${state.settingsOpen ? `
+        <div class="settings-panel">
+          <div class="settings-row">
+            <span class="settings-label">Κομμάτια πρότασης</span>
+            <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
+              ${[2, 3, 4, 5].map((mode) => `
+                <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
+              `).join("")}
+            </div>
+          </div>
+          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}</p>
+        </div>
+        ` : ""}
+
         <section class="board" aria-label="Άσκηση πρότασης">
           <section class="doc-section" aria-label="Χτίσε την πρόταση">
             <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">✏️</span>Χτίσε την πρόταση</div>
             <div class="doc-section-body">
-              <div class="legend mode-${state.mode}" aria-hidden="true">
-                ${activeCategories().map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
-              </div>
               <div class="slots mode-${state.mode}">
                 ${activeCategories().map(slotHtml).join("")}
               </div>
@@ -3443,6 +3465,10 @@
       document.querySelector("[data-listen]").addEventListener("click", speakSentence);
       document.querySelector("[data-listen-partial]").addEventListener("click", speakBuiltSoFar);
       document.querySelector("[data-clear]").addEventListener("click", clearSlots);
+      document.querySelector("[data-settings]").addEventListener("click", () => {
+        state.settingsOpen = !state.settingsOpen;
+        render();
+      });
 
       const correctButton = document.querySelector("[data-correct]");
       if (window.PointerEvent) {
