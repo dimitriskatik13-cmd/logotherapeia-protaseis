@@ -92,7 +92,7 @@
 32. 🛠️ **φτιάχνει** `repair` | υποκείμενα: human | βασικές αιτίες: broken, needsRepair, worksAgain, helpsSomeone
 33. 💪 **κουβαλάει** `carry` | υποκείμενα: human | βασικές αιτίες: need, readyToGo, goingOut, helpsSomeone
 34. 🙈 **κρύβει** `hide` | υποκείμενα: human | βασικές αιτίες: playing, scared, fun, wantsWin
-35. ✅ **βρίσκει** `find` | υποκείμενα: human, pet | βασικές αιτίες: lostSth, happy, needsHelp, carefulLook
+35. ✅ **βρήκε** `find` | υποκείμενα: human, pet | βασικές αιτίες: searchedEverywhere *(αόριστος — δένει χρονικά με το «έψαξε παντού»)*
 36. 🛠️ **χρησιμοποιεί** `use` | υποκείμενα: human | βασικές αιτίες: wantsLearn, practice, needsHelp, workTime
 37. 🔒 **κλείνει** `close` | υποκείμενα: human | βασικές αιτίες: closeSafe, rainy, cold, readyToGo
 38. 🫗 **γεμίζει** `fill` | υποκείμενα: human | βασικές αιτίες: emptyInside, thirsty, guests, tableReady
