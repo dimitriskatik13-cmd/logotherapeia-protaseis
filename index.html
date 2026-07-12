@@ -293,6 +293,41 @@
       color: var(--grey);
     }
 
+    .time-switch {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 4px;
+      background: #ffffff;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .time-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--grey);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .time-btn.active {
+      background: #7C3AED;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+    }
+
+    .time-btn:hover:not(.active) {
+      background: #7C3AED1A;
+      color: var(--grey);
+    }
+
     .brand-mark {
       display: block;
       height: 56px;
@@ -953,7 +988,8 @@
       { key: "verb", label: "ΤΙ ΚΑΝΕΙ", role: "Ρήμα", color: "var(--verb)", icon: "⚡", modes: [2, 3, 4, 5] },
       { key: "object", label: "ΤΙ", role: "Αντικείμενο", color: "var(--object)", icon: "🎯", modes: [3, 4, 5] },
       { key: "place", label: "ΠΟΥ", role: "Τόπος", color: "var(--place)", icon: "📍", modes: [4, 5] },
-      { key: "reason", label: "ΓΙΑΤΙ", role: "Αιτία", color: "var(--reason)", icon: "💭", modes: [5] }
+      { key: "reason", label: "ΓΙΑΤΙ", role: "Αιτία", color: "var(--reason)", icon: "💭", modes: [5] },
+      { key: "time", label: "ΠΟΤΕ", role: "Χρονικός προσδιορισμός", color: "#7C3AED", icon: "📅", modes: [] }
     ];
 
     const imageAssets = {
@@ -1690,6 +1726,67 @@
       { id: "fly", text: "πετάει", emoji: "🕊️", active: true, subjectGroups: ["animal"], objects: [], places: [], reasons: [] }
     ];
 
+    const times = [
+      { id: "today", text: "Σήμερα", emoji: "☀️" },
+      { id: "yesterday", text: "Χθες", emoji: "🌙" },
+      { id: "tomorrow", text: "Αύριο", emoji: "🌅" }
+    ];
+    const timeWords = new Set(times.map((item) => item.text));
+
+    /* Μορφές ρημάτων ανά χρόνο: το «Χθες» απαιτεί αόριστο, το «Αύριο» μέλλοντα. */
+    const verbForms = {
+      eat: { past: "έφαγε", future: "θα φάει" },
+      drink: { past: "ήπιε", future: "θα πιει" },
+      read: { past: "διάβασε", future: "θα διαβάσει" },
+      draw: { past: "ζωγράφισε", future: "θα ζωγραφίσει" },
+      hold: { past: "κράτησε", future: "θα κρατήσει" },
+      push: { past: "έσπρωξε", future: "θα σπρώξει" },
+      pull: { past: "τράβηξε", future: "θα τραβήξει" },
+      throw: { past: "πέταξε", future: "θα πετάξει" },
+      give: { past: "έδωσε", future: "θα δώσει" },
+      take: { past: "πήρε", future: "θα πάρει" },
+      see: { past: "είδε", future: "θα δει" },
+      touch: { past: "άγγιξε", future: "θα αγγίξει" },
+      wash: { past: "έπλυνε", future: "θα πλύνει" },
+      feed: { past: "τάισε", future: "θα ταΐσει" },
+      cut: { past: "έκοψε", future: "θα κόψει" },
+      open: { past: "άνοιξε", future: "θα ανοίξει" },
+      make: { past: "έφτιαξε", future: "θα φτιάξει" },
+      hug: { past: "αγκάλιασε", future: "θα αγκαλιάσει" },
+      shout: { past: "φώναξε", future: "θα φωνάξει" },
+      search: { past: "έψαξε", future: "θα ψάξει" },
+      write: { past: "έγραψε", future: "θα γράψει" },
+      plant: { past: "φύτεψε", future: "θα φυτέψει" },
+      water: { past: "πότισε", future: "θα ποτίσει" },
+      collect: { past: "μάζεψε", future: "θα μαζέψει" },
+      wear: { past: "φόρεσε", future: "θα φορέσει" },
+      buy: { past: "αγόρασε", future: "θα αγοράσει" },
+      sell: { past: "πούλησε", future: "θα πουλήσει" },
+      cook: { past: "μαγείρεψε", future: "θα μαγειρέψει" },
+      bake: { past: "έψησε", future: "θα ψήσει" },
+      play: { past: "έπαιξε", future: "θα παίξει" },
+      clean: { past: "καθάρισε", future: "θα καθαρίσει" },
+      repair: { past: "έφτιαξε", future: "θα φτιάξει" },
+      carry: { past: "κουβάλησε", future: "θα κουβαλήσει" },
+      hide: { past: "έκρυψε", future: "θα κρύψει" },
+      find: { past: "βρήκε", future: "θα βρει" },
+      use: { past: "χρησιμοποίησε", future: "θα χρησιμοποιήσει" },
+      close: { past: "έκλεισε", future: "θα κλείσει" },
+      fill: { past: "γέμισε", future: "θα γεμίσει" },
+      empty: { past: "άδειασε", future: "θα αδειάσει" },
+      photograph: { past: "φωτογράφισε", future: "θα φωτογραφίσει" },
+      sleep: { past: "κοιμήθηκε", future: "θα κοιμηθεί" },
+      run: { past: "έτρεξε", future: "θα τρέξει" },
+      laugh: { past: "γέλασε", future: "θα γελάσει" },
+      dance: { past: "χόρεψε", future: "θα χορέψει" },
+      jump: { past: "πήδηξε", future: "θα πηδήξει" },
+      sing: { past: "τραγούδησε", future: "θα τραγουδήσει" },
+      cry: { past: "έκλαψε", future: "θα κλάψει" },
+      walk: { past: "περπάτησε", future: "θα περπατήσει" },
+      swim: { past: "κολύμπησε", future: "θα κολυμπήσει" },
+      fly: { past: "πέταξε", future: "θα πετάξει" }
+    };
+
     const mode5SentenceBank = [
       { id: "m5-001", subject: "boy", verb: "eat", object: "apple", place: "home", reason: "hungry" },
       { id: "m5-002", subject: "girl", verb: "eat", object: "banana", place: "school", reason: "snackTime" },
@@ -2330,8 +2427,16 @@
     const COLLECT_FARM_OBJECTS = ["carrot", "flower", "box"];
     const TABLE_READY_OBJECTS = ["plate", "glass", "spoon", "fork"];
 
+    function timeActive() {
+      return state.timeSetting !== "none" && [3, 4].includes(state.mode);
+    }
+
     function activeCategories() {
-      return categories.filter((category) => category.modes.includes(state.mode));
+      const base = categories.filter((category) => category.modes.includes(state.mode));
+      if (timeActive()) {
+        base.unshift(categories.find((category) => category.key === "time"));
+      }
+      return base;
     }
 
     function activeKeys() {
@@ -2664,7 +2769,8 @@
       feedbackType: "",
       wrongSlot: null,
       celebrating: false,
-      settingsOpen: false
+      settingsOpen: false,
+      timeSetting: "none"
     };
     state.slots = emptySlots();
 
@@ -3020,18 +3126,26 @@
       return next;
     }
 
+    /* Μετά από αρχικό χρονικό («Σήμερα…»), η επόμενη λέξη γράφεται με πεζό αρχικό. */
+    function lowerAfterTime(pieces) {
+      if (pieces.length > 1 && timeWords.has(pieces[0]) && pieces[1] && pieces[1] !== "___") {
+        return [pieces[0], pieces[1].charAt(0).toLowerCase() + pieces[1].slice(1), ...pieces.slice(2)];
+      }
+      return pieces;
+    }
+
     function makeSentenceText(sentence) {
       if (!sentence) return "";
-      const parts = activeKeys().map((key) => sentence[key]?.text).filter(Boolean);
+      const parts = lowerAfterTime(activeKeys().map((key) => sentence[key]?.text).filter(Boolean));
       return `${parts.join(" ")}.`;
     }
 
     function makeBuiltSentenceText() {
-      const pieces = activeKeys().map((key) => {
+      const pieces = lowerAfterTime(activeKeys().map((key) => {
         const cardId = state.slots[key];
         const card = state.cards.find((item) => item.cardId === cardId);
         return card ? card.item.text : "___";
-      });
+      }));
       const isComplete = pieces.every((piece) => piece !== "___");
       return `${pieces.join(" ")}${isComplete ? "." : ""}`;
     }
@@ -3095,8 +3209,32 @@
       })));
     }
 
+    function resolveVerbForTime(verbItem, timeId) {
+      const base = itemById(verbs, verbItem.id) || verbItem;
+      const forms = verbForms[base.id] || {};
+      if (timeId === "yesterday" && forms.past) return { ...base, text: forms.past };
+      if (timeId === "tomorrow" && forms.future) return { ...base, text: forms.future };
+      return base;
+    }
+
+    function pickTimeItem() {
+      if (state.timeSetting === "random") return randomItem(times);
+      return itemById(times, state.timeSetting);
+    }
+
+    function applyTimeToTarget() {
+      if (!timeActive()) return;
+      const timeItem = pickTimeItem();
+      state.target = {
+        ...state.target,
+        time: timeItem,
+        verb: resolveVerbForTime(state.target.verb, timeItem.id)
+      };
+    }
+
     function newSentence() {
       state.target = buildSentence();
+      applyTimeToTarget();
       state.cards = createCards(state.target);
       state.slots = emptySlots();
       state.selectedCardId = null;
@@ -3124,6 +3262,29 @@
     }
 
     function changePart(key) {
+      if (key === "time") {
+        if (!timeActive()) return;
+        if (state.timeSetting !== "random") {
+          state.feedback = "Το χρονικό είναι σταθερό — άλλαξέ το από τις Ρυθμίσεις.";
+          state.feedbackType = "bad";
+          render();
+          return;
+        }
+        const nextTime = randomItem(times.filter((item) => item.id !== state.target.time?.id));
+        const nextVerb = resolveVerbForTime(state.target.verb, nextTime.id);
+        state.target = { ...state.target, time: nextTime, verb: nextVerb };
+        state.cards = state.cards.map((card) => {
+          if (card.category === "time") return { ...card, item: nextTime };
+          if (card.category === "verb") return { ...card, item: nextVerb };
+          return card;
+        });
+        state.feedback = "Άλλαξε το ΠΟΤΕ.";
+        state.feedbackType = "";
+        state.wrongSlot = null;
+        render();
+        return;
+      }
+
       const alternatives = candidatesFor(key, state.target);
       if (!alternatives.length) {
         state.feedback = state.mode === 5
@@ -3134,7 +3295,10 @@
         return;
       }
 
-      const nextItem = randomItem(alternatives);
+      let nextItem = randomItem(alternatives);
+      if (key === "verb" && timeActive() && state.target.time) {
+        nextItem = resolveVerbForTime(nextItem, state.target.time.id);
+      }
       state.target = sentenceWith(state.target, key, nextItem);
       state.cards = state.cards.map((card) => card.category === key ? { ...card, item: nextItem } : card);
       state.feedback = `Άλλαξε το ${categories.find((category) => category.key === key).label}.`;
@@ -3229,12 +3393,12 @@
     }
 
     function placedPieces() {
-      return activeKeys()
+      return lowerAfterTime(activeKeys()
         .map((key) => {
           const card = state.cards.find((item) => item.cardId === state.slots[key]);
           return card ? card.item.text : null;
         })
-        .filter(Boolean);
+        .filter(Boolean));
     }
 
     function isSentenceComplete() {
@@ -3417,7 +3581,15 @@
               `).join("")}
             </div>
           </div>
-          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}</p>
+          <div class="settings-row">
+            <span class="settings-label">Χρονικός προσδιορισμός</span>
+            <div class="time-switch" role="group" aria-label="Χρονικός προσδιορισμός">
+              ${[["none", "Χωρίς"], ["today", "Σήμερα"], ["yesterday", "Χθες"], ["tomorrow", "Αύριο"], ["random", "🎲 Τυχαίο"]].map(([value, label]) => `
+                <button type="button" class="time-btn${state.timeSetting === value ? ' active' : ''}" data-time="${value}" aria-pressed="${state.timeSetting === value}">${label}</button>
+              `).join("")}
+            </div>
+          </div>
+          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}${state.timeSetting !== "none" && ![3, 4].includes(state.mode) ? " · Ο χρονικός προσδιορισμός ισχύει μόνο στα Επίπεδα 3 και 4." : ""}${timeActive() ? " · Το «Χθες» βάζει το ρήμα σε αόριστο και το «Αύριο» σε μέλλοντα." : ""}</p>
         </div>
         ` : ""}
 
@@ -3425,7 +3597,7 @@
           <section class="doc-section" aria-label="Χτίσε την πρόταση">
             <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">✏️</span>Χτίσε την πρόταση</div>
             <div class="doc-section-body">
-              <div class="slots mode-${state.mode}">
+              <div class="slots mode-${activeCategories().length}">
                 ${activeCategories().map(slotHtml).join("")}
               </div>
             </div>
@@ -3434,7 +3606,7 @@
           <section class="doc-section" aria-label="Κάρτες επιλογής">
             <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">🗂️</span>Κάρτες</div>
             <div class="doc-section-body">
-              <div class="card-grid mode-${state.mode}">
+              <div class="card-grid mode-${activeCategories().length}">
                 ${trayHtml}
               </div>
             </div>
@@ -3469,6 +3641,15 @@
       document.querySelector("[data-settings]").addEventListener("click", () => {
         state.settingsOpen = !state.settingsOpen;
         render();
+      });
+
+      document.querySelectorAll("[data-time]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const value = button.dataset.time;
+          if (value === state.timeSetting) return;
+          state.timeSetting = value;
+          newSentence();
+        });
       });
 
       const correctButton = document.querySelector("[data-correct]");
