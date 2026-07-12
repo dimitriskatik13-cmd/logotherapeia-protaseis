@@ -1787,6 +1787,78 @@
       fly: { past: "πέταξε", future: "θα πετάξει" }
     };
 
+    /*
+      Μορφές αιτιών ανά χρόνο για το Επίπεδο 5.
+      - Καταστάσεις → παρατατικός στο «Χθες», «θα + ενεστώτας» στο «Αύριο».
+      - «θέλει να…» → «ήθελε να…» στο παρελθόν· στο μέλλον μένει ενεστώτας
+        (η επιθυμία υπάρχει τώρα, η πράξη έπεται).
+      - Διαχρονικές προτιμήσεις (αρέσει, αγαπάει, φροντίζει) → ίδιες παντού.
+      - Γεγονότα που ήδη συνέβησαν (χάλασε, της τελείωσε, γέμισε) → ίδια παντού·
+        όσα πρέπει να συμβούν την ημέρα της πράξης παίρνουν «θα» στο μέλλον.
+    */
+    const reasonForms = {
+      hungry: { past: "γιατί πεινούσε", future: "γιατί θα πεινάει" },
+      thirsty: { past: "γιατί διψούσε", future: "γιατί θα διψάει" },
+      snackTime: { past: "γιατί ήθελε να φάει σνακ", future: "γιατί θέλει να φάει σνακ" },
+      mealTime: { past: "γιατί ήταν ώρα για φαγητό", future: "γιατί θα είναι ώρα για φαγητό" },
+      birthday: { past: "γιατί είχε γενέθλια", future: "γιατί θα έχει γενέθλια" },
+      hotWeather: { past: "γιατί έκανε ζέστη", future: "γιατί θα κάνει ζέστη" },
+      afterRun: { past: "γιατί δίψασε μετά το τρέξιμο", future: "γιατί θα διψάσει μετά το τρέξιμο" },
+      schoolWork: { past: "γιατί είχε μάθημα", future: "γιατί θα έχει μάθημα" },
+      bookLover: { past: "γιατί αγαπάει τα βιβλία", future: "γιατί αγαπάει τα βιβλία" },
+      wantsLearn: { past: "γιατί ήθελε να μάθει", future: "γιατί θέλει να μάθει" },
+      wantsRemember: { past: "γιατί ήθελε να το θυμάται", future: "γιατί θέλει να το θυμάται" },
+      likesBooksF: { past: "γιατί της αρέσουν τα βιβλία", future: "γιατί της αρέσουν τα βιβλία" },
+      likesBooks: { past: "γιατί του αρέσουν τα βιβλία", future: "γιατί του αρέσουν τα βιβλία" },
+      practice: { past: "γιατί έκανε εξάσκηση", future: "γιατί θα κάνει εξάσκηση" },
+      sendGrandma: { past: "γιατί ήθελε να το στείλει στη γιαγιά", future: "γιατί θέλει να το στείλει στη γιαγιά" },
+      workTime: { past: "γιατί είχε δουλειά", future: "γιατί θα έχει δουλειά" },
+      showMom: { past: "γιατί ήθελε να το δείξει στη μαμά", future: "γιατί θέλει να το δείξει στη μαμά" },
+      teacherAsked: { past: "γιατί το ζήτησε η δασκάλα", future: "γιατί το ζήτησε η δασκάλα" },
+      prettyThing: { past: "γιατί είδε κάτι όμορφο", future: "γιατί θα δει κάτι όμορφο" },
+      customers: { past: "γιατί περίμενε πελάτες", future: "γιατί θα περιμένει πελάτες" },
+      order: { past: "γιατί είχε παραγγελία", future: "γιατί θα έχει παραγγελία" },
+      guests: { past: "γιατί είχε επισκέπτες", future: "γιατί θα έχει επισκέπτες" },
+      prepareFood: { past: "γιατί ετοίμαζε το φαγητό", future: "γιατί θα ετοιμάσει το φαγητό" },
+      glassDirty: { past: "γιατί το ποτήρι ήταν βρόμικο", future: "γιατί το ποτήρι είναι βρόμικο" },
+      chairDirty: { past: "γιατί η καρέκλα ήταν βρόμικη", future: "γιατί η καρέκλα είναι βρόμικη" },
+      bikeDirty: { past: "γιατί το ποδήλατο ήταν βρόμικο", future: "γιατί το ποδήλατο είναι βρόμικο" },
+      toyDirty: { past: "γιατί το παιχνίδι ήταν βρόμικο", future: "γιατί το παιχνίδι είναι βρόμικο" },
+      giveAsGift: { past: "γιατί ήθελε να το χαρίσει", future: "γιατί θέλει να το χαρίσει" },
+      classmateNeedsPencil: { past: "γιατί το χρειαζόταν ένας συμμαθητής", future: "γιατί θα το χρειαστεί ένας συμμαθητής" },
+      studentNeedsPencil: { past: "γιατί το χρειαζόταν ένας μαθητής", future: "γιατί θα το χρειαστεί ένας μαθητής" },
+      momNeedsUmbrella: { past: "γιατί τη χρειαζόταν η μαμά", future: "γιατί θα τη χρειαστεί η μαμά" },
+      treatGuests: { past: "γιατί ήθελε να κεράσει τους επισκέπτες", future: "γιατί θέλει να κεράσει τους επισκέπτες" },
+      rainProtection: { past: "γιατί έβρεχε", future: "γιατί θα βρέχει" },
+      wantsRead: { past: "γιατί ήθελε να το διαβάσει", future: "γιατί θέλει να το διαβάσει" },
+      phoneCall: { past: "γιατί ήθελε να μιλήσει", future: "γιατί θέλει να μιλήσει" },
+      openDoor: { past: "γιατί ήθελε να ανοίξει την πόρτα", future: "γιατί θέλει να ανοίξει την πόρτα" },
+      musicTime: { past: "γιατί του αρέσει η μουσική", future: "γιατί του αρέσει η μουσική" },
+      learnRules: { past: "γιατί ήθελε να μάθει τους κανόνες", future: "γιατί θέλει να μάθει τους κανόνες" },
+      fun: { past: "γιατί ήθελε να διασκεδάσει", future: "γιατί θέλει να διασκεδάσει" },
+      playing: { past: "γιατί έπαιζε", future: "γιατί θα παίζει" },
+      moveIt: { past: "γιατί ήθελε να το μετακινήσει", future: "γιατί θέλει να το μετακινήσει" },
+      searchedEverywhere: { past: "γιατί έψαξε παντού", future: "γιατί θα ψάξει παντού" },
+      broken: { past: "γιατί χάλασε", future: "γιατί χάλασε" },
+      teethCare: { past: "γιατί φροντίζει τα δόντια", future: "γιατί φροντίζει τα δόντια" },
+      plantCare: { past: "γιατί φροντίζει τα φυτά", future: "γιατί φροντίζει τα φυτά" },
+      scared: { past: "γιατί φοβόταν", future: "γιατί φοβάται" },
+      cannotFindIt: { past: "γιατί δεν το έβρισκε", future: "γιατί δεν το βρίσκει" },
+      plantNeedsWater: { past: "γιατί το φυτό χρειαζόταν νερό", future: "γιατί το φυτό χρειάζεται νερό" },
+      sunny: { past: "γιατί είχε ήλιο", future: "γιατί θα έχει ήλιο" },
+      lessonFinished: { past: "γιατί τελείωσε το μάθημα", future: "γιατί θα τελειώσει το μάθημα" },
+      ranOutF: { past: "γιατί της τελείωσε", future: "γιατί της τελείωσε" },
+      insideBox: { past: "γιατί ήθελε να δει τι έχει μέσα", future: "γιατί θέλει να δει τι έχει μέσα" },
+      animalHungry: { past: "γιατί το ζωάκι πεινούσε", future: "γιατί το ζωάκι θα πεινάει" },
+      lovesMom: { past: "γιατί αγαπάει τη μαμά", future: "γιατί αγαπάει τη μαμά" },
+      lovesDad: { past: "γιατί αγαπάει τον μπαμπά", future: "γιατί αγαπάει τον μπαμπά" },
+      readyToGo: { past: "γιατί ετοιμαζόταν", future: "γιατί θα ετοιμάζεται" },
+      tooFull: { past: "γιατί γέμισε πολύ", future: "γιατί γέμισε πολύ" },
+      rainStopped: { past: "γιατί σταμάτησε η βροχή", future: "γιατί θα σταματήσει η βροχή" },
+      tasty: { past: "γιατί ήταν νόστιμο", future: "γιατί είναι νόστιμο" },
+      wantsUseIt: { past: "γιατί ήθελε να το χρησιμοποιήσει", future: "γιατί θέλει να το χρησιμοποιήσει" }
+    };
+
     const mode5SentenceBank = [
       { id: "m5-001", subject: "boy", verb: "eat", object: "apple", place: "home", reason: "hungry" },
       { id: "m5-002", subject: "girl", verb: "eat", object: "banana", place: "school", reason: "snackTime" },
@@ -2428,7 +2500,7 @@
     const TABLE_READY_OBJECTS = ["plate", "glass", "spoon", "fork"];
 
     function timeActive() {
-      return state.timeSetting !== "none" && [3, 4].includes(state.mode);
+      return state.timeSetting !== "none";
     }
 
     function activeCategories() {
@@ -2892,6 +2964,21 @@
         }
       });
 
+      Object.values(sentenceBanks).forEach((bank) => {
+        bank.forEach((entry) => {
+          const forms = verbForms[entry.verb];
+          if (!forms || !forms.past || !forms.future) {
+            errors.push(`${entry.id}: λείπουν μορφές χρόνου για το ρήμα ${entry.verb}`);
+          }
+        });
+      });
+      mode5SentenceBank.forEach((entry) => {
+        const forms = reasonForms[entry.reason];
+        if (!forms || !forms.past || !forms.future) {
+          errors.push(`${entry.id}: λείπουν μορφές χρόνου για την αιτία ${entry.reason}`);
+        }
+      });
+
       if (errors.length) throw new Error(`Σφάλματα sentence bank:\n${errors.join("\n")}`);
     }
 
@@ -3217,6 +3304,14 @@
       return base;
     }
 
+    function resolveReasonForTime(reasonItem, timeId) {
+      const base = itemById(reasons, reasonItem.id) || reasonItem;
+      const forms = reasonForms[base.id] || {};
+      if (timeId === "yesterday" && forms.past) return { ...base, text: forms.past };
+      if (timeId === "tomorrow" && forms.future) return { ...base, text: forms.future };
+      return base;
+    }
+
     function pickTimeItem() {
       if (state.timeSetting === "random") return randomItem(times);
       return itemById(times, state.timeSetting);
@@ -3230,6 +3325,9 @@
         time: timeItem,
         verb: resolveVerbForTime(state.target.verb, timeItem.id)
       };
+      if (state.target.reason) {
+        state.target.reason = resolveReasonForTime(state.target.reason, timeItem.id);
+      }
     }
 
     function newSentence() {
@@ -3272,10 +3370,13 @@
         }
         const nextTime = randomItem(times.filter((item) => item.id !== state.target.time?.id));
         const nextVerb = resolveVerbForTime(state.target.verb, nextTime.id);
+        const nextReason = state.target.reason ? resolveReasonForTime(state.target.reason, nextTime.id) : null;
         state.target = { ...state.target, time: nextTime, verb: nextVerb };
+        if (nextReason) state.target.reason = nextReason;
         state.cards = state.cards.map((card) => {
           if (card.category === "time") return { ...card, item: nextTime };
           if (card.category === "verb") return { ...card, item: nextVerb };
+          if (card.category === "reason" && nextReason) return { ...card, item: nextReason };
           return card;
         });
         state.feedback = "Άλλαξε το ΠΟΤΕ.";
@@ -3298,6 +3399,9 @@
       let nextItem = randomItem(alternatives);
       if (key === "verb" && timeActive() && state.target.time) {
         nextItem = resolveVerbForTime(nextItem, state.target.time.id);
+      }
+      if (key === "reason" && timeActive() && state.target.time) {
+        nextItem = resolveReasonForTime(nextItem, state.target.time.id);
       }
       state.target = sentenceWith(state.target, key, nextItem);
       state.cards = state.cards.map((card) => card.category === key ? { ...card, item: nextItem } : card);
@@ -3589,7 +3693,7 @@
               `).join("")}
             </div>
           </div>
-          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}${state.timeSetting !== "none" && ![3, 4].includes(state.mode) ? " · Ο χρονικός προσδιορισμός ισχύει μόνο στα Επίπεδα 3 και 4." : ""}${timeActive() ? " · Το «Χθες» βάζει το ρήμα σε αόριστο και το «Αύριο» σε μέλλοντα." : ""}</p>
+          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}${timeActive() ? " · Το «Χθες» βάζει την πρόταση σε παρελθόντα χρόνο και το «Αύριο» σε μέλλοντα." : ""}</p>
         </div>
         ` : ""}
 
