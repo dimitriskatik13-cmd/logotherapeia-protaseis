@@ -78,17 +78,24 @@
     .app-footer {
       max-width: 1180px;
       margin: 0 auto;
-      text-align: center;
-      padding: 18px 22px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px 18px;
+      padding: 14px 22px 20px;
+      border-top: 1px solid var(--line);
       color: var(--grey);
       font-size: 12px;
-      opacity: 0.75;
+      opacity: 0.8;
       font-weight: 400;
     }
     .app-footer .locations {
       font-weight: 500;
       letter-spacing: 0.06em;
-      margin-bottom: 4px;
+    }
+    .app-footer .contact strong {
+      font-weight: 700;
     }
 
     button {
@@ -101,18 +108,108 @@
       padding: 16px 22px;
     }
 
-    .topbar {
-      display: grid;
-      gap: 14px;
+    /* ==== Έγγραφο ΣΥΝΟΙΔΑ: κεφαλίδα με λογότυπο αριστερά, ταυτότητα δεξιά ==== */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      gap: 16px;
+      padding: 8px 0 14px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 18px;
     }
 
-    .brand {
+    .doc-logo {
+      display: block;
+      height: 56px;
+      width: auto;
+      flex: 0 0 auto;
+    }
+
+    .doc-ident {
       display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+      text-align: right;
+      min-width: 0;
+    }
+
+    .doc-brand {
+      font-size: 1.25rem;
+      color: var(--grey);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .doc-brand-sub {
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      color: var(--grey);
+      opacity: 0.55;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .doc-title h1 {
+      font-size: clamp(2rem, 6vw, 2.9rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+
+    .doc-desc {
+      margin: 6px 0 0;
+      color: var(--grey);
+      opacity: 0.8;
+      font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+      line-height: 1.4;
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      min-width: 0;
+      justify-content: space-between;
+      margin: 16px 0 4px;
+    }
+
+    .controls-bar .toolbar {
+      flex: 1 1 auto;
+      justify-content: flex-end;
+    }
+
+    /* ==== Ενότητες τύπου εντύπου: σκούρα μπάρα + σώμα-κάρτα ==== */
+    .doc-section-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--grey);
+      color: #ffffff;
+      font-size: clamp(1rem, 2.6vw, 1.15rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 12px 18px;
+      border-radius: 14px 14px 0 0;
+    }
+
+    .doc-section-bar .bar-icon {
+      font-size: 1.05em;
+      line-height: 1;
+    }
+
+    .doc-section-body {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 14px 14px;
+      padding: 16px 14px;
+      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.06);
+      display: grid;
+      gap: 14px;
     }
 
     .mode-switch {
@@ -158,27 +255,6 @@
       height: 56px;
       width: auto;
       flex: 0 0 auto;
-    }
-
-    .brand-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-right: 4px;
-    }
-    .brand-meta .label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--grey);
-      opacity: 0.55;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-    .brand-meta .sub {
-      font-size: 12px;
-      color: var(--grey);
-      opacity: 0.7;
-      font-weight: 400;
     }
 
     h1 {
@@ -532,19 +608,11 @@
 
     .tray,
     .sentence-panel {
-      padding: 14px;
-      border: 2px solid var(--line);
-      border-radius: 18px;
-      background: var(--panel);
-      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.08);
-    }
-
-    .section-title {
-      margin: 0 0 12px;
-      color: var(--ink);
-      font-size: clamp(1.15rem, 3.2vw, 1.45rem);
-      font-weight: 950;
-      line-height: 1.15;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .card-grid {
@@ -703,10 +771,6 @@
         padding: 22px;
       }
 
-      .topbar {
-        grid-template-columns: 1fr auto;
-      }
-
       .slots {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -862,7 +926,7 @@
 
   <footer class="app-footer">
     <div class="locations">Αρτέμιδα · Σπάτα · Νέα Μάκρη · Μαραθώνας</div>
-    <div>www.synoida.gr · info@synoida.gr</div>
+    <div class="contact"><strong>info@synoida.gr</strong> · www.synoida.gr</div>
   </footer>
 
   <div class="brand-strips" aria-hidden="true">
@@ -3304,57 +3368,68 @@
       const feedbackClass = state.feedbackType ? ` ${state.feedbackType}` : "";
 
       app.innerHTML = `
-        <header class="topbar">
-          <div class="brand">
-            <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
-              ${[2, 3, 4, 5].map((mode) => `
-                <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
-              `).join("")}
-            </div>
-            <div class="brand-meta">
-              <span class="label">ΣΥΝΟΙΔΑ</span>
-              <span class="sub">Κέντρα Ειδικών Θεραπειών</span>
-            </div>
-            <div>
-              <h1>Χτίζω πρόταση</h1>
-              <p class="subtitle">${activeCategories().map((category) => category.label).join(" · ")}</p>
-            </div>
+        <header class="doc-header">
+          <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="doc-logo" />
+          <div class="doc-ident">
+            <span class="doc-brand">Σύνοιδα</span>
+            <span class="doc-brand-sub">Κέντρα Ειδικών Θεραπειών</span>
+            <span class="doc-brand-sub">Λογοθεραπεία · Δομή πρότασης</span>
+          </div>
+        </header>
+
+        <div class="doc-title">
+          <h1>Χτίζω πρόταση</h1>
+          <p class="doc-desc">Δραστηριότητα δομής πρότασης · ${activeCategories().map((category) => category.label).join(" + ")}</p>
+        </div>
+
+        <div class="controls-bar">
+          <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
+            ${[2, 3, 4, 5].map((mode) => `
+              <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
+            `).join("")}
           </div>
           <div class="toolbar">
             <button class="btn new" type="button" data-new>🔄 Νέα πρόταση</button>
             <button class="btn listen" type="button" data-listen>🔊 Άκουσε</button>
             <button class="btn listen-partial" type="button" data-listen-partial>🗣️ Ως εδώ</button>
-            <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="brand-mark" />
           </div>
-        </header>
+        </div>
 
         <section class="board" aria-label="Άσκηση πρότασης">
-          <div class="legend mode-${state.mode}" aria-hidden="true">
-            ${activeCategories().map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
-          </div>
-
-          <div class="slots mode-${state.mode}">
-            ${activeCategories().map(slotHtml).join("")}
-          </div>
-
-          <section class="tray" aria-label="Κάρτες επιλογής">
-            <h2 class="section-title">Κάρτες</h2>
-            <div class="card-grid mode-${state.mode}">
-              ${trayHtml}
+          <section class="doc-section" aria-label="Χτίσε την πρόταση">
+            <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">✏️</span>Χτίσε την πρόταση</div>
+            <div class="doc-section-body">
+              <div class="legend mode-${state.mode}" aria-hidden="true">
+                ${activeCategories().map((category) => `<span class="legend-chip" style="background:${category.color}">${category.label}</span>`).join("")}
+              </div>
+              <div class="slots mode-${state.mode}">
+                ${activeCategories().map(slotHtml).join("")}
+              </div>
             </div>
           </section>
 
-          <section class="sentence-panel" aria-label="Πλήρης πρόταση">
-            <h2 class="section-title">Πλήρης πρόταση</h2>
-            <p class="sentence-text">${makeSentenceText(state.target)}</p>
-            <p class="built-text">${builtSentence}</p>
-            <p class="feedback${feedbackClass}">${state.feedback}</p>
-            <div class="sentence-actions">
-              <button class="btn clear" type="button" data-clear>↩️ Άδειασε τα πλαίσια</button>
-              <button class="btn correct${isSentenceComplete() ? "" : " locked"}" type="button" data-correct aria-disabled="${!isSentenceComplete()}">
-                <span class="hold-fill" aria-hidden="true"></span>
-                <span class="correct-label">✅ Σωστό!</span>
-              </button>
+          <section class="doc-section" aria-label="Κάρτες επιλογής">
+            <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">🗂️</span>Κάρτες</div>
+            <div class="doc-section-body">
+              <div class="card-grid mode-${state.mode}">
+                ${trayHtml}
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" aria-label="Πλήρης πρόταση">
+            <div class="doc-section-bar"><span class="bar-icon" aria-hidden="true">💬</span>Πλήρης πρόταση</div>
+            <div class="doc-section-body">
+              <p class="sentence-text">${makeSentenceText(state.target)}</p>
+              <p class="built-text">${builtSentence}</p>
+              <p class="feedback${feedbackClass}">${state.feedback}</p>
+              <div class="sentence-actions">
+                <button class="btn clear" type="button" data-clear>↩️ Άδειασε τα πλαίσια</button>
+                <button class="btn correct${isSentenceComplete() ? "" : " locked"}" type="button" data-correct aria-disabled="${!isSentenceComplete()}">
+                  <span class="hold-fill" aria-hidden="true"></span>
+                  <span class="correct-label">✅ Σωστό!</span>
+                </button>
+              </div>
             </div>
           </section>
         </section>
