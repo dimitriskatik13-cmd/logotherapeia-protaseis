@@ -566,6 +566,7 @@
 
     .slot-card {
       display: grid;
+      grid-template-rows: auto 1fr auto;
       gap: 10px;
       padding: 12px;
       border: 2px solid var(--line);
@@ -615,6 +616,10 @@
       font-size: 0.95rem;
       font-weight: 700;
       line-height: 1.25;
+      min-height: 2.5em;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
 
     .slot-drop {
@@ -671,7 +676,9 @@
     .slot-item {
       display: grid;
       width: 100%;
+      height: 100%;
       min-height: 148px;
+      align-content: center;
       place-items: center;
       gap: 6px;
       padding: 12px;
@@ -681,7 +688,9 @@
     }
 
     .slot-item .emoji {
-      font-size: clamp(3rem, 10vw, 4.4rem);
+      width: clamp(4.4rem, 13vw, 6.2rem);
+      height: clamp(4.4rem, 13vw, 6.2rem);
+      font-size: clamp(3.1rem, 9vw, 4.3rem);
     }
 
     .slot-item .word {
@@ -689,22 +698,23 @@
     }
 
     .emoji {
-      font-size: clamp(4rem, 14vw, 5.9rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(5rem, 16vw, 7rem);
+      height: clamp(5rem, 16vw, 7rem);
+      font-size: clamp(3.6rem, 12vw, 5rem);
       line-height: 1;
     }
 
     .emoji.custom-image {
-      display: block;
-      width: min(84%, 10rem);
-      height: auto;
-      aspect-ratio: 1;
       object-fit: contain;
       border-radius: 18px;
     }
 
     .slot-item .emoji.custom-image {
-      width: min(80%, 9rem);
-      height: auto;
+      width: clamp(4.4rem, 13vw, 6.2rem);
+      height: clamp(4.4rem, 13vw, 6.2rem);
     }
 
     .word {
@@ -975,14 +985,16 @@
       }
 
       .slots.mode-5 .slot-item .emoji,
-      .slots.mode-6 .slot-item .emoji {
-        font-size: clamp(2.6rem, 5vw, 3.4rem);
-      }
-
+      .slots.mode-6 .slot-item .emoji,
       .slots.mode-5 .slot-item .emoji.custom-image,
       .slots.mode-6 .slot-item .emoji.custom-image {
-        width: min(84%, 6.6rem);
-        height: auto;
+        width: clamp(3.6rem, 6.5vw, 5rem);
+        height: clamp(3.6rem, 6.5vw, 5rem);
+      }
+
+      .slots.mode-5 .slot-item .emoji,
+      .slots.mode-6 .slot-item .emoji {
+        font-size: clamp(2.5rem, 4.6vw, 3.4rem);
       }
 
       .slots.mode-5 .slot-item .word,
@@ -1015,14 +1027,16 @@
       }
 
       .card-grid.mode-5 .word-card .emoji,
-      .card-grid.mode-6 .word-card .emoji {
-        font-size: clamp(3rem, 5.6vw, 4rem);
-      }
-
+      .card-grid.mode-6 .word-card .emoji,
       .card-grid.mode-5 .word-card .emoji.custom-image,
       .card-grid.mode-6 .word-card .emoji.custom-image {
-        width: min(80%, 7rem);
-        height: auto;
+        width: clamp(4rem, 7vw, 5.6rem);
+        height: clamp(4rem, 7vw, 5.6rem);
+      }
+
+      .card-grid.mode-5 .word-card .emoji,
+      .card-grid.mode-6 .word-card .emoji {
+        font-size: clamp(2.8rem, 5vw, 3.8rem);
       }
 
       .card-grid.mode-5 .word-card .word,
