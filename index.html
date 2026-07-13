@@ -2,7 +2,7 @@
 <html lang="el">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <link rel="icon" href="data:,">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>Δομή πρότασης · ΣΥΝΟΙΔΑ</title>
@@ -61,6 +61,14 @@
       color: var(--grey);
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Roboto, sans-serif;
       background: var(--bg);
+      /* iPad: χωρίς zoom σε διπλό/συνεχόμενο πάτημα και χωρίς επιλογή κειμένου */
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    button {
+      touch-action: manipulation;
     }
 
     main.app {
@@ -553,6 +561,37 @@
         transform: translateY(105vh) translateX(calc(var(--drift, 0) * 140px)) rotate(560deg);
         opacity: 0.85;
       }
+    }
+
+    .burst-star {
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      font-size: 30px;
+      line-height: 1;
+      animation: star-burst ease-out forwards;
+    }
+
+    @keyframes star-burst {
+      0% {
+        transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.5) rotate(var(--rot, 0deg));
+        opacity: 0;
+      }
+    }
+
+    .sentence-text.celebrate-pop {
+      animation: sentence-pop 900ms ease;
+    }
+
+    @keyframes sentence-pop {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.05); }
+      60% { transform: scale(0.99); }
+      100% { transform: scale(1); }
     }
 
     .board {
@@ -3662,7 +3701,7 @@
       const overlay = document.createElement("div");
       overlay.className = "celebration";
       const confettiColors = ["#8DC63F", "#ED1C24", "#00AEEF", "#F7941D", "#FFD166"];
-      for (let index = 0; index < 70; index += 1) {
+      for (let index = 0; index < 90; index += 1) {
         const piece = document.createElement("span");
         const isStar = index % 5 === 0;
         piece.className = isStar ? "confetti star" : "confetti";
@@ -3672,13 +3711,26 @@
           piece.style.background = confettiColors[index % confettiColors.length];
         }
         piece.style.left = `${Math.random() * 100}vw`;
-        piece.style.animationDelay = `${(Math.random() * 0.4).toFixed(2)}s`;
-        piece.style.animationDuration = `${(1.6 + Math.random() * 1.2).toFixed(2)}s`;
+        piece.style.animationDelay = `${(Math.random() * 0.8).toFixed(2)}s`;
+        piece.style.animationDuration = `${(2.6 + Math.random() * 2).toFixed(2)}s`;
         piece.style.setProperty("--drift", (Math.random() * 2 - 1).toFixed(2));
         overlay.appendChild(piece);
       }
+      /* Έκρηξη αστεριών από το κέντρο */
+      for (let index = 0; index < 14; index += 1) {
+        const star = document.createElement("span");
+        star.className = "burst-star";
+        star.textContent = index % 2 ? "⭐" : "🌟";
+        const angle = (Math.PI * 2 * index) / 14 + Math.random() * 0.4;
+        const distance = 180 + Math.random() * 240;
+        star.style.setProperty("--dx", `${Math.round(Math.cos(angle) * distance)}px`);
+        star.style.setProperty("--dy", `${Math.round(Math.sin(angle) * distance)}px`);
+        star.style.setProperty("--rot", `${Math.round(Math.random() * 360 - 180)}deg`);
+        star.style.animationDuration = `${(1 + Math.random() * 0.5).toFixed(2)}s`;
+        overlay.appendChild(star);
+      }
       document.body.appendChild(overlay);
-      window.setTimeout(() => overlay.remove(), 3200);
+      window.setTimeout(() => overlay.remove(), 5600);
     }
 
     function celebrateCorrect() {
@@ -3689,10 +3741,12 @@
       state.feedback = "🎉 Σωστό! Πάμε στην επόμενη πρόταση.";
       state.feedbackType = "good";
       render();
+      const sentenceEl = document.querySelector(".sentence-text");
+      if (sentenceEl) sentenceEl.classList.add("celebrate-pop");
       window.setTimeout(() => {
         state.celebrating = false;
         newSentence();
-      }, 1400);
+      }, 1800);
     }
 
     function visualHtml(item) {
