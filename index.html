@@ -111,7 +111,7 @@
     .app {
       width: min(1180px, 100%);
       margin: 0 auto;
-      padding: 16px 22px;
+      padding: 14px 22px 24px;
     }
 
     /* ==== Έγγραφο ΣΥΝΟΙΔΑ: κεφαλίδα σε όλο το πλάτος, λογότυπο στην αριστερή άκρη, ταυτότητα στη δεξιά ==== */
@@ -119,16 +119,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       width: 100%;
       box-sizing: border-box;
-      padding: 12px 24px 14px;
+      padding: 18px 22px 12px;
       border-bottom: 1px solid var(--line);
     }
 
     .doc-logo {
       display: block;
-      height: 72px;
+      height: 74px;
       width: auto;
       flex: 0 0 auto;
     }
@@ -246,20 +246,27 @@
     }
 
     .doc-brand {
-      font-size: 1.25rem;
+      font-size: 19px;
       color: var(--grey);
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.08em;
       line-height: 1.1;
     }
 
     .doc-brand-sub {
-      font-size: 0.66rem;
-      letter-spacing: 0.22em;
+      font-size: 10px;
+      letter-spacing: 0.18em;
       color: var(--grey);
       opacity: 0.55;
       font-weight: 500;
       text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .doc-header { padding: 12px 14px 9px; }
+      .doc-logo { height: 52px; }
+      .doc-brand { font-size: 15px; }
+      .doc-brand-sub { font-size: 8.5px; }
     }
 
     .doc-title h1 {
