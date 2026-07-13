@@ -54,11 +54,17 @@
     }
 
     body {
-      min-height: 100%;
+      min-height: 100vh;
       margin: 0;
+      display: flex;
+      flex-direction: column;
       color: var(--grey);
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Roboto, sans-serif;
       background: var(--bg);
+    }
+
+    main.app {
+      flex: 1 0 auto;
     }
 
     /* ==== ΣΥΝΟΙΔΑ Signature: horizontal brand strips ==== */
@@ -76,8 +82,8 @@
 
     /* ==== Footer ==== */
     .app-footer {
-      max-width: 1180px;
-      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -108,15 +114,16 @@
       padding: 16px 22px;
     }
 
-    /* ==== Έγγραφο ΣΥΝΟΙΔΑ: κεφαλίδα με λογότυπο αριστερά, ταυτότητα δεξιά ==== */
+    /* ==== Έγγραφο ΣΥΝΟΙΔΑ: κεφαλίδα σε όλο το πλάτος, λογότυπο στην αριστερή άκρη, ταυτότητα στη δεξιά ==== */
     .doc-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 8px 0 14px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px 24px 14px;
       border-bottom: 1px solid var(--line);
-      margin-bottom: 18px;
     }
 
     .doc-logo {
@@ -206,10 +213,10 @@
     }
 
     .pill-choice.active {
-      background: #7C3AED;
-      border-color: #7C3AED;
+      background: var(--blue);
+      border-color: var(--blue);
       color: #ffffff;
-      box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+      box-shadow: 0 6px 18px rgba(0, 174, 239, 0.35);
     }
 
     .btn.start {
@@ -297,37 +304,6 @@
       border-color: var(--grey);
     }
 
-    .settings-panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 18px;
-      margin: 12px 0 4px;
-      display: grid;
-      gap: 10px;
-      box-shadow: 0 12px 32px rgba(24, 34, 48, 0.06);
-    }
-
-    .settings-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .settings-label {
-      font-weight: 700;
-      color: var(--grey);
-    }
-
-    .settings-hint {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.4;
-    }
-
     /* ==== Ενότητες τύπου εντύπου: σκούρα μπάρα + σώμα-κάρτα ==== */
     .doc-section-bar {
       display: flex;
@@ -393,41 +369,6 @@
 
     .mode-btn:hover:not(.active) {
       background: var(--green-soft);
-      color: var(--grey);
-    }
-
-    .time-switch {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      padding: 4px;
-      background: #ffffff;
-      border: 2px solid var(--line);
-      border-radius: 999px;
-    }
-
-    .time-btn {
-      border: 0;
-      border-radius: 999px;
-      padding: 8px 16px;
-      background: transparent;
-      color: var(--grey);
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 160ms ease, color 160ms ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .time-btn.active {
-      background: #7C3AED;
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
-    }
-
-    .time-btn:hover:not(.active) {
-      background: #7C3AED1A;
       color: var(--grey);
     }
 
@@ -753,15 +694,16 @@
 
     .emoji.custom-image {
       display: block;
-      width: clamp(4rem, 14vw, 5.9rem);
-      height: clamp(4rem, 14vw, 5.9rem);
+      width: min(84%, 10rem);
+      height: auto;
+      aspect-ratio: 1;
       object-fit: contain;
       border-radius: 18px;
     }
 
     .slot-item .emoji.custom-image {
-      width: clamp(3rem, 10vw, 4.4rem);
-      height: clamp(3rem, 10vw, 4.4rem);
+      width: min(80%, 9rem);
+      height: auto;
     }
 
     .word {
@@ -1019,8 +961,8 @@
       }
 
       .slots.mode-5 .slot-item .emoji.custom-image {
-        width: clamp(2.6rem, 5vw, 3.4rem);
-        height: clamp(2.6rem, 5vw, 3.4rem);
+        width: min(84%, 6.6rem);
+        height: auto;
       }
 
       .slots.mode-5 .slot-item .word {
@@ -1049,8 +991,8 @@
       }
 
       .card-grid.mode-5 .word-card .emoji.custom-image {
-        width: clamp(3rem, 5.6vw, 4rem);
-        height: clamp(3rem, 5.6vw, 4rem);
+        width: min(80%, 7rem);
+        height: auto;
       }
 
       .card-grid.mode-5 .word-card .word {
@@ -1073,6 +1015,15 @@
   <div class="brand-strips" aria-hidden="true">
     <div class="s1"></div><div class="s2"></div><div class="s3"></div><div class="s4"></div><div class="s5"></div>
   </div>
+
+  <header class="doc-header">
+    <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="doc-logo" />
+    <div class="doc-ident">
+      <span class="doc-brand">Σύνοιδα</span>
+      <span class="doc-brand-sub">Κέντρα Ειδικών Θεραπειών</span>
+      <span class="doc-brand-sub">Χτίζω πρόταση</span>
+    </div>
+  </header>
 
   <main id="app" class="app" aria-live="polite"></main>
 
@@ -3748,22 +3699,8 @@
 
     const TIME_OPTIONS = [["none", "Χωρίς"], ["today", "Σήμερα"], ["yesterday", "Χθες"], ["tomorrow", "Αύριο"], ["random", "🎲 Τυχαίο"]];
 
-    function docHeaderHtml() {
-      return `
-        <header class="doc-header">
-          <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="doc-logo" />
-          <div class="doc-ident">
-            <span class="doc-brand">Σύνοιδα</span>
-            <span class="doc-brand-sub">Κέντρα Ειδικών Θεραπειών</span>
-            <span class="doc-brand-sub">Χτίζω πρόταση</span>
-          </div>
-        </header>
-      `;
-    }
-
     function renderMenu() {
       app.innerHTML = `
-        ${docHeaderHtml()}
         <div class="home">
           <h1 class="home-title">Χτίζω πρόταση</h1>
           <p class="home-sub">Φτιάξε προτάσεις με κάρτες, βήμα-βήμα</p>
@@ -3817,8 +3754,6 @@
 
       const timeLabel = TIME_OPTIONS.find(([value]) => value === state.timeSetting)?.[1];
       app.innerHTML = `
-        ${docHeaderHtml()}
-
         <div class="play-head">
           <h1>Χτίζω πρόταση</h1>
           <p class="doc-desc">Επίπεδο ${state.mode} · ${activeCategories().map((category) => category.label).length} κάρτες${timeActive() ? ` · ${timeLabel}` : ""}</p>
