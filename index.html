@@ -559,7 +559,8 @@
       grid-template-columns: 1fr;
     }
 
-    .slots.mode-5 {
+    .slots.mode-5,
+    .slots.mode-6 {
       gap: 10px;
     }
 
@@ -899,6 +900,10 @@
         grid-template-columns: repeat(5, minmax(0, 1fr));
       }
 
+      .slots.mode-6 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
       .slot-drop {
         min-height: 188px;
       }
@@ -914,63 +919,80 @@
         gap: 8px;
       }
 
-      .slots.mode-5 .slot-card {
+      .slots.mode-6 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .slots.mode-5 .slot-card,
+      .slots.mode-6 .slot-card {
         gap: 7px;
         padding: 8px;
       }
 
-      .slots.mode-5 .slot-title strong {
+      .slots.mode-5 .slot-title strong,
+      .slots.mode-6 .slot-title strong {
         gap: 6px;
         font-size: 0.92rem;
       }
 
-      .slots.mode-5 .slot-number {
+      .slots.mode-5 .slot-number,
+      .slots.mode-6 .slot-number {
         width: 28px;
         height: 28px;
         font-size: 0.86rem;
       }
 
-      .slots.mode-5 .slot-role {
+      .slots.mode-5 .slot-role,
+      .slots.mode-6 .slot-role {
         font-size: 0.82rem;
       }
 
-      .slots.mode-5 .slot-drop {
+      .slots.mode-5 .slot-drop,
+      .slots.mode-6 .slot-drop {
         min-height: 112px;
         border-width: 2px;
         border-radius: 13px;
       }
 
-      .slots.mode-5 .slot-empty {
+      .slots.mode-5 .slot-empty,
+      .slots.mode-6 .slot-empty {
         gap: 5px;
         padding: 10px 6px;
         font-size: 0.82rem;
       }
 
-      .slots.mode-5 .slot-empty-icon {
+      .slots.mode-5 .slot-empty-icon,
+      .slots.mode-6 .slot-empty-icon {
         font-size: 1.65rem;
       }
 
-      .slots.mode-5 .slot-item {
+      .slots.mode-5 .slot-item,
+      .slots.mode-6 .slot-item {
         min-height: 102px;
         gap: 4px;
         padding: 8px 6px;
       }
 
-      .slots.mode-5 .slot-item .emoji {
+      .slots.mode-5 .slot-item .emoji,
+      .slots.mode-6 .slot-item .emoji {
         font-size: clamp(2.6rem, 5vw, 3.4rem);
       }
 
-      .slots.mode-5 .slot-item .emoji.custom-image {
+      .slots.mode-5 .slot-item .emoji.custom-image,
+      .slots.mode-6 .slot-item .emoji.custom-image {
         width: min(84%, 6.6rem);
         height: auto;
       }
 
-      .slots.mode-5 .slot-item .word {
+      .slots.mode-5 .slot-item .word,
+      .slots.mode-6 .slot-item .word {
         font-size: clamp(0.9rem, 1.75vw, 1.08rem);
         line-height: 1.04;
       }
 
-      .slots.mode-5 .slot-action {
+      .slots.mode-5 .slot-action,
+      .slots.mode-6 .slot-action {
         min-height: 56px;
         border-radius: 13px;
         font-size: 0.86rem;
@@ -981,21 +1003,30 @@
         gap: 8px;
       }
 
-      .card-grid.mode-5 .word-card {
+      .card-grid.mode-6 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .card-grid.mode-5 .word-card,
+      .card-grid.mode-6 .word-card {
         min-height: 124px;
         padding: 9px 6px;
       }
 
-      .card-grid.mode-5 .word-card .emoji {
+      .card-grid.mode-5 .word-card .emoji,
+      .card-grid.mode-6 .word-card .emoji {
         font-size: clamp(3rem, 5.6vw, 4rem);
       }
 
-      .card-grid.mode-5 .word-card .emoji.custom-image {
+      .card-grid.mode-5 .word-card .emoji.custom-image,
+      .card-grid.mode-6 .word-card .emoji.custom-image {
         width: min(80%, 7rem);
         height: auto;
       }
 
-      .card-grid.mode-5 .word-card .word {
+      .card-grid.mode-5 .word-card .word,
+      .card-grid.mode-6 .word-card .word {
         font-size: clamp(0.98rem, 2vw, 1.18rem);
         line-height: 1.05;
       }
