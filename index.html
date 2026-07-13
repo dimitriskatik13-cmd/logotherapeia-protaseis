@@ -121,9 +121,112 @@
 
     .doc-logo {
       display: block;
-      height: 92px;
+      height: 72px;
       width: auto;
       flex: 0 0 auto;
+    }
+
+    /* ==== Αρχική οθόνη (κοινό στήσιμο εφαρμογών ΣΥΝΟΙΔΑ) ==== */
+    .home {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      text-align: center;
+      padding: 26px 0 46px;
+    }
+
+    .home-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      font-weight: 600;
+      color: var(--grey);
+      letter-spacing: -0.01em;
+    }
+
+    .home-sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.4vw, 1.15rem);
+    }
+
+    .choice-label {
+      margin: 22px 0 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      opacity: 0.6;
+    }
+
+    .circle-row,
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .choice-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--line);
+      color: var(--grey);
+      font-family: inherit;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(88, 89, 91, 0.08);
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .choice-circle.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(141, 198, 63, 0.35);
+    }
+
+    .pill-choice {
+      background: #ffffff;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 13px 24px;
+      color: var(--grey);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(88, 89, 91, 0.08);
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pill-choice.active {
+      background: #7C3AED;
+      border-color: #7C3AED;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn.start {
+      margin-top: 28px;
+      background: var(--green);
+      box-shadow: 0 6px 18px rgba(141, 198, 63, 0.35);
+      font-size: 1.2rem;
+      padding: 16px 52px;
+    }
+
+    .play-head {
+      text-align: center;
+      margin: 0 0 4px;
+    }
+
+    .play-head h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
     }
 
     .doc-ident {
@@ -2841,7 +2944,7 @@
       feedbackType: "",
       wrongSlot: null,
       celebrating: false,
-      settingsOpen: false,
+      screen: "menu",
       timeSetting: "none"
     };
     state.slots = emptySlots();
@@ -3643,7 +3746,68 @@
       `;
     }
 
+    const TIME_OPTIONS = [["none", "Χωρίς"], ["today", "Σήμερα"], ["yesterday", "Χθες"], ["tomorrow", "Αύριο"], ["random", "🎲 Τυχαίο"]];
+
+    function docHeaderHtml() {
+      return `
+        <header class="doc-header">
+          <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="doc-logo" />
+          <div class="doc-ident">
+            <span class="doc-brand">Σύνοιδα</span>
+            <span class="doc-brand-sub">Κέντρα Ειδικών Θεραπειών</span>
+            <span class="doc-brand-sub">Χτίζω πρόταση</span>
+          </div>
+        </header>
+      `;
+    }
+
+    function renderMenu() {
+      app.innerHTML = `
+        ${docHeaderHtml()}
+        <div class="home">
+          <h1 class="home-title">Χτίζω πρόταση</h1>
+          <p class="home-sub">Φτιάξε προτάσεις με κάρτες, βήμα-βήμα</p>
+          <p class="choice-label">Ποσα κομματια προτασης</p>
+          <div class="circle-row" role="group" aria-label="Αριθμός κομματιών πρότασης">
+            ${[2, 3, 4, 5].map((mode) => `
+              <button type="button" class="choice-circle${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
+            `).join("")}
+          </div>
+          <p class="choice-label">Χρονικος προσδιορισμος</p>
+          <div class="pill-row" role="group" aria-label="Χρονικός προσδιορισμός">
+            ${TIME_OPTIONS.map(([value, label]) => `
+              <button type="button" class="pill-choice${state.timeSetting === value ? ' active' : ''}" data-time="${value}" aria-pressed="${state.timeSetting === value}">${label}</button>
+            `).join("")}
+          </div>
+          <button class="btn start" type="button" data-start>Ξεκίνα</button>
+        </div>
+      `;
+
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const mode = Number(button.dataset.mode);
+          if (![2, 3, 4, 5].includes(mode)) return;
+          state.mode = mode;
+          render();
+        });
+      });
+      document.querySelectorAll("[data-time]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.timeSetting = button.dataset.time;
+          render();
+        });
+      });
+      document.querySelector("[data-start]").addEventListener("click", () => {
+        state.screen = "play";
+        newSentence();
+      });
+    }
+
     function render() {
+      if (state.screen === "menu") {
+        renderMenu();
+        return;
+      }
       const trayCards = state.cards.filter((card) => !card.placed);
       const trayHtml = trayCards.length
         ? trayCards.map(cardHtml).join("")
@@ -3651,51 +3815,23 @@
       const builtSentence = makeBuiltSentenceText();
       const feedbackClass = state.feedbackType ? ` ${state.feedbackType}` : "";
 
+      const timeLabel = TIME_OPTIONS.find(([value]) => value === state.timeSetting)?.[1];
       app.innerHTML = `
-        <header class="doc-header">
-          <img src="synoida-logo.webp" alt="ΣΥΝΟΙΔΑ" class="doc-logo" />
-          <div class="doc-ident">
-            <span class="doc-brand">Σύνοιδα</span>
-            <span class="doc-brand-sub">Κέντρα Ειδικών Θεραπειών</span>
-            <span class="doc-brand-sub">Λογοθεραπεία · Δομή πρότασης</span>
-          </div>
-        </header>
+        ${docHeaderHtml()}
 
-        <div class="doc-title">
+        <div class="play-head">
           <h1>Χτίζω πρόταση</h1>
-          <p class="doc-desc">Δραστηριότητα δομής πρότασης · Επίπεδο ${state.mode}</p>
+          <p class="doc-desc">Επίπεδο ${state.mode} · ${activeCategories().map((category) => category.label).length} κάρτες${timeActive() ? ` · ${timeLabel}` : ""}</p>
         </div>
 
         <div class="controls-bar">
-          <button class="btn settings${state.settingsOpen ? ' open' : ''}" type="button" data-settings aria-expanded="${state.settingsOpen}">⚙️ Ρυθμίσεις</button>
+          <button class="btn settings" type="button" data-home>🏠 Αρχική</button>
           <div class="toolbar">
             <button class="btn new" type="button" data-new>🔄 Νέα πρόταση</button>
             <button class="btn listen" type="button" data-listen>🔊 Άκουσε</button>
             <button class="btn listen-partial" type="button" data-listen-partial>🗣️ Ως εδώ</button>
           </div>
         </div>
-
-        ${state.settingsOpen ? `
-        <div class="settings-panel">
-          <div class="settings-row">
-            <span class="settings-label">Κομμάτια πρότασης</span>
-            <div class="mode-switch" role="group" aria-label="Αριθμός κομματιών πρότασης">
-              ${[2, 3, 4, 5].map((mode) => `
-                <button type="button" class="mode-btn${state.mode === mode ? ' active' : ''}" data-mode="${mode}" aria-pressed="${state.mode === mode}">${mode}</button>
-              `).join("")}
-            </div>
-          </div>
-          <div class="settings-row">
-            <span class="settings-label">Χρονικός προσδιορισμός</span>
-            <div class="time-switch" role="group" aria-label="Χρονικός προσδιορισμός">
-              ${[["none", "Χωρίς"], ["today", "Σήμερα"], ["yesterday", "Χθες"], ["tomorrow", "Αύριο"], ["random", "🎲 Τυχαίο"]].map(([value, label]) => `
-                <button type="button" class="time-btn${state.timeSetting === value ? ' active' : ''}" data-time="${value}" aria-pressed="${state.timeSetting === value}">${label}</button>
-              `).join("")}
-            </div>
-          </div>
-          <p class="settings-hint">Επίπεδο ${state.mode}: ${activeCategories().map((category) => category.role).join(" + ")}${timeActive() ? " · Το «Χθες» βάζει την πρόταση σε παρελθόντα χρόνο και το «Αύριο» σε μέλλοντα." : ""}</p>
-        </div>
-        ` : ""}
 
         <section class="board" aria-label="Άσκηση πρότασης">
           <section class="doc-section" aria-label="Χτίσε την πρόταση">
@@ -3742,18 +3878,9 @@
       document.querySelector("[data-listen]").addEventListener("click", speakSentence);
       document.querySelector("[data-listen-partial]").addEventListener("click", speakBuiltSoFar);
       document.querySelector("[data-clear]").addEventListener("click", clearSlots);
-      document.querySelector("[data-settings]").addEventListener("click", () => {
-        state.settingsOpen = !state.settingsOpen;
+      document.querySelector("[data-home]").addEventListener("click", () => {
+        state.screen = "menu";
         render();
-      });
-
-      document.querySelectorAll("[data-time]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const value = button.dataset.time;
-          if (value === state.timeSetting) return;
-          state.timeSetting = value;
-          newSentence();
-        });
       });
 
       const correctButton = document.querySelector("[data-correct]");
@@ -3770,10 +3897,6 @@
         correctButton.addEventListener("touchend", cancelCorrectHold);
         correctButton.addEventListener("touchcancel", cancelCorrectHold);
       }
-
-      document.querySelectorAll("[data-mode]").forEach((button) => {
-        button.addEventListener("click", () => changeMode(Number(button.dataset.mode)));
-      });
 
       document.querySelectorAll("[data-change]").forEach((button) => {
         button.addEventListener("click", () => changePart(button.dataset.change));
