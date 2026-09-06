@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "Χτίζω πρόταση · ΣΥΝΟΙΔΑ",
+  "short_name": "Χτίζω πρόταση",
+  "lang": "el",
+  "start_url": "./",
+  "scope": "./",
+  "background_color": "#FFFFFF",
+  "theme_color": "#8DC63F",
+  "icons": [
+    { "src": "assets/icons/synoida-192-v1.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/synoida-512-v1.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
