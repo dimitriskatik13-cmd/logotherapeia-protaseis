@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#8DC63F">
 <meta name="description" content="Χτίζω πρόταση — κάρτες, εικόνες και ελληνική εκφώνηση από τη ΣΥΝΟΙΔΑ.">
 <link rel="preload" href="assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles/app.css?v=20260906-2">
+<link rel="stylesheet" href="styles/app.css?v=20260906-3">
 </head>
 <body>
 <div class="brand-strips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -23,10 +23,10 @@
 </section>
 <section id="play-screen" hidden aria-labelledby="play-title">
 <div class="play-head"><h1 id="play-title">Χτίζω πρόταση</h1><p id="play-description">5 κομμάτια</p></div>
-<div class="toolbar"><button class="btn neutral" id="home"><span class="symbol" aria-hidden="true">🏠</span> Αρχική</button><div class="toolbar-actions"><button class="btn new" id="restart"><span class="symbol" aria-hidden="true">🔄</span> Νέα πρόταση</button><button class="btn listen" id="listen"><span class="symbol" aria-hidden="true">🔊</span> Άκουσε</button><button class="btn outline" id="listen-partial"><span class="symbol" aria-hidden="true">🗣️</span> Ως εδώ</button><button class="btn neutral" id="settings" aria-expanded="false"><span class="symbol" aria-hidden="true">⚙️</span> Βοήθειες</button></div></div>
+<div class="toolbar"><div class="toolbar-start"><button class="btn neutral" id="home"><span class="symbol" aria-hidden="true">🏠</span> Αρχική</button><button class="btn neutral" id="settings" aria-expanded="false"><span class="symbol" aria-hidden="true">⚙️</span> Βοήθειες</button></div><div class="toolbar-actions"><button class="btn new" id="restart"><span class="symbol" aria-hidden="true">🔄</span> Νέα πρόταση</button><button class="btn listen" id="listen"><span class="symbol" aria-hidden="true">🔊</span> Άκουσε</button><button class="btn outline" id="listen-partial"><span class="symbol" aria-hidden="true">🗣️</span> Ως εδώ</button></div></div>
 <section aria-labelledby="board-title"><h2 id="board-title"><span class="symbol" aria-hidden="true">✏️</span>Χτίσε την πρόταση</h2><div class="row" id="slots"></div></section>
 <section class="tray-section" aria-labelledby="tray-title"><h2 id="tray-title"><span class="symbol" aria-hidden="true">🗂️</span>Κάρτες</h2><div class="row" id="tray"></div></section>
-<section class="result"><p class="result-caption" id="result-label">💬 Πλήρης πρόταση</p><div class="result-body"><p class="result-text" id="result"></p><div class="sentence-actions"><button class="btn neutral" id="clear"><span class="symbol" aria-hidden="true">↩️</span> Άδειασε</button><button class="btn correct" id="complete" disabled title="Κράτησε συνεχόμενα για 1 δευτερόλεπτο"><span class="hold-fill" aria-hidden="true"></span><span class="correct-label">✅ Σωστό!</span></button></div></div><p class="built" id="built"></p></section>
+<section class="result"><p class="result-caption" id="result-label">💬 Πλήρης πρόταση</p><div class="result-body"><p class="result-text" id="result"></p><div class="sentence-actions"><button class="btn correct" id="complete" disabled title="Κράτησε συνεχόμενα για 1 δευτερόλεπτο"><span class="hold-fill" aria-hidden="true"></span><span class="correct-label">✅ Σωστό!</span></button></div></div><p class="built" id="built"></p></section>
 <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
 </section>
 <section class="settings" id="settings-panel" hidden><h2>⚙️ Βοήθειες θεραπευτή</h2><label><input type="checkbox" id="show-model" checked>Εμφάνιση έτοιμης πρότασης</label><label><input type="checkbox" id="show-labels" checked>Λέξεις κάτω από τις εικόνες</label><p id="voice-status" class="voice-status"></p><button class="btn listen" id="close-settings">✓ Έτοιμο</button></section>
@@ -35,5 +35,5 @@
 <div class="brand-strips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <dialog id="picture-dialog" aria-labelledby="picture-title"><div class="zoom-header"><h2 id="picture-title"></h2><button class="btn neutral" id="close-picture" aria-label="Κλείσιμο μεγέθυνσης">✕</button></div><img id="picture-large" alt=""></dialog>
 <noscript>Για να λειτουργήσει η εφαρμογή, χρειάζεται ενεργή JavaScript.</noscript>
-<script type="module" src="src/app.js?v=20260906-2"></script>
+<script type="module" src="src/app.js?v=20260906-3"></script>
 </body></html>

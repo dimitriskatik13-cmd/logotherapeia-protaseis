@@ -1,8 +1,8 @@
-import {SentenceEngine,Board,shuffle,sentenceText} from './engine.js?v=20260906-2';
-import {Reward,HOLD_MS} from './reward.js?v=20260906-2';
-import {GreekSpeech} from './speech.js?v=20260906-2';
-import {ImageLoader} from './images.js?v=20260906-2';
-import {bindDrag} from './gestures.js?v=20260906-2';
+import {SentenceEngine,Board,shuffle,sentenceText} from './engine.js?v=20260906-3';
+import {Reward,HOLD_MS} from './reward.js?v=20260906-3';
+import {GreekSpeech} from './speech.js?v=20260906-3';
+import {ImageLoader} from './images.js?v=20260906-3';
+import {bindDrag} from './gestures.js?v=20260906-3';
 
 const $=id=>document.getElementById(id);
 const roles={subject:{label:'ΠΟΙΟΣ',color:'#8DC63F'},verb:{label:'ΤΙ ΚΑΝΕΙ',color:'#00AEEF'},object:{label:'ΤΙ',color:'#F7941D'},place:{label:'ΠΟΥ',color:'#ED1C24'},reason:{label:'ΓΙΑΤΙ',color:'#58595B'},time:{label:'ΠΟΤΕ',color:'#00AEEF'}};
@@ -13,6 +13,22 @@ let engine,request=0,layer=null,cleanupDrag=()=>{},previousFocus=null;
 const qa=new URLSearchParams(location.search).has('qa');
 function timing(name,start=0){if(qa)document.documentElement.dataset[name]=String(Math.round((performance.now()-start)*10)/10);}
 function feedback(message){$('feedback').textContent=message;}
+let resultFitFrame=null;
+function fitResult(){
+  const text=$('result');if(!state.playing||!text.clientWidth)return;
+  text.classList.remove('wrap');text.style.fontSize='';
+  const width=text.clientWidth,base=parseFloat(getComputedStyle(text).fontSize);
+  if(text.scrollWidth>width){
+    let size=Math.max(14,Math.floor(base*(width-4)/text.scrollWidth*10)/10);
+    text.style.fontSize=size+'px';
+    // Leave a little room for per-glyph rounding in different browsers/fonts.
+    for(let n=0;n<6&&text.scrollWidth>width&&size>14;n++){
+      size=Math.max(14,size-.2);text.style.fontSize=size+'px';
+    }
+    if(text.scrollWidth>width)text.classList.add('wrap');
+  }
+}
+function scheduleResultFit(){cancelAnimationFrame(resultFitFrame);resultFitFrame=requestAnimationFrame(fitResult);}
 const speech=new GreekSpeech(window,{feedback,status:text=>$('voice-status').textContent=text});
 const reward=new Reward({ready:()=>state.playing&&!state.busy&&board.complete&&!document.hidden,
   onHold:()=>$('complete').classList.add('holding'),onCancelHold:()=>$('complete').classList.remove('holding'),
@@ -30,7 +46,7 @@ function renderMenu(){
   document.querySelectorAll('[data-time]').forEach(b=>{const active=b.dataset.time===state.timeSetting;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
 }
 function render({focus=null}={}){
-  if(!state.row){for(const id of ['restart','listen','listen-partial','clear','settings','complete'])$(id).disabled=true;return;}
+  if(!state.row){for(const id of ['restart','listen','listen-partial','settings','complete'])$(id).disabled=true;return;}
   const slots=document.createDocumentFragment(),tray=document.createDocumentFragment();
   for(const [i,c] of board.cards.entries()){
     const role=roles[c.key],wrap=document.createElement('div');wrap.className='slot';wrap.style.setProperty('--role',role.color);
@@ -56,8 +72,9 @@ function render({focus=null}={}){
   const showModel=$('show-model').checked;
   const built=board.cards.map(c=>board.filled.has(c.key)?c.text:'—').join(' ')+(board.complete?'.':'');
   $('result-label').textContent=showModel?'💬 Πλήρης πρόταση':'💬 Η πρότασή σου';$('result').textContent=showModel?sentenceText(board.cards):built;$('built').textContent=built;$('built').hidden=!showModel;
+  scheduleResultFit();
   $('complete').disabled=locked()||!board.complete;
-  for(const id of ['restart','listen','listen-partial','clear','settings'])$(id).disabled=locked();
+  for(const id of ['restart','listen','listen-partial','settings'])$(id).disabled=locked();
   $('listen-partial').disabled=locked()||board.filled.size===0;
   if(focus)document.querySelector(focus)?.focus({preventScroll:true});
 }
@@ -106,7 +123,13 @@ function place(key,target){
   render({focus:board.complete?'#complete':`[data-slot="${target}"]`});
   feedback(board.complete?'Μπράβο! Κράτησε το «Σωστό!» για 1 δευτερόλεπτο.':'Ωραία, συνέχισε.');
 }
-function panel(open){reward.cancelHold();$('settings-panel').hidden=!open;$('settings').setAttribute('aria-expanded',String(open));if(open)$('show-model').focus();}
+function positionSettings(){
+  const panel=$('settings-panel');if(panel.hidden)return;
+  const button=$('settings').getBoundingClientRect();
+  panel.style.left=Math.max(12,Math.min(button.left,document.documentElement.clientWidth-panel.offsetWidth-12))+'px';
+  panel.style.top=(button.bottom+8)+'px';panel.style.maxHeight=Math.max(140,window.innerHeight-button.bottom-20)+'px';
+}
+function panel(open){reward.cancelHold();$('settings-panel').hidden=!open;$('settings').setAttribute('aria-expanded',String(open));if(open){positionSettings();$('show-model').focus();}}
 function openPicture(key){
   const c=board.cards.find(c=>c.key===key);if(!c)return;reward.cancelHold();cleanupDrag();speech.stop();previousFocus=document.activeElement;
   $('picture-title').textContent=c.text;$('picture-large').src=c.image;$('picture-large').alt=c.text;
@@ -134,7 +157,6 @@ document.addEventListener('click',event=>{
   if(b.dataset.zoom)openPicture(b.dataset.zoom);
 });
 $('start').onclick=showPlay;$('home').onclick=showHome;$('restart').onclick=()=>nextSentence();
-$('clear').onclick=()=>{reward.cancel();cleanupDrag();speech.stop();board.clear();render();feedback('Τα πλαίσια άδειασαν.');};
 $('listen').onclick=()=>speech.speak(sentenceText(board.cards));$('listen-partial').onclick=()=>speech.speak(board.partial);
 $('settings').onclick=()=>panel($('settings-panel').hidden);$('close-settings').onclick=()=>{panel(false);$('settings').focus();};
 $('show-model').onchange=()=>{reward.cancelHold();render();};$('show-labels').onchange=()=>document.body.classList.toggle('hide-labels',!$('show-labels').checked);
@@ -155,7 +177,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){reward.cancelHold()
 $('slots').addEventListener('error',imageFailure,true);$('tray').addEventListener('error',imageFailure,true);
 function imageFailure(e){if(e.target instanceof HTMLImageElement){e.target.alt='Η εικόνα δεν φορτώθηκε';feedback('Μια εικόνα δεν φορτώθηκε. Έλεγξε τη σύνδεση ή πάτησε «Νέα πρόταση».');}}
 renderMenu();
+window.addEventListener('resize',()=>{scheduleResultFit();positionSettings();});
+document.fonts?.ready.then(scheduleResultFit);
 try{
-  const response=await fetch('data/content.json?v=20260906-2');if(!response.ok)throw new Error('Content unavailable');
+  const response=await fetch('data/content.json?v=20260906-3');if(!response.ok)throw new Error('Content unavailable');
   engine=new SentenceEngine(await response.json());$('start').disabled=false;$('loading-note').textContent='';timing('readyMs');reserveNext();
 }catch(error){console.error(error);$('loading-note').textContent='Δεν φορτώθηκαν οι προτάσεις. Έλεγξε τη σύνδεση και ανανέωσε τη σελίδα.';}

@@ -57,3 +57,12 @@ body.play .header{min-height:72px;padding:10px 24px}body.play .logo{height:48px}
 @media(max-width:759px){.drop,.card{height:158px}.drop img,.card img{max-height:99px}.label{font-size:13px}.zoom{top:24px}.home{padding-bottom:30px}.settings{max-height:calc(100vh - 120px)}.row{gap:10px}.result-body{gap:10px}}
 
 @media(min-width:760px) and (max-height:820px){.drop,.card{height:136px}.feedback{line-height:1.25}.result{padding-bottom:6px}}
+
+/* Cleaner toolbar and a full sentence without a dark background. */
+.toolbar-start{display:flex;align-items:center;gap:9px;flex:none}
+.toolbar-actions{margin-left:auto;justify-content:flex-end;flex:0 1 auto}
+.result-text{background:transparent;color:var(--grey);border-radius:0;padding:0;min-height:0;font-size:20px;line-height:1.4;white-space:nowrap}
+.result-text.wrap{white-space:normal;overflow-wrap:break-word}
+.settings{right:auto}
+@media(max-width:919px){.result-body{gap:10px}.sentence-actions{align-self:flex-end}}
+@media(max-width:759px){.toolbar-start{gap:7px}.toolbar-actions{justify-content:flex-end}.result-text{font-size:18px}}
