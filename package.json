@@ -1,0 +1,10 @@
+{
+  "name": "synoida-sentence-builder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validate": "node scripts/validate-sentence-banks.mjs",
+    "review": "node scripts/generate-reviews.mjs"
+  }
+}

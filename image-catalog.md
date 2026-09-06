@@ -1,373 +1,420 @@
-# Κατάλογος Εικόνων Εφαρμογής
+# Εικόνες της εφαρμογής
 
-Ο κατάλογος δημιουργείται αυτόματα από το `index.html`. Στόχος είναι κάθε έννοια να έχει καθαρή, σταθερή και μοναδική οπτική απόδοση.
-
-## Σύνοψη
-
-- Συνολικές έννοιες: **293**
-- Έννοιες που χρησιμοποιούνται στο Mode 5: **187**
-- Συνολικές ειδικές εικόνες: **41**
-- Ειδικές εικόνες μέσα στο Mode 5: **37**
-- Έννοιες του Mode 5 που παραμένουν emoji: **150**
-
-## Κανόνες Εικόνων
-
-- ΠΟΙΟΣ: ένα καθαρό πρόσωπο ή ζώο, χωρίς άσχετα αντικείμενα.
-- ΤΙ ΚΑΝΕΙ: εμφανής δράση με έναν πρωταγωνιστή και ένα βασικό αντικείμενο.
-- ΤΙ: ένα απομονωμένο αντικείμενο, σε απλό φόντο.
-- ΠΟΥ: ολοκληρωμένη σκηνή με δύο αναγνωρίσιμα στοιχεία του χώρου.
-- ΓΙΑΤΙ: η αιτία ή η κατάσταση, όχι απλώς το αντικείμενο της πρότασης.
-- Δεν χρησιμοποιείται η ίδια εικόνα για διαφορετικές έννοιες, εκτός αν πρόκειται για την ίδια ακριβώς σημασία με διαφορετικό γένος ή πτώση.
-- Κάθε εικόνα πρέπει να αναγνωρίζεται χωρίς τη λέξη όταν εμφανίζεται στο πραγματικό μέγεθος της κάρτας.
-
-## Πρώτη Σειρά Παραγωγής - Ολοκληρώθηκε
-
-1. `search` - ψάχνει
-2. `find` - βρίσκει
-3. `water` - ποτίζει
-4. `wear` - φοράει
-5. `carry` - κουβαλάει
-6. `home` - στο σπίτι
-7. `classroom` - στην τάξη
-8. `yard` - στην αυλή
-9. `cannotFindIt` - γιατί δεν το βρίσκει
-10. `schoolWork` - γιατί έχει μάθημα
-
-## Επόμενη Σειρά Παραγωγής
-
-1. `read` - διαβάζει
-2. `draw` - ζωγραφίζει
-3. `write` - γράφει
-4. `pull` - τραβάει
-5. `hold` - κρατάει
-6. `school` - στο σχολείο
-7. `garden` - στον κήπο
-8. `supermarket` - στο σούπερ μάρκετ
-9. `hadLostIt` - γιατί το είχε χάσει
-10. `plantNeedsWater` - γιατί το φυτό χρειάζεται νερό
-
-## Πλήρης Κατάλογος
-
-### ΠΟΙΟΣ
-
-| ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
-|---|---|---|---:|---|---|---|
-| `boy` | Το αγόρι | 👦 | 31/34/38 | Emoji | Π3 | - |
-| `girl` | Το κορίτσι | 👧 | 38/40/40 | Emoji | Π3 | - |
-| `mom` | Η μαμά | 👩 | 18/19/21 | Emoji | Π3 | - |
-| `dad` | Ο μπαμπάς | 👨 | 17/18/19 | Emoji | Π3 | - |
-| `grandma` | Η γιαγιά | 👵 | 8/8/8 | Emoji | Π3 | - |
-| `grandpa` | Ο παππούς | 👴 | 9/9/9 | Emoji | Π3 | - |
-| `dog` | Ο σκύλος | 🐕 | 3/3/3 | Emoji | Π3 | - |
-| `cat` | Η γάτα | 🐈 | 2/2/2 | Emoji | Π3 | - |
-| `mouse` | Το ποντίκι | 🐭 | 0/0/0 | Emoji | Αργότερα | - |
-| `bird` | Το πουλί | 🐦 | 0/0/0 | Emoji | Αργότερα | - |
-| `fish` | Το ψάρι | 🐟 | 0/0/0 | Emoji | Αργότερα | - |
-| `rabbit` | Το κουνέλι | 🐰 | 1/1/1 | Emoji | Π3 | - |
-| `bear` | Η αρκούδα | 🐻 | 0/0/0 | Emoji | Αργότερα | - |
-| `lion` | Το λιοντάρι | 🦁 | 0/0/0 | Emoji | Αργότερα | - |
-| `elephant` | Ο ελέφαντας | 🐘 | 0/0/0 | Emoji | Αργότερα | - |
-| `monkey` | Ο πίθηκος | 🐵 | 1/1/1 | Emoji | Π3 | - |
-| `turtle` | Η χελώνα | 🐢 | 1/1/1 | Emoji | Π3 | - |
-| `cow` | Η αγελάδα | 🐄 | 2/2/2 | Emoji | Π3 | - |
-| `sheep` | Το πρόβατο | 🐑 | 1/1/1 | Emoji | Π3 | - |
-| `horse` | Το άλογο | 🐴 | 2/2/2 | Emoji | Π3 | - |
-| `teacherM` | Ο δάσκαλος | 👨‍🏫 | 3/3/3 | Emoji | Π3 | - |
-| `teacherF` | Η δασκάλα | 👩‍🏫 | 6/6/6 | Emoji | Π3 | - |
-| `doctor` | Ο γιατρός | 👨‍⚕️ | 1/1/1 | Emoji | Π3 | - |
-| `nurse` | Η νοσοκόμα | 👩‍⚕️ | 1/1/1 | Emoji | Π3 | - |
-| `cookM` | Ο μάγειρας | 👨‍🍳 | 1/1/1 | Emoji | Π3 | - |
-| `cookF` | Η μαγείρισσα | 👩‍🍳 | 1/1/1 | Emoji | Π3 | - |
-| `police` | Ο αστυνομικός | 👮 | 0/0/0 | Emoji | Αργότερα | - |
-| `firefighter` | Ο πυροσβέστης | 👨‍🚒 | 0/0/0 | Emoji | Αργότερα | - |
-| `gardener` | Ο κηπουρός | 🧑‍🌾 | 2/2/2 | Emoji | Π3 | - |
-| `singer` | Η τραγουδίστρια | 👩‍🎤 | 0/0/0 | Emoji | Αργότερα | - |
-| `fox` | Η αλεπού | 🦊 | 0/0/0 | Emoji | Αργότερα | - |
-| `wolf` | Ο λύκος | 🐺 | 0/0/0 | Emoji | Αργότερα | - |
-| `duck` | Η πάπια | 🦆 | 0/0/0 | Emoji | Αργότερα | - |
-| `hen` | Η κότα | 🐔 | 0/0/0 | Emoji | Αργότερα | - |
-| `goat` | Το κατσίκι | 🐐 | 0/0/0 | Emoji | Αργότερα | - |
-| `pig` | Το γουρούνι | 🐖 | 1/1/1 | Emoji | Π3 | - |
-| `deer` | Το ελάφι | 🦌 | 0/0/0 | Emoji | Αργότερα | - |
-| `frog` | Ο βάτραχος | 🐸 | 0/0/0 | Emoji | Αργότερα | - |
-| `bee` | Η μέλισσα | 🐝 | 0/0/0 | Emoji | Αργότερα | - |
-| `butterfly` | Η πεταλούδα | 🦋 | 0/0/0 | Emoji | Αργότερα | - |
-
-### ΤΙ ΚΑΝΕΙ
-
-| ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
-|---|---|---|---:|---|---|---|
-| `eat` | τρώει | 🍽️ | 18/19/20 | Ειδική εικόνα | Έτοιμη | `assets/card-images/eat.webp` |
-| `drink` | πίνει | 🥤 | 12/13/14 | Ειδική εικόνα | Έτοιμη | `assets/card-images/drink.webp` |
-| `read` | διαβάζει | 📖 | 8/11/12 | Emoji | Π1 | - |
-| `draw` | ζωγραφίζει | 🎨 | 6/6/6 | Emoji | Π1 | - |
-| `hold` | κρατάει | 🤲 | 2/2/2 | Emoji | Π1 | - |
-| `push` | σπρώχνει | ➡️ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/push.webp` |
-| `pull` | τραβάει | 🪢 | 2/2/2 | Emoji | Π1 | - |
-| `throw` | πετάει | ⚽ | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/throw.webp` |
-| `give` | δίνει | 🤲 | 6/6/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/give.webp` |
-| `take` | παίρνει | 🤲 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/take.webp` |
-| `see` | βλέπει | 👀 | 0/0/0 | Emoji | Αργότερα | - |
-| `touch` | αγγίζει | 👆 | 0/0/0 | Emoji | Αργότερα | - |
-| `wash` | πλένει | 🚰 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wash.webp` |
-| `feed` | ταΐζει | 🍴 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/feed.webp` |
-| `cut` | κόβει | ✂️ | 4/5/6 | Emoji | Π1 | - |
-| `open` | ανοίγει | 📦 | 7/7/8 | Ειδική εικόνα | Έτοιμη | `assets/card-images/open.webp` |
-| `make` | φτιάχνει | 🛠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.webp` |
-| `hug` | αγκαλιάζει | 🫂 | 3/3/3 | Emoji | Π1 | - |
-| `shout` | φωνάζει | 📢 | 0/0/0 | Emoji | Αργότερα | - |
-| `search` | ψάχνει | 🔍 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/search.webp` |
-| `write` | γράφει | ✍️ | 7/7/7 | Emoji | Π1 | - |
-| `plant` | φυτεύει | 🌱 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/plant.webp` |
-| `water` | ποτίζει | 🚿 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/water.webp` |
-| `collect` | μαζεύει | 🧺 | 1/1/1 | Emoji | Π1 | - |
-| `wear` | φοράει | 🧢 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/wear.webp` |
-| `buy` | αγοράζει | 🛒 | 2/2/2 | Emoji | Π1 | - |
-| `sell` | πουλάει | 🧾 | 0/0/0 | Emoji | Αργότερα | - |
-| `cook` | μαγειρεύει | 👨‍🍳 | 3/3/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cook.webp` |
-| `bake` | ψήνει | ♨️ | 3/3/3 | Emoji | Π1 | - |
-| `play` | παίζει | 🧸 | 3/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/play.webp` |
-| `clean` | καθαρίζει | 🧽 | 5/5/5 | Ειδική εικόνα | Έτοιμη | `assets/card-images/clean.webp` |
-| `repair` | φτιάχνει | 🛠️ | 5/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/repair.webp` |
-| `carry` | κουβαλάει | 💪 | 2/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/carry.webp` |
-| `hide` | κρύβει | 🙈 | 1/1/1 | Emoji | Π1 | - |
-| `find` | βρήκε | ✅ | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/find.webp` |
-| `use` | χρησιμοποιεί | 🛠️ | 8/8/8 | Emoji | Π1 | - |
-| `close` | κλείνει | 🔒 | 3/3/3 | Emoji | Π1 | - |
-| `fill` | γεμίζει | 🫗 | 1/1/1 | Emoji | Π1 | - |
-| `empty` | αδειάζει | 🪣 | 1/1/1 | Emoji | Π1 | - |
-| `photograph` | φωτογραφίζει | 📷 | 2/2/2 | Emoji | Π1 | - |
-| `sleep` | κοιμάται | 😴 | 0/0/0 | Emoji | Αργότερα | - |
-| `run` | τρέχει | 🏃 | 0/0/0 | Emoji | Αργότερα | - |
-| `laugh` | γελάει | 😄 | 0/0/0 | Emoji | Αργότερα | - |
-| `dance` | χορεύει | 💃 | 0/0/0 | Emoji | Αργότερα | - |
-| `jump` | πηδάει | 🤸 | 0/0/0 | Emoji | Αργότερα | - |
-| `sing` | τραγουδάει | 🎤 | 0/0/0 | Emoji | Αργότερα | - |
-| `cry` | κλαίει | 😢 | 0/0/0 | Emoji | Αργότερα | - |
-| `walk` | περπατάει | 🚶 | 0/0/0 | Emoji | Αργότερα | - |
-| `swim` | κολυμπάει | 🏊 | 0/0/0 | Emoji | Αργότερα | - |
-| `fly` | πετάει | 🕊️ | 0/0/0 | Emoji | Αργότερα | - |
-
-### ΤΙ
-
-| ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
-|---|---|---|---:|---|---|---|
-| `apple` | το μήλο | 🍎 | 6/7/8 | Emoji | Π2 | - |
-| `banana` | την μπανάνα | 🍌 | 3/3/3 | Emoji | Π2 | - |
-| `bread` | το ψωμί | 🍞 | 5/5/5 | Emoji | Π2 | - |
-| `milk` | το γάλα | 🥛 | 4/4/4 | Emoji | Π2 | - |
-| `water` | το νερό | 💧 | 9/10/11 | Emoji | Π2 | - |
-| `ball` | την μπάλα | ⚽ | 6/6/6 | Emoji | Π2 | - |
-| `carToy` | το αυτοκίνητο | 🚗 | 1/1/1 | Emoji | Π2 | - |
-| `doll` | την κούκλα | 🪆 | 2/2/2 | Emoji | Π2 | - |
-| `book` | το βιβλίο | 📚 | 9/12/13 | Emoji | Π2 | - |
-| `pencil` | το μολύβι | ✏️ | 4/4/4 | Emoji | Π2 | - |
-| `papers` | τα χαρτιά | 📄 | 0/0/0 | Emoji | Αργότερα | - |
-| `chair` | την καρέκλα | 🪑 | 3/3/3 | Emoji | Π2 | - |
-| `flower` | το λουλούδι | 🌸 | 9/9/9 | Emoji | Π2 | - |
-| `tree` | το δέντρο | 🌳 | 2/2/2 | Emoji | Π2 | - |
-| `hat` | το καπέλο | 🎩 | 2/2/2 | Emoji | Π2 | - |
-| `shoe` | το παπούτσι | 👟 | 0/0/0 | Emoji | Αργότερα | - |
-| `bag` | την τσάντα | 👜 | 3/3/3 | Emoji | Π2 | - |
-| `key` | το κλειδί | 🔑 | 5/5/5 | Emoji | Π2 | - |
-| `gift` | το δώρο | 🎁 | 3/3/4 | Emoji | Π2 | - |
-| `cake` | την τούρτα | 🎂 | 6/6/6 | Emoji | Π2 | - |
-| `star` | το αστέρι | ⭐ | 2/2/2 | Emoji | Π2 | - |
-| `glass` | το ποτήρι | 🥤 | 2/2/2 | Emoji | Π2 | - |
-| `plate` | το πιάτο | 🍽️ | 1/1/1 | Emoji | Π2 | - |
-| `spoon` | το κουτάλι | 🥄 | 0/0/0 | Emoji | Αργότερα | - |
-| `fork` | το πιρούνι | 🍴 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/fork.webp` |
-| `toothbrush` | την οδοντόβουρτσα | 🪥 | 2/2/2 | Emoji | Π2 | - |
-| `soap` | το σαπούνι | 🧼 | 0/0/0 | Emoji | Αργότερα | - |
-| `umbrella` | την ομπρέλα | ☂️ | 8/8/8 | Emoji | Π2 | - |
-| `puzzle` | το παζλ | 🧩 | 0/0/0 | Emoji | Αργότερα | - |
-| `toy` | το παιχνίδι | 🧩 | 4/4/4 | Ειδική εικόνα | Έτοιμη | `assets/card-images/toy.webp` |
-| `drum` | το τύμπανο | 🥁 | 1/1/1 | Emoji | Π2 | - |
-| `guitar` | την κιθάρα | 🎸 | 1/1/1 | Emoji | Π2 | - |
-| `phone` | το τηλέφωνο | 📱 | 5/5/5 | Emoji | Π2 | - |
-| `computer` | τον υπολογιστή | 💻 | 2/2/2 | Emoji | Π2 | - |
-| `bike` | το ποδήλατο | 🚲 | 3/4/5 | Emoji | Π2 | - |
-| `box` | το κουτί | 📦 | 4/4/4 | Emoji | Π2 | - |
-| `carrot` | το καρότο | 🥕 | 5/6/7 | Emoji | Π2 | - |
-| `iceCream` | το παγωτό | 🍦 | 0/0/0 | Emoji | Αργότερα | - |
-| `pizza` | την πίτσα | 🍕 | 1/1/1 | Emoji | Π2 | - |
-| `letter` | το γράμμα | ✉️ | 5/5/5 | Emoji | Π2 | - |
-| `name` | το όνομα | 🔤 | 4/4/4 | Emoji | Π2 | - |
-| `exercise` | την άσκηση | 📝 | 0/0/0 | Emoji | Αργότερα | - |
-| `list` | τη λίστα | 📋 | 1/1/1 | Emoji | Π2 | - |
-| `soup` | τη σούπα | 🍲 | 1/1/2 | Emoji | Π2 | - |
-| `pasta` | τα μακαρόνια | 🍝 | 1/1/1 | Emoji | Π2 | - |
-| `vegetables` | τα λαχανικά | 🥦 | 1/1/1 | Emoji | Π2 | - |
-| `lettuce` | το μαρούλι | 🥬 | 1/1/1 | Emoji | Π2 | - |
-| `grass` | το χορτάρι | 🌿 | 2/2/2 | Emoji | Π2 | - |
-| `fishMeal` | το ψάρι | 🐟 | 1/1/1 | Emoji | Π2 | - |
-| `petFood` | την τροφή | 🥣 | 1/1/1 | Emoji | Π2 | - |
-| `shoes` | τα παπούτσια | 👟 | 2/2/2 | Emoji | Π2 | - |
-| `boardGame` | το επιτραπέζιο παιχνίδι | 🎲 | 1/1/1 | Emoji | Π2 | - |
-| `dogObject` | τον σκύλο | 🐕 | 2/2/2 | Emoji | Π2 | - |
-| `henObject` | την κότα | 🐔 | 2/2/2 | Emoji | Π2 | - |
-| `momObject` | τη μαμά | 👩 | 1/1/1 | Emoji | Π2 | - |
-| `dadObject` | τον μπαμπά | 👨 | 1/1/1 | Emoji | Π2 | - |
-
-### ΠΟΥ
-
-| ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
-|---|---|---|---:|---|---|---|
-| `home` | στο σπίτι | 🏠 | 0/47/49 | Ειδική εικόνα | Έτοιμη | `assets/card-images/home.webp` |
-| `park` | στο πάρκο | 🌳 | 0/6/7 | Ειδική εικόνα | Έτοιμη | `assets/card-images/park.webp` |
-| `school` | στο σχολείο | 🏫 | 0/11/12 | Emoji | Π1 | - |
-| `beach` | στην παραλία | 🏖️ | 0/3/3 | Emoji | Π1 | - |
-| `garden` | στον κήπο | 🌷 | 0/11/11 | Emoji | Π1 | - |
-| `kitchen` | στην κουζίνα | 🍳 | 0/15/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/kitchen.webp` |
-| `bathroom` | στο μπάνιο | 🛁 | 0/2/2 | Emoji | Π1 | - |
-| `car` | στο αυτοκίνητο | 🚗 | 0/0/0 | Emoji | Αργότερα | - |
-| `table` | στο τραπέζι | 🍽️ | 0/3/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/table.webp` |
-| `bed` | στο κρεβάτι | 🛌 | 0/2/2 | Emoji | Π1 | - |
-| `floor` | στο πάτωμα | 🟫 | 0/2/2 | Emoji | Π1 | - |
-| `playground` | στην παιδική χαρά | 🛝 | 0/3/3 | Emoji | Π1 | - |
-| `sea` | στη θάλασσα | 🌊 | 0/0/0 | Emoji | Αργότερα | - |
-| `forest` | στο δάσος | 🌲 | 0/0/0 | Emoji | Αργότερα | - |
-| `shop` | στο μαγαζί | 🛒 | 0/0/0 | Emoji | Αργότερα | - |
-| `hospital` | στο νοσοκομείο | 🏥 | 0/0/0 | Emoji | Αργότερα | - |
-| `zoo` | στον ζωολογικό κήπο | 🦒 | 0/1/1 | Emoji | Π1 | - |
-| `pharmacy` | στο φαρμακείο | 💊 | 0/0/0 | Emoji | Αργότερα | - |
-| `restaurant` | στο εστιατόριο | 🍴 | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/restaurant.webp` |
-| `stadium` | στο γήπεδο | 🏟️ | 0/0/0 | Emoji | Αργότερα | - |
-| `library` | στη βιβλιοθήκη | 🏛️ | 0/2/2 | Ειδική εικόνα | Έτοιμη | `assets/card-images/library.webp` |
-| `clinic` | στο ιατρείο | 🩺 | 0/1/1 | Emoji | Π1 | - |
-| `livingRoom` | στο σαλόνι | 🛋️ | 0/0/0 | Emoji | Αργότερα | - |
-| `bedroom` | στο υπνοδωμάτιο | 🛏️ | 0/0/0 | Emoji | Αργότερα | - |
-| `classroom` | στην τάξη | 🧑‍🏫 | 0/18/18 | Ειδική εικόνα | Έτοιμη | `assets/card-images/classroom.webp` |
-| `bus` | στο λεωφορείο | 🚌 | 0/0/0 | Emoji | Αργότερα | - |
-| `station` | στον σταθμό | 🚉 | 0/0/0 | Emoji | Αργότερα | - |
-| `bakery` | στον φούρνο | 🥖 | 0/2/2 | Emoji | Π1 | - |
-| `supermarket` | στο σούπερ μάρκετ | 🛒 | 0/1/1 | Emoji | Π1 | - |
-| `cinema` | στο σινεμά | 🎬 | 0/0/0 | Emoji | Αργότερα | - |
-| `theater` | στο θέατρο | 🎭 | 0/0/0 | Emoji | Αργότερα | - |
-| `pool` | στην πισίνα | 🏊 | 0/0/0 | Emoji | Αργότερα | - |
-| `mountain` | στο βουνό | ⛰️ | 0/0/0 | Emoji | Αργότερα | - |
-| `lake` | στη λίμνη | 🏞️ | 0/0/0 | Emoji | Αργότερα | - |
-| `farm` | στη φάρμα | 🚜 | 0/8/8 | Emoji | Π1 | - |
-| `dentist` | στο οδοντιατρείο | 🦷 | 0/0/0 | Emoji | Αργότερα | - |
-| `office` | στο γραφείο | 🖥️ | 0/4/4 | Emoji | Π1 | - |
-| `yard` | στην αυλή | 🏡 | 0/11/12 | Ειδική εικόνα | Έτοιμη | `assets/card-images/yard.webp` |
-| `postOffice` | στο ταχυδρομείο | 📮 | 0/0/0 | Emoji | Αργότερα | - |
-| `musicRoom` | στην αίθουσα μουσικής | 🎹 | 0/2/2 | Emoji | Π1 | - |
-
-### ΓΙΑΤΙ
-
-| ID | Λέξη/φράση | Τωρινό οπτικό | Χρήση 3/4/5 | Κατάσταση | Προτεραιότητα | Αρχείο |
-|---|---|---|---:|---|---|---|
-| `hungry` | γιατί πεινάει | 🤤 | 0/0/15 | Emoji | Π1 | - |
-| `thirsty` | γιατί διψάει | 💧 | 0/0/11 | Ειδική εικόνα | Έτοιμη | `assets/card-images/thirsty.webp` |
-| `happy` | γιατί χαίρεται | 😊 | 0/0/0 | Emoji | Αργότερα | - |
-| `tired` | γιατί κουράστηκε | 😴 | 0/0/0 | Emoji | Αργότερα | - |
-| `cold` | γιατί κρυώνει | 🥶 | 0/0/0 | Emoji | Αργότερα | - |
-| `hot` | γιατί ζεσταίνεται | 🥵 | 0/0/0 | Emoji | Αργότερα | - |
-| `bored` | γιατί βαριέται | 🥱 | 0/0/0 | Emoji | Αργότερα | - |
-| `rainy` | γιατί βρέχει | 🌧️ | 0/0/0 | Emoji | Αργότερα | - |
-| `dirty` | γιατί βρώμισε | 👟 | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/dirty.webp` |
-| `birthday` | γιατί έχει γενέθλια | 🎈 | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/birthday.webp` |
-| `love` | γιατί το αγαπάει | ❤️ | 0/0/0 | Emoji | Αργότερα | - |
-| `lostSth` | γιατί έχασε κάτι | ❓ | 0/0/0 | Emoji | Αργότερα | - |
-| `wantsLearn` | γιατί θέλει να μάθει | 💡 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/learn.webp` |
-| `playing` | γιατί παίζει | 🎲 | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/playing-reason.webp` |
-| `scared` | γιατί φοβάται | 😨 | 0/0/1 | Emoji | Π1 | - |
-| `broken` | γιατί χάλασε | ⚠️ | 0/0/6 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.webp` |
-| `newGift` | γιατί υπάρχει δώρο | 🎁 | 0/0/0 | Emoji | Αργότερα | - |
-| `sick` | γιατί αρρώστησε | 🤒 | 0/0/0 | Emoji | Αργότερα | - |
-| `guests` | γιατί έχει επισκέπτες | 👥 | 0/0/3 | Emoji | Π1 | - |
-| `called` | γιατί κάποιος φώναξε | 📣 | 0/0/0 | Emoji | Αργότερα | - |
-| `mealTime` | γιατί είναι ώρα για φαγητό | 🍽️ | 0/0/9 | Emoji | Π1 | - |
-| `snackTime` | γιατί θέλει να φάει σνακ | 🥨 | 0/0/2 | Emoji | Π1 | - |
-| `tasty` | γιατί είναι νόστιμο | 😋 | 0/0/1 | Emoji | Π1 | - |
-| `wantsTry` | γιατί θέλει να δοκιμάσει | 👅 | 0/0/0 | Emoji | Αργότερα | - |
-| `afterRun` | γιατί δίψασε μετά το τρέξιμο | 🏃 | 0/0/2 | Emoji | Π1 | - |
-| `needsWater` | γιατί χρειάζεται νερό | 🚰 | 0/0/0 | Emoji | Αργότερα | - |
-| `wantsCool` | γιατί θέλει δροσιά | 🧊 | 0/0/0 | Emoji | Αργότερα | - |
-| `schoolWork` | γιατί έχει μάθημα | 🎒 | 0/0/17 | Ειδική εικόνα | Έτοιμη | `assets/card-images/school-work.webp` |
-| `practice` | γιατί κάνει εξάσκηση | 📝 | 0/0/3 | Emoji | Π1 | - |
-| `likesBooks` | γιατί του αρέσουν τα βιβλία | 📖 | 0/0/1 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.webp` |
-| `wantsRemember` | γιατί θέλει να το θυμάται | 🧠 | 0/0/2 | Emoji | Π1 | - |
-| `carefulLook` | γιατί κοιτάζει προσεκτικά | 🔎 | 0/0/0 | Emoji | Αργότερα | - |
-| `prettyThing` | γιατί βλέπει κάτι όμορφο | ✨ | 0/0/1 | Emoji | Π1 | - |
-| `wantsShow` | γιατί θέλει να δείξει κάτι | 👉 | 0/0/0 | Emoji | Αργότερα | - |
-| `showMom` | γιατί θέλει να το δείξει στη μαμά | 👉 | 0/0/3 | Emoji | Π1 | - |
-| `teacherExercise` | γιατί τους έβαλε άσκηση η δασκάλα | 📝 | 0/0/0 | Emoji | Αργότερα | - |
-| `needsHelp` | γιατί χρειάζεται βοήθεια | 🤝 | 0/0/0 | Emoji | Αργότερα | - |
-| `helpsSomeone` | γιατί βοηθάει | 🙌 | 0/0/0 | Emoji | Αργότερα | - |
-| `readyToGo` | γιατί ετοιμάζεται | ⏰ | 0/0/2 | Emoji | Π1 | - |
-| `goingOut` | γιατί βγαίνει έξω | 🚪 | 0/0/0 | Emoji | Αργότερα | - |
-| `fellDown` | γιατί έπεσε κάτω | ⬇️ | 0/0/0 | Emoji | Αργότερα | - |
-| `safety` | γιατί θέλει ασφάλεια | 🛡️ | 0/0/0 | Emoji | Αργότερα | - |
-| `needsRepair` | γιατί χάλασε | ⚠️ | 0/0/0 | Ειδική εικόνα | Έτοιμη | `assets/card-images/broken.webp` |
-| `worksAgain` | γιατί πρέπει να δουλέψει ξανά | ⚙️ | 0/0/0 | Emoji | Αργότερα | - |
-| `locked` | γιατί κάτι είναι κλειστό | 🔐 | 0/0/0 | Emoji | Αργότερα | - |
-| `closeSafe` | γιατί πρέπει να μείνει ασφαλές | 🔒 | 0/0/0 | Emoji | Αργότερα | - |
-| `emptyInside` | γιατί είναι άδειο | 🫙 | 0/0/0 | Emoji | Αργότερα | - |
-| `tooFull` | γιατί γέμισε πολύ | 🪣 | 0/0/1 | Emoji | Π1 | - |
-| `plantCare` | γιατί φροντίζει τα φυτά | 🌿 | 0/0/3 | Emoji | Π1 | - |
-| `sunny` | γιατί έχει ήλιο | ☀️ | 0/0/2 | Emoji | Π1 | - |
-| `musicTime` | γιατί του αρέσει η μουσική | 🎵 | 0/0/1 | Emoji | Π1 | - |
-| `party` | γιατί έχει γιορτή | 🎉 | 0/0/0 | Emoji | Αργότερα | - |
-| `together` | γιατί είναι μαζί με άλλους | 🧑‍🤝‍🧑 | 0/0/0 | Emoji | Αργότερα | - |
-| `animalHungry` | γιατί το ζωάκι πεινάει | 🐾 | 0/0/4 | Emoji | Π1 | - |
-| `pretendPlay` | γιατί κάνει παιχνίδι ρόλων | 🎭 | 0/0/0 | Emoji | Αργότερα | - |
-| `wantsWin` | γιατί θέλει να κερδίσει | 🏅 | 0/0/0 | Emoji | Αργότερα | - |
-| `fun` | γιατί θέλει να διασκεδάσει | 😄 | 0/0/1 | Emoji | Π1 | - |
-| `care` | γιατί χρειάζεται φροντίδα | 🩹 | 0/0/0 | Emoji | Αργότερα | - |
-| `appointment` | γιατί έχει ραντεβού | 📅 | 0/0/0 | Emoji | Αργότερα | - |
-| `shoppingList` | γιατί έχει λίστα | 🧾 | 0/0/0 | Emoji | Αργότερα | - |
-| `sendMail` | γιατί θέλει να στείλει γράμμα | 📬 | 0/0/0 | Emoji | Αργότερα | - |
-| `sendGrandma` | γιατί θέλει να το στείλει στη γιαγιά | 📬 | 0/0/1 | Emoji | Π1 | - |
-| `wantsRead` | γιατί θέλει να το διαβάσει | 📖 | 0/0/1 | Emoji | Π1 | - |
-| `giftWrap` | γιατί ετοιμάζει έκπληξη | 🎀 | 0/0/0 | Emoji | Αργότερα | - |
-| `walk` | γιατί πάει βόλτα | 🚶 | 0/0/0 | Emoji | Αργότερα | - |
-| `rainProtection` | γιατί βρέχει | ☔ | 0/0/5 | Emoji | Π1 | - |
-| `sunProtection` | γιατί χρειάζεται προστασία από τον ήλιο | 🧢 | 0/0/0 | Emoji | Αργότερα | - |
-| `teethCare` | γιατί φροντίζει τα δόντια | 😁 | 0/0/2 | Emoji | Π1 | - |
-| `tableReady` | γιατί στρώνει το τραπέζι | 🍽️ | 0/0/0 | Emoji | Αργότερα | - |
-| `phoneCall` | γιατί θέλει να μιλήσει | ☎️ | 0/0/2 | Emoji | Π1 | - |
-| `workTime` | γιατί έχει δουλειά | 💼 | 0/0/1 | Emoji | Π1 | - |
-| `bathTime` | γιατί είναι ώρα για μπάνιο | 🛁 | 0/0/0 | Emoji | Αργότερα | - |
-| `farmWork` | γιατί βοηθά στη φάρμα | 🚜 | 0/0/0 | Emoji | Αργότερα | - |
-| `natureCare` | γιατί αγαπά τη φύση | 🌱 | 0/0/0 | Emoji | Αργότερα | - |
-| `cookingNeed` | γιατί χρειάζεται στην κουζίνα | 🍳 | 0/0/0 | Emoji | Αργότερα | - |
-| `need` | γιατί υπάρχει ανάγκη | ✅ | 0/0/0 | Emoji | Αργότερα | - |
-| `hotWeather` | γιατί κάνει ζέστη | ☀️ | 0/0/1 | Emoji | Π1 | - |
-| `likesBooksF` | γιατί της αρέσουν τα βιβλία | 📖 | 0/0/1 | Ειδική εικόνα | Έτοιμη | `assets/card-images/likes-books.webp` |
-| `teacherAsked` | γιατί το ζήτησε η δασκάλα | 📝 | 0/0/1 | Emoji | Π1 | - |
-| `bookLover` | γιατί αγαπάει τα βιβλία | 📚 | 0/0/2 | Emoji | Π1 | - |
-| `searchedEverywhere` | γιατί έψαξε παντού | 🔍 | 0/0/4 | Emoji | Π1 | - |
-| `prepareFood` | γιατί ετοιμάζει το φαγητό | 🍽️ | 0/0/3 | Emoji | Π1 | - |
-| `customers` | γιατί περιμένει πελάτες | 👥 | 0/0/1 | Emoji | Π1 | - |
-| `order` | γιατί έχει παραγγελία | 🧾 | 0/0/1 | Emoji | Π1 | - |
-| `glassDirty` | γιατί το ποτήρι είναι βρόμικο | 🥤 | 0/0/1 | Emoji | Π1 | - |
-| `chairDirty` | γιατί η καρέκλα είναι βρόμικη | 🪑 | 0/0/2 | Emoji | Π1 | - |
-| `bikeDirty` | γιατί το ποδήλατο είναι βρόμικο | 🚲 | 0/0/1 | Emoji | Π1 | - |
-| `toyDirty` | γιατί το παιχνίδι είναι βρόμικο | 🧸 | 0/0/2 | Emoji | Π1 | - |
-| `boxDirty` | γιατί το κουτί είναι βρόμικο | 📦 | 0/0/0 | Emoji | Αργότερα | - |
-| `giveAsGift` | γιατί θέλει να το χαρίσει | 🎁 | 0/0/2 | Emoji | Π1 | - |
-| `classmateNeedsPencil` | γιατί το χρειάζεται ένας συμμαθητής | ✏️ | 0/0/1 | Emoji | Π1 | - |
-| `studentNeedsPencil` | γιατί το χρειάζεται ένας μαθητής | ✏️ | 0/0/1 | Emoji | Π1 | - |
-| `momNeedsUmbrella` | γιατί τη χρειάζεται η μαμά | ☔ | 0/0/1 | Emoji | Π1 | - |
-| `treatGuests` | γιατί θέλει να κεράσει τους επισκέπτες | 🍰 | 0/0/1 | Emoji | Π1 | - |
-| `openDoor` | γιατί θέλει να ανοίξει την πόρτα | 🚪 | 0/0/1 | Emoji | Π1 | - |
-| `learnRules` | γιατί θέλει να μάθει τους κανόνες | 🎲 | 0/0/1 | Emoji | Π1 | - |
-| `moveIt` | γιατί θέλει να το μετακινήσει | ↔️ | 0/0/2 | Emoji | Π1 | - |
-| `hadLostIt` | γιατί το είχε χάσει | 🔑 | 0/0/0 | Emoji | Αργότερα | - |
-| `cannotFindIt` | γιατί δεν το βρίσκει | 🔍 | 0/0/3 | Ειδική εικόνα | Έτοιμη | `assets/card-images/cannot-find.webp` |
-| `plantNeedsWater` | γιατί το φυτό χρειάζεται νερό | 🌱 | 0/0/3 | Emoji | Π1 | - |
-| `lessonFinished` | γιατί τελείωσε το μάθημα | 🏫 | 0/0/1 | Emoji | Π1 | - |
-| `ranOutF` | γιατί της τελείωσε | 🛒 | 0/0/2 | Emoji | Π1 | - |
-| `insideBox` | γιατί θέλει να δει τι έχει μέσα | 📦 | 0/0/2 | Emoji | Π1 | - |
-| `lovesMom` | γιατί αγαπάει τη μαμά | ❤️ | 0/0/1 | Emoji | Π1 | - |
-| `lovesDad` | γιατί αγαπάει τον μπαμπά | ❤️ | 0/0/1 | Emoji | Π1 | - |
-| `rainStopped` | γιατί σταμάτησε η βροχή | 🌤️ | 0/0/2 | Emoji | Π1 | - |
-| `wantsUseIt` | γιατί θέλει να το χρησιμοποιήσει | ✅ | 0/0/1 | Emoji | Π1 | - |
-
-## Κοινές Ειδικές Εικόνες
-
-- `assets/card-images/repair.webp`: ΤΙ ΚΑΝΕΙ `make` (φτιάχνει) · ΤΙ ΚΑΝΕΙ `repair` (φτιάχνει)
-- `assets/card-images/broken.webp`: ΓΙΑΤΙ `broken` (γιατί χάλασε) · ΓΙΑΤΙ `needsRepair` (γιατί χάλασε)
-- `assets/card-images/likes-books.webp`: ΓΙΑΤΙ `likesBooks` (γιατί του αρέσουν τα βιβλία) · ΓΙΑΤΙ `likesBooksF` (γιατί της αρέσουν τα βιβλία)
+- [object-apple.webp](assets/pictures/object-apple.webp)
+- [object-bag.webp](assets/pictures/object-bag.webp)
+- [object-ball.webp](assets/pictures/object-ball.webp)
+- [object-banana.webp](assets/pictures/object-banana.webp)
+- [object-bike.webp](assets/pictures/object-bike.webp)
+- [object-boardGame.webp](assets/pictures/object-boardGame.webp)
+- [object-book.webp](assets/pictures/object-book.webp)
+- [object-box.webp](assets/pictures/object-box.webp)
+- [object-bread.webp](assets/pictures/object-bread.webp)
+- [object-cake.webp](assets/pictures/object-cake.webp)
+- [object-carToy.webp](assets/pictures/object-carToy.webp)
+- [object-carrot.webp](assets/pictures/object-carrot.webp)
+- [object-chair.webp](assets/pictures/object-chair.webp)
+- [object-computer.webp](assets/pictures/object-computer.webp)
+- [object-doll-v3.webp](assets/pictures/object-doll-v3.webp)
+- [object-drum.webp](assets/pictures/object-drum.webp)
+- [object-fishMeal-v2.webp](assets/pictures/object-fishMeal-v2.webp)
+- [object-flower.webp](assets/pictures/object-flower.webp)
+- [object-gift.webp](assets/pictures/object-gift.webp)
+- [object-glass.webp](assets/pictures/object-glass.webp)
+- [object-grass.webp](assets/pictures/object-grass.webp)
+- [object-guitar.webp](assets/pictures/object-guitar.webp)
+- [object-hat.webp](assets/pictures/object-hat.webp)
+- [object-key.webp](assets/pictures/object-key.webp)
+- [object-letter.webp](assets/pictures/object-letter.webp)
+- [object-lettuce.webp](assets/pictures/object-lettuce.webp)
+- [object-list.webp](assets/pictures/object-list.webp)
+- [object-milk.webp](assets/pictures/object-milk.webp)
+- [object-ownName-boy.webp](assets/pictures/object-ownName-boy.webp)
+- [object-ownName-girl.webp](assets/pictures/object-ownName-girl.webp)
+- [object-ownName-teacherF.webp](assets/pictures/object-ownName-teacherF.webp)
+- [object-ownName-teacherM.webp](assets/pictures/object-ownName-teacherM.webp)
+- [object-pasta.webp](assets/pictures/object-pasta.webp)
+- [object-pencil.webp](assets/pictures/object-pencil.webp)
+- [object-petFood.webp](assets/pictures/object-petFood.webp)
+- [object-phone.webp](assets/pictures/object-phone.webp)
+- [object-pizza.webp](assets/pictures/object-pizza.webp)
+- [object-plainCake.webp](assets/pictures/object-plainCake.webp)
+- [object-plate.webp](assets/pictures/object-plate.webp)
+- [object-shoes-boy.webp](assets/pictures/object-shoes-boy.webp)
+- [object-shoes.webp](assets/pictures/object-shoes.webp)
+- [object-soup.webp](assets/pictures/object-soup.webp)
+- [object-star.webp](assets/pictures/object-star.webp)
+- [object-teeth.webp](assets/pictures/object-teeth.webp)
+- [object-toy.webp](assets/pictures/object-toy.webp)
+- [object-tree.webp](assets/pictures/object-tree.webp)
+- [object-umbrella.webp](assets/pictures/object-umbrella.webp)
+- [object-vegetables.webp](assets/pictures/object-vegetables.webp)
+- [object-water.webp](assets/pictures/object-water.webp)
+- [place-bakery.webp](assets/pictures/place-bakery.webp)
+- [place-bathroom.webp](assets/pictures/place-bathroom.webp)
+- [place-beach.webp](assets/pictures/place-beach.webp)
+- [place-bed.webp](assets/pictures/place-bed.webp)
+- [place-classroom.webp](assets/pictures/place-classroom.webp)
+- [place-clinic.webp](assets/pictures/place-clinic.webp)
+- [place-farm.webp](assets/pictures/place-farm.webp)
+- [place-floor-v2.webp](assets/pictures/place-floor-v2.webp)
+- [place-garden.webp](assets/pictures/place-garden.webp)
+- [place-home.webp](assets/pictures/place-home.webp)
+- [place-kitchen.webp](assets/pictures/place-kitchen.webp)
+- [place-library.webp](assets/pictures/place-library.webp)
+- [place-musicRoom.webp](assets/pictures/place-musicRoom.webp)
+- [place-office.webp](assets/pictures/place-office.webp)
+- [place-park.webp](assets/pictures/place-park.webp)
+- [place-playground.webp](assets/pictures/place-playground.webp)
+- [place-restaurant.webp](assets/pictures/place-restaurant.webp)
+- [place-school.webp](assets/pictures/place-school.webp)
+- [place-supermarket.webp](assets/pictures/place-supermarket.webp)
+- [place-table.webp](assets/pictures/place-table.webp)
+- [place-yard.webp](assets/pictures/place-yard.webp)
+- [place-zoo.webp](assets/pictures/place-zoo.webp)
+- [reason-afterRun-boy-none.webp](assets/pictures/reason-afterRun-boy-none.webp)
+- [reason-afterRun-dad-none-v2.webp](assets/pictures/reason-afterRun-dad-none-v2.webp)
+- [reason-animalHungry-object-dogObject.webp](assets/pictures/reason-animalHungry-object-dogObject.webp)
+- [reason-animalHungry-object-henObject.webp](assets/pictures/reason-animalHungry-object-henObject.webp)
+- [reason-bikeDirty-object-bike.webp](assets/pictures/reason-bikeDirty-object-bike.webp)
+- [reason-birthday-boy-none.webp](assets/pictures/reason-birthday-boy-none.webp)
+- [reason-birthday-dad-none.webp](assets/pictures/reason-birthday-dad-none.webp)
+- [reason-birthday-girl-none.webp](assets/pictures/reason-birthday-girl-none.webp)
+- [reason-birthday-grandma-none.webp](assets/pictures/reason-birthday-grandma-none.webp)
+- [reason-bookLover-girl-none.webp](assets/pictures/reason-bookLover-girl-none.webp)
+- [reason-boy-hungry-apple.webp](assets/pictures/reason-boy-hungry-apple.webp)
+- [reason-broken-object-bike.webp](assets/pictures/reason-broken-object-bike.webp)
+- [reason-broken-object-carToy.webp](assets/pictures/reason-broken-object-carToy.webp)
+- [reason-broken-object-chair.webp](assets/pictures/reason-broken-object-chair.webp)
+- [reason-broken-object-phone.webp](assets/pictures/reason-broken-object-phone.webp)
+- [reason-cannotFindIt-boy-key.webp](assets/pictures/reason-cannotFindIt-boy-key.webp)
+- [reason-cannotFindIt-boy-phone.webp](assets/pictures/reason-cannotFindIt-boy-phone.webp)
+- [reason-cannotFindIt-girl-key.webp](assets/pictures/reason-cannotFindIt-girl-key.webp)
+- [reason-chairDirty-object-chair-v2.webp](assets/pictures/reason-chairDirty-object-chair-v2.webp)
+- [reason-classmateNeedsPencil-girl-pencil.webp](assets/pictures/reason-classmateNeedsPencil-girl-pencil.webp)
+- [reason-customers-cookM-none.webp](assets/pictures/reason-customers-cookM-none.webp)
+- [reason-fun-boy-none-v2.webp](assets/pictures/reason-fun-boy-none-v2.webp)
+- [reason-girl-hungry-apple-v1.webp](assets/pictures/reason-girl-hungry-apple-v1.webp)
+- [reason-giveAsGift-boy-gift-v2.webp](assets/pictures/reason-giveAsGift-boy-gift-v2.webp)
+- [reason-giveAsGift-grandpa-toy-v2.webp](assets/pictures/reason-giveAsGift-grandpa-toy-v2.webp)
+- [reason-glassDirty-object-glass-v2.webp](assets/pictures/reason-glassDirty-object-glass-v2.webp)
+- [reason-goOutside-boy-none.webp](assets/pictures/reason-goOutside-boy-none.webp)
+- [reason-goOutside-girl-none.webp](assets/pictures/reason-goOutside-girl-none.webp)
+- [reason-guests-dad-none.webp](assets/pictures/reason-guests-dad-none.webp)
+- [reason-guests-mom-none.webp](assets/pictures/reason-guests-mom-none.webp)
+- [reason-hotWeather-mom-none.webp](assets/pictures/reason-hotWeather-mom-none.webp)
+- [reason-hungry-boy-banana.webp](assets/pictures/reason-hungry-boy-banana.webp)
+- [reason-hungry-cat-fishMeal.webp](assets/pictures/reason-hungry-cat-fishMeal.webp)
+- [reason-hungry-cow-grass.webp](assets/pictures/reason-hungry-cow-grass.webp)
+- [reason-hungry-dad-pasta.webp](assets/pictures/reason-hungry-dad-pasta.webp)
+- [reason-hungry-dad-pizza.webp](assets/pictures/reason-hungry-dad-pizza.webp)
+- [reason-hungry-dog-petFood.webp](assets/pictures/reason-hungry-dog-petFood.webp)
+- [reason-hungry-horse-carrot.webp](assets/pictures/reason-hungry-horse-carrot.webp)
+- [reason-hungry-monkey-banana.webp](assets/pictures/reason-hungry-monkey-banana.webp)
+- [reason-hungry-pig-apple.webp](assets/pictures/reason-hungry-pig-apple.webp)
+- [reason-hungry-rabbit-carrot.webp](assets/pictures/reason-hungry-rabbit-carrot.webp)
+- [reason-hungry-sheep-grass.webp](assets/pictures/reason-hungry-sheep-grass.webp)
+- [reason-hungry-turtle-lettuce.webp](assets/pictures/reason-hungry-turtle-lettuce.webp)
+- [reason-insideBox-boy-box.webp](assets/pictures/reason-insideBox-boy-box.webp)
+- [reason-insideBox-boy-gift.webp](assets/pictures/reason-insideBox-boy-gift.webp)
+- [reason-learnRules-girl-boardGame.webp](assets/pictures/reason-learnRules-girl-boardGame.webp)
+- [reason-lessonFinished-girl-none.webp](assets/pictures/reason-lessonFinished-girl-none.webp)
+- [reason-likesBooks-grandpa-none.webp](assets/pictures/reason-likesBooks-grandpa-none.webp)
+- [reason-likesBooksF-grandma-none.webp](assets/pictures/reason-likesBooksF-grandma-none.webp)
+- [reason-lovesDad-girl-dadObject.webp](assets/pictures/reason-lovesDad-girl-dadObject.webp)
+- [reason-lovesMom-boy-momObject.webp](assets/pictures/reason-lovesMom-boy-momObject.webp)
+- [reason-mealTime-shared-none.webp](assets/pictures/reason-mealTime-shared-none.webp)
+- [reason-momNeedsUmbrella-dad-umbrella.webp](assets/pictures/reason-momNeedsUmbrella-dad-umbrella.webp)
+- [reason-moveIt-boy-box.webp](assets/pictures/reason-moveIt-boy-box.webp)
+- [reason-moveIt-girl-box.webp](assets/pictures/reason-moveIt-girl-box.webp)
+- [reason-musicTime-boy-none.webp](assets/pictures/reason-musicTime-boy-none.webp)
+- [reason-openDoor-dad-key.webp](assets/pictures/reason-openDoor-dad-key.webp)
+- [reason-order-cookF-none.webp](assets/pictures/reason-order-cookF-none.webp)
+- [reason-phoneCall-mom-none.webp](assets/pictures/reason-phoneCall-mom-none.webp)
+- [reason-phoneCall-nurse-none.webp](assets/pictures/reason-phoneCall-nurse-none.webp)
+- [reason-plantCare-gardener-flower.webp](assets/pictures/reason-plantCare-gardener-flower.webp)
+- [reason-plantCare-grandma-flower.webp](assets/pictures/reason-plantCare-grandma-flower.webp)
+- [reason-plantCare-grandpa-tree.webp](assets/pictures/reason-plantCare-grandpa-tree.webp)
+- [reason-plantNeedsWater-shared-none.webp](assets/pictures/reason-plantNeedsWater-shared-none.webp)
+- [reason-playing-boy-ball.webp](assets/pictures/reason-playing-boy-ball.webp)
+- [reason-playing-girl-ball.webp](assets/pictures/reason-playing-girl-ball.webp)
+- [reason-playing-girl-doll.webp](assets/pictures/reason-playing-girl-doll.webp)
+- [reason-playing-girl-toy.webp](assets/pictures/reason-playing-girl-toy.webp)
+- [reason-practice-boy-ownNameM-orientation-v1.webp](assets/pictures/reason-practice-boy-ownNameM-orientation-v1.webp)
+- [reason-practice-girl-ownNameM-orientation-v1.webp](assets/pictures/reason-practice-girl-ownNameM-orientation-v1.webp)
+- [reason-practice-teacherM-guitar.webp](assets/pictures/reason-practice-teacherM-guitar.webp)
+- [reason-prepareFood-boy-apple-v2.webp](assets/pictures/reason-prepareFood-boy-apple-v2.webp)
+- [reason-prepareFood-girl-carrot.webp](assets/pictures/reason-prepareFood-girl-carrot.webp)
+- [reason-prepareFood-mom-carrot.webp](assets/pictures/reason-prepareFood-mom-carrot.webp)
+- [reason-prettyThing-grandma-flower.webp](assets/pictures/reason-prettyThing-grandma-flower.webp)
+- [reason-rainProtection-shared-none.webp](assets/pictures/reason-rainProtection-shared-none.webp)
+- [reason-rainStopped-shared-none.webp](assets/pictures/reason-rainStopped-shared-none.webp)
+- [reason-ranOutF-mom-bread.webp](assets/pictures/reason-ranOutF-mom-bread.webp)
+- [reason-ranOutF-mom-milk.webp](assets/pictures/reason-ranOutF-mom-milk.webp)
+- [reason-scared-girl-doll.webp](assets/pictures/reason-scared-girl-doll.webp)
+- [reason-schoolWork-boy-none.webp](assets/pictures/reason-schoolWork-boy-none.webp)
+- [reason-schoolWork-girl-none.webp](assets/pictures/reason-schoolWork-girl-none.webp)
+- [reason-schoolWork-teacherF-none.webp](assets/pictures/reason-schoolWork-teacherF-none.webp)
+- [reason-schoolWork-teacherM-none.webp](assets/pictures/reason-schoolWork-teacherM-none.webp)
+- [reason-searchedEverywhere-boy-key.webp](assets/pictures/reason-searchedEverywhere-boy-key.webp)
+- [reason-searchedEverywhere-boy-phone-v2.webp](assets/pictures/reason-searchedEverywhere-boy-phone-v2.webp)
+- [reason-searchedEverywhere-dog-ball-v2.webp](assets/pictures/reason-searchedEverywhere-dog-ball-v2.webp)
+- [reason-searchedEverywhere-girl-key.webp](assets/pictures/reason-searchedEverywhere-girl-key.webp)
+- [reason-sendGrandma-mom-letter.webp](assets/pictures/reason-sendGrandma-mom-letter.webp)
+- [reason-showMom-boy-flower.webp](assets/pictures/reason-showMom-boy-flower.webp)
+- [reason-showMom-boy-star.webp](assets/pictures/reason-showMom-boy-star.webp)
+- [reason-showMom-girl-flower.webp](assets/pictures/reason-showMom-girl-flower.webp)
+- [reason-snackTime-girl-banana-v2.webp](assets/pictures/reason-snackTime-girl-banana-v2.webp)
+- [reason-snackTime-teacherF-apple-v2.webp](assets/pictures/reason-snackTime-teacherF-apple-v2.webp)
+- [reason-studentNeedsPencil-teacherF-pencil.webp](assets/pictures/reason-studentNeedsPencil-teacherF-pencil.webp)
+- [reason-sunny-shared-none.webp](assets/pictures/reason-sunny-shared-none.webp)
+- [reason-tasty-boy-apple.webp](assets/pictures/reason-tasty-boy-apple.webp)
+- [reason-teacherAsked-girl-tree.webp](assets/pictures/reason-teacherAsked-girl-tree.webp)
+- [reason-thirsty-boy-water-v2.webp](assets/pictures/reason-thirsty-boy-water-v2.webp)
+- [reason-thirsty-cat-milk.webp](assets/pictures/reason-thirsty-cat-milk.webp)
+- [reason-thirsty-cow-water.webp](assets/pictures/reason-thirsty-cow-water.webp)
+- [reason-thirsty-dog-water.webp](assets/pictures/reason-thirsty-dog-water.webp)
+- [reason-thirsty-girl-milk.webp](assets/pictures/reason-thirsty-girl-milk.webp)
+- [reason-thirsty-girl-water.webp](assets/pictures/reason-thirsty-girl-water.webp)
+- [reason-thirsty-grandpa-water.webp](assets/pictures/reason-thirsty-grandpa-water.webp)
+- [reason-thirsty-horse-water.webp](assets/pictures/reason-thirsty-horse-water.webp)
+- [reason-thirsty-mom-glass.webp](assets/pictures/reason-thirsty-mom-glass.webp)
+- [reason-thirsty-teacherM-water.webp](assets/pictures/reason-thirsty-teacherM-water.webp)
+- [reason-tooFull-mom-box.webp](assets/pictures/reason-tooFull-mom-box.webp)
+- [reason-toyDirty-object-toy.webp](assets/pictures/reason-toyDirty-object-toy.webp)
+- [reason-treatGuests-grandma-cake.webp](assets/pictures/reason-treatGuests-grandma-cake.webp)
+- [reason-wantsCleanTeeth-boy-none.webp](assets/pictures/reason-wantsCleanTeeth-boy-none.webp)
+- [reason-wantsCleanTeeth-girl-none.webp](assets/pictures/reason-wantsCleanTeeth-girl-none.webp)
+- [reason-wantsLearn-boy-none.webp](assets/pictures/reason-wantsLearn-boy-none.webp)
+- [reason-wantsLearn-doctor-none.webp](assets/pictures/reason-wantsLearn-doctor-none.webp)
+- [reason-wantsLearn-teacherF-none.webp](assets/pictures/reason-wantsLearn-teacherF-none.webp)
+- [reason-wantsNews-dad-letter.webp](assets/pictures/reason-wantsNews-dad-letter.webp)
+- [reason-wantsPlay-girl-ball.webp](assets/pictures/reason-wantsPlay-girl-ball.webp)
+- [reason-wantsRead-dad-letter.webp](assets/pictures/reason-wantsRead-dad-letter.webp)
+- [reason-wantsRemember-mom-flower.webp](assets/pictures/reason-wantsRemember-mom-flower.webp)
+- [reason-wantsUseIt-dad-bike.webp](assets/pictures/reason-wantsUseIt-dad-bike.webp)
+- [reason-workTime-dad-none.webp](assets/pictures/reason-workTime-dad-none.webp)
+- [subject-bear.webp](assets/pictures/subject-bear.webp)
+- [subject-bee-v3.webp](assets/pictures/subject-bee-v3.webp)
+- [subject-bird.webp](assets/pictures/subject-bird.webp)
+- [subject-boy.webp](assets/pictures/subject-boy.webp)
+- [subject-butterfly-v3.webp](assets/pictures/subject-butterfly-v3.webp)
+- [subject-cat.webp](assets/pictures/subject-cat.webp)
+- [subject-cookF.webp](assets/pictures/subject-cookF.webp)
+- [subject-cookM.webp](assets/pictures/subject-cookM.webp)
+- [subject-cow.webp](assets/pictures/subject-cow.webp)
+- [subject-dad.webp](assets/pictures/subject-dad.webp)
+- [subject-deer.webp](assets/pictures/subject-deer.webp)
+- [subject-doctor.webp](assets/pictures/subject-doctor.webp)
+- [subject-dog.webp](assets/pictures/subject-dog.webp)
+- [subject-duck.webp](assets/pictures/subject-duck.webp)
+- [subject-firefighter.webp](assets/pictures/subject-firefighter.webp)
+- [subject-fish.webp](assets/pictures/subject-fish.webp)
+- [subject-frog.webp](assets/pictures/subject-frog.webp)
+- [subject-gardener.webp](assets/pictures/subject-gardener.webp)
+- [subject-girl.webp](assets/pictures/subject-girl.webp)
+- [subject-grandma.webp](assets/pictures/subject-grandma.webp)
+- [subject-grandpa.webp](assets/pictures/subject-grandpa.webp)
+- [subject-hen.webp](assets/pictures/subject-hen.webp)
+- [subject-horse.webp](assets/pictures/subject-horse.webp)
+- [subject-lion-v2.webp](assets/pictures/subject-lion-v2.webp)
+- [subject-mom.webp](assets/pictures/subject-mom.webp)
+- [subject-monkey.webp](assets/pictures/subject-monkey.webp)
+- [subject-nurse.webp](assets/pictures/subject-nurse.webp)
+- [subject-pig.webp](assets/pictures/subject-pig.webp)
+- [subject-police.webp](assets/pictures/subject-police.webp)
+- [subject-rabbit.webp](assets/pictures/subject-rabbit.webp)
+- [subject-sheep.webp](assets/pictures/subject-sheep.webp)
+- [subject-singer.webp](assets/pictures/subject-singer.webp)
+- [subject-teacherF.webp](assets/pictures/subject-teacherF.webp)
+- [subject-teacherM.webp](assets/pictures/subject-teacherM.webp)
+- [subject-turtle.webp](assets/pictures/subject-turtle.webp)
+- [time-today-v1.webp](assets/pictures/time-today-v1.webp)
+- [time-tomorrow-v1.webp](assets/pictures/time-tomorrow-v1.webp)
+- [time-yesterday-v1.webp](assets/pictures/time-yesterday-v1.webp)
+- [verb-bear-walk-none.webp](assets/pictures/verb-bear-walk-none.webp)
+- [verb-bee-fly-none-v3.webp](assets/pictures/verb-bee-fly-none-v3.webp)
+- [verb-bird-fly-none.webp](assets/pictures/verb-bird-fly-none.webp)
+- [verb-bird-sing-none.webp](assets/pictures/verb-bird-sing-none.webp)
+- [verb-boy-brushTeeth-teeth-v2.webp](assets/pictures/verb-boy-brushTeeth-teeth-v2.webp)
+- [verb-boy-carry-bag.webp](assets/pictures/verb-boy-carry-bag.webp)
+- [verb-boy-clean-toy.webp](assets/pictures/verb-boy-clean-toy.webp)
+- [verb-boy-cry-none.webp](assets/pictures/verb-boy-cry-none.webp)
+- [verb-boy-draw-flower-orientation-v2.webp](assets/pictures/verb-boy-draw-flower-orientation-v2.webp)
+- [verb-boy-draw-star-orientation-v1.webp](assets/pictures/verb-boy-draw-star-orientation-v1.webp)
+- [verb-boy-drink-water.webp](assets/pictures/verb-boy-drink-water.webp)
+- [verb-boy-eat-apple-v2.webp](assets/pictures/verb-boy-eat-apple-v2.webp)
+- [verb-boy-eat-banana.webp](assets/pictures/verb-boy-eat-banana.webp)
+- [verb-boy-feed-henObject.webp](assets/pictures/verb-boy-feed-henObject.webp)
+- [verb-boy-find-key.webp](assets/pictures/verb-boy-find-key.webp)
+- [verb-boy-find-phone.webp](assets/pictures/verb-boy-find-phone.webp)
+- [verb-boy-give-gift.webp](assets/pictures/verb-boy-give-gift.webp)
+- [verb-boy-hug-momObject.webp](assets/pictures/verb-boy-hug-momObject.webp)
+- [verb-boy-jump-none.webp](assets/pictures/verb-boy-jump-none.webp)
+- [verb-boy-open-box.webp](assets/pictures/verb-boy-open-box.webp)
+- [verb-boy-open-gift.webp](assets/pictures/verb-boy-open-gift.webp)
+- [verb-boy-play-drum-v2.webp](assets/pictures/verb-boy-play-drum-v2.webp)
+- [verb-boy-pull-box.webp](assets/pictures/verb-boy-pull-box.webp)
+- [verb-boy-push-ball-v2.webp](assets/pictures/verb-boy-push-ball-v2.webp)
+- [verb-boy-read-book.webp](assets/pictures/verb-boy-read-book.webp)
+- [verb-boy-read-letter.webp](assets/pictures/verb-boy-read-letter.webp)
+- [verb-boy-run-none.webp](assets/pictures/verb-boy-run-none.webp)
+- [verb-boy-search-key.webp](assets/pictures/verb-boy-search-key.webp)
+- [verb-boy-search-phone.webp](assets/pictures/verb-boy-search-phone.webp)
+- [verb-boy-sleep-none.webp](assets/pictures/verb-boy-sleep-none.webp)
+- [verb-boy-swim-none.webp](assets/pictures/verb-boy-swim-none.webp)
+- [verb-boy-take-book.webp](assets/pictures/verb-boy-take-book.webp)
+- [verb-boy-take-pencil.webp](assets/pictures/verb-boy-take-pencil.webp)
+- [verb-boy-throw-ball.webp](assets/pictures/verb-boy-throw-ball.webp)
+- [verb-boy-use-computer.webp](assets/pictures/verb-boy-use-computer.webp)
+- [verb-boy-wash-apple.webp](assets/pictures/verb-boy-wash-apple.webp)
+- [verb-boy-water-flower.webp](assets/pictures/verb-boy-water-flower.webp)
+- [verb-boy-wear-hat.webp](assets/pictures/verb-boy-wear-hat.webp)
+- [verb-boy-wear-shoes.webp](assets/pictures/verb-boy-wear-shoes.webp)
+- [verb-boy-write-ownNameM-orientation-v1.webp](assets/pictures/verb-boy-write-ownNameM-orientation-v1.webp)
+- [verb-butterfly-fly-none-v3.webp](assets/pictures/verb-butterfly-fly-none-v3.webp)
+- [verb-cat-drink-milk.webp](assets/pictures/verb-cat-drink-milk.webp)
+- [verb-cat-eat-fishMeal.webp](assets/pictures/verb-cat-eat-fishMeal.webp)
+- [verb-cat-play-none-v2.webp](assets/pictures/verb-cat-play-none-v2.webp)
+- [verb-cat-sleep-none.webp](assets/pictures/verb-cat-sleep-none.webp)
+- [verb-cookF-bake-plainCake.webp](assets/pictures/verb-cookF-bake-plainCake.webp)
+- [verb-cookM-cook-vegetables.webp](assets/pictures/verb-cookM-cook-vegetables.webp)
+- [verb-cow-drink-water-v2.webp](assets/pictures/verb-cow-drink-water-v2.webp)
+- [verb-cow-eat-grass.webp](assets/pictures/verb-cow-eat-grass.webp)
+- [verb-dad-clean-bike.webp](assets/pictures/verb-dad-clean-bike.webp)
+- [verb-dad-close-umbrella-v2.webp](assets/pictures/verb-dad-close-umbrella-v2.webp)
+- [verb-dad-cook-pasta-v2.webp](assets/pictures/verb-dad-cook-pasta-v2.webp)
+- [verb-dad-cut-bread.webp](assets/pictures/verb-dad-cut-bread.webp)
+- [verb-dad-drink-water.webp](assets/pictures/verb-dad-drink-water.webp)
+- [verb-dad-eat-pizza.webp](assets/pictures/verb-dad-eat-pizza.webp)
+- [verb-dad-give-umbrella.webp](assets/pictures/verb-dad-give-umbrella.webp)
+- [verb-dad-hold-umbrella.webp](assets/pictures/verb-dad-hold-umbrella.webp)
+- [verb-dad-laugh-none.webp](assets/pictures/verb-dad-laugh-none.webp)
+- [verb-dad-open-letter.webp](assets/pictures/verb-dad-open-letter.webp)
+- [verb-dad-photograph-cake-v2.webp](assets/pictures/verb-dad-photograph-cake-v2.webp)
+- [verb-dad-read-letter.webp](assets/pictures/verb-dad-read-letter.webp)
+- [verb-dad-repair-bike.webp](assets/pictures/verb-dad-repair-bike.webp)
+- [verb-dad-repair-carToy.webp](assets/pictures/verb-dad-repair-carToy.webp)
+- [verb-dad-take-key.webp](assets/pictures/verb-dad-take-key.webp)
+- [verb-dad-use-umbrella.webp](assets/pictures/verb-dad-use-umbrella.webp)
+- [verb-dad-wash-glass.webp](assets/pictures/verb-dad-wash-glass.webp)
+- [verb-dad-write-list-orientation-v1.webp](assets/pictures/verb-dad-write-list-orientation-v1.webp)
+- [verb-deer-run-none.webp](assets/pictures/verb-deer-run-none.webp)
+- [verb-doctor-read-book.webp](assets/pictures/verb-doctor-read-book.webp)
+- [verb-dog-drink-water.webp](assets/pictures/verb-dog-drink-water.webp)
+- [verb-dog-eat-petFood.webp](assets/pictures/verb-dog-eat-petFood.webp)
+- [verb-dog-find-ball-v2.webp](assets/pictures/verb-dog-find-ball-v2.webp)
+- [verb-dog-play-none-v2.webp](assets/pictures/verb-dog-play-none-v2.webp)
+- [verb-dog-run-none.webp](assets/pictures/verb-dog-run-none.webp)
+- [verb-dog-sleep-none.webp](assets/pictures/verb-dog-sleep-none.webp)
+- [verb-duck-swim-none.webp](assets/pictures/verb-duck-swim-none.webp)
+- [verb-firefighter-run-none.webp](assets/pictures/verb-firefighter-run-none.webp)
+- [verb-fish-swim-none-v2.webp](assets/pictures/verb-fish-swim-none-v2.webp)
+- [verb-frog-jump-none.webp](assets/pictures/verb-frog-jump-none.webp)
+- [verb-gardener-plant-flower.webp](assets/pictures/verb-gardener-plant-flower.webp)
+- [verb-gardener-water-flower.webp](assets/pictures/verb-gardener-water-flower.webp)
+- [verb-girl-brushTeeth-teeth-v2.webp](assets/pictures/verb-girl-brushTeeth-teeth-v2.webp)
+- [verb-girl-carry-bag.webp](assets/pictures/verb-girl-carry-bag.webp)
+- [verb-girl-clean-toy.webp](assets/pictures/verb-girl-clean-toy.webp)
+- [verb-girl-close-book.webp](assets/pictures/verb-girl-close-book.webp)
+- [verb-girl-close-umbrella.webp](assets/pictures/verb-girl-close-umbrella.webp)
+- [verb-girl-dance-none.webp](assets/pictures/verb-girl-dance-none.webp)
+- [verb-girl-draw-flower-orientation-v1.webp](assets/pictures/verb-girl-draw-flower-orientation-v1.webp)
+- [verb-girl-draw-tree-orientation-v1.webp](assets/pictures/verb-girl-draw-tree-orientation-v1.webp)
+- [verb-girl-drink-milk.webp](assets/pictures/verb-girl-drink-milk.webp)
+- [verb-girl-drink-water.webp](assets/pictures/verb-girl-drink-water.webp)
+- [verb-girl-eat-apple-v1.webp](assets/pictures/verb-girl-eat-apple-v1.webp)
+- [verb-girl-eat-banana.webp](assets/pictures/verb-girl-eat-banana.webp)
+- [verb-girl-feed-dogObject.webp](assets/pictures/verb-girl-feed-dogObject.webp)
+- [verb-girl-feed-doll.webp](assets/pictures/verb-girl-feed-doll.webp)
+- [verb-girl-find-key.webp](assets/pictures/verb-girl-find-key.webp)
+- [verb-girl-give-pencil.webp](assets/pictures/verb-girl-give-pencil.webp)
+- [verb-girl-hide-toy.webp](assets/pictures/verb-girl-hide-toy.webp)
+- [verb-girl-hold-umbrella.webp](assets/pictures/verb-girl-hold-umbrella.webp)
+- [verb-girl-hug-dadObject.webp](assets/pictures/verb-girl-hug-dadObject.webp)
+- [verb-girl-hug-doll.webp](assets/pictures/verb-girl-hug-doll.webp)
+- [verb-girl-jump-none.webp](assets/pictures/verb-girl-jump-none.webp)
+- [verb-girl-laugh-none.webp](assets/pictures/verb-girl-laugh-none.webp)
+- [verb-girl-open-bag.webp](assets/pictures/verb-girl-open-bag.webp)
+- [verb-girl-open-book-v2.webp](assets/pictures/verb-girl-open-book-v2.webp)
+- [verb-girl-open-gift.webp](assets/pictures/verb-girl-open-gift.webp)
+- [verb-girl-play-boardGame.webp](assets/pictures/verb-girl-play-boardGame.webp)
+- [verb-girl-pull-box.webp](assets/pictures/verb-girl-pull-box.webp)
+- [verb-girl-push-ball.webp](assets/pictures/verb-girl-push-ball.webp)
+- [verb-girl-read-book.webp](assets/pictures/verb-girl-read-book.webp)
+- [verb-girl-run-none.webp](assets/pictures/verb-girl-run-none.webp)
+- [verb-girl-search-key.webp](assets/pictures/verb-girl-search-key.webp)
+- [verb-girl-sing-none.webp](assets/pictures/verb-girl-sing-none.webp)
+- [verb-girl-swim-none.webp](assets/pictures/verb-girl-swim-none.webp)
+- [verb-girl-take-ball-v2.webp](assets/pictures/verb-girl-take-ball-v2.webp)
+- [verb-girl-take-umbrella.webp](assets/pictures/verb-girl-take-umbrella.webp)
+- [verb-girl-throw-ball.webp](assets/pictures/verb-girl-throw-ball.webp)
+- [verb-girl-use-computer.webp](assets/pictures/verb-girl-use-computer.webp)
+- [verb-girl-use-pencil.webp](assets/pictures/verb-girl-use-pencil.webp)
+- [verb-girl-wash-carrot.webp](assets/pictures/verb-girl-wash-carrot.webp)
+- [verb-girl-water-flower.webp](assets/pictures/verb-girl-water-flower.webp)
+- [verb-girl-wear-hat.webp](assets/pictures/verb-girl-wear-hat.webp)
+- [verb-girl-wear-shoes.webp](assets/pictures/verb-girl-wear-shoes.webp)
+- [verb-girl-write-letter-orientation-v1.webp](assets/pictures/verb-girl-write-letter-orientation-v1.webp)
+- [verb-girl-write-ownNameM-orientation-v2.webp](assets/pictures/verb-girl-write-ownNameM-orientation-v2.webp)
+- [verb-grandma-bake-plainCake.webp](assets/pictures/verb-grandma-bake-plainCake.webp)
+- [verb-grandma-cut-cake-v2.webp](assets/pictures/verb-grandma-cut-cake-v2.webp)
+- [verb-grandma-draw-flower-orientation-v1.webp](assets/pictures/verb-grandma-draw-flower-orientation-v1.webp)
+- [verb-grandma-drink-milk.webp](assets/pictures/verb-grandma-drink-milk.webp)
+- [verb-grandma-eat-cake.webp](assets/pictures/verb-grandma-eat-cake.webp)
+- [verb-grandma-give-cake.webp](assets/pictures/verb-grandma-give-cake.webp)
+- [verb-grandma-laugh-none.webp](assets/pictures/verb-grandma-laugh-none.webp)
+- [verb-grandma-plant-flower.webp](assets/pictures/verb-grandma-plant-flower.webp)
+- [verb-grandma-read-book.webp](assets/pictures/verb-grandma-read-book.webp)
+- [verb-grandma-sing-none.webp](assets/pictures/verb-grandma-sing-none.webp)
+- [verb-grandpa-bake-bread.webp](assets/pictures/verb-grandpa-bake-bread.webp)
+- [verb-grandpa-drink-water.webp](assets/pictures/verb-grandpa-drink-water.webp)
+- [verb-grandpa-eat-bread-v2.webp](assets/pictures/verb-grandpa-eat-bread-v2.webp)
+- [verb-grandpa-feed-henObject.webp](assets/pictures/verb-grandpa-feed-henObject.webp)
+- [verb-grandpa-give-toy.webp](assets/pictures/verb-grandpa-give-toy.webp)
+- [verb-grandpa-plant-tree.webp](assets/pictures/verb-grandpa-plant-tree.webp)
+- [verb-grandpa-read-book.webp](assets/pictures/verb-grandpa-read-book.webp)
+- [verb-grandpa-repair-bike-v2.webp](assets/pictures/verb-grandpa-repair-bike-v2.webp)
+- [verb-grandpa-repair-chair.webp](assets/pictures/verb-grandpa-repair-chair.webp)
+- [verb-grandpa-walk-none.webp](assets/pictures/verb-grandpa-walk-none.webp)
+- [verb-horse-drink-water-v2.webp](assets/pictures/verb-horse-drink-water-v2.webp)
+- [verb-horse-eat-carrot.webp](assets/pictures/verb-horse-eat-carrot.webp)
+- [verb-horse-run-none.webp](assets/pictures/verb-horse-run-none.webp)
+- [verb-lion-sleep-none.webp](assets/pictures/verb-lion-sleep-none.webp)
+- [verb-mom-buy-bread.webp](assets/pictures/verb-mom-buy-bread.webp)
+- [verb-mom-buy-milk.webp](assets/pictures/verb-mom-buy-milk.webp)
+- [verb-mom-clean-chair.webp](assets/pictures/verb-mom-clean-chair.webp)
+- [verb-mom-cook-soup.webp](assets/pictures/verb-mom-cook-soup.webp)
+- [verb-mom-cut-apple.webp](assets/pictures/verb-mom-cut-apple.webp)
+- [verb-mom-cut-carrot.webp](assets/pictures/verb-mom-cut-carrot.webp)
+- [verb-mom-dance-none.webp](assets/pictures/verb-mom-dance-none.webp)
+- [verb-mom-drink-water.webp](assets/pictures/verb-mom-drink-water.webp)
+- [verb-mom-eat-bread.webp](assets/pictures/verb-mom-eat-bread.webp)
+- [verb-mom-empty-box.webp](assets/pictures/verb-mom-empty-box.webp)
+- [verb-mom-feed-dogObject.webp](assets/pictures/verb-mom-feed-dogObject.webp)
+- [verb-mom-fill-glass.webp](assets/pictures/verb-mom-fill-glass.webp)
+- [verb-mom-open-umbrella.webp](assets/pictures/verb-mom-open-umbrella.webp)
+- [verb-mom-photograph-flower-v2.webp](assets/pictures/verb-mom-photograph-flower-v2.webp)
+- [verb-mom-repair-phone-v2.webp](assets/pictures/verb-mom-repair-phone-v2.webp)
+- [verb-mom-use-phone.webp](assets/pictures/verb-mom-use-phone.webp)
+- [verb-mom-wash-carrot.webp](assets/pictures/verb-mom-wash-carrot.webp)
+- [verb-mom-wash-plate.webp](assets/pictures/verb-mom-wash-plate.webp)
+- [verb-mom-write-letter-orientation-v1.webp](assets/pictures/verb-mom-write-letter-orientation-v1.webp)
+- [verb-monkey-eat-banana-v2.webp](assets/pictures/verb-monkey-eat-banana-v2.webp)
+- [verb-monkey-jump-none.webp](assets/pictures/verb-monkey-jump-none.webp)
+- [verb-nurse-use-phone.webp](assets/pictures/verb-nurse-use-phone.webp)
+- [verb-pig-eat-apple.webp](assets/pictures/verb-pig-eat-apple.webp)
+- [verb-police-run-none.webp](assets/pictures/verb-police-run-none.webp)
+- [verb-rabbit-eat-carrot.webp](assets/pictures/verb-rabbit-eat-carrot.webp)
+- [verb-rabbit-jump-none.webp](assets/pictures/verb-rabbit-jump-none.webp)
+- [verb-sheep-eat-grass.webp](assets/pictures/verb-sheep-eat-grass.webp)
+- [verb-singer-sing-none.webp](assets/pictures/verb-singer-sing-none.webp)
+- [verb-teacherF-clean-chair.webp](assets/pictures/verb-teacherF-clean-chair.webp)
+- [verb-teacherF-draw-star-orientation-v1.webp](assets/pictures/verb-teacherF-draw-star-orientation-v1.webp)
+- [verb-teacherF-eat-apple.webp](assets/pictures/verb-teacherF-eat-apple.webp)
+- [verb-teacherF-give-pencil.webp](assets/pictures/verb-teacherF-give-pencil.webp)
+- [verb-teacherF-read-book.webp](assets/pictures/verb-teacherF-read-book.webp)
+- [verb-teacherF-write-ownNameF-orientation-v4.webp](assets/pictures/verb-teacherF-write-ownNameF-orientation-v4.webp)
+- [verb-teacherM-drink-water.webp](assets/pictures/verb-teacherM-drink-water.webp)
+- [verb-teacherM-play-guitar.webp](assets/pictures/verb-teacherM-play-guitar.webp)
+- [verb-teacherM-write-ownNameM-orientation-v1.webp](assets/pictures/verb-teacherM-write-ownNameM-orientation-v1.webp)
+- [verb-turtle-eat-lettuce.webp](assets/pictures/verb-turtle-eat-lettuce.webp)
