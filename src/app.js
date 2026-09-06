@@ -1,8 +1,8 @@
-import {SentenceEngine,Board,shuffle,sentenceText} from './engine.js?v=20260906-1';
-import {Reward,HOLD_MS} from './reward.js?v=20260906-1';
-import {GreekSpeech} from './speech.js?v=20260906-1';
-import {ImageLoader} from './images.js?v=20260906-1';
-import {bindDrag} from './gestures.js?v=20260906-1';
+import {SentenceEngine,Board,shuffle,sentenceText} from './engine.js?v=20260906-2';
+import {Reward,HOLD_MS} from './reward.js?v=20260906-2';
+import {GreekSpeech} from './speech.js?v=20260906-2';
+import {ImageLoader} from './images.js?v=20260906-2';
+import {bindDrag} from './gestures.js?v=20260906-2';
 
 const $=id=>document.getElementById(id);
 const roles={subject:{label:'ΠΟΙΟΣ',color:'#8DC63F'},verb:{label:'ΤΙ ΚΑΝΕΙ',color:'#00AEEF'},object:{label:'ΤΙ',color:'#F7941D'},place:{label:'ΠΟΥ',color:'#ED1C24'},reason:{label:'ΓΙΑΤΙ',color:'#58595B'},time:{label:'ΠΟΤΕ',color:'#00AEEF'}};
@@ -156,6 +156,6 @@ $('slots').addEventListener('error',imageFailure,true);$('tray').addEventListene
 function imageFailure(e){if(e.target instanceof HTMLImageElement){e.target.alt='Η εικόνα δεν φορτώθηκε';feedback('Μια εικόνα δεν φορτώθηκε. Έλεγξε τη σύνδεση ή πάτησε «Νέα πρόταση».');}}
 renderMenu();
 try{
-  const response=await fetch('data/content.json?v=20260906-1');if(!response.ok)throw new Error('Content unavailable');
+  const response=await fetch('data/content.json?v=20260906-2');if(!response.ok)throw new Error('Content unavailable');
   engine=new SentenceEngine(await response.json());$('start').disabled=false;$('loading-note').textContent='';timing('readyMs');reserveNext();
 }catch(error){console.error(error);$('loading-note').textContent='Δεν φορτώθηκαν οι προτάσεις. Έλεγξε τη σύνδεση και ανανέωσε τη σελίδα.';}

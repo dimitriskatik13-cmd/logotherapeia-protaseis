@@ -28,6 +28,10 @@ forms['brushTeeth']={'past':'βούρτσισε','future':'θα βουρτσίσ
 reason_forms=source['reasonForms']
 for key,past in {'wantsNews':'γιατί ήθελε να μάθει τα νέα','wantsCleanTeeth':'γιατί ήθελε να έχει καθαρά δόντια','wantsPlay':'γιατί ήθελε να παίξει','goOutside':'για να βγει έξω'}.items():
     reason_forms[key]={'past':past,'future':scene['labels']['reasons'][key]}
+# Narrate completed events within today, with the reviewed accompanying causes.
+# Stable preferences and purpose clauses already retain their appropriate form.
+for table in [forms,reason_forms]:
+    for item in table.values():item['today']=item['past']
 full=[]
 for raw in scene['mode5']:
     row=dict(raw);s,v,o,p=(row[k] for k in ('subject','verb','object','place'))

@@ -51,7 +51,9 @@ export class SentenceEngine {
     if(!TIME_IDS.includes(setting))throw new Error('Invalid time');return setting;
   }
   cards(row,mode,time='none'){
-    const tense=time==='yesterday'?'past':time==='tomorrow'?'future':null;
+    // Today is an explicit narrative choice: events completed earlier in this day.
+    // Separate forms keep this distinct from the ongoing action shown without a time card.
+    const tense=time==='today'?'today':time==='yesterday'?'past':time==='tomorrow'?'future':null;
     const result=keysForMode(mode).map(key=>{
       const id=row[key];let text=this.data.labels[key+'s'][id];
       if(tense && (key==='verb'||key==='reason')){

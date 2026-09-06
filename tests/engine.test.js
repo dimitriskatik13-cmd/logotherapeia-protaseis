@@ -33,7 +33,7 @@ test('all alternatives change exactly one ID and belong to the curated bank',()=
     for(const other of alternatives){
       assert.ok(engine.bank(mode).includes(other));assert.notEqual(row[key],other[key]);
       for(const otherKey of keysForMode(mode).filter(k=>k!==key))assert.equal(row[otherKey],other[otherKey]);
-      for(const time of ['none','yesterday','tomorrow'])assert.equal(engine.cards(other,mode,time).length,mode+(time==='none'?0:1));
+      for(const time of ['none','today','yesterday','tomorrow'])assert.equal(engine.cards(other,mode,time).length,mode+(time==='none'?0:1));
       total++;
     }
   }
