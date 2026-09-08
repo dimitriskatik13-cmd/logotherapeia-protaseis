@@ -86,4 +86,4 @@ h2 .icon{width:16px;height:16px;margin-right:7px;vertical-align:-3px}
 @media(min-width:760px) and (max-height:820px){.btn{min-height:44px;padding:8px 14px}.pill{min-height:44px}}
 @media(max-width:759px){.btn{padding:9px 14px;font-size:14px}}
 /* Αρχική/Βοήθειες πράσινα · η κεφαλίδα μένει ίδια σε αρχική και άσκηση */
-.toolbar-start .btn.neutral{background:var(--green);color:#fff;border:0;box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(88,89,91,.12)}
+.toolbar-start .btn.neutral{background:var(--red);color:#fff;border:0;box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(88,89,91,.12)}
