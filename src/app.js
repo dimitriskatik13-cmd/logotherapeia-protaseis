@@ -71,7 +71,7 @@ function render({focus=null}={}){
   $('play-screen').dataset.sentenceId=state.row.id;
   const showModel=$('show-model').checked;
   const built=board.cards.map(c=>board.filled.has(c.key)?c.text:'—').join(' ')+(board.complete?'.':'');
-  $('result-label').textContent=showModel?'💬 Πλήρης πρόταση':'💬 Η πρότασή σου';$('result').textContent=showModel?sentenceText(board.cards):built;$('built').textContent=built;$('built').hidden=!showModel;
+  $('result-label').textContent=showModel?'Πλήρης πρόταση':'Η πρότασή σου';$('result').textContent=showModel?sentenceText(board.cards):built;$('built').textContent=built;$('built').hidden=!showModel;
   scheduleResultFit();
   $('complete').disabled=locked()||!board.complete;
   for(const id of ['restart','listen','listen-partial','settings'])$(id).disabled=locked();

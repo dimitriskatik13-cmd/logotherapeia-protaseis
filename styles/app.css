@@ -66,3 +66,22 @@ body.play .header{min-height:72px;padding:10px 24px}body.play .logo{height:48px}
 .settings{right:auto}
 @media(max-width:919px){.result-body{gap:10px}.sentence-actions{align-self:flex-end}}
 @media(max-width:759px){.toolbar-start{gap:7px}.toolbar-actions{justify-content:flex-end}.result-text{font-size:18px}}
+/* Κουμπιά: ενιαία SVG εικονίδια αντί για emoji (το 🎲 μένει), γωνίες 14px σε όλα τα στρογγυλά σχήματα, ουδέτερη σκιά, βάρος 600, ύψος 48. */
+.icon{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round}
+h2 .icon{width:16px;height:16px;margin-right:7px;vertical-align:-3px}
+.correct-label{display:inline-flex;align-items:center;gap:7px}
+.result-caption{display:flex;align-items:center;gap:6px}.result-caption .icon{width:15px;height:15px}
+.settings h2{display:flex;align-items:center;gap:8px;font-size:17px;letter-spacing:0}.settings h2 .icon{width:18px;height:18px;margin:0}
+.btn{border-radius:14px;min-height:48px;padding:10px 18px;font-weight:600;letter-spacing:.01em;gap:8px;box-shadow:0 1px 2px rgba(88,89,91,.08),0 4px 12px rgba(88,89,91,.08)}
+.btn.new,.btn.listen,.btn.correct,.btn.start{box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(88,89,91,.12)}
+.btn.outline,.btn.neutral,.btn.correct:disabled{box-shadow:none}
+.btn.start{border-radius:16px;font-size:20px;min-height:60px}
+.pill{border-radius:14px;min-height:48px;padding:0 20px;font-weight:600;box-shadow:0 1px 2px rgba(88,89,91,.06),0 3px 10px rgba(88,89,91,.06)}
+.pill.active{background:var(--green);border-color:var(--green);box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(88,89,91,.12)}
+.circle{border-radius:14px;font-weight:600;box-shadow:0 1px 2px rgba(88,89,91,.06),0 3px 10px rgba(88,89,91,.06)}
+.circle.active{box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(88,89,91,.12)}
+.alternate{border-radius:12px;font-weight:600;font-size:13px}
+.role-num{border-radius:7px}
+.zoom{border-radius:12px}
+@media(min-width:760px) and (max-height:820px){.btn{min-height:44px;padding:8px 14px}.pill{min-height:44px}}
+@media(max-width:759px){.btn{padding:9px 14px;font-size:14px}}
