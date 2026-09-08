@@ -123,13 +123,7 @@ function place(key,target){
   render({focus:board.complete?'#complete':`[data-slot="${target}"]`});
   feedback(board.complete?'Μπράβο! Κράτησε το «Σωστό!» για 1 δευτερόλεπτο.':'Ωραία, συνέχισε.');
 }
-function positionSettings(){
-  const panel=$('settings-panel');if(panel.hidden)return;
-  const button=$('settings').getBoundingClientRect();
-  panel.style.left=Math.max(12,Math.min(button.left,document.documentElement.clientWidth-panel.offsetWidth-12))+'px';
-  panel.style.top=(button.bottom+8)+'px';panel.style.maxHeight=Math.max(140,window.innerHeight-button.bottom-20)+'px';
-}
-function panel(open){reward.cancelHold();$('settings-panel').hidden=!open;$('settings').setAttribute('aria-expanded',String(open));if(open){positionSettings();$('show-model').focus();}}
+function panel(open){reward.cancelHold();$('settings-panel').hidden=!open;$('settings-backdrop').hidden=!open;document.body.classList.toggle('drawer-open',open);$('settings').setAttribute('aria-expanded',String(open));if(open)$('show-model').focus();}
 function openPicture(key){
   const c=board.cards.find(c=>c.key===key);if(!c)return;reward.cancelHold();cleanupDrag();speech.stop();previousFocus=document.activeElement;
   $('picture-title').textContent=c.text;$('picture-large').src=c.image;$('picture-large').alt=c.text;
@@ -158,7 +152,7 @@ document.addEventListener('click',event=>{
 });
 $('start').onclick=showPlay;$('home').onclick=showHome;$('restart').onclick=()=>nextSentence();
 $('listen').onclick=()=>speech.speak(sentenceText(board.cards));$('listen-partial').onclick=()=>speech.speak(board.partial);
-$('settings').onclick=()=>panel($('settings-panel').hidden);$('close-settings').onclick=()=>{panel(false);$('settings').focus();};
+$('settings').onclick=()=>panel($('settings-panel').hidden);const closeDrawer=()=>{panel(false);$('settings').focus();};$('close-settings').onclick=closeDrawer;$('close-settings-x').onclick=closeDrawer;$('settings-backdrop').onclick=closeDrawer;$('test-voice').onclick=()=>speech.speak('Το αγόρι τρώει το μήλο στο σπίτι.');
 $('show-model').onchange=()=>{reward.cancelHold();render();};$('show-labels').onchange=()=>document.body.classList.toggle('hide-labels',!$('show-labels').checked);
 $('close-picture').onclick=closePicture;
 $('picture-dialog').addEventListener('click',e=>{if(e.target===$('picture-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closePicture();}});
@@ -177,7 +171,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){reward.cancelHold()
 $('slots').addEventListener('error',imageFailure,true);$('tray').addEventListener('error',imageFailure,true);
 function imageFailure(e){if(e.target instanceof HTMLImageElement){e.target.alt='Η εικόνα δεν φορτώθηκε';feedback('Μια εικόνα δεν φορτώθηκε. Έλεγξε τη σύνδεση ή πάτησε «Νέα πρόταση».');}}
 renderMenu();
-window.addEventListener('resize',()=>{scheduleResultFit();positionSettings();});
+window.addEventListener('resize',()=>{scheduleResultFit();});
 document.fonts?.ready.then(scheduleResultFit);
 try{
   const response=await fetch('data/content.json?v=20260906-3');if(!response.ok)throw new Error('Content unavailable');
