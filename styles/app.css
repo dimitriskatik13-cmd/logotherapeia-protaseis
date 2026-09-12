@@ -112,3 +112,16 @@ body.drawer-open{overflow:hidden}
 @keyframes drawer-in{from{transform:translateX(24px);opacity:.6}to{transform:none;opacity:1}}
 @media(max-width:600px){#settings-panel{width:100vw;border-left:0}}
 @media(prefers-reduced-motion:reduce){#settings-panel{animation:none}}
+/* Αρχική: μεγέθη γραμμάτων όπως στην Προανάγνωση r7 */
+.pill{font-size:20px;min-height:58px;padding:0 26px}
+.circle{width:72px;height:72px;font-size:30px}
+/* Κουτιά τοποθέτησης και κάρτες όπως στην Προανάγνωση: χωρίς αριθμούς και χρωματιστή κορυφή */
+#slots{background:#F5F5F5;border-radius:20px;padding:14px}
+#tray{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px 14px}
+.drop{border:3px dashed #D1D5DB;border-top:3px dashed #D1D5DB;border-radius:16px;background:#fff}
+.drop .slot-number{display:none}
+.drop.ready{border-style:dashed;border-color:#a7c977;border-top-color:#a7c977;background:#f8fbf3}
+.drop.hovered{outline:none;border-style:solid;border-color:var(--green);border-top-color:var(--green);background:#8DC63F1A}
+.drop.filled{border-style:solid;border-color:var(--green);border-top-color:var(--green);background:#fff}
+.is-celebrating .drop.filled{border-color:var(--green)}
+@media(max-width:600px){.pill{font-size:17px;min-height:50px;padding:0 18px}.circle{width:62px;height:62px;font-size:25px}#slots{padding:8px}#tray{padding:8px 10px}}
