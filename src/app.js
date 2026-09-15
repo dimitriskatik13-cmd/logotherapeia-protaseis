@@ -5,6 +5,9 @@ import {ImageLoader} from './images.js?v=20260906-3';
 import {bindDrag} from './gestures.js?v=20260906-3';
 
 const $=id=>document.getElementById(id);
+// Οι κάρτες δείχνουν τη μικρή έκδοση (320 px). Η μεγέθυνση κρατά το αρχικό αρχείο από το content.json.
+const small=url=>url.replace('assets/pictures/','assets/pictures-320/');
+const preloadCards=cards=>loader.preload(cards.map(c=>({image:small(c.image)})));
 const roles={subject:{label:'ΠΟΙΟΣ',color:'#8DC63F'},verb:{label:'ΤΙ ΚΑΝΕΙ',color:'#00AEEF'},object:{label:'ΤΙ',color:'#F7941D'},place:{label:'ΠΟΥ',color:'#ED1C24'},reason:{label:'ΓΙΑΤΙ',color:'#58595B'},time:{label:'ΠΟΤΕ',color:'#00AEEF'}};
 const timeLabels={none:'Χωρίς',today:'Σήμερα',yesterday:'Χθες',tomorrow:'Αύριο',random:'Τυχαίο'};
 const state={mode:5,timeSetting:'none',time:'none',row:null,playing:false,busy:false,order:[],upcoming:null};
@@ -39,7 +42,7 @@ const reward=new Reward({ready:()=>state.playing&&!state.busy&&board.complete&&!
 });
 const locked=()=>state.busy||reward.phase==='celebrating';
 
-function image(card){const img=new Image();img.src=card.image;img.alt='';img.draggable=false;img.decoding='async';if(card.key==='time')img.className='time-image';return img;}
+function image(card){const img=new Image();img.src=small(card.image);img.alt='';img.draggable=false;img.decoding='async';if(card.key==='time')img.className='time-image';return img;}
 function label(card){const el=document.createElement('span');el.className='label';el.textContent=card.text;return el;}
 function renderMenu(){
   document.querySelectorAll('[data-mode]').forEach(b=>{const active=+b.dataset.mode===state.mode;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
@@ -82,7 +85,7 @@ function reserveNext(){
   if(!engine)return;
   const row=engine.next(state.mode,state.row?.id),time=engine.chooseTime(state.timeSetting);
   const cards=engine.cards(row,state.mode,time);
-  state.upcoming={row,time,cards,mode:state.mode,setting:state.timeSetting,promise:loader.preload(cards)};
+  state.upcoming={row,time,cards,mode:state.mode,setting:state.timeSetting,promise:preloadCards(cards)};
 }
 async function nextSentence(){
   const started=performance.now();
@@ -108,7 +111,7 @@ async function alternate(key){
     if(!row){feedback('Δεν υπάρχει άλλη επιλογή με τα ίδια υπόλοιπα στοιχεία.');return;}
   }
   const cards=engine.cards(row,state.mode,time),ticket=++request;state.busy=true;render();
-  const results=await loader.preload(cards);if(ticket!==request||!state.playing)return;
+  const results=await preloadCards(cards);if(ticket!==request||!state.playing)return;
   state.busy=false;state.row=row;state.time=time;board.update(cards);render({focus:`[data-alternate="${key}"]`});
   feedback(results.some(r=>r.status==='rejected')?'Μια εικόνα δεν φορτώθηκε. Έλεγξε τη σύνδεση.':'Άλλαξε το '+roles[key].label+'.');
 }
@@ -139,7 +142,7 @@ function celebrate(){
   }}document.body.append(layer);
 }
 
-cleanupDrag=bindDrag({root:document,canDrag:()=>state.playing&&!locked(),cardFor:key=>board.cards.find(c=>c.key===key),place,feedback,cancelHold:()=>reward.cancelHold()});
+cleanupDrag=bindDrag({root:document,canDrag:()=>state.playing&&!locked(),cardFor:key=>{const c=board.cards.find(c=>c.key===key);return c&&{...c,image:small(c.image)};},place,feedback,cancelHold:()=>reward.cancelHold()});
 document.addEventListener('click',event=>{
   const b=event.target.closest('button');if(!b||b.disabled)return;
   if(b.dataset.mode){state.mode=+b.dataset.mode;state.upcoming=null;renderMenu();return;}
