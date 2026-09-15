@@ -13,7 +13,7 @@
 <link rel="manifest" href="manifest-v2.webmanifest">
 <meta name="description" content="Χτίζω πρόταση — κάρτες, εικόνες και ελληνική εκφώνηση από τη ΣΥΝΟΙΔΑ.">
 <link rel="preload" href="assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles/app.css?v=20260915-2">
+<link rel="stylesheet" href="styles/app.css?v=20260915-3">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -40,7 +40,7 @@
 </section>
 <section id="play-screen" hidden aria-labelledby="play-title">
 <div class="play-head"><h1 id="play-title">Χτίζω πρόταση</h1><p id="play-description">5 κομμάτια</p></div>
-<div class="toolbar"><div class="toolbar-start"><button class="btn neutral" id="home"><svg class="icon" aria-hidden="true"><use href="#ic-home"/></svg>Αρχική</button><button class="btn neutral" id="settings" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#ic-sliders"/></svg>Βοήθειες</button></div><div class="toolbar-actions"><button class="btn new" id="restart"><svg class="icon" aria-hidden="true"><use href="#ic-refresh"/></svg>Νέα πρόταση</button><button class="btn listen" id="listen"><svg class="icon" aria-hidden="true"><use href="#ic-speaker"/></svg>Άκουσε</button><button class="btn outline" id="listen-partial"><svg class="icon" aria-hidden="true"><use href="#ic-partial"/></svg>Ως εδώ</button></div></div>
+<div class="toolbar"><div class="toolbar-start"><button class="btn neutral" id="home"><svg class="icon" aria-hidden="true"><use href="#ic-home"/></svg>Αρχική</button><button class="btn neutral" id="settings" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#ic-sliders"/></svg>Ρυθμίσεις</button></div><div class="toolbar-actions"><button class="btn new" id="restart"><svg class="icon" aria-hidden="true"><use href="#ic-refresh"/></svg>Νέα πρόταση</button><button class="btn listen" id="listen"><svg class="icon" aria-hidden="true"><use href="#ic-speaker"/></svg>Άκουσε</button><button class="btn outline" id="listen-partial"><svg class="icon" aria-hidden="true"><use href="#ic-partial"/></svg>Ως εδώ</button></div></div>
 <section aria-labelledby="board-title"><h2 id="board-title"><svg class="icon" aria-hidden="true"><use href="#ic-pencil"/></svg>Χτίσε την πρόταση</h2><div class="row" id="slots"></div></section>
 <section class="tray-section" aria-labelledby="tray-title"><h2 id="tray-title"><svg class="icon" aria-hidden="true"><use href="#ic-cards"/></svg>Κάρτες</h2><div class="row" id="tray"></div></section>
 <section class="result"><p class="result-caption"><svg class="icon" aria-hidden="true"><use href="#ic-chat"/></svg><span id="result-label">Πλήρης πρόταση</span></p><div class="result-body"><p class="result-text" id="result"></p><div class="sentence-actions"><button class="btn correct" id="complete" disabled title="Κράτησε συνεχόμενα για 1 δευτερόλεπτο"><span class="hold-fill" aria-hidden="true"></span><span class="correct-label"><svg class="icon" aria-hidden="true"><use href="#ic-check"/></svg>Σωστό!</span></button></div></div><p class="built" id="built"></p></section>
@@ -48,7 +48,7 @@
 </section>
 <div class="drawer-backdrop" id="settings-backdrop" hidden></div>
 <aside class="settings" id="settings-panel" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
-<div class="drawer-head"><h2 id="settings-title"><svg class="icon" aria-hidden="true"><use href="#ic-sliders"/></svg>Βοήθειες θεραπευτή</h2><button class="drawer-close" id="close-settings-x" type="button" aria-label="Κλείσιμο">✕</button></div>
+<div class="drawer-head"><h2 id="settings-title"><svg class="icon" aria-hidden="true"><use href="#ic-sliders"/></svg>Ρυθμίσεις θεραπευτή</h2><button class="drawer-close" id="close-settings-x" type="button" aria-label="Κλείσιμο">✕</button></div>
 <div class="drawer-body">
 <p class="drawer-sec">Εμφάνιση</p>
 <label class="opt" for="show-model"><span class="opt-text"><span class="opt-title">Έτοιμη πρόταση</span><span class="opt-desc">Το παιδί βλέπει την πρόταση-στόχο. Κλείσ' το για άσκηση από μνήμης.</span></span><input type="checkbox" class="switch" id="show-model" checked></label>
