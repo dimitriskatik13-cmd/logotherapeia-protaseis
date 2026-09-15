@@ -135,10 +135,12 @@ function openPicture(key){
 function closePicture(){const dialog=$('picture-dialog');if(!dialog.open)return;if(dialog.close)dialog.close();else dialog.removeAttribute('open');previousFocus?.isConnected&&previousFocus.focus({preventScroll:true});}
 function celebrate(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;layer=document.createElement('div');layer.className='success-celebration'+(reduced?' reduced':'');layer.setAttribute('aria-hidden','true');
-  layer.innerHTML='<div class="success-emblem"><span class="success-ring"></span><span class="success-star star-left"></span><span class="success-star star-right"></span><span class="success-star star-top"></span><span class="success-check">✓</span><strong>Μπράβο!</strong></div>';
-  if(!reduced){const colors=['#8DC63F','#ED1C24','#00AEEF','#F7941D'];for(let i=0;i<18;i++){
-    const piece=document.createElement('i');piece.className='success-confetti'+(i%3===0?' round':'');const angle=Math.PI*2*i/18,reach=95+(i%4)*32;
-    piece.style.setProperty('--dx',Math.round(Math.cos(angle)*reach)+'px');piece.style.setProperty('--dy',Math.round(Math.sin(angle)*reach)+'px');piece.style.setProperty('--turn',(i%2?-1:1)*(140+i*19)+'deg');piece.style.setProperty('--delay',(i%3)*35+'ms');piece.style.background=colors[i%4];layer.append(piece);
+  layer.innerHTML='<span class="success-burst"></span><div class="success-emblem"><span class="success-ring"></span><span class="success-ring ring-2"></span><span class="success-star star-left"></span><span class="success-star star-right"></span><span class="success-star star-top"></span><span class="success-star star-bottom-left"></span><span class="success-star star-bottom-right"></span><span class="success-check">✓</span><strong>Μπράβο!</strong></div>';
+  if(!reduced){const colors=['#8DC63F','#ED1C24','#00AEEF','#F7941D'],count=44;for(let i=0;i<count;i++){
+    // Δύο κύματα κομφετί σε ευρύτερο κύκλο γύρω από το έμβλημα, με διαφορετικά μεγέθη και χρόνους.
+    const wave=i%2,piece=document.createElement('i');piece.className='success-confetti'+(i%3===0?' round':'')+(i%5===0?' big':'');
+    const angle=Math.PI*2*i/count+(wave?0.14:0),reach=(wave?150:220)+(i%4)*38;
+    piece.style.setProperty('--dx',Math.round(Math.cos(angle)*reach)+'px');piece.style.setProperty('--dy',Math.round(Math.sin(angle)*reach)+'px');piece.style.setProperty('--turn',(i%2?-1:1)*(160+i*23)+'deg');piece.style.setProperty('--delay',(wave*110+(i%3)*30)+'ms');piece.style.background=colors[i%4];layer.append(piece);
   }}document.body.append(layer);
 }
 
