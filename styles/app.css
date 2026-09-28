@@ -132,3 +132,11 @@ body.drawer-open{overflow:hidden}
 
 /* 15/09/2026: η «Αρχική» σε πράσινο brand κατόπιν αιτήματος χρήστη· οι «Ρυθμίσεις» κρατούν το κόκκινο. */
 #home.btn.neutral{background:var(--green);box-shadow:0 1px 2px rgba(88,89,91,.10),0 4px 12px rgba(141,198,63,.35)}
+
+/* Local resilience trial: status text remains separate from the image. */
+#picture-status{font-size:14px;line-height:1.45;margin:12px 0 8px;color:var(--grey)}
+#picture-status:empty{display:none}
+#retry-picture{margin-top:4px}
+#reload-app{margin-top:10px}
+#picture-dialog.picture-feedback #picture-large{height:min(70vh,calc(94vh - 230px),640px);min-height:80px}
+#picture-dialog .zoom-header{position:sticky;top:0;background:white;z-index:1}

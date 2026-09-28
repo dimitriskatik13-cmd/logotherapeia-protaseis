@@ -3,6 +3,7 @@ import {Reward,HOLD_MS} from './reward.js?v=20260906-3';
 import {GreekSpeech} from './speech.js?v=20260906-3';
 import {ImageLoader} from './images.js?v=20260906-3';
 import {bindDrag} from './gestures.js?v=20260906-3';
+import {PicturePreview} from './picture-preview.js?v=20260928-1';
 
 const $=id=>document.getElementById(id);
 // Οι κάρτες δείχνουν τη μικρή έκδοση (320 px). Η μεγέθυνση κρατά το αρχικό αρχείο από το content.json.
@@ -13,6 +14,13 @@ const timeLabels={none:'Χωρίς',today:'Σήμερα',yesterday:'Χθες',to
 const state={mode:5,timeSetting:'none',time:'none',row:null,playing:false,busy:false,order:[],upcoming:null};
 const board=new Board(),loader=new ImageLoader();
 let engine,request=0,layer=null,cleanupDrag=()=>{},previousFocus=null;
+let drawerBackground=[];
+const picturePreview=new PicturePreview({show:({src,text,status,retry,busy})=>{
+  $('picture-large').src=src;$('picture-large').alt=text;
+  $('picture-status').textContent=status;$('retry-picture').hidden=!retry;
+  $('picture-large').setAttribute('aria-busy',String(busy));
+  $('picture-dialog').classList.toggle('picture-feedback',Boolean(status));
+}});
 const qa=new URLSearchParams(location.search).has('qa');
 function timing(name,start=0){if(qa)document.documentElement.dataset[name]=String(Math.round((performance.now()-start)*10)/10);}
 function feedback(message){$('feedback').textContent=message;}
@@ -126,13 +134,50 @@ function place(key,target){
   render({focus:board.complete?'#complete':`[data-slot="${target}"]`});
   feedback(board.complete?'Μπράβο! Κράτησε το «Σωστό!» για 1 δευτερόλεπτο.':'Ωραία, συνέχισε.');
 }
-function panel(open){reward.cancelHold();$('settings-panel').hidden=!open;$('settings-backdrop').hidden=!open;document.body.classList.toggle('drawer-open',open);$('settings').setAttribute('aria-expanded',String(open));if(open)$('show-model').focus();}
+function panel(open){
+  reward.cancelHold();
+  const wasOpen=!$('settings-panel').hidden;
+  if(open&&!wasOpen){
+    cleanupDrag();
+    drawerBackground=[$('home-screen'),$('play-screen'),document.querySelector('header'),document.querySelector('footer')].filter(Boolean).map(el=>({el,inert:el.inert,aria:el.getAttribute('aria-hidden')}));
+    $('settings-panel').hidden=false;$('settings-backdrop').hidden=false;
+    $('show-model').focus();
+    for(const item of drawerBackground){item.el.inert=true;item.el.setAttribute('aria-hidden','true');}
+  }else if(!open&&wasOpen){
+    for(const {el,inert,aria} of drawerBackground){el.inert=inert;if(aria===null)el.removeAttribute('aria-hidden');else el.setAttribute('aria-hidden',aria);}
+    drawerBackground=[];$('settings-panel').hidden=true;$('settings-backdrop').hidden=true;
+    if(state.playing&&!$('settings').disabled)$('settings').focus({preventScroll:true});
+  }
+  document.body.classList.toggle('drawer-open',open);$('settings').setAttribute('aria-expanded',String(open));
+}
+function drawerFocusables(){return [...$('settings-panel').querySelectorAll('button:not(:disabled),input:not(:disabled),[tabindex="0"]')].filter(el=>el.getClientRects().length);}
+// The focus trap also protects browsers without native inert support.
+document.addEventListener('focusin',e=>{
+  if(!$('settings-panel').hidden&&!$('settings-panel').contains(e.target))$('show-model').focus();
+});
+document.addEventListener('keydown',e=>{
+  if($('settings-panel').hidden)return;
+  if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();panel(false);return;}
+  if(e.key!=='Tab')return;
+  const items=drawerFocusables(),first=items[0],last=items[items.length-1];
+  if(!items.length)return;
+  if(e.shiftKey&&(document.activeElement===first||!$('settings-panel').contains(document.activeElement))){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&(document.activeElement===last||!$('settings-panel').contains(document.activeElement))){e.preventDefault();first.focus();}
+},true);
+document.addEventListener('click',e=>{
+  if(!$('settings-panel').hidden&&!$('settings-panel').contains(e.target)&&e.target!==$('settings-backdrop')){e.preventDefault();e.stopImmediatePropagation();}
+},true);
 function openPicture(key){
   const c=board.cards.find(c=>c.key===key);if(!c)return;reward.cancelHold();cleanupDrag();speech.stop();previousFocus=document.activeElement;
-  $('picture-title').textContent=c.text;$('picture-large').src=c.image;$('picture-large').alt=c.text;
+  $('picture-title').textContent=c.text;
+  picturePreview.open({large:c.image,small:small(c.image),text:c.text});
   if($('picture-dialog').showModal)$('picture-dialog').showModal();else $('picture-dialog').setAttribute('open','');
 }
-function closePicture(){const dialog=$('picture-dialog');if(!dialog.open)return;if(dialog.close)dialog.close();else dialog.removeAttribute('open');previousFocus?.isConnected&&previousFocus.focus({preventScroll:true});}
+function closePicture(){
+  picturePreview.close();const dialog=$('picture-dialog');if(!dialog.open)return;
+  if(dialog.close)dialog.close();else dialog.removeAttribute('open');
+  previousFocus?.isConnected&&previousFocus.focus({preventScroll:true});
+}
 function celebrate(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;layer=document.createElement('div');layer.className='success-celebration'+(reduced?' reduced':'');layer.setAttribute('aria-hidden','true');
   layer.innerHTML='<span class="success-burst"></span><div class="success-emblem"><span class="success-ring"></span><span class="success-ring ring-2"></span><span class="success-star star-left"></span><span class="success-star star-right"></span><span class="success-star star-top"></span><span class="success-star star-bottom-left"></span><span class="success-star star-bottom-right"></span><span class="success-check">✓</span><strong>Μπράβο!</strong></div>';
@@ -160,6 +205,8 @@ $('listen').onclick=()=>speech.speak(sentenceText(board.cards));$('listen-partia
 $('settings').onclick=()=>panel($('settings-panel').hidden);const closeDrawer=()=>{panel(false);$('settings').focus();};$('close-settings').onclick=closeDrawer;$('close-settings-x').onclick=closeDrawer;$('settings-backdrop').onclick=closeDrawer;$('test-voice').onclick=()=>speech.speak('Το αγόρι τρώει το μήλο στο σπίτι.');
 $('show-model').onchange=()=>{reward.cancelHold();render();};$('show-labels').onchange=()=>document.body.classList.toggle('hide-labels',!$('show-labels').checked);
 $('close-picture').onclick=closePicture;
+$('retry-picture').onclick=()=>{picturePreview.retry();$('close-picture').focus({preventScroll:true});};
+$('picture-dialog').addEventListener('close',()=>{if(!$('picture-dialog').open)picturePreview.close();});
 $('picture-dialog').addEventListener('click',e=>{if(e.target===$('picture-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closePicture();}});
 const correct=$('complete');correct.style.setProperty('--hold-duration',HOLD_MS+'ms');
 correct.addEventListener('pointerdown',e=>{if(e.button>0||e.isPrimary===false)return;reward.start({kind:'pointer',id:e.pointerId});});
@@ -180,5 +227,5 @@ window.addEventListener('resize',()=>{scheduleResultFit();});
 document.fonts?.ready.then(scheduleResultFit);
 try{
   const response=await fetch('data/content.json?v=20260906-3');if(!response.ok)throw new Error('Content unavailable');
-  engine=new SentenceEngine(await response.json());$('start').disabled=false;$('loading-note').textContent='';timing('readyMs');reserveNext();
-}catch(error){console.error(error);$('loading-note').textContent='Δεν φορτώθηκαν οι προτάσεις. Έλεγξε τη σύνδεση και ανανέωσε τη σελίδα.';}
+  engine=new SentenceEngine(await response.json());reserveNext();$('start').disabled=false;window.synoidaStartup.ready();timing('readyMs');
+}catch(error){console.error(error);window.synoidaStartup.fail('Δεν φορτώθηκαν οι προτάσεις. Έλεγξε τη σύνδεση και ανανέωσε τη σελίδα.');}
