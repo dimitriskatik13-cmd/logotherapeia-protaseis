@@ -140,3 +140,5 @@ body.drawer-open{overflow:hidden}
 #reload-app{margin-top:10px}
 #picture-dialog.picture-feedback #picture-large{height:min(70vh,calc(94vh - 230px),640px);min-height:80px}
 #picture-dialog .zoom-header{position:sticky;top:0;background:white;z-index:1}
+/* Νέα έκδοση: ένα πάτημα ξαναφορτώνει τη σελίδα. Χωρίς αριθμό έκδοσης. */
+.update-note{position:fixed;z-index:75;left:50%;top:10px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:8px 10px 8px 16px;border-radius:999px;background:#fff;border:1.5px solid #8dc63f99;box-shadow:0 10px 30px #58595b1a;color:var(--grey);font-size:15px;font-weight:650;max-width:calc(100% - 16px)}.update-note .btn{min-height:40px;padding:6px 16px;font-size:14px;background:var(--blue)}
